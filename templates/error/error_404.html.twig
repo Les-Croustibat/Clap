@@ -1,24 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Erreur 404{% endblock %}
+{% block title %}Home{% endblock %}
+
+{% block css %}
+<link href="{{ asset('asset/css/fab.css') }}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<main class="home">
+    <div class="container">
+        <div class="row justify-content-center">
+            <img src="{{asset('asset/img/page404.png')}}" alt="page404" width="400" height="400">
+        </div>
+        <div class="row justify-content-center">
+            <h1 class="title-logo"></h1>
+        </div>
+        <div class="row justify-content-center pb-5">
+            <a href="{{ path('default_home') }}"><button class="btn btn-danger ">Accueil</button></a>
+        </div>
+    </div>
+</main>
 {% endblock %}
 
 {% block js %} {% endblock %}
