@@ -10,10 +10,14 @@ class UserController extends AbstractController
     {
         return $this->render('user/user_space.html.twig');
     }
+
     public function resetPw()
     {
+
+        
         return $this->render('user/user_resetPw.html.twig');
     }
+
     public function forgottenPw()
     {
         return $this->render('user/user_forgottenPw.html.twig');

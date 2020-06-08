@@ -1,23 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}About{% endblock %}
+{% block title %}A Propos{% endblock %}
 
 {% block content %}
 
+    {# About page describing the project #}
+    
+    <div class="container about">
 
+        <div class="row justify-content-center">
+            <img src="asset/img/logoLR.png" alt="logo Clap" class="logo mb-4 mt-5"></img>
+        </div>
+        <div class="row justify-content-center">
+            <h1>clap</h1>
+        </div>
 
+        <div class="row p-4 justify-content-center mb-4">
+            <div class="col-6 text-center">
+                <p>Cette application web est un projet de fin de formation.</p>
+                <p>Qui n'a jamais passé un temps infini à choisir un film à regarder ?</p>
+                <p>Au point de ne plus savoir quoi regarder ...</p>
+                <p>Avec Clap, problème résolu ... asseyez-vous confortablement !</p> 
+                <p>Indiquez vos goûts et nous vous proposons des films à regarder</p> 
+                <p>Bonne séance !</p>
+            </div>
+        </div>
 
+        <div class="row justify-content-center mb-4">
+            <h2>la team</h2>
+        </div>
 
-
-
-
-
-
-
-
-
-
-
+        <div class="row p-4 justify-content-center">
+            <div class="col-3 text-center">
+                <img src="asset/img/ChristopheB.png" alt="Christophe" class="mb-4 rounded"></img>
+                <h3>Christophe</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+            </div>
+            <div class="col-3 text-center">
+                <img src="asset/img/CyrielleT.jpeg" alt="Cyrielle" class="mb-4 rounded"></img>
+                <h3>Cyrielle</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+            </div>
+            <div class="col-3 text-center">
+                <img src="asset/img/FabienP.png" alt="Fabien" class="mb-4 rounded"></img>
+                <h3>Fabien</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+            </div>
+            <div class="col-3 text-center">
+                <img src="asset/img/AurelieD.png" alt="Aurélie" class="mb-4 rounded"></img>
+                <h3>Aurélie</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 

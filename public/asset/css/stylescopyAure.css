@@ -1,0 +1,60 @@
+/****************************
+*           ABOUT           *
+****************************/
+
+.about .logo {
+    width: 15%;
+}
+
+.about {
+    font-family: 'Dosis', sans-serif;
+    background-color: #151515;
+    color:  #e8e8e8;
+}
+
+.about h1 {
+    text-transform: uppercase;
+    font-family: 'Limelight', cursive;
+    color: #c42323;
+}
+
+.about h2, h3 {
+    text-transform: capitalize;
+    color: #c42323;
+}
+
+/****************************
+*       FORGOTTEN PW        *
+****************************/
+
+.forgottenPw {
+    font-family: 'Dosis', sans-serif;
+    background-color: #151515;
+    color:  #e8e8e8;
+}
+
+.forgottenPw  h1 {
+    text-transform: uppercase;
+    font-family: 'Limelight', cursive;
+    color: #c42323;
+}
+
+.forgottenPw  .info {
+    line-height: normal;
+}
+
+/****************************
+*       FORGOTTEN PW        *
+****************************/
+
+.resetPw{
+    font-family: 'Dosis', sans-serif;
+    background-color: #151515;
+    color:  #e8e8e8;
+}
+
+.resetPw  h1 {
+    text-transform: uppercase;
+    font-family: 'Limelight', cursive;
+    color: #c42323;
+}
