@@ -50,6 +50,15 @@ movie_find:
   path: /trouver-un-film
   controller: App\Controller\UserController:findMovie
 
+# security
+security_login:
+  path: /se-connecter
+  controller: App\Controller\SecurityController:login
+
+security_logout:
+  path: /se-deconnecter
+  controller: App\Controller\SecurityController:logout
+
 
 
 
