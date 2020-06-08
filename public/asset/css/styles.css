@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+    background-color: var(--main-color);
+}
+
+:root {
+    --main-color: #151515;
+    --title-color: #c42323;
+    --sentence-color: white;
+}
+
+/* Formulaire de contact */
+.container {
+    margin-top: 20vh;
+}
+
+.header h1{
+    color: var(--title-color);
+    text-transform: uppercase;
+}
+
+.header p{
+    color: var(--sentence-color);
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.form label {
+    color: var(--sentence-color);
+    font-size: 1.5em;
+}
+
+.form input {
+    padding: 5px;
+    width: 30%;
+}
+
