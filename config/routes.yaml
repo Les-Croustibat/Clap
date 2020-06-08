@@ -1,3 +1,56 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+# default
+default_home:
+  path: /
+  controller: App\Controller\DefaultController:home
+
+default_contact:
+  path: /contact
+  controller: App\Controller\DefaultController:contact
+
+default_credits:
+  path: /credits
+  controller: App\Controller\DefaultController:credits
+
+default_about:
+  path: /a-propos
+  controller: App\Controller\DefaultController:about
+
+# user
+user_space:
+  path: /mon-espace
+  controller: App\Controller\UserController:userSpace
+
+user_resetPw:
+  path: /reinitialisation-mot-de-passe
+  controller: App\Controller\UserController:resetPw
+
+user_forgottenPw:
+  path: /oubli-mot-de-passe
+  controller: App\Controller\UserController:forgottenPw
+
+# error
+error_403:
+  path: /erreur-403
+  controller: App\Controller\UserController:error403
+
+error_404:
+  path: /erreur-404
+  controller: App\Controller\UserController:error404
+
+error_500:
+  path: /erreur-500
+  controller: App\Controller\UserController:error500
+
+# movie
+movie_details:
+  path: /fiche-film
+  controller: App\Controller\UserController:movieDetails
+
+movie_find:
+  path: /trouver-un-film
+  controller: App\Controller\UserController:findMovie
+
+
+
+
+
