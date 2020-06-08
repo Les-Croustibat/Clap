@@ -31,24 +31,24 @@ user_forgottenPw:
 # error
 error_403:
   path: /erreur-403
-  controller: App\Controller\UserController:error403
+  controller: App\Controller\ErrorController:error403
 
 error_404:
   path: /erreur-404
-  controller: App\Controller\UserController:error404
+  controller: App\Controller\ErrorController:error404
 
 error_500:
   path: /erreur-500
-  controller: App\Controller\UserController:error500
+  controller: App\Controller\ErrorController:error500
 
 # movie
 movie_details:
   path: /fiche-film
-  controller: App\Controller\UserController:movieDetails
+  controller: App\Controller\MovieController:movieDetails
 
 movie_find:
   path: /trouver-un-film
-  controller: App\Controller\UserController:findMovie
+  controller: App\Controller\MovieController:findMovie
 
 
 
