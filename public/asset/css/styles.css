@@ -18,7 +18,7 @@ body {
 
 /******* CONTACT FORM *******/
 .container {
-    margin-top: 20vh;
+    margin-top: 15vh;
 }
 
 .header h1{
@@ -42,6 +42,10 @@ body {
     width: 30%;
 }
 
+.textinput {
+    width: 100%;
+}
+
 /******* NAV BAR  *******/
 header{
     background-color: var(--grey-color);
@@ -50,6 +54,13 @@ header{
 .logo-clap {
     width: 80px;
     height: 80px;
+}
+
+/******* MEDIA QUERIES *******/
+@media (min-width: 360px){
+    .container{
+        margin-top: 10vh;
+    }
 }
 
 
