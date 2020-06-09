@@ -54,7 +54,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         ];
         $request->getSession()->set(
             Security::LAST_USERNAME,
-            $credentials['email']
+            $credentials['email'],
         );
 
         return $credentials;
@@ -71,7 +71,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Email could not be found.');
+            throw new CustomUserMessageAuthenticationException('Vos identifiants de connexion ne sont pas valides.');
         }
 
         return $user;
