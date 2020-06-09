@@ -99,6 +99,9 @@
     "fzaninotto/faker": {
         "version": "v1.9.1"
     },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.0.4"
+    },
     "monolog/monolog": {
         "version": "2.1.0"
     },
@@ -530,6 +533,9 @@
     },
     "twig/twig": {
         "version": "v3.0.3"
+    },
+    "webimpress/safe-writer": {
+        "version": "2.0.1"
     },
     "webmozart/assert": {
         "version": "1.8.0"
