@@ -1,9 +1,110 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Trouve un film{% endblock %}
+{% block title %}Clap te trouve un film{% endblock %}
 
 {% block content %}
 
+    <div class="container find-movie">
+        <div class="row justify-content-center">
+            <img src="asset/img/logoLR.png" alt="logo Clap" class="logo mb-4 mt-5"></img>
+        </div>
+
+        <div class="row justify-content-center">
+            <h1 class="mt-5 mb-5 text-center">Clap te trouve un film ! </h1>
+        </div>
+
+        <div class="row justify-content-center">
+            <h2 class="choice mt-5 mb-5 text-center">Tu sais déjà un peu ce que tu veux ...</h2>
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-6">
+                <h2>Genres</h2>
+                <form method="post" class="mt-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="film_genre" name="film_genre" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="film_genre" name="film_genre" value="option2">
+                        <label class="form-check-label" for="inlineCheckbox2">2</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-6">
+                <h2>Année de production</h2>
+                {# change color in a hover, display years #}
+                <form method="post">
+                    <div class="form-group mt-4">
+                        <input type="range" class="form-control-range" id="production_year" name="production_year">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-6">
+                <h2>Durée du film</h2>
+                {# change color in a hover, display duration#}
+                <form method="post">
+                    <div class="form-group mt-5">
+                        <input type="range" class="form-control-range" id="film_duration" name="film_duration">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-6">
+                <h2>Nationalité</h2>
+                <form method="post" class="mt-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="nationality" name="nationality" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="nationality" name="nationality" value="option2">
+                        <label class="form-check-label" for="inlineCheckbox2">2</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-6">
+                <h2>Acteurs et Réalisateurs</h2>
+                <form method="post" class="mt-4">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="film_actor_director" id="film_actor_director" placeholder="Si vous ne voulez que des films avec vos acteurs ou réalisateurs favoris ...">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-5 pb-5">
+            <button type="submit" class="btn btn-secondary">GO</button>
+        </div>
+
+        {# separator #}
+        <div class="row justify-content-center separator">
+        </div>
+
+        <div class="row justify-content-center">
+            <h2 class="choice mt-5 mb-5 text-center">Tu es aventureux ?</h2>
+        </div>
+
+        <div class="row justify-content-center mb-5 pb-5">
+            <button type="submit" class="btn btn-secondary random-film">film au hasard</button>
+        </div>
+
+
+
+
+
+    </div>
 
 
 
