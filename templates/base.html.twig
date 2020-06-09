@@ -30,12 +30,12 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav text-center">
           <li class="nav-item">
             <a class="nav-link" href="#">Trouver un film<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle justify-content-center" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Utilisateur
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -89,12 +89,12 @@
       Vivamus sed nibh vel quam pellentesque condimentum ut in ipsum. Etiam at consectetur sapien. Nullam volutpat libero eget fermentum gravida. Aliquam a faucibus urna, vel lacinia felis. Praesent congue eget sapien nec dignissim. Morbi feugiat lorem eu erat dignissim mollis. Vivamus facilisis dolor neque, ac viverra metus rhoncus ac. Aenean massa leo, accumsan quis finibus nec, maximus sit amet augue.
 
       Aliquam sed maximus nisl, sit amet volutpat leo. Nulla et nulla augue. Nulla facilisi. In pretium non augue in pharetra. Praesent sagittis tincidunt fermentum. Nam viverra, elit et sagittis porta, magna ante rutrum diam, non molestie risus nunc sed erat. Phasellus rutrum tempor lacus, ac rhoncus dolor pretium quis. Phasellus sed massa nec nibh ullamcorper posuere eget a sapien. Vivamus lacus leo, laoreet a nibh id, gravida faucibus diam.</p>
-      <div class="d-block text-right m-4" id="arrow">
-        <svg class="bi bi-arrow-up-square" width="2.5em" height="2.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <div class="d-block text-right m-4">
+        <a href=""><svg class="bi bi-arrow-up-square" id="arrow" width="2.5em" height="2.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
           <path fill-rule="evenodd" d="M4.646 8.354a.5.5 0 0 0 .708 0L8 5.707l2.646 2.647a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708z"/>
           <path fill-rule="evenodd" d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z"/>
-        </svg>
+        </svg></a>
       </div>
     </main>
     {% block content %}
@@ -132,7 +132,7 @@
     {# Lazy load #}
     <script type="text/javascript" src="js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="js/lib/jquery.lazy.min.js"></script>
-    <script type="text/javascript" src="../script/script.js"></script>
+    <script type="text/javascript" src="{{ asset('asset/script/script.js') }}"></script>
 
 
 </body>
