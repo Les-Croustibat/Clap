@@ -15,9 +15,7 @@ class DefaultController extends AbstractController
 
     public function contact(MailerInterface $mailer)
     {
-        if(isset($_POST) && !empty($_POST)){  
-            if($this->verifForm($_POST, ['lastname', 'firstname', 'email', 'object', 'message'])){
-
+        if(!empty($_POST)){
                 $safe = array_map('strip_tags', $_POST);
 
                 $errors = [
@@ -55,33 +53,11 @@ class DefaultController extends AbstractController
                     $this->addFlash('danger', $errorsMessage);
                 }
             }
-        }
-            return $this->render('default/contact.html.twig', [
-                'input' => $safe ?? [], 
-            ]);
         
+        return $this->render('default/contact.html.twig', [
+            'input' => $safe ?? [], 
+        ]);       
     }
-    
-    
-    private function verifForm($superglobale, $champs)
-    {
-        foreach ($champs as $champ) {
-            if (isset($superglobale[$champ]) && !empty($superglobale[$champ])) {
-                if($champ == 'email' && !filter_var($superglobale[$champ], FILTER_VALIDATE_EMAIL)){
-                    return false;
-                }
-    
-                    $reponse = true;
-            }else{
-                return false;
-            }
-        }
-
-        return $reponse;
-        
-        return $this->render('default/contact.html.twig');
-    }
-
 
     public function credits()
     {
