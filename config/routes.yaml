@@ -63,6 +63,10 @@ security_logoutconfirm:
   path: /se-deconnecter
   controller: App\Controller\SecurityController:logoutConfirm
 
+security_signin:
+  path: /inscription
+  controller: App\Controller\SecurityController:signIn
+
 
 
 
