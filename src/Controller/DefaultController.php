@@ -49,6 +49,7 @@ class DefaultController extends AbstractController
                     $mailer->send($email);
                     $this->addFlash('success', 'Votre message a bien été envoyé');
                 } else {
+                    dump($safe);
                     $errorsMessage = implode('<br>', $errors);
                     $this->addFlash('danger', $errorsMessage);
                 }
