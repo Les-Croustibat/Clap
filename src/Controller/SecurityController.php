@@ -53,19 +53,30 @@ class SecurityController extends AbstractController
 
     public function signIn(UserPasswordEncoderInterface $passwordEncoder)
     {   
+        // Rediriger 
+        // if ($this->getUser()) {
+        //     return $this->redirectToRoute('default_home');
+        // }
+
         $this->passwordEncoder = $passwordEncoder;
 
         if(!empty($_POST)){
 
             $safe = array_map('trim', array_map('strip_tags', $_POST));
 
+            // On accède au manager (connexion DB)
+            $entityManager = $this->getDoctrine()->getManager(); 
+            // On passe le paramètre $safe['email'] récupéré du POST pour chercher l'email donné
+            $existing_email = $entityManager->getRepository(User::class)->findBy(["email"=>$safe['email']]);
+
             $errors = [
-                (strlen($safe['firstname']) < 3 || strlen($safe['firstname']) > 20) ? 'Votre prénom doit comporter entre 3 et 20 caractères' : null,
-                (strlen($safe['lastname']) < 3 || strlen($safe['lastname']) > 20) ? 'Votre nom doit comporter entre 3 et 20 caractères' : null,
-                (strlen($safe['pseudo']) < 3 || strlen($safe['pseudo']) > 20) ? 'Votre pseudo doit comporter entre 3 et 20 caractères' : null,
-                (!filter_var($safe['email'], FILTER_VALIDATE_EMAIL)) ?  'Votre email n\'est pas valide' : null,
-                (strlen($safe['password']) < 3 || strlen($safe['password']) > 20) ? 'Votre mot de passe doit comporter entre 3 et 20 caractères' : null,
-                ($safe['password'] != $safe['confirmPassword']) ? 'Vos mots de passe ne sont pas identiques' : null,
+                (strlen($safe['firstname']) < 3 || strlen($safe['firstname']) > 20) ? 'Votre prénom doit comporter entre 3 et 20 caractères.' : null,
+                (strlen($safe['lastname']) < 3 || strlen($safe['lastname']) > 20) ? 'Votre nom doit comporter entre 3 et 20 caractères.' : null,
+                (strlen($safe['pseudo']) < 3 || strlen($safe['pseudo']) > 20) ? 'Votre pseudo doit comporter entre 3 et 20 caractères.' : null,
+                (!filter_var($safe['email'], FILTER_VALIDATE_EMAIL)) ?  'Votre email n\'est pas valide.' : null,
+                (!empty($existing_email)) ? 'Cet email existe déjà.' : null,
+                (strlen($safe['password']) < 3 || strlen($safe['password']) > 20) ? 'Votre mot de passe doit comporter entre 3 et 20 caractères.' : null,
+                ($safe['password'] != $safe['confirmPassword']) ? 'Vos mots de passe ne sont pas identiques.' : null,
             ];
             
             // Automatiquement supprimer les entrées vides de mon tableau
