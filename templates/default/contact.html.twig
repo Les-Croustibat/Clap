@@ -9,11 +9,20 @@
         <h1>Contact</h1>
         <p>Une suggestion, une question ?</p>
     </div>
-{# Message d'erreur et de réussite #}
+    
+
 
 {# Formulaire de contact #}
     <div class="form text-center">
+{# Message d'erreur et de réussite #}
         <form method="POST" class="justify-content-center">
+        {% for label, messages in app.flashes %}
+            <div class="alert alert-{{ label }}">
+                {% for message in messages %}
+                    {{ message|raw }} 
+                {% endfor %}
+            </div>
+        {% endfor %}
             <div class="form-group row justify-content-center">
                 <label class="text-left col-4 col-md-3" for="lastname">Nom :</label>
                 <input class="text-left col-6 col-md-3" name="lastname" id="lastname"></input>
@@ -40,18 +49,6 @@
         </form>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 {% endblock %}
 
