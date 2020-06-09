@@ -31,5 +31,20 @@ class SecurityController extends AbstractController
     {
         // throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
         throw new \Exception();
+
+        return $this->render('security/logout.html.twig');
+    }
+
+
+    public function logoutConfirm()
+    {
+        if (!empty($_POST)) {
+            if (isset($_POST['action']) && $_POST['action'] === 'delete') {
+                // header('Location: home.html.twig');
+                return $this->redirectToRoute('security_logout');
+            }
+        }
+        
+        return $this->render('security/logout_confirm.html.twig');
     }
 }
