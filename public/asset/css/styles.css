@@ -12,10 +12,11 @@ body {
 :root {
     --main-color: #151515;
     --title-color: #c42323;
-    --sentence-color: white;
+    --sentence-color: #e8e8e8;
+    --grey-color: #9b9999;
 }
 
-/* Formulaire de contact */
+/******* CONTACT FORM *******/
 .container {
     margin-top: 20vh;
 }
@@ -40,4 +41,16 @@ body {
     padding: 5px;
     width: 30%;
 }
+
+/******* NAV BAR  *******/
+header{
+    background-color: var(--grey-color);
+}
+
+.logo-clap {
+    width: 80px;
+    height: 80px;
+}
+
+
 
