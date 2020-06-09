@@ -17,13 +17,13 @@
 {# Message d'erreur et de réussite #}
         <form method="POST" class="justify-content-center">
         {% for label, messages in app.flashes %}
-            <div class="alert alert-{{ label }}">
+            <div class="alert alert-{{ label }} col-7 m-auto">
                 {% for message in messages %}
                     {{ message|raw }} 
                 {% endfor %}
             </div>
         {% endfor %}
-            <div class="form-group row justify-content-center">
+            <div class="form-group row justify-content-center mt-3">
                 <label class="text-left col-4 col-md-3" for="lastname">Nom :</label>
                 <input class="text-left col-6 col-md-3" name="lastname" id="lastname"></input>
             </div>
