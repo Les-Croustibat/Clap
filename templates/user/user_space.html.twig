@@ -10,7 +10,7 @@
 
 <section class="container">
     <div class="row justify-content-center mb-5">
-        <h1 class="title">MON PROFIL</h1>
+        <h1 class="title">MON ESPACE</h1>
     </div>
     <form method="post">
         <div class="row">
@@ -51,39 +51,19 @@
                 <input type="checkbox" name="populaire">
                 <label for="populaire" class="">Populaire</label>
             </div>
-            <div class="col-2">
-                <h2>Acteur préféré :</h2>
+            <div class="col-2 h-100">
+                <h2>Acteur/Réalisateur préféré :</h2>
             </div>
             <div class="col-9">
-                <input type="text" name="acteur">
-            </div>
-            <div class="col-3">
-                <h2>Films que j'ai noté:</h2>
+                <input type="text" name="q" onkeyup="showHint(this.value)">
             </div>
             <div class="col-12 text-center my-5 ">
                 <input type="submit" value="Enregistrer" class="btn button">
             </div>
         </div>
     </form>
-
-
-
-
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {% endblock %}
 
-{% block js %} {% endblock %}
+{% block js %} <link href="{{ asset('asset/js/fab.js') }}" rel="stylesheet"> {% endblock %}

@@ -1,7 +1,10 @@
 /* General */
+body{
+   background-color:#151515;
+}
 
 section{
-   font-family:"Dosis:wght@500";
+   font-family: 'Dosis', sans-serif;
    background-color:#151515;
    color: white;
 }
@@ -66,6 +69,7 @@ h2{
 
 .title-error{
    font-size: 1em;
+   font-family:"Dosis";
 }
 
 .absolute-button{
