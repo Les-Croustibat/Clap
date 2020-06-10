@@ -8,14 +8,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class APIAllocineController extends AbstractController
 {
     
-    protected $apiURL = 'https://api.allocine.fr/rest/v3';
-    protected $apiKey = 'QUNXZWItQWxsb0Npbuk';
+    protected $apiURL = 'http://api.allocine.fr/rest/v3';
+    protected $apiKey = '100043982026';
+    protected $secretKey = '29d185d98c984a359e6e6f26a0474269';
 
-    public function callAPIPartner(){
+    public function callAPIPartner2(){
         $brouette=file_get_contents('http://api.allocine.fr/rest/v3/search?partner=QUNXZWItQWxsb0Npbuk&filter=movie,theater,person,news,tvseries&count=5&page=1&q=avatar&format=json');
         dump($brouette);
+        die;
     }
-    public function callAPIPartner2($search=null)
+
+
+    public function callAPIPartner($search=null)
     {
         if(empty($search)) {
 
@@ -32,28 +36,29 @@ class APIAllocineController extends AbstractController
 
             // Query paramaters
             $parameters_request = [
-                'q'         => $search,
                 'partner'   => $this->apiKey,
+                'q'         => $search,
                 'filter'    => 'movie',
                 'format'   => 'json',
             ];
 
             // String to search
-            $request='?'.http_build_query($parameters_request);
+            $sed = date('Ymd');
+			$sig = urlencode(base64_encode(sha1($this->secretKey.http_build_query($parameters_request).'&sed='.$sed, true)));
+			$request= '?'.http_build_query($parameters_request).'&sed='.$sed.'&sig='.$sig;
 
             // Initialize the curl
             $curl = curl_init();
 
             // Set the curl options
             $options=[
-                CURLOPT_URL            => $endpoint, // target the API URL
+                CURLOPT_URL            => $endpoint.$request, // target the API URL
                 CURLOPT_RETURNTRANSFER => true, // return the content into a string
                 CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-                CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
+                //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
                 CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
-                CURLOPT_POST           => false,
-                CURLOPT_POSTFIELDS     => $parameters_request
             ];
+            dump($options);
             
             // Error message
             if(empty($curl)){
