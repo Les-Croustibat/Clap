@@ -2,9 +2,74 @@
 
 {% block title %}User space{% endblock %}
 
+{% block css %}
+<link href="{{ asset('asset/css/fab.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 
+<section class="container">
+    <div class="row justify-content-center mb-5">
+        <h1 class="title">MON PROFIL</h1>
+    </div>
+    <form method="post">
+        <div class="row">
+            <div class="col-2 mb-12">
+                <h2>Genres préférés:</h2>
+            </div>
+            <div class="col-2">
+                <input type="checkbox" name="action">
+                <label for="action" class="">Action</label>
+            </div>
+            <div class="col-2">
+                <input type="checkbox" name="comedie">
+                <label for="comedie" class="">Comédie</label>
+            </div>
+            <div class="col-2">
+                <input type="checkbox" name="horreur">
+                <label for="horreur" class="">Horreur</label>
+            </div>
+            <div class="col-4">
+                <input type="checkbox" name="romantique">
+                <label for="romantique" class="">Romantique</label>
+            </div>
+            <div class="col-2">
+            </div>
+            <div class="col-2">
+                <input type="checkbox" name="aventure">
+                <label for="aventure" class="">Aventure</label>
+            </div>
+            <div class="col-2">
+                <input type="checkbox" name="drame">
+                <label for="drame" class="">Drame</label>
+            </div>
+            <div class="col-2">
+                <input type="checkbox" name="sf">
+                <label for="sf" class="">Science-fiction</label>
+            </div>
+            <div class="col-4">
+                <input type="checkbox" name="populaire">
+                <label for="populaire" class="">Populaire</label>
+            </div>
+            <div class="col-2">
+                <h2>Acteur préféré :</h2>
+            </div>
+            <div class="col-9">
+                <input type="text" name="acteur">
+            </div>
+            <div class="col-3">
+                <h2>Films que j'ai noté:</h2>
+            </div>
+            <div class="col-12 text-center my-5 ">
+                <input type="submit" value="Enregistrer" class="btn button">
+            </div>
+        </div>
+    </form>
 
+
+
+
+</section>
 
 
 
