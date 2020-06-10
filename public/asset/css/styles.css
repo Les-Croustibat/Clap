@@ -1,0 +1,53 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+    background-color: var(--black-color);
+}
+
+:root {
+    --black-color: #151515;
+    --red-color: #c42323;
+    --white-color: white;
+    --grey-color:  #e8e8e8;
+}
+
+/* NAVBAR */
+.navbar, .footer {
+    background-color: var(--grey-color);
+}
+
+.navbar a {
+    color: var(--black-color) !important;
+    font-size: 20px;
+}
+
+.navbar a:hover {
+    color: var(--red-color) !important;
+    font-size: 20px;
+}
+
+
+
+.logo-clap {
+    width: 80px;
+    height: 80px;
+}
+
+/* FOOTER */
+.footer {
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: var(--grey-color);
+}
+
+
