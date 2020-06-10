@@ -49,7 +49,7 @@ movie_details:
 movie_find:
   path: /trouver-un-film
   controller: App\Controller\MovieController:findMovie
-  
+
 # security
 security_login:
   path: /se-connecter
