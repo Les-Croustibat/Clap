@@ -24,15 +24,13 @@ class APIAllocineController extends AbstractController
 
             // Search parameters => a person (actor, director) then call the API
             // Define the URL with endpoint
-            $endpoint = $this->apiURL.'/search';
+            $endpoint = $this->apiURL.'/movie';
             $timeout = 10; 
 
             // Query paramaters
             $parameters_request = [
                 'partner'   => $this->apiKey,
-                'q'         => $search,
-                'filter'    => 'movie',
-                'format'   => 'json',
+                'code'      => $search,
             ];
 
             // String to search
@@ -64,7 +62,8 @@ class APIAllocineController extends AbstractController
             // Execute the query
             $response=curl_exec($curl);            
         
-            //dump(curl_getinfo($curl));
+            // dump(curl_getinfo($curl));
+            
 
             // Close
             curl_close($curl);
@@ -80,216 +79,6 @@ class APIAllocineController extends AbstractController
         
     }
     
-    public function callAPIMovie($film_search=null, $movie=null)
-    {
-        if(empty ($movie)) {
-
-            // if API not called with parameters, no search
-
-            return false;
-
-        }  else {
-
-            // Search parameters => a movie then call the API
-            // Define the URL with endpoint
-            $endpoint = $this->apiURL.'/search';
-            $timeout = 10; 
-            
-            // Query paramaters
-            $parameters_request = [
-                'q'         => $film_search,
-                'partner'   => $this->apiKey,
-                'filter'    => 'movie',
-                'format '   => 'json',
-            ];
-
-            // String to search
-            $request='?'.http_build_query($parameters_request);
-
-            // Initialize the curl
-            $curl = curl_init();
-
-            // Set the curl options
-            $options=[
-                CURLOPT_URL            => $endpoint.$request, // target the API URL
-                CURLOPT_RETURNTRANSFER => true, // return the content into a string
-                CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-                CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
-                CURLOPT_USERAGENT      => $this->getRandomUserAgent(),
-            ];
-            
-            // Error message
-            if(empty($curl)){
-                die("ERREUR curl_init : cURL is not available.");
-            }
-
-            // Config download options
-            curl_setopt_array($curl,$options);
-        
-            // Execute the query
-            $response=curl_exec($curl);            
-        
-            // Close
-            curl_close($curl);
-
-            // Decode the response (true, key and value -> PHP)
-            $decode_response=json_decode($response, true);
-
-            // dump($decode_response['id_movie']);
-            // die;
-
-            // Query paramaters
-            $parameters_request = [
-                'partner'   => $this->apiKey,
-                'code'      => $movie,
-                'filter'    => 'movie',
-                'profile'   => 'large',
-                'striptags' => 'synopsis,synopsisshort',
-                'format '   => 'json',
-            ];
-
-            // String to search
-            $request='?'.http_build_query($parameters_request);
-
-            // Initialize the curl
-            $curl = curl_init();
-
-            // Set the curl options
-            $options=[
-                CURLOPT_URL            => $endpoint.$request, // target the API URL
-                CURLOPT_RETURNTRANSFER => true, // return the content into a string
-                CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-                CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take
-                CURLOPT_USERAGENT      => $this->getRandomUserAgent(),
-            
-            ];
-            
-            // Error message
-            if(empty($curl)){
-                die("ERREUR curl_init : cURL is not available.");
-            }
-
-            // Config download options
-            curl_setopt_array($curl,$options);
-        
-            // Execute the query
-            $response=curl_exec($curl);            
-        
-            // Close
-            curl_close($curl);
-
-            // Decode the response (true, key and value -> PHP)
-            $decode_response=json_decode($response, true);
-
-            return $decode_response;
-
-        }
-    }
-
-    public function callAPIPerson($person_search=null, $film_search=null)
-    {
-        if(empty($person_search)) {
-
-            // if API not called with parameters, no search
-
-            return false;
-
-        }  else {
-
-            // Search parameters => a person (actor, director) then call the API
-            // Define the URL with endpoint
-            $endpoint = $this->apiURL.'/search';
-            $timeout = 10; 
-
-            // Query paramaters
-            $parameters_request = [
-                'q'         => $person_search,
-                'partner'   => $this->apiKey,
-                'filter'    => 'person',
-                'format '   => 'json',
-            ];
-
-            // String to search
-            $request='?'.http_build_query($parameters_request);
-
-            // Initialize the curl
-            $curl = curl_init();
-
-            // Set the curl options
-            $options=[
-                CURLOPT_URL            => $endpoint.$request, // target the API URL
-                CURLOPT_RETURNTRANSFER => true, // return the content into a string
-                CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-                CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
-                CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
-            ];
-            
-            // Error message
-            if(empty($curl)){
-                die("ERREUR curl_init : cURL is not available.");
-            }
-
-            // Config download options
-            curl_setopt_array($curl,$options);
-        
-            // Execute the query
-            $response=curl_exec($curl);            
-        
-            // Close
-            curl_close($curl);
-
-            // Decode the response (true, key and value -> PHP)
-            $decode_response=json_decode($response, true);
-
-            // dump($decode_response['id_movie']);
-            // die;
-
-            // Query paramaters
-            $parameters_request = [
-                'partner'   => $this->apiKey,
-                'code'      => $film_search,
-                'filter'    => 'movie',
-                'profile'   => 'large',
-                'format '   => 'json',
-            ];
-
-            // String to search
-            $request='?'.http_build_query($parameters_request);
-
-            // Initialize the curl
-            $curl = curl_init();
-
-            // Set the curl options
-            $options=[
-                CURLOPT_URL            => $endpoint.$request, // target the API URL
-                CURLOPT_RETURNTRANSFER => true, // return the content into a string
-                CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-                CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take
-                CURLOPT_USERAGENT      => $this->getRandomUserAgent(),
-            
-            ];
-            
-            // Error message
-            if(empty($curl)){
-                die("ERREUR curl_init : cURL is not available.");
-            }
-
-            // Config download options
-            curl_setopt_array($curl,$options);
-        
-            // Execute the query
-            $response=curl_exec($curl);            
-        
-            // Close
-            curl_close($curl);
-
-            // Decode the response (true, key and value -> PHP)
-            $decode_response=json_decode($response, true);
-
-            return $decode_response;
-
-        }
-    }
 
     private function getRandomUserAgent()
 	{
