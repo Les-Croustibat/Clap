@@ -76,7 +76,11 @@ class APIAllocineController extends AbstractController
         }
         
         // DO NOT FORGET !!! no render just a return of data
-        return $decode_response;
+        //return $decode_response; => A REMETTRE EN CLAIR
+        //test de la vue à effacer
+        return $this->render('movie/movie_find.html.twig', [
+            'films' => $decode_response ?? [],
+        ]);
     }
     
     public function callAPIMovie($film_search=null, $movie=null)
