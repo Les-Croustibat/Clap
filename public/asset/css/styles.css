@@ -45,12 +45,24 @@ body {
     height: 80px;
 }
 
+/* Affiche Film */
+.poster {
+    margin-top: 80px;
+    padding: 150px;
+}
+
 /* FOOTER */
+.arrow{
+    position: fixed;
+    left: 95%;
+    top: 84%;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 60px;
+    height: 100px;
     background: var(--grey-color);
 }
 
@@ -85,5 +97,9 @@ header{
     }
 }
 
+
+.bg_perso{
+    background-color: var(--grey-color);
+}
 
 
