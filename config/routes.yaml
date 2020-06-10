@@ -50,6 +50,11 @@ movie_find:
   path: /trouver-un-film
   controller: App\Controller\UserController:findMovie
 
+APIAllocine:
+  path: /api-allocine
+  controller: App\Controller\UserController:callAPI
+
+
 
 
 
