@@ -51,7 +51,7 @@ class APIAllocineController extends AbstractController
                 //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
                 CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
             ];
-            // dump($options);
+            //dump($options);
             
             // Error message
             if(empty($curl)){
@@ -70,17 +70,14 @@ class APIAllocineController extends AbstractController
             curl_close($curl);
 
             // Decode the response (true, key and value -> PHP)
-            $decode_response=json_decode($response, true);
-
+            $decode_response = json_decode($response, true);
+            
 
         }
         
         // DO NOT FORGET !!! no render just a return of data
-        //return $decode_response; => A REMETTRE EN CLAIR
-        //test de la vue à effacer
-        return $this->render('movie/movie_find.html.twig', [
-            'films' => $decode_response ?? [],
-        ]);
+        return $decode_response;
+        
     }
     
     public function callAPIMovie($film_search=null, $movie=null)
