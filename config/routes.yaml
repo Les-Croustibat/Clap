@@ -72,6 +72,11 @@ APIAllocine:
   controller: App\Controller\UserController:callAPI
 
 
+APIAllocine:
+  path: /api-allocine
+  controller: App\Controller\UserController:callAPI
+
+
 
 
 
