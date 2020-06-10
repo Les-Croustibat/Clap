@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\APIAllocineController;
 
 class MovieController extends AbstractController
 {
@@ -13,7 +14,7 @@ class MovieController extends AbstractController
 
         $movie_details = $apiAllocine->callAPIPartner('avatar');
         // in_array
-        dump($movie_details); 
+        dump($movie_details['feed']['movie']['0']); 
         die;
         
         return $this->render('movie/movie_details.html.twig', [
