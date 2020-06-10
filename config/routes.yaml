@@ -44,15 +44,15 @@ error_500:
 # movie
 movie_details:
   path: /fiche-film
-  controller: App\Controller\UserController:movieDetails
+  controller: App\Controller\MovieController:movieDetails
 
 movie_find:
   path: /trouver-un-film
-  controller: App\Controller\UserController:findMovie
+  controller: App\Controller\MovieController:findMovie
 
 APIAllocine:
   path: /api-allocine
-  controller: App\Controller\UserController:callAPI
+  controller: App\Controller\MovieController:callAPI
 
 
 
