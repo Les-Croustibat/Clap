@@ -14,10 +14,15 @@ body {
 }
 
 :root {
-    --black-color: #151515;
-    --red-color: #c42323;
-    --white-color: white;
-    --grey-color:  #e8e8e8;
+    --main-color: #151515;
+    --title-color: #c42323;
+    --sentence-color: #e8e8e8;
+    --grey-color: #9b9999;
+}
+
+/******* CONTACT FORM *******/
+.container {
+    margin-top: 15vh;
 }
 
 /* NAVBAR */
@@ -49,5 +54,27 @@ body {
     height: 60px;
     background: var(--grey-color);
 }
+
+.textinput {
+    width: 100%;
+}
+
+/******* NAV BAR  *******/
+header{
+    background-color: var(--grey-color);
+}
+
+.logo-clap {
+    width: 80px;
+    height: 80px;
+}
+
+/******* MEDIA QUERIES *******/
+@media (min-width: 360px){
+    .container{
+        margin-top: 10vh;
+    }
+}
+
 
 

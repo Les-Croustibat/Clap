@@ -9,29 +9,39 @@
         <h1>Contact</h1>
         <p>Une suggestion, une question ?</p>
     </div>
+    
+
 
 {# Formulaire de contact #}
     <div class="form text-center">
-        <form method="POST" class="row justify-content-center">
-            <div class="form-group col-12">
-                <label class="text-left col-2">Nom :</label>
-                <input></input>
+{# Message d'erreur et de réussite #}
+        <form method="POST" class="justify-content-center">
+        {% for label, messages in app.flashes %}
+            <div class="alert alert-{{ label }} col-7 m-auto">
+                {% for message in messages %}
+                    {{ message|raw }} 
+                {% endfor %}
             </div>
-            <div class="form-group col-12">
-                <label class="text-left col-2">Prénom :</label>
-                <input></input>
+        {% endfor %}
+            <div class="form-group row justify-content-center mt-3">
+                <label class="text-left col-4 col-md-3" for="lastname">Nom :</label>
+                <input class="text-left col-6 col-md-3" name="lastname" id="lastname"></input>
             </div>
-            <div class="form-group col-12">
-                <label class="text-left col-2">Email :</label>
-                <input></input>
+            <div class="form-group row justify-content-center">
+                <label class="text-left col-4 col-md-3" for="firstname">Prénom :</label>
+                <input class="text-left col-6 col-md-3" name="firstname" id="firstname"></input>
             </div>
-            <div class="form-group col-12">
-                <label class="text-left col-2">Objet :</label>
-                <input></input>
+            <div class="form-group row justify-content-center">
+                <label class="text-left col-4 col-md-3" for="email">Email :</label>
+                <input class="text-left col-6 col-md-3" name="email" id="email"></input>
             </div>
-            <div class="form-group col-12">
-                <label class="text-left col-2">Message :</label>
-                <textarea rows="6" cols="43"></textarea>
+            <div class="form-group row justify-content-center">
+                <label class="text-left col-4 col-md-3" for="object">Objet :</label>
+                <input class="text-left col-6 col-md-3" name="object" id="object"></input>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label class="text-left col-4 col-md-3" for="message">Message :</label>
+                <textarea class="textinput text-left col-6 col-md-3" name="message" id="message"></textarea>
             </div>
             <div class="text-center mt-5 form-button">
                 <button type="submit" class="btn btn-danger">Envoyer</button>
@@ -39,18 +49,6 @@
         </form>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 {% endblock %}
 
