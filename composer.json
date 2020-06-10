@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "fzaninotto/faker": "^1.9",
+
         "google/recaptcha": "1.2",
         "respect/validation": "^2.0",
         "sensio/framework-extra-bundle": "^5.1",
