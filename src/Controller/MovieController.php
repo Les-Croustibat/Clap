@@ -14,11 +14,12 @@ class MovieController extends AbstractController
 
         $movie_details = $apiAllocine->callAPIPartner('avatar');
         // in_array
-        dump($movie_details['feed']['movie']['0']); 
-        die;
+        // dump($movie_details['feed']['movie']['0']['originalTitle']); 
+        // die;
+        $movie_title = $movie_details['feed']['movie']['0']['originalTitle'];
         
-        return $this->render('movie/movie_details.html.twig', [
-
+        return $this->render('movie/movie_find.html.twig', [
+            'titre' => $movie_title ?? [],
         ]);
     }
 

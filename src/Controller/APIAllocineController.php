@@ -64,7 +64,7 @@ class APIAllocineController extends AbstractController
             // Execute the query
             $response=curl_exec($curl);            
         
-            // dump(curl_getinfo($curl));
+            //dump(curl_getinfo($curl));
 
             // Close
             curl_close($curl);
