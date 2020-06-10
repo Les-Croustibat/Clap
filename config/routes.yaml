@@ -49,7 +49,7 @@ movie_details:
 movie_find:
   path: /trouver-un-film
   controller: App\Controller\UserController:findMovie
-
+  
 # security
 security_login:
   path: /se-connecter
@@ -66,6 +66,11 @@ security_logoutconfirm:
 security_signin:
   path: /inscription
   controller: App\Controller\SecurityController:signIn
+
+APIAllocine:
+  path: /api-allocine
+  controller: App\Controller\UserController:callAPI
+
 
 
 
