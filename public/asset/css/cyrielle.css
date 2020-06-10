@@ -1,0 +1,14 @@
+body{
+    font-family: 'Dosis';
+    background-color:#151515;
+    color : #e8e8e8;
+}
+
+h1{
+    font-family: 'Limelight';
+    color: #c42323;
+}
+
+.form-group input{
+    background-color: white;
+}
