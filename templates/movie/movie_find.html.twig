@@ -191,49 +191,18 @@
     {# Affichage du film #}
     <div class="text-dark">{{ titre }}</div>
 
-
 {% endblock %}
 
-{% block js %} 
+{% block js %}
+    {# Ajax #}
     {# Range slider #}
-    <script src="{{asset('asset/js/rSlider.min.js')}}"></script>
+    {# <script src="{{asset('asset/js/rSlider.min.js')}}"></script> #}
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
     <script>
         (function () {
 
-            var init = function () { 
-            
-                var slider1 = new rSlider({
-                    target: '#slider1',
-                    values: [1915, 1950, 1980, 2000, 2010, 2020],
-                    range: true, // range slider
-                    set: [1970, 2005],
-                    width:    null,
-                    scale:    true,
-                    labels:   true,
-                    tooltip:  true,
-                    step:     null, // step size
-                    disabled: false, // is disabled?
-                    onChange: function (vals) {
-                                console.log(vals);
-                            }
-                });
-
-                var slider2 = new rSlider({
-                        target: '#slider2',
-                        values: {min: 70, max: 210},
-                        step: 10,
-                        range: true,
-                        set: [90, 120],
-                        scale: true,
-                        labels: false,
-                        onChange: function (vals) {
-                            console.log(vals);
-                        }
-                    });
-            };
-
-            window.onload = init;
+            $('#content').load('{{ link }}')
 
         })();
 

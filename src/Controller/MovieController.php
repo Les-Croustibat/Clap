@@ -11,16 +11,23 @@ class MovieController extends AbstractController
     {
         // on a bien cliqué sur un film pour avoir les infos
         $apiAllocine = new APIAllocineController();
+        $random = rand(1, 61498);
+        
+        $movie_details = $apiAllocine->callAPIPartner($random);
+        dump($movie_details);
 
-        $movie_details = $apiAllocine->callAPIPartner(143692);
-        // in_array
-        dump($movie_details); 
-        die;
-        //$movie_title = $movie_details['feed']['movie']['0']['originalTitle'];
+        $movie_title = $movie_details['movie']['originalTitle'];
+        $movie_link = $movie_details['movie']['link']['0']['href'];
         
         return $this->render('movie/movie_find.html.twig', [
             'titre' => $movie_title ?? [],
+            'link' => $movie_link ?? [],
         ]);
     }
+
+    // No result: fonction ou solution pour emêcher ça (voir taille du max de rand)
+    // Ajax
+    // Créer une fonction qui trouve le nombre le plus élevé
+    //Si error i-- return i
 
 }

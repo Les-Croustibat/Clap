@@ -31,6 +31,8 @@ class APIAllocineController extends AbstractController
             $parameters_request = [
                 'partner'   => $this->apiKey,
                 'code'      => $search,
+                'mediafmt'  => 'flv',
+                'filter'    => 'movie',
             ];
 
             // String to search
