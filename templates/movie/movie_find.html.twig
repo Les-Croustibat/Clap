@@ -190,6 +190,7 @@
 
     {# Affichage du film #}
     <div class="text-dark">{{ titre }}</div>
+    <div id="content"></div>
 
 {% endblock %}
 
@@ -201,8 +202,8 @@
 
     <script>
         (function () {
-
-            $('#content').load('{{ link }}')
+            let lien = '{{ link }}'
+            $('#content').load(lien)
 
         })();
 
