@@ -8,8 +8,14 @@ class MovieController extends AbstractController
 {
     public function movieDetails()
     {
+        // on a bien cliqué sur un film pour avoir les infos
+        $apiAllocine = new APIAllocineController();
+
+        $movie_details = $apiAllocine->callAPIPartner('avatar');
+
         return $this->render('movie/movie_details.html.twig');
     }
+
     public function findMovie()
     {
 

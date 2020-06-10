@@ -8,10 +8,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class APIAllocineController extends AbstractController
 {
     
-    protected $apiURL = 'http://api.allocine.fr/rest/v3';
+    protected $apiURL = 'https://api.allocine.fr/rest/v3';
     protected $apiKey = 'QUNXZWItQWxsb0Npbuk';
 
-    public function callAPIPartner($search=null)
+    public function callAPIPartner(){
+        $brouette=file_get_contents('http://api.allocine.fr/rest/v3/search?partner=QUNXZWItQWxsb0Npbuk&filter=movie,theater,person,news,tvseries&count=5&page=1&q=avatar&format=json');
+        dump($brouette);
+    }
+    public function callAPIPartner2($search=null)
     {
         if(empty($search)) {
 
@@ -30,8 +34,8 @@ class APIAllocineController extends AbstractController
             $parameters_request = [
                 'q'         => $search,
                 'partner'   => $this->apiKey,
-                'filter'    => 'person',
-                'format '   => 'json',
+                'filter'    => 'movie',
+                'format'   => 'json',
             ];
 
             // String to search
@@ -42,11 +46,13 @@ class APIAllocineController extends AbstractController
 
             // Set the curl options
             $options=[
-                CURLOPT_URL            => $endpoint.$request, // target the API URL
+                CURLOPT_URL            => $endpoint, // target the API URL
                 CURLOPT_RETURNTRANSFER => true, // return the content into a string
                 CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
                 CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
                 CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
+                CURLOPT_POST           => false,
+                CURLOPT_POSTFIELDS     => $parameters_request
             ];
             
             // Error message
@@ -60,14 +66,16 @@ class APIAllocineController extends AbstractController
             // Execute the query
             $response=curl_exec($curl);            
         
+            dump(curl_getinfo($curl));
+
             // Close
             curl_close($curl);
 
             // Decode the response (true, key and value -> PHP)
             $decode_response=json_decode($response, true);
 
-            // dump($decode_response['id_movie']);
-            // die;
+            dump($decode_response);
+            die;
 
         }
         
@@ -136,7 +144,7 @@ class APIAllocineController extends AbstractController
             // Query paramaters
             $parameters_request = [
                 'partner'   => $this->apiKey,
-                'code'      => $film_search,
+                'code'      => $movie,
                 'filter'    => 'movie',
                 'profile'   => 'large',
                 'striptags' => 'synopsis,synopsisshort',
