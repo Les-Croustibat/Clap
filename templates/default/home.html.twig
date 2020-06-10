@@ -2,14 +2,33 @@
 
 {% block title %}Home{% endblock %}
 
-{% block body %}
-<div class="container">
-    <div class="row justify-content-center">
-        <img class="col-12" src="{{asset('asset/img/logoBR.png')}}" alt="logo" width="w-25" height="w-25">
-        <h1 class="text-center">CLAP</h1>
-        <a href=""><button class="form-control">Trouver un film</button></a>
-    </div>
-</div>
+{% block css %}
+<link href="{{ asset('asset/css/fab.css') }}" rel="stylesheet">
 {% endblock %}
 
-{% block js %} {% endblock %}
+{% block content %}
+
+<section>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <img src="{{asset('asset/img/logoLR.png')}}" alt="logo" width="400" height="400">
+        </div>
+        <div class="row justify-content-center">
+            <h1 class="title">CLAP</h1>
+        </div>
+        <div class="row justify-content-center">
+            <p>"Quel film regarder ce soir ? Nous avons la réponse"</p>
+        </div>
+        <div class="row justify-content-center text-center">
+            <p>Vous avez envie de voir un bon film mais ne vous savez pas lequel, CLAP est fait pour vous ! Finis les galères de chercher une heure la perle rare. Grâce à notre algorithme super puissant, il vous suffit de quelques clics afin de trouver le film qui vous correspond. A vous de jouer ! </p>
+        </div>
+        <div class="row justify-content-center pb-5">
+            <a href="{{ path('movie_find') }}"><button class="btn button ">Trouver un film</button></a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block js %} {% endblock %} 
+
