@@ -12,13 +12,6 @@ class APIAllocineController extends AbstractController
     protected $apiKey = '100043982026';
     protected $secretKey = '29d185d98c984a359e6e6f26a0474269';
 
-    public function callAPIPartner2(){
-        $brouette=file_get_contents('http://api.allocine.fr/rest/v3/search?partner=QUNXZWItQWxsb0Npbuk&filter=movie,theater,person,news,tvseries&count=5&page=1&q=avatar&format=json');
-        dump($brouette);
-        die;
-    }
-
-
     public function callAPIPartner($search=null)
     {
         if(empty($search)) {
@@ -58,7 +51,7 @@ class APIAllocineController extends AbstractController
                 //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
                 CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
             ];
-            dump($options);
+            // dump($options);
             
             // Error message
             if(empty($curl)){
@@ -79,8 +72,6 @@ class APIAllocineController extends AbstractController
             // Decode the response (true, key and value -> PHP)
             $decode_response=json_decode($response, true);
 
-            dump($decode_response);
-            die;
 
         }
         
