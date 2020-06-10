@@ -9,7 +9,8 @@ class APIAllocineController extends AbstractController
 {
     
     protected $apiURL = 'http://api.allocine.fr/rest/v3';
-    protected $apiKey = 'QUNXZWItQWxsb0Npbuk';
+    protected $apiKey = '100043982026';
+    protected $secretKey = '29d185d98c984a359e6e6f26a0474269';
 
     public function callAPIPartner($search=null)
     {
@@ -30,12 +31,14 @@ class APIAllocineController extends AbstractController
             $parameters_request = [
                 'q'         => $search,
                 'partner'   => $this->apiKey,
-                'filter'    => 'person',
+                'filter'    => 'movie',
                 'format '   => 'json',
             ];
 
             // String to search
-            $request='?'.http_build_query($parameters_request);
+            $sed = date('Ymd');
+			$sig = urlencode(base64_encode(sha1($this->secretKey.http_build_query($parameters_request).'&sed='.$sed, true)));
+			$request= '?'.http_build_query($parameters_request).'&sed='.$sed.'&sig='.$sig;
 
             // Initialize the curl
             $curl = curl_init();

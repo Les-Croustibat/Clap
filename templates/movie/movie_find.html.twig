@@ -14,18 +14,18 @@
             <img src="asset/img/logoLR.png" alt="logo Clap" class="logo mb-4 mt-5">
         </div>
 
-        <div class="row justify-content-center">
-            <h1 class="mt-5 mb-5 text-center">Clap te trouve un film ! </h1>
+        <div class="row row-cols-sm-2 justify-content-center">
+            <h1 class="m-5 mt-lg-5 mb-lg-5 text-center">Clap te trouve un film ! </h1>
         </div>
 
         <div class="row justify-content-center">
-            <h2 class="choice mt-5 mb-5 text-center">Tu sais déjà un peu ce que tu veux ...</h2>
+            <h2 class="choice m-5 mt-lg-5 mb-lg-5 text-center">Tu sais déjà un peu ce que tu veux ...</h2>
         </div>
 
         <div class="row justify-content-center mb-5">
-            <div class="col-6">
-                <h2>Genres</h2>
-                <form method="post" class="mt-4">
+            <div class="col-11 col-lg-6">
+                <h2 class="mb-5 text-center">Genres</h2>
+                <form method="get" class="mt-4">
                     <div class="row row-cols-xl-4 justify-content-center">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="action" name="action" value="action">
@@ -96,37 +96,33 @@
             </div>
         </div>
 
-        <div class="row justify-content-center mb-5">
-            <div class="col-6">
-                <h2 class="mb-5">Année de production</h2>
-                {# change color in a hover, display years #}
-                <form method="post">
+        <div class="row justify-content-center my-5 py-5">
+            <div class="col-8 col-lg-6">
+                <h2 class="mb-5 text-center">Année de production</h2>
+                <form method="get">
                     <div class="form-group mt-5">
-                        {# <input type="range" class="form-control-range" id="production_year" name="production_year"> #}
-                        <input type="text" id="slider1" class="slider1">
+                        <input type="text" id="slider1" class="slider1" name="slider1">
                     </div>
                 </form>
             </div>
         </div>
 
         <div class="row justify-content-center my-5 py-5">
-            <div class="col-6">
-                <h2 class="mb-5">Durée du film</h2>
-                {# change color in a hover, display duration#}
-                <form method="post">
+            <div class="col-8 col-lg-6">
+                <h2 class="mb-5 text-center">Durée du film</h2>
+                <form method="get">
                     <div class="form-group mt-5">
-                        {# <input type="range" class="form-control-range" id="film_duration" name="film_duration"> #}
-                        <input type="text" id="slider2" class="slider2">
+                        <input type="text" id="slider2" class="slider2" name="slider2">
                     </div>
                 </form>
             </div>
         </div>
 
         <div class="row justify-content-center my-5 py-5">
-            <div class="col-6">
-                <h2>Nationalité</h2>
-                <form method="post" class="mt-4">
-                    <div class="row row-cols-6 justify-content-center mb-3">
+            <div class="col-11 col-lg-6">
+                <h2 class="text-center">Nationalité</h2>
+                <form method="get" class="mt-4">
+                    <div class="row row-cols-xl-4 justify-content-center mb-3">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="french" name="french" value="french">
                             <label class="form-check-label" for="french">Français</label>
@@ -140,7 +136,7 @@
                             <label class="form-check-label" for="korean">Sud-coréen</label>
                         </div>
                     </div>
-                    <div class="row row-cols-6 justify-content-center">   
+                    <div class="row row-cols-xl-4 justify-content-center">   
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="spanish" name="spanish" value="spanish">
                             <label class="form-check-label" for="spanish">Espagnol</label>
@@ -158,18 +154,29 @@
             </div>
         </div>
 
-        <div class="row justify-content-center my-3 py-3">
-            <div class="col-6">
-                <h2>Acteurs et Réalisateurs</h2>
-                <form method="post" class="mt-4">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="film_actor_director" id="film_actor_director" placeholder="Si vous ne voulez que des films avec vos acteurs ou réalisateurs favoris ...">
+        <div class="row justify-content-center my-3 py-3 film_actor_director">
+            <div class="col-11 col-lg-6">
+                <h2 class="text-center">Acteurs et Réalisateurs</h2>
+                <form method="get" class="mt-4" id="newItemForm">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Acteurs ou réalisateurs favoris ..." id="film_actor_director" name="film_actor_director">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary seek" type="submit" id="button-addon2">Chercher</button>
+                        </div>
                     </div>
                 </form>
+                <div id="list_section" class="text-center">
+                {#space between tags, make disapppear the first tag#}
+                    <div id="people_list">
+                        <ul>
+                            <span title="Cliquer pour enlever"><li class="tag"></li></span>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="row justify-content-center mb-5 pb-5">
+        <div class="row justify-content-center my-5 py-5">
             <button type="submit" class="btn btn-secondary go">GO</button>
         </div>
 
@@ -183,7 +190,7 @@
         </div>
 
         <div class="row justify-content-center mb-5 pb-5">
-            <button type="submit" class="btn btn-secondary random-film">film au hasard</button>
+            <button type="submit" class="btn btn-secondary random-film">films au hasard</button>
         </div>
 
     </div>
@@ -194,6 +201,9 @@
 {% block js %} 
     {# Range slider #}
     <script src="{{asset('asset/js/rSlider.min.js')}}"></script>
+    
+    {# jQuery #}
+    <script src="https://code.jquery.com/jquery-1.12.3.js" integrity="sha256-1XMpEtA4eKXNNpXcJ1pmMPs8JV+nwLdEqwiJeCQEkyc=" crossorigin="anonymous"></script>
 
     <script>
         (function () {
@@ -234,6 +244,30 @@
 
         })();
 
+        $(function() {
+
+            // Assign values to variables
+            var $peopleList, $newItemForm;
+            $peopleList = $('#people_list');
+            $newItemForm = $('#newItemForm');
+            
+            // Listen to the event submit the form (always put preventDefault)
+            $newItemForm.on('submit', function(e) {
+            e.preventDefault();
+            // Get the value of the imput with val()
+            var text = $('#film_actor_director').val();
+            // Add the retrieved value in the end of the list
+            $peopleList.append('<span title="Cliquer pour enlever"><li>' + text + '</li></span>');
+            $('#film_actor_director').val('');
+            });
+        
+            // Listen to the event click to remove items
+            $peopleList.on('click', 'li', function() {
+            var $this = $(this);
+            $this.remove();
+            });
+    
+        });
 
     </script>
 {% endblock %}

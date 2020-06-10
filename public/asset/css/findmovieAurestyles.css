@@ -101,3 +101,29 @@
     text-transform: uppercase;
 }
 
+/***film_actor_director***/
+
+.find-movie #list_section ul {
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+}
+
+.find-movie #list_section li {
+    display: inline;
+    justify-content: space-around;
+    background-color: #c42323;
+    color: #e8e8e8;
+    font-size: 1em;
+    text-transform: capitalize;
+    list-style-type: none;
+    margin: 0px auto;
+    border-radius: 3px;
+    border: 1px solid #c42323;
+    padding: 5px;
+}
+
+.find-movie #list_section #tag {
+    background-color:  #c42323;
+    color: #e8e8e8;
+    }
