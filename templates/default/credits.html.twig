@@ -2,23 +2,27 @@
 
 {% block title %}Credits{% endblock %}
 
+{% block css %}
+<link href="{{ asset('asset/css/fab.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<section>
+    <div class="container-fluid relative">
+        <div class="row jutify-content-center image">
+            <img src="{{asset('asset/img/credits.jpg')}}" alt="credits" width="100%" height="100%">
+        </div>
+        <div class="row justify-content-center absolute title">
+            <h1 class="credits-title mt-5">CREDITS</h1>
+        </div>
+        <div class="content">
+            <p>Ce site a été réalise avec Symfony, un framework PHP puissant avec une architecture MVC
+                (Modèle-Vue-Controller).</p>
+            <p>Pour la fluidité et une expérience agréable, nous avons utilisé AJAX.</p>
+            <p>Pour la mise en forme : Bootstrap</p>
+        </div>
+    </div>
+</section>
 {% endblock %}
 
 {% block js %} {% endblock %}

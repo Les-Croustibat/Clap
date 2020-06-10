@@ -1,24 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Erreur 500{% endblock %}
+{% block title %}Erreur Server{% endblock %}
+
+{% block css %}
+<link href="{{ asset('asset/css/fab.css') }}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<section class="home">
+    <div class="container-fluid">
+        <div class="row justify-content-center image">
+            <h1 class="title-logo text-center content-error-500">
+                <p>500</p>
+                <p>Internet Server Error</p>
+                <a href="{{ path('default_home') }}"><button class="btn button">Accueil</button></a>
+            </h1>
+    </div>
+</section>
 {% endblock %}
 
 {% block js %} {% endblock %}
