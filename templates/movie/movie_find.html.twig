@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block css %} 
+    {# Range Slider #}
+    <link rel="stylesheet" href="{{asset('asset/css/rSlider.css')}}">
+{% endblock %}
+
 {% block title %}Clap te trouve un film{% endblock %}
 
 {% block content %}
 
     <div class="container find-movie">
         <div class="row justify-content-center">
-            <img src="asset/img/logoLR.png" alt="logo Clap" class="logo mb-4 mt-5"></img>
+            <img src="asset/img/logoLR.png" alt="logo Clap" class="logo mb-4 mt-5">
         </div>
 
         <div class="row justify-content-center">
@@ -35,29 +40,31 @@
 
         <div class="row justify-content-center mb-5">
             <div class="col-6">
-                <h2>Année de production</h2>
+                <h2 class="mb-5">Année de production</h2>
                 {# change color in a hover, display years #}
                 <form method="post">
-                    <div class="form-group mt-4">
-                        <input type="range" class="form-control-range" id="production_year" name="production_year">
+                    <div class="form-group mt-5">
+                        {# <input type="range" class="form-control-range" id="production_year" name="production_year"> #}
+                        <input type="text" id="slider1" class="slider1">
                     </div>
                 </form>
             </div>
         </div>
 
-        <div class="row justify-content-center mb-5">
+        <div class="row justify-content-center my-5 py-5">
             <div class="col-6">
-                <h2>Durée du film</h2>
+                <h2 class="mb-5">Durée du film</h2>
                 {# change color in a hover, display duration#}
                 <form method="post">
                     <div class="form-group mt-5">
-                        <input type="range" class="form-control-range" id="film_duration" name="film_duration">
+                        {# <input type="range" class="form-control-range" id="film_duration" name="film_duration"> #}
+                        <input type="text" id="slider2" class="slider2">
                     </div>
                 </form>
             </div>
         </div>
 
-        <div class="row justify-content-center mb-5">
+        <div class="row justify-content-center my-5 py-5">
             <div class="col-6">
                 <h2>Nationalité</h2>
                 <form method="post" class="mt-4">
@@ -73,7 +80,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center mb-5">
+        <div class="row justify-content-center my-5 py-5">
             <div class="col-6">
                 <h2>Acteurs et Réalisateurs</h2>
                 <form method="post" class="mt-4">
@@ -85,11 +92,12 @@
         </div>
 
         <div class="row justify-content-center mb-5 pb-5">
-            <button type="submit" class="btn btn-secondary">GO</button>
+            <button type="submit" class="btn btn-secondary go">GO</button>
         </div>
 
         {# separator #}
-        <div class="row justify-content-center separator">
+        <div class="row justify-content-center">
+            <div class="col-6 separator"></div>
         </div>
 
         <div class="row justify-content-center">
@@ -100,26 +108,54 @@
             <button type="submit" class="btn btn-secondary random-film">film au hasard</button>
         </div>
 
-
-
-
-
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 {% endblock %}
 
-{% block js %} {% endblock %}
+{% block js %} 
+    {# Range slider #}
+    <script src="{{asset('asset/js/rSlider.min.js')}}"></script>
+
+    <script>
+        (function () {
+
+            var init = function () { 
+            
+                var slider1 = new rSlider({
+                    target: '#slider1',
+                    values: [1915, 1950, 1980, 2000, 2010, 2020],
+                    range: true, // range slider
+                    set: [1970, 2005],
+                    width:    null,
+                    scale:    true,
+                    labels:   true,
+                    tooltip:  true,
+                    step:     null, // step size
+                    disabled: false, // is disabled?
+                    onChange: function (vals) {
+                                console.log(vals);
+                            }
+                });
+
+                var slider2 = new rSlider({
+                        target: '#slider2',
+                        values: {min: 70, max: 210},
+                        step: 10,
+                        range: true,
+                        set: [90, 120],
+                        scale: true,
+                        labels: false,
+                        onChange: function (vals) {
+                            console.log(vals);
+                        }
+                    });
+            };
+
+            window.onload = init;
+
+        })();
+
+
+    </script>
+{% endblock %}
