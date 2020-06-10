@@ -18,9 +18,9 @@
     {# Icones #}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     {# styles css #}
-    <link href="{{ asset('asset/css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('asset/css/cyrielle.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('asset/css/findmovieAurestyles.css') }}" rel="stylesheet">
+    <link href="{{ asset('asset/css/styles.css') }}" rel="stylesheet">
 
     <title>{% block title %}{% endblock %}</title>
     {% block css %}{% endblock %}
@@ -76,7 +76,6 @@
   </div>
 </footer>
 
-    {% block js %}{% endblock %}
 
     {# bootstrap #}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -95,11 +94,15 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     {# fancybox #}
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<<<<<<< HEAD
     {# Lazy load #}
     <script type="text/javascript" src="js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="js/lib/jquery.lazy.min.js"></script>
     <script type="text/javascript" src="{{ asset('asset/script/script.js') }}"></script>
 
+=======
+    {% block js %}{% endblock %}
+>>>>>>> f411ce7fbe68fb368895a3a571b7144813f74d99
 </body>
 
 </html>
