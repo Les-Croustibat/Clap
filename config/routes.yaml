@@ -67,14 +67,10 @@ security_signin:
   path: /inscription
   controller: App\Controller\SecurityController:signIn
 
+# API
 APIAllocine:
   path: /api-allocine
-  controller: App\Controller\UserController:callAPI
-
-
-APIAllocine:
-  path: /api-allocine
-  controller: App\Controller\UserController:callAPI
+  controller: App\Controller\APIAllocineController:callAPI
 
 
 
