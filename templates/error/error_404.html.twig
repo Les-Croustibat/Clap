@@ -1,25 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Erreur 404{% endblock %}
 
 {% block css %}
 <link href="{{ asset('asset/css/fab.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<main class="home">
-    <div class="container">
+<section class="home">
+    <div class="container-fluid relative">
         <div class="row justify-content-center">
-            <img src="{{asset('asset/img/page404.png')}}" alt="page404" width="400" height="400">
+            <img src="{{asset('asset/img/page404.jpg')}}" alt="logo" width="100%">
         </div>
         <div class="row justify-content-center">
-            <h1 class="title-logo"></h1>
+            <h1 class="title-logo content-error title-error">Cette séance n'existe pas</h1>
         </div>
-        <div class="row justify-content-center pb-5">
-            <a href="{{ path('default_home') }}"><button class="btn btn-danger ">Accueil</button></a>
+        <div class="row justify-content-center ">
+            <a href="{{ path('default_home') }}"><button class="btn absolute-button ">Accueil</button></a>    
         </div>
     </div>
-</main>
+</section>
 {% endblock %}
 
 {% block js %} {% endblock %}

@@ -2,23 +2,27 @@
 
 {% block title %}Erreur 403{% endblock %}
 
+{% block css %}
+<link href="{{ asset('asset/css/fab.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-
-Accès interdit
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<section class="home">
+    <div class="container-fluid relative">
+        <div class="row justify-content-center">
+            <img src="{{asset('asset/img/page404.jpg')}}" alt="logo" width="100%">
+        </div>
+        <div class="row justify-content-center">
+            <h1 class="title-logo content-error title-error">
+                <p>Vous devez vous connecter</p>
+                <p>pour accéder à cette page</p>
+            </h1>
+        </div>
+        <div class="row justify-content-center ">
+            <a href="{{ path('default_home') }}"><button class="btn absolute-button ">Accueil</button></a>
+        </div>
+    </div>
+</section>
 {% endblock %}
 
 {% block js %} {% endblock %}
