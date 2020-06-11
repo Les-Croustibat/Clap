@@ -14,12 +14,7 @@ class MovieController extends AbstractController
         
         $movie_details = $apiAllocine->callAPIPartner($random);
 
-        
-        if(!empty($_POST)){
-            if(isset($_POST['action']) && $_POST['action'] === 'hasard') {
-                $movie_title = $movie_details['movie']['originalTitle'];
-            }
-        }
+        $movie_title = $movie_details['movie']['originalTitle'];
 
         return $this->render('movie/movie_find.html.twig', [
             'titre' => $movie_title ?? [],
@@ -31,7 +26,7 @@ class MovieController extends AbstractController
             $safe = array_map('trim', array_map('strip_tags', $_POST));
 
             $Api= new APIAllocineController;
-            $resultat = $Api -> callAPIPartner($safe['actor'],'person');
+            $resultat = $Api->movieDetails($safe['movie'],'person');
 
             return $this->json($resultat);
         }

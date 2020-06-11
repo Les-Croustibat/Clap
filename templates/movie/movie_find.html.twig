@@ -185,16 +185,12 @@
         {# Test boutton #}
 <form method="POST">
         <div class="row justify-content-center mb-5 pb-5">
-            <input type="hidden" name="action" value="hasard">
+            <div class="text-dark" name="movie" id="hasard"></div>
             <button type="submit" class="btn btn-secondary random-film">Film au hasard</button>
         </div>
 </form>
 
     </div>
-
-    {# Affichage du film #}
-    <div class="text-dark" id="title">{{ titre }}</div>
-    {# <div id="content"></div> #}
 
 {% endblock %}
 
@@ -203,9 +199,9 @@
 
 <script>
 
-$('#title').on('click', function(){
+$('#hasard').on('click', function(){
     axios.post("{{ path('movie_ajax_random') }}", {
-        actor: variable,
+        actor: {{ titre }},
     })
     .then(function (response) {
         console.log(response);
