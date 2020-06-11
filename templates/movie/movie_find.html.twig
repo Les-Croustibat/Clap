@@ -199,18 +199,21 @@
 {% endblock %}
 
 {% block js %}
-    {# Ajax #}
-    {# Range slider #}
-    {# <script src="{{asset('asset/js/rSlider.min.js')}}"></script> #}
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
-    <script>
-        (function () {
-            //let lien = ' link }}'
-            //$('#content').load(lien)
+<script>
 
-        })();
+    function myFunction($variable){
+    axios.post("{{ path('user_ajax_add_actor') }}", {
+        actor: variable,
+    })
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
+</script>
 
-
-    </script>
 {% endblock %}
