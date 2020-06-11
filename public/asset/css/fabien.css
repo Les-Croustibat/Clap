@@ -1,17 +1,17 @@
 /* General */
 body{
-   /* background-color:#151515; */
-   background-color:#eee8e8;
+   background-color:#151515;
    }
 
 section{
    font-family: 'Dosis', sans-serif;
-   background-color:#eee8e8;
+   background-color:#151515;
    color: white;
 }
 
 h2{
    font-size: 24px;
+   color: #c42323;
 }
 
 .title{
@@ -80,6 +80,10 @@ h2{
    background-color: #9b9999;
    color: white;
 }
+
+/* ajout item */
+
+
 
 /* taille texte */
 @media screen and (min-width:720px){

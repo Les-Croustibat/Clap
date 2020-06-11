@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class APIAllocineController extends AbstractController
@@ -12,7 +12,7 @@ class APIAllocineController extends AbstractController
     protected $secretKey = '29d185d98c984a359e6e6f26a0474269';
 
     // callAPIPartner('nom_du_film', 'person')
-    public function callAPIPartner($search=null,$filter='movie')
+    public function callAPIPartner($search=null,$filter=null)
     {
         if(empty($search)) {
 
@@ -51,7 +51,7 @@ class APIAllocineController extends AbstractController
                 //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
                 CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
             ];
-            dump($options);
+            // dump($options);
             
             // Error message
             if(empty($curl)){
@@ -64,7 +64,7 @@ class APIAllocineController extends AbstractController
             // Execute the query
             $response=curl_exec($curl);            
         
-            dump(curl_getinfo($curl));
+            // dump(curl_getinfo($curl));
 
             // Close
             curl_close($curl);
@@ -72,13 +72,15 @@ class APIAllocineController extends AbstractController
             // Decode the response (true, key and value -> PHP)
             $decode_response=json_decode($response, true);
 
-            dump($decode_response);
-            die;
+            // dump($decode_response);
+            // die;
 
         }
         
         // DO NOT FORGET !!! no render just a return of data
-        return $decode_response;
+        
+        return new Response ($decode_response);
+
     }
     
     public function callAPIMovie($film_search=null, $movie=null)
