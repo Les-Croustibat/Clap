@@ -183,32 +183,31 @@
         </div>
 
         {# Test boutton #}
-<form method="POST">
         <div class="row justify-content-center mb-5 pb-5">
-            <div class="text-dark" name="movie" id="hasard"></div>
-            <button type="submit" class="btn btn-secondary random-film">Film au hasard</button>
+            <div class="text-dark" id="content"></div>
+            <button type="button" class="btn btn-secondary random-film" name="movie" id="hasard">Film au hasard</button>
         </div>
-</form>
 
     </div>
 
 {% endblock %}
 
 {% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 <script>
 
 $('#hasard').on('click', function(){
-    axios.post("{{ path('movie_ajax_random') }}", {
-        actor: {{ titre }},
-    })
+    axios.get("{{ path('movie_ajax_random') }}")
     .then(function (response) {
-        console.log(response);
+        console.log(response.data);
     })
     .catch(function (error) {
         console.log(error);
     });
+    
+    $('#content').html('Coucou');
 })
 
 </script>

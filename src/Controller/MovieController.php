@@ -7,7 +7,7 @@ use App\Controller\APIAllocineController;
 
 class MovieController extends AbstractController
 {
-    public function movieDetails()
+    public function findMovie()
     {
         $apiAllocine = new APIAllocineController();
         $random = rand(1, 61498);
@@ -22,14 +22,10 @@ class MovieController extends AbstractController
     }
 
     public function ajaxRandom(){
-        if(!empty($_POST)){
-            $safe = array_map('trim', array_map('strip_tags', $_POST));
-
             $Api= new APIAllocineController;
-            $resultat = $Api->movieDetails($safe['movie'],'person');
-
+            $resultat = $Api->callAPIPartner(mt_rand(15000, 16000));
             return $this->json($resultat);
-        }
+
     }
 
 }
