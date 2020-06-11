@@ -61,15 +61,8 @@ class ResetPasswordController extends AbstractController
 
     public function reset(Request $request, UserPasswordEncoderInterface $passwordEncoder, string $token = null): Response
     {
-        if ($token) {
-            // We store the token in session and remove it from the URL, to avoid the URL being
-            // loaded in a browser and potentially leaking the token to 3rd party JavaScript.
-            $this->storeTokenInSession($token);
 
-            return $this->redirectToRoute('app_reset_password');
-        }
-
-        $token = $this->getTokenFromSession();
+        // $token = $this->getTokenFromSession();
         if (null === $token) {
             throw $this->createNotFoundException('Aucun token de réinitialisation de mot de passe n\'a été trouvé dans cette URL ou cette session.');
         }
@@ -130,11 +123,13 @@ class ResetPasswordController extends AbstractController
         try {
             $resetToken = $this->resetPasswordHelper->generateResetToken($user);
         } catch (ResetPasswordExceptionInterface $e) {
+            dump($e->getReason());
+            die;
             $this->addFlash('reset_password_error', sprintf(
                 'Votre demande de réinitialisation de mot de passe a rencontré un problème.',
                 $e->getReason()
             ));
-
+           
             return $this->redirectToRoute('app_forgot_password_request');
         }
 

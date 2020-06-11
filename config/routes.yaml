@@ -30,7 +30,7 @@ app_check_email:
   controller: App\Controller\ResetPasswordController:checkEmail
 
 app_reset_password:
-  path: /réinitialisation-mot-de-passe/{token}
+  path: /reinitialisation-mot-de-passe/{token}
   controller: App\Controller\ResetPasswordController:reset
 
 # error
