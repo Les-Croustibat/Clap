@@ -28,6 +28,9 @@ user_forgottenPw:
   path: /oubli-mot-de-passe
   controller: App\Controller\UserController:forgottenPw
 
+user_ajax_add_actor: 
+  path: /ajax/add-actor
+  controller: App\Controller\UserController:ajaxApiperson
 # error
 error_403:
   path: /erreur-403

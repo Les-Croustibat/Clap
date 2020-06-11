@@ -1,11 +1,12 @@
 /* General */
 body{
-   background-color:#151515;
-}
+   /* background-color:#151515; */
+   background-color:#eee8e8;
+   }
 
 section{
    font-family: 'Dosis', sans-serif;
-   background-color:#151515;
+   background-color:#eee8e8;
    color: white;
 }
 
@@ -66,7 +67,6 @@ h2{
 }
 
 /* pageERREUR */
-
 .title-error{
    font-size: 1em;
    font-family:"Dosis";
