@@ -12,6 +12,7 @@ class MovieController extends AbstractController
         $apiAllocine = new APIAllocineController();
 
         $movie_details = $apiAllocine->callAPIPartner('avatar');
+        die;
 
         return $this->render('movie/movie_details.html.twig');
     }
