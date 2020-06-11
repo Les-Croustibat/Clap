@@ -204,7 +204,7 @@
 <script>
 
 $('#title').on('click', function(){
-    axios.post("{{ path('user_ajax_add_actor') }}", {
+    axios.post("{{ path('movie_ajax_random') }}", {
         actor: variable,
     })
     .then(function (response) {

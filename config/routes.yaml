@@ -50,9 +50,9 @@ movie_find:
   path: /trouver-un-film
   controller: App\Controller\MovieController:findMovie
 
-movie_find:
-  path: /trouver-un-film
-  controller: App\Controller\MovieController:findMovie
+movie_ajax_random:
+  path: /ajax/random
+  controller: App\Controller\MovieController:ajaxRandom
 
 # security
 security_login:
