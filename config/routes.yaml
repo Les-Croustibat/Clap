@@ -20,13 +20,18 @@ user_space:
   path: /mon-espace
   controller: App\Controller\UserController:userSpace
 
-user_resetPw:
-  path: /reinitialisation-mot-de-passe
-  controller: App\Controller\UserController:resetPw
+# ResetPassword
+app_forgot_password_request:
+  path: /mot-de-passe-oublie
+  controller: App\Controller\ResetPasswordController:request
 
-user_forgottenPw:
-  path: /oubli-mot-de-passe
-  controller: App\Controller\UserController:forgottenPw
+app_check_email:
+  path: /verification-email
+  controller: App\Controller\ResetPasswordController:checkEmail
+
+app_reset_password:
+  path: /réinitialisation-mot-de-passe/{token}
+  controller: App\Controller\ResetPasswordController:reset
 
 # error
 error_403:

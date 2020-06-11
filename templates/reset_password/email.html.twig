@@ -1,0 +1,12 @@
+<h1>Bonjour !</h1>
+
+<p>
+    Vous avez oublié votre mot de passe et vous souhaitez le réinitialiser ? <br> Veuillez trouver ci-dessous le lien pour réinitialiser votre mot de passe :
+    <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">ici</a>
+    Ce lien expirera dans {{ tokenLifetime|date('g') }} heure(s).
+    Si jamais, vous n'aviez pas demandé de réinitialisation de mot de passe, merci de ne pas tenir compte de cet email.
+</p>
+
+<p>
+    A très vite sur CLAP !
+</p>
