@@ -70,7 +70,7 @@ security_signin:
 # API
 APIAllocine:
   path: /api-allocine
-  controller: App\Controller\APIAllocineController:callAPI
+  controller: App\Controller\APIAllocineController:callAPIMovie
 
 # API TMBDB
 APITmdb_callAPIMovie:
