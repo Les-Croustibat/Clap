@@ -81,8 +81,6 @@
                             <input class="form-check-input" type="checkbox" id="romantic" name="romantic" value="romantic">
                             <label class="form-check-label" for="romantic">Romance</label>
                         </div>
-                    </div>
-                    <div class="row row-cols-xl-3 justify-content-center">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="scifi" name="scifi" value="scifi">
                             <label class="form-check-label" for="scifi">Science fiction</label>
@@ -169,7 +167,7 @@
                 {#space between tags, make disapppear the first tag#}
                     <div id="people_list">
                         <ul>
-                            <span title="Cliquer pour enlever"><li class="tag"></li></span>
+                        
                         </ul>
                     </div>
                 </div>
@@ -191,19 +189,19 @@
                 <div class="carousel-item active">
                     <img src="..." class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>{{% %}}</h5>
+                        <h5></h5>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="..." class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>{{% %}}</h5>
+                        <h5></h5>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="..." class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>{{% %}}</h5>
+                        <h5></h5>
                     </div>
                 </div>
             </div>
@@ -240,19 +238,19 @@
                 <div class="carousel-item active">
                     <img src="..." class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>{{% %}}</h5>
+                        <h5></h5>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="..." class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>{{% %}}</h5>
+                        <h5></h5>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="..." class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>{{% %}}</h5>
+                        <h5></h5>
                     </div>
                 </div>
             </div>
@@ -325,18 +323,18 @@
             
             // Listen to the event submit the form (always put preventDefault)
             $newItemForm.on('submit', function(e) {
-            e.preventDefault();
-            // Get the value of the imput with val()
-            var text = $('#film_actor_director').val();
-            // Add the retrieved value in the end of the list
-            $peopleList.append('<span title="Cliquer pour enlever"><li>' + text + '</li></span>');
-            $('#film_actor_director').val('');
+                e.preventDefault();
+                // Get the value of the imput with val()
+                var text = $('#film_actor_director').val();
+                // Add the retrieved value in the end of the list
+                $peopleList.append('<li title="Cliquer pour enlever">' + text + '</li>');
+                $('#film_actor_director').val('');
             });
         
             // Listen to the event click to remove items
             $peopleList.on('click', 'li', function() {
-            var $this = $(this);
-            $this.remove();
+                var $this = $(this);
+                $this.remove();
             });
     
         });
