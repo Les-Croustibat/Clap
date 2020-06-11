@@ -9,7 +9,15 @@ class APIAllocineController extends AbstractController
 {
     
     protected $apiURL = 'http://api.allocine.fr/rest/v3';
-    protected $apiKey = 'QUNXZWItQWxsb0Npbuk';
+    protected $apiKey = '100043982026';
+    protected $secretKey = '29d185d98c984a359e6e6f26a0474269';
+
+    public function callAPIPartner2(){
+        $brouette=file_get_contents('http://api.allocine.fr/rest/v3/search?partner=QUNXZWItQWxsb0Npbuk&filter=movie,theater,person,news,tvseries&count=5&page=1&q=avatar&format=json');
+        dump($brouette);
+        die;
+    }
+
 
     public function callAPIPartner($search=null)
     {
@@ -28,14 +36,16 @@ class APIAllocineController extends AbstractController
 
             // Query paramaters
             $parameters_request = [
-                'q'         => $search,
                 'partner'   => $this->apiKey,
-                'filter'    => 'person',
-                'format '   => 'json',
+                'q'         => $search,
+                'filter'    => 'movie',
+                'format'   => 'json',
             ];
 
             // String to search
-            $request='?'.http_build_query($parameters_request);
+            $sed = date('Ymd');
+			$sig = urlencode(base64_encode(sha1($this->secretKey.http_build_query($parameters_request).'&sed='.$sed, true)));
+			$request= '?'.http_build_query($parameters_request).'&sed='.$sed.'&sig='.$sig;
 
             // Initialize the curl
             $curl = curl_init();
@@ -45,9 +55,10 @@ class APIAllocineController extends AbstractController
                 CURLOPT_URL            => $endpoint.$request, // target the API URL
                 CURLOPT_RETURNTRANSFER => true, // return the content into a string
                 CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-                CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
+                //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
                 CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
             ];
+            dump($options);
             
             // Error message
             if(empty($curl)){
@@ -60,14 +71,16 @@ class APIAllocineController extends AbstractController
             // Execute the query
             $response=curl_exec($curl);            
         
+            dump(curl_getinfo($curl));
+
             // Close
             curl_close($curl);
 
             // Decode the response (true, key and value -> PHP)
             $decode_response=json_decode($response, true);
 
-            // dump($decode_response['id_movie']);
-            // die;
+            dump($decode_response);
+            die;
 
         }
         
@@ -136,7 +149,7 @@ class APIAllocineController extends AbstractController
             // Query paramaters
             $parameters_request = [
                 'partner'   => $this->apiKey,
-                'code'      => $film_search,
+                'code'      => $movie,
                 'filter'    => 'movie',
                 'profile'   => 'large',
                 'striptags' => 'synopsis,synopsisshort',
