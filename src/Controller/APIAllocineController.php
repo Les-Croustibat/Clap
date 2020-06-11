@@ -12,13 +12,6 @@ class APIAllocineController extends AbstractController
     protected $apiKey = '100043982026';
     protected $secretKey = '29d185d98c984a359e6e6f26a0474269';
 
-    public function callAPIPartner2(){
-        $brouette=file_get_contents('http://api.allocine.fr/rest/v3/search?partner=QUNXZWItQWxsb0Npbuk&filter=movie,theater,person,news,tvseries&count=5&page=1&q=avatar&format=json');
-        dump($brouette);
-        die;
-    }
-
-
     public function callAPIPartner($search=null)
     {
         if(empty($search)) {
