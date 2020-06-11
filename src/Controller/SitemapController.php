@@ -19,22 +19,9 @@ class SitemapController extends AbstractController
         $urls = [];
         $urls[] = ['loc' => $this->generateUrl('default_home')];
         $urls[] = ['loc' => $this->generateUrl('default_about')];
-        $urls[] = ['loc' => $this->generateUrl('default_contact')];
-        $urls[] = ['loc' => $this->generateUrl('default_credits')];
-        $urls[] = ['loc' => $this->generateUrl('default_legalNotice')];
         $urls[] = ['loc' => $this->generateUrl('user_space')];
-        $urls[] = ['loc' => $this->generateUrl('reset')]; // update it
-        $urls[] = ['loc' => $this->generateUrl('password')]; // update it
-        $urls[] = ['loc' => $this->generateUrl('error_403')];
-        $urls[] = ['loc' => $this->generateUrl('error_404')];
-        $urls[] = ['loc' => $this->generateUrl('error_500')];
         $urls[] = ['loc' => $this->generateUrl('movie_details')];
         $urls[] = ['loc' => $this->generateUrl('movie_find')];
-        $urls[] = ['loc' => $this->generateUrl('security_login')];
-        $urls[] = ['loc' => $this->generateUrl('security_logout')];
-        $urls[] = ['loc' => $this->generateUrl('security_logoutconfirm')];
-        $urls[] = ['loc' => $this->generateUrl('security_signin')];
-        $urls[] = ['loc' => $this->generateUrl('APIAllocine')];
 
         // Dynamic URLs for films
         foreach ($this->getDoctrine()->getRepository(Movie::class)->findAll() as $movie) {
