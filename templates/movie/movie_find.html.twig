@@ -193,7 +193,7 @@
     </div>
 
     {# Affichage du film #}
-    <div class="text-dark">{{ titre }}</div>
+    <div class="text-dark" id="title">{{ titre }}</div>
     {# <div id="content"></div> #}
 
 {% endblock %}
@@ -203,7 +203,7 @@
 
 <script>
 
-    function myFunction($variable){
+$('#title').on('click', function(){
     axios.post("{{ path('user_ajax_add_actor') }}", {
         actor: variable,
     })
@@ -213,7 +213,8 @@
     .catch(function (error) {
         console.log(error);
     });
-}
+})
+
 </script>
 
 {% endblock %}
