@@ -21,7 +21,6 @@ class MovieController extends AbstractController
 
         $movie_search = $apiAllocine->callAPIPartner('BadBoys');
         $movie_details_search = $apiAllocine->callAPIPartner2(14012);
-        // dump($movie_details_search);
         // die;
 
         // Récup le titre

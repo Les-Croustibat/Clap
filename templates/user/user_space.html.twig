@@ -3,87 +3,132 @@
 {% block title %}User space{% endblock %}
 
 {% block css %}
-<link href="{{ asset('asset/css/fab.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link href="{{ asset('asset/css/fabien.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 
 <section class="container">
     <div class="row justify-content-center mb-5">
-        <h1 class="title">MON PROFIL</h1>
-    </div>
-    <form method="post">
-        <div class="row">
-            <div class="col-2 mb-12">
-                <h2>Genres préférés:</h2>
+        <h1 class="title">MON ESPACE</h1>
+        <form method="get" id="person" >
+            <h2 class="row justify-content-center my-5">Genres préférés :</h2>
+            <div class="row justify-content-center">
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="action" name="action" value="action">
+                    <label class="form-check-label" for="action">Action</label>
+                </div>
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="animation" name="animation" value="animation">
+                    <label class="form-check-label" for="animation">Animation</label>
+                </div>
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="adventure" name="adventure" value="adventure">
+                    <label class="form-check-label" for="adventure">Aventure</label>
+                </div>
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="comedy" name="comedy" value="comedy">
+                    <label class="form-check-label" for="comedy">Comédie</label>
+                </div>
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="drama" name="drama" value="drama">
+                    <label class="form-check-scary" for="drama">Drame</label>
+                </div>
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="family" name="family" value="family">
+                    <label class="form-check-label" for="family">Famille</label>
+                </div>
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="fantastic" name="fantastic" value="fantastic">
+                    <label class="form-check-label" for="fantastic">Fantastique</label>
+                </div>
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="war" name="war" value="war">
+                    <label class="form-check-label" for="war">Guerre</label>
+                </div>
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="historic" name="historic" value="historic">
+                    <label class="form-check-label" for="historic">Historique</label>
+                </div>
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="crime" name="crime" value="crime">
+                    <label class="form-check-label" for="crime">Policier</label>
+                </div>
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="romantic" name="romantic" value="romantic">
+                    <label class="form-check-label" for="romantic">Romance</label>
+                </div>
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="scifi" name="scifi" value="scifi">
+                    <label class="form-check-label" for="scifi">Science fiction</label>
+                </div>
+                <div class="col-3">
+                    <input class="form-check-input" type="checkbox" id="thriller" name="thriller" value="thriller">
+                    <label class="form-check-label" for="thriller">Thriller</label>
+                </div>
+                <div class="col-9">
+                    <input class="form-check-input" type="checkbox" id="scary" name="scary" value="scary">
+                    <label class="form-check-label" for="scary">Epouvante-horreur</label>
+                </div>
             </div>
-            <div class="col-2">
-                <input type="checkbox" name="action">
-                <label for="action" class="">Action</label>
-            </div>
-            <div class="col-2">
-                <input type="checkbox" name="comedie">
-                <label for="comedie" class="">Comédie</label>
-            </div>
-            <div class="col-2">
-                <input type="checkbox" name="horreur">
-                <label for="horreur" class="">Horreur</label>
-            </div>
-            <div class="col-4">
-                <input type="checkbox" name="romantique">
-                <label for="romantique" class="">Romantique</label>
-            </div>
-            <div class="col-2">
-            </div>
-            <div class="col-2">
-                <input type="checkbox" name="aventure">
-                <label for="aventure" class="">Aventure</label>
-            </div>
-            <div class="col-2">
-                <input type="checkbox" name="drame">
-                <label for="drame" class="">Drame</label>
-            </div>
-            <div class="col-2">
-                <input type="checkbox" name="sf">
-                <label for="sf" class="">Science-fiction</label>
-            </div>
-            <div class="col-4">
-                <input type="checkbox" name="populaire">
-                <label for="populaire" class="">Populaire</label>
-            </div>
-            <div class="col-2">
-                <h2>Acteur préféré :</h2>
-            </div>
-            <div class="col-9">
-                <input type="text" name="acteur">
-            </div>
-            <div class="col-3">
-                <h2>Films que j'ai noté:</h2>
-            </div>
+            <h2 class="row justify-content-center my-5">Réalisateur/Acteur préféré :</h2>
+            <div class="row justify-content-center my-5">
+                <input type="text" name="acteur" id="acteur">
+                <div id="list_person">
+                    <ul>
+                    </ul>
+                </div>    
+                <input type="button" value="OK" id='etiquette' class="btn button">
+                <div></div>
             <div class="col-12 text-center my-5 ">
                 <input type="submit" value="Enregistrer" class="btn button">
             </div>
-        </div>
+        </form>
+    </div>
+    </div>
     </form>
-
-
-
-
+    </div>
+    <div class="ui-widget">
+        <label for="tags">Tags: </label>
+        <input id="tags">
+    </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {% endblock %}
 
-{% block js %} {% endblock %}
+{% block js %}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ asset('asset/js/fabien.js') }}"> </script>
+
+<script>
+    // Au submit du formulaire
+    $('#etiquette').on('click',function(e){
+        e.preventDefault();
+        // variable qui va récupéré la valeur de mon_super_acteur
+        variable=$('#acteur').val()
+        axios.get("{{ path('user_ajax_add_actor') }}", {
+             params: {
+                actor: variable,
+            }
+        })
+        .then(function (response) {
+
+            console.log(response);
+            // response.data correspond au tableau de mon $this->json() dans le controller
+            if(response.data.status == 'ko'){
+                alert(response.data.error);
+            }
+            else if(response.data.status == 'ok'){
+                alert(response.data.result);
+                // $('div creer').html(response.data.result)
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    })
+</script>
+{% endblock %}
