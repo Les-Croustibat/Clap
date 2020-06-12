@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer un utilisateur
+{% endblock %}
+
+{% block content %}
+	<h1 class="text-center">
+		Attention !
+	</h1>
+
+	<div class="row justify-content-center">
+		<div class="col-8">
+
+			<form method="post" class="col-12">
+				<h2 class="text-center h5 mb-3">Etes-vous sûre de vouloir supprimer l'utilisateur "{{user.pseudo|upper}}" ?</h2>
+				<div class="text-center">
+					<a href="{{path('admin_list')}}" class="btn btn-dark">Annuler</a>
+					<input type="hidden" name="action" value="delete">
+					<button type="submit" class="btn btn-danger">Oui, je veux supprimer l'utilisateur</button>
+				</div>
+			</form>
+
+		</div>
+	</div>
+{% endblock %}

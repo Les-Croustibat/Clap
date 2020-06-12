@@ -70,4 +70,9 @@ class DefaultController extends AbstractController
         return $this->render('default/about.html.twig');
     }
 
+    public function legalNotice()
+    {
+        return $this->render('default/legal-notice.html.twig');
+    }
+
 }

@@ -15,18 +15,27 @@ default_about:
   path: /a-propos
   controller: App\Controller\DefaultController:about
 
+default_legalNotice:
+  path: /mentions-legales
+  controller: App\Controller\DefaultController:legalNotice
+
 # user
 user_space:
   path: /mon-espace
   controller: App\Controller\UserController:userSpace
 
-user_resetPw:
-  path: /reinitialisation-mot-de-passe
-  controller: App\Controller\UserController:resetPw
+# ResetPassword
+app_forgot_password_request:
+  path: /mot-de-passe-oublie
+  controller: App\Controller\ResetPasswordController:request
 
-user_forgottenPw:
-  path: /oubli-mot-de-passe
-  controller: App\Controller\UserController:forgottenPw
+app_check_email:
+  path: /verification-email
+  controller: App\Controller\ResetPasswordController:checkEmail
+
+app_reset_password:
+  path: /reinitialisation-mot-de-passe/{token}
+  controller: App\Controller\ResetPasswordController:reset
 
 # error
 error_403:
@@ -74,9 +83,25 @@ security_signin:
 # API
 APIAllocine:
   path: /api-allocine
-  controller: App\Controller\APIAllocineController:callAPI
+  controller: App\Controller\APIAllocineController:callAPIMovie
 
+# API TMBDB
+APITmdb_callAPIMovie:
+  path: /api-tmdb
+  controller: App\Controller\APITmdbController:callAPIMovie
 
+# Admin
+admin_list:
+  path: /liste-utilisateurs
+  controller: App\Controller\AdminController:list
+
+admin_view:
+  path: /infos-utilisateur/{id}
+  controller: App\Controller\AdminController:view
+
+admin_suppr:
+  path: /supprimer-utilisateur/{id}
+  controller: App\Controller\AdminController:suppr
 
 
 

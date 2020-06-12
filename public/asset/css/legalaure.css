@@ -1,0 +1,11 @@
+.legal_notice .logo{
+    width:20%;
+}
+
+.legal_notice .title {
+    text-transform: uppercase;
+}
+
+.legal_notice .p {
+    text-transform: uppercase;
+}
