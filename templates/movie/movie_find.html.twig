@@ -1,24 +1,214 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Trouve un film{% endblock %}
+{% block css %} 
+    {# Range Slider #}
+    <link rel="stylesheet" href="{{asset('asset/css/rSlider.css')}}">
+{% endblock %}
+
+{% block title %}Clap te trouve un film{% endblock %}
 
 {% block content %}
 
+    <div class="container find-movie">
+        <div class="row justify-content-center">
+            <img src="asset/img/logoLR.png" alt="logo Clap" class="logo mb-4 mt-5">
+        </div>
 
+        <div class="row justify-content-center">
+            <h1 class="mt-5 mb-5 text-center">Clap te trouve un film ! </h1>
+        </div>
 
+        <div class="row justify-content-center">
+            <h2 class="choice mt-5 mb-5 text-center">Tu sais déjà un peu ce que tu veux ...</h2>
+        </div>
 
+        <div class="row justify-content-center mb-5">
+            <div class="col-6">
+                <h2>Genres</h2>
+                <form method="post" class="mt-4">
+                    <div class="row row-cols-xl-4 justify-content-center">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="action" name="action" value="action">
+                            <label class="form-check-label" for="action">Action</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="animation" name="animation" value="animation">
+                            <label class="form-check-label" for="animation">Animation</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="adventure" name="adventure" value="adventure">
+                            <label class="form-check-label" for="adventure">Aventure</label>
+                        </div>
+                    </div>
+                    <div class="row row-cols-xl-4 justify-content-center ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="comedy" name="comedy" value="comedy">
+                            <label class="form-check-label" for="comedy">Comédie</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="drama" name="drama" value="drama">
+                            <label class="form-check-scary" for="drama">Drame</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="scary" name="scary" value="scary">
+                            <label class="form-check-label" for="scary">Epouvante-horreur</label>
+                        </div>
+                    </div>
+                    <div class="row row-cols-xl-4 justify-content-center ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="family" name="family" value="family">
+                            <label class="form-check-label" for="family">Famille</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="fantastic" name="fantastic" value="fantastic">
+                            <label class="form-check-label" for="fantastic">Fantastique</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="war" name="war" value="war">
+                            <label class="form-check-label" for="war">Guerre</label>
+                        </div>
+                    </div>
+                    <div class="row row-cols-xl-4 justify-content-center ">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="historic" name="historic" value="historic">
+                            <label class="form-check-label" for="historic">Historique</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="crime" name="crime" value="crime">
+                            <label class="form-check-label" for="crime">Policier</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="romantic" name="romantic" value="romantic">
+                            <label class="form-check-label" for="romantic">Romance</label>
+                        </div>
+                    </div>
+                    <div class="row row-cols-xl-3 justify-content-center">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="scifi" name="scifi" value="scifi">
+                            <label class="form-check-label" for="scifi">Science fiction</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="thriller" name="thriller" value="thriller">
+                            <label class="form-check-label" for="thriller">Thriller</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
 
+        <div class="row justify-content-center mb-5">
+            <div class="col-6">
+                <h2 class="mb-5">Année de production</h2>
+                {# change color in a hover, display years #}
+                <form method="post">
+                    <div class="form-group mt-5">
+                        {# <input type="range" class="form-control-range" id="production_year" name="production_year"> #}
+                        <input type="text" id="slider1" class="slider1">
+                    </div>
+                </form>
+            </div>
+        </div>
 
+        <div class="row justify-content-center my-5 py-5">
+            <div class="col-6">
+                <h2 class="mb-5">Durée du film</h2>
+                {# change color in a hover, display duration#}
+                <form method="post">
+                    <div class="form-group mt-5">
+                        {# <input type="range" class="form-control-range" id="film_duration" name="film_duration"> #}
+                        <input type="text" id="slider2" class="slider2">
+                    </div>
+                </form>
+            </div>
+        </div>
 
+        <div class="row justify-content-center my-5 py-5">
+            <div class="col-6">
+                <h2>Nationalité</h2>
+                <form method="post" class="mt-4">
+                    <div class="row row-cols-6 justify-content-center mb-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="french" name="french" value="french">
+                            <label class="form-check-label" for="french">Français</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="american" name="american" value="american">
+                            <label class="form-check-label" for="american">Américain</label>
+                        </div>  
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="korean" name="korean" value="korean">
+                            <label class="form-check-label" for="korean">Sud-coréen</label>
+                        </div>
+                    </div>
+                    <div class="row row-cols-6 justify-content-center">   
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="spanish" name="spanish" value="spanish">
+                            <label class="form-check-label" for="spanish">Espagnol</label>
+                        </div>   
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="italian" name="italian" value="italian">
+                            <label class="form-check-label" for="italian">Italien</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="other" name="other" value="other">
+                            <label class="form-check-label" for="other">Autre</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
 
+        <div class="row justify-content-center my-3 py-3">
+            <div class="col-6">
+                <h2>Acteurs et Réalisateurs</h2>
+                <form method="post" class="mt-4">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="film_actor_director" id="film_actor_director" placeholder="Si vous ne voulez que des films avec vos acteurs ou réalisateurs favoris ...">
+                    </div>
+                </form>
+            </div>
+        </div>
 
+        <div class="row justify-content-center mb-5 pb-5">
+            <button type="submit" class="btn btn-secondary go">GO</button>
+        </div>
 
+        {# separator #}
+        <div class="row justify-content-center">
+            <div class="col-6 separator"></div>
+        </div>
 
+        <div class="row justify-content-center">
+            <h2 class="choice mt-5 mb-5 text-center">Tu es aventureux ?</h2>
+        </div>
 
+        {# Test boutton #}
+        <div class="row justify-content-center mb-5 pb-5">
+            <div class="text-dark" id="content"></div>
+            <button type="button" class="btn btn-secondary random-film" name="movie" id="hasard">Film au hasard</button>
+        </div>
 
-
-
+    </div>
 
 {% endblock %}
 
-{% block js %} {% endblock %}
+{% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+<script>
+
+$('#hasard').on('click', function(){
+    axios.get("{{ path('movie_ajax_random') }}")
+    .then(function (response) {
+        $('#content').html(response.data.movie.title);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+})
+
+</script>
+
+{% endblock %}
