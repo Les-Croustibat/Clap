@@ -38,16 +38,16 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="nav navbar-nav text-center">
           <li class="nav-item mx-4">
-            <a href="#">Trouver un film<span class="sr-only">(current)</span></a>
+            <a href="{{ path('movie_find') }}">Trouver un film<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item mx-4">
-            <a href="#">A propos</a>
+            <a href="{{ path('default_about') }}">A propos</a>
           </li>
           <li class="nav-item mx-4">
-            <a href="#"><i class="fas fa-user mr-2"></i>Connexion</a>
+            <a href="{{ path('security_login') }}"><i class="fas fa-user mr-2"></i>Connexion</a>
           </li>
           <li class="nav-item mx-4">
-            <a class="" href="#"><i class="fas fa-pencil-alt mr-2"></i>Inscription</a>
+            <a class="" href="{{ path('security_signin') }}"><i class="fas fa-pencil-alt mr-2"></i>Inscription</a>
           </li>
         </ul>
       </div>
@@ -73,8 +73,8 @@
 <footer class="footer mt-auto py-5">
 	<div class="text-center">
     <span>{{ 'now'|date('Y') }} &copy; CLAP | </span>
-    <span><a href="#">Crédits | </a></span>
-    <span><a href="#">Contact</a></span>
+    <span><a href="{{ path('default_credits') }}">Crédits | </a></span>
+    <span><a href="{{ path('default_contact') }}">Contact</a></span>
   </div>
 </footer>
 
