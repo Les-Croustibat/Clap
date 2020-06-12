@@ -31,7 +31,7 @@ class APIAllocineController extends AbstractController
                 'partner'   => $this->apiKey,
                 'q'         => $search,
                 'filter'    => $filter,
-                'format'   => 'json',
+                'format'    => 'json',
             ];
 
             // String to search
