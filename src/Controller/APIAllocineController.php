@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class APIAllocineController extends AbstractController
@@ -79,8 +78,7 @@ class APIAllocineController extends AbstractController
         
         // DO NOT FORGET !!! no render just a return of data
         
-        return new Response ($decode_response);
-
+        return $decode_response;
     }
     
     public function callAPIMovie($film_search=null, $movie=null)

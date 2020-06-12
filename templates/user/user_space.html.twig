@@ -13,7 +13,7 @@
 <section class="container">
     <div class="row justify-content-center mb-5">
         <h1 class="title">MON ESPACE</h1>
-        <form method="get" >
+        <form method="get" id="person" >
             <h2 class="row justify-content-center my-5">Genres préférés :</h2>
             <div class="row justify-content-center">
                 <div class="col-3">
@@ -76,17 +76,15 @@
             <h2 class="row justify-content-center my-5">Réalisateur/Acteur préféré :</h2>
             <div class="row justify-content-center my-5">
                 <input type="text" name="acteur" id="acteur">
+                <div id="list_person">
+                    <ul>
+                    </ul>
+                </div>    
                 <input type="button" value="OK" id='etiquette' class="btn button">
-                <div id="big"></div>
+                <div></div>
             <div class="col-12 text-center my-5 ">
                 <input type="submit" value="Enregistrer" class="btn button">
             </div>
-            <div id="list_person">
-                <ul>
-                    <span title="Click to remove">
-                        <li class="item"></li>
-                    </span>
-                </ul>
         </form>
     </div>
     </div>
@@ -111,16 +109,25 @@
         e.preventDefault();
         // variable qui va récupéré la valeur de mon_super_acteur
         variable=$('#acteur').val()
-        console.log(variable);
-        axios.post("{{ path('user_ajax_add_actor') }}", {
+        axios.get("{{ path('user_ajax_add_actor') }}", {
+             params: {
                 actor: variable,
-            })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+            }
+        })
+        .then(function (response) {
+            console.log('toto');
+            console.log(response);
+            // response.data correspond au tableau de mon $this->json() dans le controller
+            if(response.data.status == 'ko'){
+                alert(response.data.error);
+            }
+            else if(response.data.status == 'ok'){
+                alert(response.data.result);
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     })
 </script>
 {% endblock %}
