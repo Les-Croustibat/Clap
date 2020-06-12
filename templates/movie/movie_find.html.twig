@@ -201,13 +201,12 @@
 $('#hasard').on('click', function(){
     axios.get("{{ path('movie_ajax_random') }}")
     .then(function (response) {
-        console.log(response.data);
+        $('#content').html(response.data.movie.title);
     })
     .catch(function (error) {
         console.log(error);
     });
-    
-    $('#content').html('Coucou');
+
 })
 
 </script>
