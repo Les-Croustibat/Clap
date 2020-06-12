@@ -77,6 +77,19 @@ APITmdb_callAPIMovie:
   path: /api-tmdb
   controller: App\Controller\APITmdbController:callAPIMovie
 
+# Admin
+admin_list:
+  path: /liste-utilisateurs
+  controller: App\Controller\AdminController:list
+
+admin_view:
+  path: /infos-utilisateur/{id}
+  controller: App\Controller\AdminController:view
+
+admin_suppr:
+  path: /supprimer-utilisateur/{id}
+  controller: App\Controller\AdminController:suppr
+
 
 
 
