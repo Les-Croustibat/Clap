@@ -1,105 +1,145 @@
 <!DOCTYPE html>
 <html lang="fr" class="h-100">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Clap, le cinéma vient chez vous, une application web de recommandation de films, plus besoin de chercher des heures quoi regarder, nous vous conseillons.">
-    <meta name="author" content="Application réalisée par Cyrielle Touton, Christophe Borios, Fabien Pergaud et Aurélie Dutrey">
-    <meta name="robots" content="index, follow">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="Clap, le cinéma vient chez vous, une application web de recommandation de films, plus besoin de chercher des heures quoi regarder, nous vous conseillons.">
+		<meta name="author" content="Application réalisée par Cyrielle Touton, Christophe Borios, Fabien Pergaud et Aurélie Dutrey">
+		<meta
+		name="robots" content="index, follow">
 
-    {# Fonts #}
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500;700&family=Limelight&display=swap"
-        rel="stylesheet">
-    
-    {# Bootstrap #}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    
-    {# Icons #}
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    
-    {# Styles sheets #}
-    <link href="{{ asset('asset/css/styles.css') }}" rel="stylesheet">
+		{# Fonts #}
+		<link
+		href="https://fonts.googleapis.com/css2?family=Dosis:wght@500;700&family=Limelight&display=swap" rel="stylesheet">
 
-    <title>{% block title %}{% endblock %}</title>
-    {% block css %}{% endblock %}
-</head>
+		{# Bootstrap #}
+		<link
+		rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-<body>
-    <header id="top_screen">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#"><img src="{{ asset('asset/img/logo-clap.png') }}" alt="logo-clap" class="logo-clap"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <ul class="nav navbar-nav text-center">
-          <li class="nav-item mx-4">
-            <a href="{{ path('movie_find') }}">Trouver un film<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item mx-4">
-            <a href="{{ path('default_about') }}">A propos</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a href="{{ path('security_login') }}"><i class="fas fa-user mr-2"></i>Connexion</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="" href="{{ path('security_signin') }}"><i class="fas fa-pencil-alt mr-2"></i>Inscription</a>
-          </li>
-        </ul>
-      </div>
-      </nav>
-    </header>
+		{# Icons #}
+		<link
+		rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <main style="color:white">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis urna, sodales ac elit vel, mattis efficitur lorem. Proin in nisl dui. Aenean ut augue velit. Ut congue nunc sit amet diam placerat tempus. Fusce eros ex, bibendum a dapibus a, tincidunt ut magna. Etiam consectetur eros ipsum, a semper sem finibus ac. Phasellus dignissim augue sed ullamcorper porta. Quisque vel ipsum vel quam tempor pulvinar id convallis dolor. Etiam at venenatis nibh. Vestibulum sagittis massa turpis, at pretium elit consectetur ut. In hac habitasse platea dictumst. Vivamus blandit molestie varius. Duis suscipit accumsan magna, ac varius justo pellentesque at. Vestibulum facilisis ac nulla sed facilisis. Vestibulum finibus ligula est, eu pretium magna imperdiet condimentum. Integer varius mauris vel odio ornare, sed luctus massa faucibus. Cras a mauris aliquam, consequat justo et, porttitor augue. Mauris condimentum rhoncus venenatis. Phasellus at mauris bibendum, efficitur est volutpat, molestie mauris. Duis vitae tellus lectus. Quisque posuere posuere dignissim. Ut at ultricies felis. Maecenas non turpis nec lorem pulvinar vestibulum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras erat libero, ultrices et leo vel, molestie tempor mi. Duis eget dui rhoncus, egestas felis vel, varius neque. Cras ullamcorper diam lorem, sit amet congue arcu elementum ac. Vestibulum porttitor pharetra orci at commodo. Mauris fermentum tempor magna non malesuada. Sed ut mattis nunc. Aenean sollicitudin quis urna vel gravida. Quisque eu turpis at urna tempor pretium facilisis at dui. Maecenas convallis neque ut feugiat fermentum. Curabitur id velit tellus. Duis in ipsum ante. Aenean eget placerat lorem, a ullamcorper mi. Nulla condimentum dui mi, vel venenatis est dictum ut. Curabitur tincidunt velit ac laoreet suscipit. Sed auctor mauris sit amet vestibulum tempus. Nullam laoreet elit sapien, blandit molestie magna iaculis a. Proin eu ex ligula. Aenean non metus sed eros tincidunt pharetra eu sed velit. Donec vestibulum pretium nulla et egestas. Vivamus hendrerit enim ut lectus malesuada dignissim id non enim. Ut nec feugiat est. Nullam ac eros in diam posuere sodales id rhoncus arcu. Donec at metus eget turpis posuere consectetur eu sit amet eros. Praesent euismod pulvinar nibh, nec mattis nisi gravida nec. Sed sed hendrerit erat. Vestibulum nisi risus, egestas ac felis a, ullamcorper consectetur nisi. Cras posuere pulvinar quam, sit amet maximus mi condimentum dapibus. Nulla egestas libero nec eros imperdiet tincidunt. Sed eget libero nec turpis porta lobortis. Integer rhoncus quis odio et blandit. Nulla arcu est, bibendum vulputate purus semper, tempor posuere turpis. Etiam ex mi, sollicitudin vel accumsan vel, tincidunt at nisi. Nullam in odio non mauris lobortis interdum. Curabitur pharetra libero sit amet lectus mattis, non facilisis nisl lobortis. Integer hendrerit ornare felis vitae elementum. Morbi interdum ipsum eget tortor elementum sodales. Nam faucibus dignissim malesuada. Donec aliquam urna efficitur est congue tincidunt. Curabitur vitae dui aliquam nisi tincidunt gravida a ac odio. Etiam dolor mauris, varius non dictum a, laoreet non elit. Ut auctor consequat laoreet. Quisque a porta lacus. Aenean justo ligula, mollis vel dui id, rhoncus rhoncus purus. Curabitur id enim rhoncus, luctus nulla ut, vulputate mi. Nulla laoreet ultrices urna, sed egestas erat finibus non. Nulla varius metus ex, in cursus nulla sollicitudin ac. Maecenas vel lorem placerat, volutpat ipsum a, semper purus. In vel elit tempor, fermentum quam et, aliquam tellus. Duis in lacinia lectus. Praesent ut hendrerit urna. Duis id congue erat. Sed consequat aliquam ornare. Nunc ac ligula a dui tempor aliquet. In nec eros sollicitudin, luctus nulla vitae, tempor mauris. Fusce interdum non quam id bibendum. In pellentesque lorem nec elementum mattis. Proin sagittis elementum sapien, pharetra varius massa imperdiet sed. Duis ultricies malesuada mauris sit amet pharetra. Suspendisse potenti. Etiam aliquam, neque ut feugiat ultricies, diam leo suscipit nisl, ut luctus lectus massa id tellus. Maecenas volutpat sit amet leo at consequat. Cras laoreet bibendum diam, vitae posuere tortor. Aliquam scelerisque fermentum luctus. Suspendisse enim arcu, euismod at varius nec, accumsan a ante. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean dictum pellentesque lobortis. Morbi ultrices egestas ante sit amet sagittis. Donec vel venenatis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et luctus massa, eget aliquet risus. Sed tellus justo, finibus sit amet diam et, sollicitudin consequat tellus. Donec interdum pharetra sapien non consequat. Nunc et lacinia ante, ornare blandit lectus. Donec dignissim enim lectus, eget sollicitudin enim dignissim id. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec non arcu ex. Mauris tristique neque eu dui scelerisque bibendum. Duis id felis a augue luctus iaculis vitae at purus. Praesent ac velit ac neque eleifend vulputate id et lorem. Donec id quam sed ipsum convallis interdum nec sed enim. Nunc congue lacus id lacus posuere hendrerit. Maecenas cursus feugiat magna vel accumsan. Phasellus vitae dolor eget est placerat pellentesque. Ut blandit euismod magna, ut imperdiet dolor porta ac. Sed feugiat mauris eu ex consequat, vel ullamcorper dolor posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla semper tellus et finibus imperdiet. Nulla facilisi. Phasellus fringilla tincidunt varius. Aliquam sed pellentesque leo, eget tempor ipsum. Morbi aliquet ut ante nec laoreet. Aliquam nec magna ipsum. Aliquam euismod quis neque quis tristique. Nam aliquam erat in velit consequat lobortis. Duis non molestie neque. Nullam diam risus, consequat eget nunc ac, vestibulum rutrum ex. Vivamus luctus efficitur purus, imperdiet iaculis eros cursus at. Vestibulum eu imperdiet tellus. Integer laoreet ligula eget elit placerat tincidunt. Sed dui orci, dignissim eget faucibus ac, dignissim a quam. Vestibulum ligula lectus, accumsan ut nulla sed, dictum aliquet justo. Aliquam quis nunc quis eros ultrices volutpat ut ut sem. Integer congue diam tortor, vel viverra lorem interdum eget. Etiam at porta quam, sit amet tincidunt tortor. Sed et tincidunt est. Suspendisse gravida cursus libero, non eleifend sem pharetra nec. Cras ut ex vitae augue ullamcorper ultrices. Cras dapibus arcu at arcu commodo viverra. Nullam massa diam, posuere vitae tortor non, molestie faucibus dolor. Vivamus sed nibh vel quam pellentesque condimentum ut in ipsum. Etiam at consectetur sapien. Nullam volutpat libero eget fermentum gravida. Aliquam a faucibus urna, vel lacinia felis. Praesent congue eget sapien nec dignissim. Morbi feugiat lorem eu erat dignissim mollis. Vivamus facilisis dolor neque, ac viverra metus rhoncus ac. Aenean massa leo, accumsan quis finibus nec, maximus sit amet augue. Aliquam sed maximus nisl, sit amet volutpat leo. Nulla et nulla augue. Nulla facilisi. In pretium non augue in pharetra. Praesent sagittis tincidunt fermentum. Nam viverra, elit et sagittis porta, magna ante rutrum diam, non molestie risus nunc sed erat. Phasellus rutrum tempor lacus, ac rhoncus dolor pretium quis. Phasellus sed massa nec nibh ullamcorper posuere eget a sapien. Vivamus lacus leo, laoreet a nibh id, gravida faucibus diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis urna, sodales ac elit vel, mattis efficitur lorem. Proin in nisl dui. Aenean ut augue velit. Ut congue nunc sit amet diam placerat tempus. Fusce eros ex, bibendum a dapibus a, tincidunt ut magna. Etiam consectetur eros ipsum, a semper sem finibus ac. Phasellus dignissim augue sed ullamcorper porta. Quisque vel ipsum vel quam tempor pulvinar id convallis dolor. Etiam at venenatis nibh. Vestibulum sagittis massa turpis, at pretium elit consectetur ut. In hac habitasse platea dictumst. Vivamus blandit molestie varius. Duis suscipit accumsan magna, ac varius justo pellentesque at. Vestibulum facilisis ac nulla sed facilisis. Vestibulum finibus ligula est, eu pretium magna imperdiet condimentum. Integer varius mauris vel odio ornare, sed luctus massa faucibus. Cras a mauris aliquam, consequat justo et, porttitor augue. Mauris condimentum rhoncus venenatis. Phasellus at mauris bibendum, efficitur est volutpat, molestie mauris. Duis vitae tellus lectus. Quisque posuere posuere dignissim. Ut at ultricies felis. Maecenas non turpis nec lorem pulvinar vestibulum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras erat libero, ultrices et leo vel, molestie tempor mi. Duis eget dui rhoncus, egestas felis vel, varius neque. Cras ullamcorper diam lorem, sit amet congue arcu elementum ac. Vestibulum porttitor pharetra orci at commodo. Mauris fermentum tempor magna non malesuada. Sed ut mattis nunc. Aenean sollicitudin quis urna vel gravida. Quisque eu turpis at urna tempor pretium facilisis at dui. Maecenas convallis neque ut feugiat fermentum. Curabitur id velit tellus. Duis in ipsum ante. Aenean eget placerat lorem, a ullamcorper mi. Nulla condimentum dui mi, vel venenatis est dictum ut. Curabitur tincidunt velit ac laoreet suscipit. Sed auctor mauris sit amet vestibulum tempus. Nullam laoreet elit sapien, blandit molestie magna iaculis a. Proin eu ex ligula. Aenean non metus sed eros tincidunt pharetra eu sed velit. Donec vestibulum pretium nulla et egestas. Vivamus hendrerit enim ut lectus malesuada dignissim id non enim. Ut nec feugiat est. Nullam ac eros in diam posuere sodales id rhoncus arcu. Donec at metus eget turpis posuere consectetur eu sit amet eros. Praesent euismod pulvinar nibh, nec mattis nisi gravida nec. Sed sed hendrerit erat. Vestibulum nisi risus, egestas ac felis a, ullamcorper consectetur nisi. Cras posuere pulvinar quam, sit amet maximus mi condimentum dapibus. Nulla egestas libero nec eros imperdiet tincidunt. Sed eget libero nec turpis porta lobortis. Integer rhoncus quis odio et blandit. Nulla arcu est, bibendum vulputate purus semper, tempor posuere turpis. Etiam ex mi, sollicitudin vel accumsan vel, tincidunt at nisi. Nullam in odio non mauris lobortis interdum. Curabitur pharetra libero sit amet lectus mattis, non facilisis nisl lobortis. Integer hendrerit ornare felis vitae elementum. Morbi interdum ipsum eget tortor elementum sodales. Nam faucibus dignissim malesuada. Donec aliquam urna efficitur est congue tincidunt. Curabitur vitae dui aliquam nisi tincidunt gravida a ac odio. Etiam dolor mauris, varius non dictum a, laoreet non elit. Ut auctor consequat laoreet. Quisque a porta lacus. Aenean justo ligula, mollis vel dui id, rhoncus rhoncus purus. Curabitur id enim rhoncus, luctus nulla ut, vulputate mi. Nulla laoreet ultrices urna, sed egestas erat finibus non. Nulla varius metus ex, in cursus nulla sollicitudin ac. Maecenas vel lorem placerat, volutpat ipsum a, semper purus. In vel elit tempor, fermentum quam et, aliquam tellus. Duis in lacinia lectus. Praesent ut hendrerit urna. Duis id congue erat. Sed consequat aliquam ornare. Nunc ac ligula a dui tempor aliquet. In nec eros sollicitudin, luctus nulla vitae, tempor mauris. Fusce interdum non quam id bibendum. In pellentesque lorem nec elementum mattis. Proin sagittis elementum sapien, pharetra varius massa imperdiet sed. Duis ultricies malesuada mauris sit amet pharetra. Suspendisse potenti. Etiam aliquam, neque ut feugiat ultricies, diam leo suscipit nisl, ut luctus lectus massa id tellus. Maecenas volutpat sit amet leo at consequat. Cras laoreet bibendum diam, vitae posuere tortor. Aliquam scelerisque fermentum luctus. Suspendisse enim arcu, euismod at varius nec, accumsan a ante. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean dictum pellentesque lobortis. Morbi ultrices egestas ante sit amet sagittis. Donec vel venenatis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et luctus massa, eget aliquet risus. Sed tellus justo, finibus sit amet diam et, sollicitudin consequat tellus. Donec interdum pharetra sapien non consequat. Nunc et lacinia ante, ornare blandit lectus. Donec dignissim enim lectus, eget sollicitudin enim dignissim id. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec non arcu ex. Mauris tristique neque eu dui scelerisque bibendum. Duis id felis a augue luctus iaculis vitae at purus. Praesent ac velit ac neque eleifend vulputate id et lorem. Donec id quam sed ntum dui mi, vel venenatis est dictum ut. Curabitur tincidunt velit ac laoreet suscipit. Sed auctor mauris sit amet vestibulum tempus. Nullam laoreet elit sapien, blandit molestie magna iaculis a. Proin eu ex ligula. Aenean non metus sed eros tincidunt pharetra eu sed velit. Donec vestibulum pretium nulla et egestas. Vivamus hendrerit enim ut lectus malesuada dignissim id non enim. Ut nec feugiat est. Nullam ac eros in diam posuere sodales id rhoncus arcu. Donec at metus eget turpis posuere consectetur eu sit amet eros. Praesent euismod pulvinar nibh, nec mattis nisi gravida nec. Sed sed hendrerit erat. Vestibulum nisi risus, egestas ac felis a, ullamcorper consectetur nisi. Cras posuere pulvinar quam, sit amet maximus mi condimentum dapibus. Nulla egestas libero nec eros imperdiet tincidunt. Sed eget libero nec turpis porta lobortis. Integer rhoncus quis odio et blandit. Nulla arcu est, bibendum vulputate purus semper, tempor posuere turpis. Etiam ex mi, sollicitudin vel accumsan vel, tincidunt at nisi. Nullam in odio non mauris lobortis interdum. Curabitur pharetra libero sit amet lectus mattis, non facilisis nisl lobortis. Integer hendrerit ornare felis vitae elementum. Morbi interdum ipsum eget tortor elementum sodales. Nam faucibus dignissim malesuada. Donec aliquam urna efficitur est congue tincidunt. Curabitur vitae dui aliquam nisi tincidunt gravida a ac odio. Etiam dolor mauris, varius non dictum a, laoreet non elit. Ut auctor consequat laoreet. Quisque a porta lacus. Aenean justo ligula, mollis vel dui id, rhoncus rhoncus purus. Curabitur id enim rhoncus, luctus nulla ut, vulputate mi. Nulla laoreet ultrices urna, sed egestas erat finibus non. Nulla varius metus ex, in cursus nulla sollicitudin ac. Maecenas vel lorem placerat, volutpat ipsum a, semper purus. In vel elit tempor, fermentum quam et, aliquam tellus. Duis in lacinia lectus. Praesent ut hendrerit urna. Duis id congue erat. Sed consequat aliquam ornare. Nunc ac ligula a dui tempor aliquet. In nec eros sollicitudin, luctus nulla vitae, tempor mauris. Fusce interdum non quam id bibendum. In pellentesque lorem nec elementum mattis. Proin sagittis elementum sapien, pharetra varius massa imperdiet sed. Duis ultricies malesuada mauris sit amet pharetra. Suspendisse potenti. Etiam aliquam, neque ut feugiat ultricies, diam leo suscipit nisl, ut luctus lectus massa id tellus. Maecenas volutpat sit amet leo at consequat. Cras laoreet bibendum diam, vitae posuere tortor. Aliquam scelerisque fermentum luctus. Suspendisse enim arcu, euismod at varius nec, accumsan a ante. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean dictum pellentesque lobortis. Morbi ultrices egestas ante sit amet sagittis. Donec vel venenatis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et luctus massa, eget aliquet risus. Sed tellus justo, finibus sit amet diam et, sollicitudin consequat tellus. Donec interdum pharetra sapien non consequat. Nunc et lacinia ante, ornare blandit lectus. Donec dignissim enim lectus, eget sollicitudin enim dignissim id. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec non arcu ex. Mauris tristique neque eu dui scelerisque bibendum. Duis id felis a augue luctus iaculis vitae at purus. Praesent ac velit ac neque eleifend vulputate id et lorem. Donec id quam sed ipsum convallis interdum nec sed enim. Nunc congue lacus id lacus posuere hendrerit. Maecenas cursus feugiat magna vel accumsan. Phasellus vitae dolor eget est placerat pellentesque. Ut blandit euismod magna, ut imperdiet dolor porta ac. Sed feugiat mauris eu ex consequat, vel ullamcorper dolor posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla semper tellus et finibus imperdiet. Nulla facilisi. Phasellus fringilla tincidunt varius. Aliquam sed pellentesque leo, eget tempor ipsum. Morbi aliquet ut ante nec laoreet. Aliquam nec magna ipsum. Aliquam euismod quis neque quis tristique. Nam aliquam erat in velit consequat lobortis. Duis non molestie neque. Nullam diam risus, consequat eget nunc ac, vestibulum rutrum ex. Vivamus luctus efficitur purus, imperdiet iaculis eros cursus at. Vestibulum eu imperdiet tellus. Integer laoreet ligula eget elit placerat tincidunt. Sed dui orci, dignissim eget faucibus ac, dignissim a quam. Vestibulum ligula lectus, accumsan ut nulla sed, dictum aliquet justo. Aliquam quis nunc quis eros ultrices volutpat ut ut sem. Integer congue diam tortor, vel viverra lorem interdum eget. Etiam at porta quam, sit amet tincidunt tortor. Sed et tincidunt est. Suspendisse gravida cursus libero, non eleifend sem pharetra nec. Cras ut ex vitae augue ullamcorper ultrices. Cras dapibus arcu at arcu commodo viverra. Nullam massa diam, posuere vitae tortor non, molestie faucibus dolor. Vivamus sed nibh vel quam pellentesque condimentum ut in ipsum. Etiam at consectetur sapien. Nullam volutpat libero eget fermentum gravida. Aliquam a faucibus urna, vel lacinia felis. Praesent congue eget sapien nec dignissim. Morbi feugiat lorem eu erat dignissim mollis. Vivamus facilisis dolor neque, ac viverra metus rhoncus ac. Aenean massa leo, accumsan quis finibus nec, maximus sit amet augue. Aliquam sed maximus nisl, sit amet volutpat leo. Nulla et nulla augue. Nulla facilisi. In pretium non augue in pharetra. Praesent sagittis tincidunt fermentum. Nam viverra, elit et sagittis porta, magna ante rutrum diam, non molestie risus nunc sed erat. Phasellus rutrum tempor lacus, ac rhoncus dolor pretium quis. Phasellus sed massa nec nibh ullamcorper posuere eget a sapien. Vivamus lacus leo, laoreet a nibh id, gravida faucibus diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis urna, sodales ac elit vel, mattis efficitur lorem. Proin in nisl dui. Aenean ut augue velit. Ut congue nunc sit amet diam placerat tempus. Fusce eros ex, bibendum a dapibus a, tincidunt ut magna. Etiam consectetur eros ipsum, a semper sem finibus ac. Phasellus dignissim augue sed ullamcorper porta. Quisque vel ipsum vel quam tempor pulvinar id convallis dolor. Etiam at venenatis nibh. Vestibulum sagittis massa turpis, at pretium elit consectetur ut. In hac habitasse platea dictumst. Vivamus blandit molestie varius. Duis suscipit accumsan magna, ac varius justo pellentesque at. Vestibulum facilisis ac nulla sed facilisis. Vestibulum finibus ligula est, eu pretium magna imperdiet condimentum. Integer varius mauris vel odio ornare, sed luctus massa faucibus. Cras a mauris aliquam, consequat justo et, porttitor augue. Mauris condimentum rhoncus venenatis. Phasellus at mauris bibendum, efficitur est volutpat, molestie mauris. Duis vitae tellus lectus. Quisque posuere posuere dignissim. Ut at ultricies felis. Maecenas non turpis nec lorem pulvinar vestibulum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras erat libero, ultrices et leo vel, molestie tempor mi. Duis eget dui rhoncus, egestas felis vel, varius neque. Cras ullamcorper diam lorem, sit amet congue arcu elementum ac. Vestibulum porttitor pharetra orci at commodo. Mauris fermentum tempor magna non malesuada. Sed ut mattis nunc. Aenean sollicitudin quis urna vel gravida. Quisque eu turpis at urna tempor pretium facilisis at dui. Maecenas convallis neque ut feugiat fermentum. Curabitur id velit tellus. Duis in ipsum ante. Aenean eget placerat lorem, a ullamcorper mi. Nulla condimentum dui mi, vel venenatis est dictum ut. Curabitur tincidunt velit ac laoreet suscipit. Sed auctor mauris sit amet vestibulum tempus. Nullam laoreet elit sapien, blandit molestie magna iaculis a. Proin eu ex ligula. Aenean non metus sed eros tincidunt pharetra eu sed velit. Donec vestibulum pretium nulla et egestas. Vivamus hendrerit enim ut lectus malesuada dignissim id non enim. Ut nec feugiat est. Nullam ac eros in diam posuere sodales id rhoncus arcu. Donec at metus eget turpis posuere consectetur eu sit amet eros. Praesent euismod pulvinar nibh, nec mattis nisi gravida nec. Sed sed hendrerit erat. Vestibulum nisi risus, egestas ac felis a, ullamcorper consectetur nisi. Cras posuere pulvinar quam, sit amet maximus mi condimentum dapibus. Nulla egestas libero nec eros imperdiet tincidunt. Sed eget libero nec turpis porta lobortis. Integer rhoncus quis odio et blandit. Nulla arcu est, bibendum vulputate purus semper, tempor posuere turpis. Etiam ex mi, sollicitudin vel accumsan vel, tincidunt at nisi. Nullam in odio non mauris lobortis interdum. Curabitur pharetra libero sit amet lectus mattis, non facilisis nisl lobortis. Integer hendrerit ornare felis vitae elementum. Morbi interdum ipsum eget tortor elementum sodales. Nam faucibus dignissim malesuada. Donec aliquam urna efficitur est congue tincidunt. Curabitur vitae dui aliquam nisi tincidunt gravida a ac odio. Etiam dolor mauris, varius non dictum a, laoreet non elit. Ut auctor consequat laoreet. Quisque a porta lacus. Aenean justo ligula, mollis vel dui id, rhoncus rhoncus purus. Curabitur id enim rhoncus, luctus nulla ut, vulputate mi. Nulla laoreet ultrices urna, sed egestas erat finibus non. Nulla varius metus ex, in cursus nulla sollicitudin ac. Maecenas vel lorem placerat, volutpat ipsum a, semper purus. In vel elit tempor, fermentum quam et, aliquam tellus. Duis in lacinia lectus. Praesent ut hendrerit urna. Duis id congue erat. Sed consequat aliquam ornare. Nunc ac ligula a dui tempor aliquet. In nec eros sollicitudin, luctus nulla vitae, tempor mauris. Fusce interdum non quam id bibendum. In pellentesque lorem nec elementum mattis. Proin sagittis elementum sapien, pharetra varius massa imperdiet sed. Duis ultricies malesuada mauris sit amet pharetra. Suspendisse potenti. Etiam aliquam, neque ut feugiat ultricies, diam leo suscipit nisl, ut luctus lectus massa id tellus. Maecenas volutpat sit amet leo at consequat. Cras laoreet bibendum diam, vitae posuere tortor. Aliquam scelerisque fermentum luctus. Suspendisse enim arcu, euismod at varius nec, accumsan a ante. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean dictum pellentesque lobortis. Morbi ultrices egestas ante sit amet sagittis. Donec vel venenatis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et luctus massa, eget aliquet risus. Sed tellus justo, finibus sit amet diam et, sollicitudin consequat tellus. Donec interdum pharetra sapien non consequat. Nunc et lacinia ante, ornare blandit lectus. Donec dignissim enim lectus, eget sollicitudin enim dignissim id. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec non arcu ex. Mauris tristique neque eu dui scelerisque bibendum. Duis id felis a augue lu
-      </main>
-      <div class="d-block text-right m-4">
-        <a href="#top_screen" class="text-light"><svg class="bi bi-arrow-up-square" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-          <path fill-rule="evenodd" d="M4.646 8.354a.5.5 0 0 0 .708 0L8 5.707l2.646 2.647a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708z"/>
-          <path fill-rule="evenodd" d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z"/>
-        </svg></a>
-      </div>
-    </main>
-    {% block content %}
-    
-    {% endblock %}
+		{# Styles sheets #}
+		<link href="{{ asset('asset/css/styles.css') }}" rel="stylesheet">
 
-{# Flèche de retour au header
-<div class="arrow">
-  <a href="#top_screen" class="text-light"><svg class="bi bi-arrow-up-square" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-    <path fill-rule="evenodd" d="M4.646 8.354a.5.5 0 0 0 .708 0L8 5.707l2.646 2.647a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708z"/>
-    <path fill-rule="evenodd" d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z"/>
-  </svg></a>
-</div> #}
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+		{% block css %}{% endblock %}
+	</head>
 
-{# Footer #}
-<footer class="footer mt-auto py-5">
-	<div class="text-center">
-    <span>{{ 'now'|date('Y') }} &copy; CLAP | </span>
-    <span><a href="{{ path('default_credits') }}">Crédits | </a></span>
-    <span><a href="{{ path('default_contact') }}">Contact</a></span>
-  </div>
-</footer>
+	<body>
+		<header id="top_screen">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<a class="navbar-brand" href="{{ path('default_home') }}"><img src="{{ asset('asset/img/logo-clap.png') }}" alt="logo-clap" class="logo-clap"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+					<ul class="nav navbar-nav text-center">
+						<li class="nav-item mx-4">
+							<a href="{{ path('movie_find') }}">Trouver un film<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item mx-4">
+							<a href="{{ path('default_about') }}">A propos</a>
+						</li>
 
-    {% block js %}{% endblock %}
+						{% if not app.user %}
+							<li class="nav-item mx-4">
+								<a href="{{ path('security_login') }}">
+									<i class="fas fa-user mr-2"></i>Connexion</a>
+							</li>
+						{% else %}
+							<li class="nav-item mx-4">
+								<a href="#" id="deconnect">
+									<i class="fas fa-user mr-2"></i>Déconnexion</a>
+							</li>
+						{% endif %}
+
+						<li class="nav-item mx-4">
+							<a class="" href="{{ path('security_signin') }}">
+								<i class="fas fa-pencil-alt mr-2"></i>Inscription</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+		{# <div class="d-block text-right m-4">
+				        <a href="#top_screen" class="text-light"><svg class="bi bi-arrow-up-square" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				          <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+				          <path fill-rule="evenodd" d="M4.646 8.354a.5.5 0 0 0 .708 0L8 5.707l2.646 2.647a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708z"/>
+				          <path fill-rule="evenodd" d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z"/>
+				        </svg></a>
+				      </div> #}
+
+		{% block content %}{% endblock %}
+
+		{# Flèche de retour au header
+				<div class="arrow">
+				  <a href="#top_screen" class="text-light"><svg class="bi bi-arrow-up-square" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				    <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+				    <path fill-rule="evenodd" d="M4.646 8.354a.5.5 0 0 0 .708 0L8 5.707l2.646 2.647a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708z"/>
+				    <path fill-rule="evenodd" d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z"/>
+				  </svg></a>
+				</div> #}
+
+		{# Footer #}
+		<footer class="footer mt-auto py-5">
+			<div class="text-center">
+				<span>{{ 'now'|date('Y') }}
+					&copy; CLAP |
+				</span>
+				<span>
+					<a href="{{ path('default_credits') }}">Crédits |
+					</a>
+				</span>
+				<span>
+					<a href="{{ path('default_legalNotice') }}">Mentions Légales |
+					</a>
+				</span>
+				<span>
+					<a href="{{ path('default_contact') }}">Contact</a>
+				</span>
+			</div>
+		</footer>
+
+		{% block js %}{% endblock %}
 
 
-    {# jQuery #}
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+		{# jQuery #}
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
-    {# bootstrap #}
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
-</body>
+		{# bootstrap #}
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+		{# sweet alert #}
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+		<script>
+    $('#deconnect').on('click', function () {
+      swal.fire({
+        title: 'Etes-vous sûr(e) de vouloir vous déconnecter ?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonText: 'Annuler',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Oui !'
+      }).then((result) => {
+        if (result.value) {
+          swal.fire('Vous êtes bien déconnecté(e)');
+          location.href ="{{ path('security_logout') }}";
+        } else {
+          location.href ="{{ app.request.uri }}";
+        }
+      })
+
+    })
+		</script>
+	</body>
 
 </html>

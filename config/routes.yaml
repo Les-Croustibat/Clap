@@ -85,11 +85,6 @@ APIAllocine:
   path: /api-allocine
   controller: App\Controller\APIAllocineController:callAPIMovie
 
-# API TMBDB
-APITmdb_callAPIMovie:
-  path: /api-tmdb
-  controller: App\Controller\APITmdbController:callAPIMovie
-
 # Admin
 admin_list:
   path: /liste-utilisateurs

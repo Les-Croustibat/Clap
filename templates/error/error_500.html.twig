@@ -3,7 +3,7 @@
 {% block title %}Erreur Server{% endblock %}
 
 {% block css %}
-<link href="{{ asset('asset/css/fab.css') }}" rel="stylesheet">
+{# <link href="{{ asset('asset/css/fab.css') }}" rel="stylesheet"> #}
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
             <h1 class="title-logo text-center content-error-500">
                 <p>500</p>
                 <p>Internet Server Error</p>
-                <a href="{{ path('default_home') }}"><button class="btn button">Accueil</button></a>
+                <a href="{{ path('default_home') }}"><button class="btn error button">Accueil</button></a>
             </h1>
     </div>
 </section>

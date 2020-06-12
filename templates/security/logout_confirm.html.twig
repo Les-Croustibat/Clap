@@ -2,7 +2,7 @@
 
 {% block title %}Se déconnecter
 {% endblock %}
-
+ {% block css %}<link rel="stylesheet" href="sweetalert2.min.css">{% endblock %}
 {% block content %}
 
 	<div class="container">
@@ -24,9 +24,39 @@
 					</form>
 				</div>
 
+				<div class="row justify-content-center">
+            		<img src="{{asset('asset/img/bye.jpg')}}" alt="tobecontinued" class="img-bye">
+        		</div>
+
 			</div>
 		</div>
 
 	</div>
+</div>{% endblock %}
 
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
+// On attend que le DOM soit chargé
+window.onload = () => {
+
+swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.value) {
+      swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    }
+  })
+
+}</script>
 {% endblock %}

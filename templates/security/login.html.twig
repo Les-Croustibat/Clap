@@ -5,8 +5,7 @@
 
 {% block content %}
 
-
-	<div class="container">
+	<div class="container login">
 
 		<div class="row- justify-content-center">
 			<h1 class="mt-5 mb-5 text-center">Se connecter</h1>
@@ -15,7 +14,8 @@
 		<div class="row justify-content-center mb-4">
 
 			<div class="row justify-content-center mb-4">
-				<form method="post" class="col-12">
+				<form
+					method="post" class="col-12">
 
 					{# REVOIR MESSAGES D'ERREURS !! #}
 					{% if error %}
@@ -24,7 +24,8 @@
 
 					{% if app.user %}
 						<div class="mb-3 text-center">
-							Vous êtes déjà connecté(e) avec l'email "{{ app.user.username }}". <br>
+							Vous êtes déjà connecté(e) avec l'email "{{ app.user.username }}".
+							<br>
 							<a href="{{ path('security_logout') }}">Se déconnecter ?</a>
 						</div>
 					{% endif %}
@@ -41,12 +42,12 @@
 						<input type="password" name="password" id="inputPassword" class="form-control" required>
 					</div>
 
-					<input
-					type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-																				
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
 					<div class="checkbox mb-3">
 						<label>
-							<input type="checkbox" name="_remember_me"> Rester connecté(e)
+							<input type="checkbox" name="_remember_me">
+							Rester connecté(e)
 						</label>
 					</div>
 
@@ -61,4 +62,10 @@
 			</div>
 
 		</div>
-	{% endblock %}
+
+	</div>
+
+	<div class="row justify-content-center">
+		<img src="{{asset('asset/img/sieges.png')}}" alt="sieges-cinema" class="img-sieges">
+	</div>
+{% endblock %}
