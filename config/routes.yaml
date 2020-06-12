@@ -63,6 +63,10 @@ movie_ajax_random:
   path: /ajax/random
   controller: App\Controller\MovieController:ajaxRandom
 
+movie_ajax_movie_criteria:
+  path: /ajax/random-with-criteria
+  controller: App\Controller\MovieController:ajaxMovieCriteria
+
 # security
 security_login:
   path: /se-connecter

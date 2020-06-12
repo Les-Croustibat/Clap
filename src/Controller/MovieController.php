@@ -12,7 +12,7 @@ class MovieController extends AbstractController
             $Api= new APIAllocineController;
             $resultat = $Api->callAPIRandom(mt_rand(15000, 16000));
             return $this->json($resultat);
-}
+    }
 
        public function movieDetails()
     {
@@ -73,5 +73,53 @@ class MovieController extends AbstractController
 
         return $this->render('movie/movie_find.html.twig');
     }
+
+    public function ajaxMovieCriteria(){ // Route OK
+      
+        if(!empty($_GET)){
+
+            // Clean all data from forms
+            $safe = $_GET;
+            //$safe = array_map('trim', array_map('strip_tags', $_GET));
+
+            // Call the API
+            $apiAllocine = new APIAllocineController();
+
+            // Get API data from the SEARCH/MOVIE endpoint
+            $search_movies = $apiAllocine->callAPIPartner($safe['movie']);
+            // $movie_year=$search_movies['feed']['movie']['productionYear'];
+            // $movie_actors=$search_movies['feed']['movie']['castingShort']['actors'];
+            // $movie_actors=$search_movies['feed']['movie']['castingShort']['directors'];
+            
+            // Get API data from the MOVIE/MOVIE endpoint
+            $extra_movies= $apiAllocine->callAPIPartner2($safe['movie']);
+            // $movie_genre=$extra_movies['movie']['genre'];
+            // $movie_duration=$extra_movies['movie']['runtime'];
+            // $movie_nationality=$extra_movies['movie']['nationality'];
+            
+            // Get API data from the PERSON/MOVIE endpoint
+            $person_movie=$apiAllocine->callAPIPerson($safe['movie']);
+            // $film_actor=$person_movie['person']['movie']['director'];
+            // $film_director=$person_movie['person']['movie']['actor'];
+
+            $all_API_results=[
+                'search_movies' => $search_movies,
+                'extra_movies'  => $extra_movies,
+                'person_movie'  => $person_movie,
+            ];
+
+
+            // if($resultat['feed']['totalResults'] == 0){
+            //     return $this->json(['status' => 'ko', 'error' => 'Désolé, cette personne est introuvable']);
+
+            // }else{
+            //     $retourJSON= $resultat['feed']['person'][0]['realName'];
+            //     return $this->json(['status' => 'ok', 'result' =>$retourJSON]);
+            // }
+
+            return $this->json($all_API_results);
+        }
+    }
+
 
 }
