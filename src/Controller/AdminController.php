@@ -17,7 +17,7 @@ class AdminController extends AbstractController
 
     public function adminDashboard()
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Un utilisateur a voulu se connecter sans être [\'ROLE_ADMIN\']');
 
     }
 
