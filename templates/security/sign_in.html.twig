@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'inscrire
+{% endblock %}
+
+{% block content %}
+
+
+	<div class="container">
+
+		<div class="row- justify-content-center">
+			<h1 class="mt-5 mb-5 text-center">S'inscrire</h1>
+		</div>
+
+		<div class="row justify-content-center mb-4">
+			<form method="post" class="col-8 col-xl-6">
+
+				{# read and display all flash messages #}
+				{# label est le premier paramètre que je passe dans la methode $this->addFlash() du controller, messages.. le message #}
+					{% for label, messages in app.flashes %}
+						<div class="alert alert-{{ label }}"> {% for message in messages %}
+							{{ message|raw }}
+							{# après la variable je peux ajouter un | suivi d'un filtre #}
+						{% endfor %}
+					</div>
+				{% endfor %}
+
+				<div class="form-group row">
+					<label for="firstname">Prénom :
+					</label>
+					<input type="text" name="firstname" id="firstname" class="form-control" value="{{ input_saisis.firstname ?? '' }}" required>
+				</div>
+
+				<div class="form-group row">
+					<label for="lastname">Nom :
+					</label>
+					<input type="text" name="lastname" id="lastname" class="form-control" value="{{ input_saisis.lastname ?? '' }}" required>
+				</div>
+
+				<div class="form-group row">
+					<label for="pseudo">Pseudo :
+					</label>
+					<input type="text" name="pseudo" id="pseudo" class="form-control" value="{{ input_saisis.pseudo ?? '' }}" required>
+				</div>
+
+				<div class="form-group row">
+					<label for="email">Email :
+					</label>
+					<input type="email" name="email" id="email" class="form-control" value="{{ input_saisis.email ?? '' }}" required>
+				</div>
+
+				<div class="form-group row">
+					<label for="password">Mot de passe :
+					</label>
+					<input type="password" name="password" id="password" class="form-control" required>
+				</div>
+
+				<div class="form-group row">
+					<label for="confirmPassword">Confirmer le mot de passe :
+					</label>
+					<input type="password" name="confirmPassword" id="confirmPassword" class="form-control" required>
+				</div>
+
+				<div class="g-recaptcha" data-sitekey="6LdK1aIZAAAAAHkU2lJzRMBvmBAfbwWWWSGul6vr"></div>
+				<br/>
+
+				<div class="row justify-content-center">
+					<button class="btn btn-secondary m-5" type="submit">
+						Inscription
+					</button>
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
