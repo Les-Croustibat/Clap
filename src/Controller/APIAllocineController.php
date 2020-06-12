@@ -12,7 +12,7 @@ class APIAllocineController extends AbstractController
     protected $apiKey = '100043982026';
     protected $secretKey = '29d185d98c984a359e6e6f26a0474269';
 
-    public function callAPIPartner($search=null)
+    public function callAPIRandom($search=null)
     {
         if(empty($search)) {
 
