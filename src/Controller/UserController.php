@@ -9,6 +9,7 @@ class UserController extends AbstractController
 {
     public function userSpace()
     {
+        // coucou
         $Api= new APIAllocineController;
         $resultat = $Api -> callAPIPartner('will smith','person');
         dd($resultat);
