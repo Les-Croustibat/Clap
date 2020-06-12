@@ -15,6 +15,10 @@ default_about:
   path: /a-propos
   controller: App\Controller\DefaultController:about
 
+default_legalNotice:
+  path: /mentions-legales
+  controller: App\Controller\DefaultController:legalNotice
+
 # user
 user_space:
   path: /mon-espace
@@ -89,8 +93,6 @@ admin_view:
 admin_suppr:
   path: /supprimer-utilisateur/{id}
   controller: App\Controller\AdminController:suppr
-
-
 
 
 
