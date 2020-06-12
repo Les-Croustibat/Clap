@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block css %} 
+
     {# Range Slider #}
     <link rel="stylesheet" href="{{asset('asset/css/rSlider.css')}}">
+
 {% endblock %}
 
 {% block title %}Clap te trouve un film{% endblock %}
@@ -29,7 +31,7 @@
         <div class="row justify-content-center mb-5">
             <div class="col-11 col-lg-6">
                 <h2 class="mb-5 text-center">Genres</h2>
-                <form method="get" class="mt-4">
+                <form method="post" class="mt-4">
                     <div class="row row-cols-xl-4 justify-content-center">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="action" name="action" value="action">
@@ -101,7 +103,7 @@
         <div class="row justify-content-center my-5 py-5">
             <div class="col-8 col-lg-6">
                 <h2 class="mb-5 text-center">Année de production</h2>
-                <form method="get">
+                <form method="post">
                     <div class="form-group mt-5">
                         <input type="text" id="slider1" class="slider1" name="slider1">
                     </div>
@@ -112,7 +114,7 @@
         <div class="row justify-content-center my-5 py-5">
             <div class="col-8 col-lg-6">
                 <h2 class="mb-5 text-center">Durée du film</h2>
-                <form method="get">
+                <form method="post">
                     <div class="form-group mt-5">
                         <input type="text" id="slider2" class="slider2" name="slider2">
                     </div>
@@ -123,7 +125,7 @@
         <div class="row justify-content-center my-5 py-5">
             <div class="col-11 col-lg-6">
                 <h2 class="text-center">Nationalité</h2>
-                <form method="get" class="mt-4">
+                <form method="post" class="mt-4">
                     <div class="row row-cols-xl-4 justify-content-center mb-3">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="french" name="french" value="french">
@@ -159,7 +161,7 @@
         <div class="row justify-content-center my-3 py-3 film_actor_director">
             <div class="col-11 col-lg-6">
                 <h2 class="text-center">Acteurs et Réalisateurs</h2>
-                <form method="get" class="mt-4" id="newItemForm">
+                <form method="post" class="mt-4" id="newItemForm">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Acteurs ou réalisateurs favoris ..." id="film_actor_director" name="film_actor_director">
                         <div class="input-group-append">
@@ -168,7 +170,6 @@
                     </div>
                 </form>
                 <div id="list_section" class="text-center">
-                {#space between tags, make disapppear the first tag#}
                     <div id="people_list">
                         <ul>
                         
@@ -218,11 +219,13 @@
                 <span class="sr-only">Suivant</span>
             </a>
         </div>
+
         {# separator #}
         <div class="row justify-content-center">
             <div class="col-6 separator"></div>
         </div>
 
+        {# random recommendation #}
         <div class="row justify-content-center">
             <h2 class="choice mt-5 mb-5 text-center">Tu es aventureux ?</h2>
         </div>
@@ -272,83 +275,85 @@
 {% endblock %}
 
 {% block js %}
- {# Range slider #}
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+    {# Range slider #}
     <script src="{{asset('asset/js/rSlider.min.js')}}"></script>
+
+    {# Ajax - Axios #}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script>
-{# Ajax Fonction random #}
-$('#hasard').on('click', function(){
-    axios.get("{{ path('movie_ajax_random') }}")
-    .then(function (response) {
-        $('#content').html(response.data.movie.title);
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
-
-})
-
-    (function () {
-            var init = function () { 
-            
-                var slider1 = new rSlider({
-                    target: '#slider1',
-                    values: [1915, 1950, 1980, 2000, 2010, 2020],
-                    range: true, // range slider
-                    set: [1970, 2005],
-                    width:    null,
-                    scale:    true,
-                    labels:   true,
-                    tooltip:  true,
-                    step:     null, // step size
-                    disabled: false, // is disabled?
-                    onChange: function (vals) {
-                                console.log(vals);
-                            }
-                });
-                var slider2 = new rSlider({
-                        target: '#slider2',
-                        values: {min: 70, max: 210},
-                        step: 10,
-                        range: true,
-                        set: [90, 120],
-                        scale: true,
-                        labels: false,
-                        onChange: function (vals) {
-                            console.log(vals);
-                        }
-                    });
-            };
-            window.onload = init;
-        })();
-        $(function() {
-            // Assign values to variables
-            var $peopleList, $newItemForm;
-            $peopleList = $('#people_list');
-            $newItemForm = $('#newItemForm');
-            
-            // Listen to the event submit the form (always put preventDefault)
-            $newItemForm.on('submit', function(e) {
-                e.preventDefault();
-                // Get the value of the imput with val()
-                var text = $('#film_actor_director').val();
-                // Add the retrieved value in the end of the list
-                $peopleList.append('<li title="Cliquer pour enlever">' + text + '</li>');
-                $('#film_actor_director').val('');
+    <script>
+        {# Ajax Random Function #}
+        $('#hasard').on('click', function(){
+            axios.get("{{ path('movie_ajax_random') }}")
+            .then(function (response) {
+                $('#content').html(response.data.movie.title);
+            })
+            .catch(function (error) {
+                console.log(error);
             });
-        
-            // Listen to the event click to remove items
-            $peopleList.on('click', 'li', function() {
-                var $this = $(this);
-                $this.remove();
-            });
-    
+
         });
 
+        {# Range slider Function #}
+        (function () {
+                var init = function () { 
+                
+                    var slider1 = new rSlider({
+                        target: '#slider1',
+                        values: [1915, 1950, 1980, 2000, 2010, 2020],
+                        range: true, // range slider
+                        set: [1970, 2005],
+                        width:    null,
+                        scale:    true,
+                        labels:   true,
+                        tooltip:  true,
+                        step:     null, // step size
+                        disabled: false, // not disabled
+                        onChange: function (vals) {
+                                    console.log(vals);
+                                }
+                    });
+                    var slider2 = new rSlider({
+                            target: '#slider2',
+                            values: {min: 70, max: 210},
+                            step: 10,
+                            range: true,
+                            set: [90, 120],
+                            scale: true,
+                            labels: false,
+                            onChange: function (vals) {
+                                console.log(vals);
+                            }
+                        });
+                };
+                window.onload = init;
+            })();
 
-
-</script>
+            {# jQuery Tags function #}
+            $(function() {
+                // Assign values to variables
+                var $peopleList, $newItemForm;
+                $peopleList = $('#people_list');
+                $newItemForm = $('#newItemForm');
+                
+                // Listen to the event submit the form (always put preventDefault)
+                $newItemForm.on('submit', function(e) {
+                    e.preventDefault();
+                    // Get the value of the imput with val()
+                    var text = $('#film_actor_director').val();
+                    // Add the retrieved value in the end of the list
+                    $peopleList.append('<li title="Cliquer pour enlever">' + text + '</li>');
+                    $('#film_actor_director').val('');
+                });
+            
+                // Listen to the event click to remove items
+                $peopleList.on('click', 'li', function() {
+                    var $this = $(this);
+                    $this.remove();
+                });
+        
+            });
+    </script>
 
 {% endblock %}
