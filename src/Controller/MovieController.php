@@ -70,8 +70,12 @@ class MovieController extends AbstractController
     public function findMovie()
     {
         
+        $apiTmdb = new TmdbController();
+        $movieTest = $apiTmdb->callMovie(12);
 
-        return $this->render('movie/movie_find.html.twig');
+        return $this->render('movie/movie_find.html.twig', [
+            'movieTest' => $movieTest ?? [],
+        ]);
     }
 
 }
