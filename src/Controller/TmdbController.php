@@ -31,7 +31,7 @@ class TmdbController extends AbstractController
 
             //dd($request) => pour voir la fin de la requête à partir du query ʕ•ᴥ•ʔ
 			$request= '?'.http_build_query($parameters_request);
-            dd($request);
+            
             $curl = curl_init();
 
             $options=[
@@ -52,6 +52,6 @@ class TmdbController extends AbstractController
 
             $decode_response=json_decode($response, true);
                 
-        return $decode_response;
-    }
+            return $decode_response;
+        }
 }

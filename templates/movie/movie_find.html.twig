@@ -281,17 +281,15 @@
 
     <script>
         {# Ajax Random Function #}
-        $('#hasard').on('click', function(){
-
-            axios.get("{{ path('movie_ajax_movie_criteria') }}")
-            .then(function (response) {
-                console.log(response.data);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
+        axios.get("{{ path('movie_ajax_movie_criteria') }}")
+        .then(function (response) {
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
         });
+
+       
 
         {# Range slider Function #}
         (function () {
