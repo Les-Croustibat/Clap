@@ -10,7 +10,7 @@ class MovieController extends AbstractController
     
     public function ajaxMovieCriteria(){
         
-        $apiTmdb = new callMovieCriteria();
+        $apiTmdb = new TmdbController();
         $affichage = $apiTmdb->callMovieCriteria();
         
         return $this->json($affichage);

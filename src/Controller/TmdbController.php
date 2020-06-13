@@ -10,7 +10,7 @@ class TmdbController extends AbstractController
     /**
      * @Route("/tmdb", name="tmdb")
      */
-    protected $apiURL = 'https://api.themoviedb.org/3/discover/movie';
+    protected $apiURL = 'https://api.themoviedb.org/3';
     protected $apiKey = '8b5753049f43a637a087b0c90b698ac7';
 
     // Fonction de test (random) d'utilisation de tmdb => sortir le titre d'un film ʕ•ᴥ•ʔ
@@ -47,7 +47,8 @@ class TmdbController extends AbstractController
             curl_setopt_array($curl,$options);
         
             $response=curl_exec($curl);            
-        
+            curl_getinfo($curl);
+            
             curl_close($curl);
 
             $decode_response=json_decode($response, true);
