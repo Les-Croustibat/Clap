@@ -67,12 +67,13 @@ class MovieController extends AbstractController
         ]);
     }
 
+    //Fonction de la route trouver un film pour afficher le film (A FAIRE EN AJAX !) ʕ•ᴥ•ʔ
     public function findMovie()
     {
-        
+        //Rien de neuf sous le soleil ʕ•ᴥ•ʔ
         $apiTmdb = new TmdbController();
         $movieTest = $apiTmdb->callMovie(12);
-
+        //Faire un dd($movieTest); pour afficher les valeurs de l'objetʕ•ᴥ•ʔ
         return $this->render('movie/movie_find.html.twig', [
             'movieTest' => $movieTest ?? [],
         ]);
