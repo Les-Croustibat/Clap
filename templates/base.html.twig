@@ -52,7 +52,7 @@
 							</li>
 						{% else %}
 							<li class="nav-item mx-4">
-								<a href="" id="deconnect"><i class="fas fa-user mr-2"></i>Déconnexion</a>
+								<a href="#" id="deconnect"><i class="fas fa-user mr-2"></i>Déconnexion</a>
 							</li>
 						{% endif %}
 						{% if is_granted('ROLE_ADMIN') %}
@@ -116,8 +116,6 @@
         if (result.value) {
           swal.fire('Vous êtes bien déconnecté(e)');
           location.href ="{{ path('security_logout') }}";
-        } else {
-          location.href ="{{ app.request.uri }}";
         }
       })
 
