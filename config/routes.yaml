@@ -64,7 +64,7 @@ movie_ajax_random:
   controller: App\Controller\MovieController:ajaxRandom
 
 movie_ajax_movie_criteria:
-  path: /ajax/random-with-criteria
+  path: /ajax/criteria
   controller: App\Controller\MovieController:ajaxMovieCriteria
 
 # security

@@ -26,7 +26,7 @@ class TmdbController extends AbstractController
                 'language'      => 'fr',
                 'include_adult' => false,
                 'include_video' => false,
-                'page'          => 1,
+                'page'          => 2,
             ];
 
             //dd($request) => pour voir la fin de la requête à partir du query ʕ•ᴥ•ʔ
