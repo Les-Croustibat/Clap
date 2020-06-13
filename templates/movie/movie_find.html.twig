@@ -235,7 +235,7 @@
         </div>
 
         {# Affichage dans la vue ʕ•ᴥ•ʔ #}
-        <div>{{ movieTest.title}}</div>
+        <div id="content"></div>
 
         {# Carousel to host random films recommendations #}
         <div id="ramdom-result" class="carousel slide ramdom-result" data-ride="carousel">
@@ -246,9 +246,9 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="...">
+                    <img src="{{asset('asset/img/clapper.jpg')}}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5></h5>
+                        <h5 id="content"></h5>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -281,16 +281,17 @@
 
     {# Range slider #}
     <script src="{{asset('asset/js/rSlider.min.js')}}"></script>
-
     {# Ajax - Axios #}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    {# jQuery #}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         {# Ajax Random Function #}
         $('#hasard').on('click', function(){
             axios.get("{{ path('movie_ajax_random') }}")
             .then(function (response) {
-                $('#content').html(response.data.movie.title);
+                $('#content').html(response.data.title);
             })
             .catch(function (error) {
                 console.log(error);
