@@ -230,9 +230,6 @@
             <button type="submit" class="btn btn-secondary random-film" id="hasard">films au hasard</button>
         </div>
 
-        {# Affichage dans la vue ʕ•ᴥ•ʔ #}
-        <div>{{ movieTest.title}}</div>
-
         {# Carousel to host random films recommendations #}
         <div id="ramdom-result" class="carousel slide ramdom-result" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -280,14 +277,15 @@
 
     {# Ajax - Axios #}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         {# Ajax Random Function #}
         $('#hasard').on('click', function(){
 
-            axios.get("{{ path('movie_ajax_random') }}")
+            axios.get("{{ path('movie_ajax_movie_criteria') }}")
             .then(function (response) {
-                $('#content').html(response.data.movie.title);
+                console.log(response.data);
             })
             .catch(function (error) {
                 console.log(error);

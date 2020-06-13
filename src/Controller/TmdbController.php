@@ -10,35 +10,28 @@ class TmdbController extends AbstractController
     /**
      * @Route("/tmdb", name="tmdb")
      */
-    protected $apiURL = 'https://api.themoviedb.org/3';
+    protected $apiURL = 'https://api.themoviedb.org/3/discover/movie';
     protected $apiKey = '8b5753049f43a637a087b0c90b698ac7';
 
     // Fonction de test (random) d'utilisation de tmdb => sortir le titre d'un film ʕ•ᴥ•ʔ
-    public function callMovie($id=null)
+    public function callMovieCriteria()
     {
         // id = correspond à l'id du film; chaque film a un id
-        if(empty($id)) {
-
-
-            return false;
-
-        }  else {
-
-            //https://api.themoviedb.org/3/movie/12?api_key=8b5753049f43a637a087b0c90b698ac7&language=fr
-            //Requête que doit ressortir de curlʕ•ᴥ•ʔ
-
-            $endpoint = $this->apiURL.'/movie'.'/'.$id;
+            $endpoint = $this->apiURL.'/discover/movie';
             $timeout = 10; 
 
             //Seulement deux queries, l'api_key et le languague ʕ•ᴥ•ʔ
             $parameters_request = [
-                'api_key'  => $this->apiKey,
-                'language' => 'fr'
+                'api_key'       => $this->apiKey,
+                'language'      => 'fr',
+                'include_adult' => false,
+                'include_video' => false,
+                'page'          => 1,
             ];
 
             //dd($request) => pour voir la fin de la requête à partir du query ʕ•ᴥ•ʔ
 			$request= '?'.http_build_query($parameters_request);
-            
+            dd($request);
             $curl = curl_init();
 
             $options=[
@@ -58,9 +51,6 @@ class TmdbController extends AbstractController
             curl_close($curl);
 
             $decode_response=json_decode($response, true);
-
-
-        }
                 
         return $decode_response;
     }
