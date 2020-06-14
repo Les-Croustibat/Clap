@@ -1,6 +1,5 @@
+{% extends 'base.html.twig' %}
 
-<<<<<<< HEAD
-=======
 {% block css %} 
 
     {# Range Slider #}
@@ -187,7 +186,7 @@
                     <div class="carousel-item active">
                         <img class="d-block w-25" src="http://image.tmdb.org/t/p/w92/{{ movie_result.poster_path }}" alt="First slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>{{ movie_result.title }}</h5>
+                            <h5><a href="{{ path('movie_details',{ id: movie_result.id }) }}">{{ movie_result.title }}</a></h5>
                         </div>
                     </div>
                 </div>co
@@ -265,11 +264,11 @@
 
     {# Ajax - Axios #}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         {# Ajax Random Function #}
         $('#hasard').on('click', function(){
-
             axios.get("{{ path('movie_ajax_random') }}")
             .then(function (response) {
                 $('#content').html(response.data.movie.title);
@@ -277,9 +276,7 @@
             .catch(function (error) {
                 console.log(error);
             });
-
         });
-
         {# Range slider Function #}
         (function () {
                 var init = function () { 
@@ -340,9 +337,16 @@
     
         });
 
+        {# Ajax function for the form #}
+        $('#go').on('click',function(e){
+            // Variable get the value of alll form fields
+            var datas =  $('#visitor_criteria').serialize();
+            // Get the route
+            $.get('{{ path('movie_ajax_movie_criteria') }}', datas, function(response){
+                
+            })
+        });
         
-
     </script>
 
 {% endblock %}
->>>>>>> 66de0957953401ddbc456307561d985f8d052039
