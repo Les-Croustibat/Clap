@@ -12,7 +12,7 @@ class MovieController extends AbstractController
             $Api= new APIAllocineController;
             $resultat = $Api->callAPIRandom(mt_rand(15000, 16000));
             return $this->json($resultat);
-}
+    }
 
        public function movieDetails()
     {
@@ -69,9 +69,73 @@ class MovieController extends AbstractController
 
     public function findMovie()
     {
-        
+        // Call the API controller
+        $apiTMDB = new APITmdbController();
 
-        return $this->render('movie/movie_find.html.twig');
+        // Build the results in an array
+        $genre_selected= implode(',', $_GET['with_genres']);
+        // $year_selected=$_GET['year'];
+        
+        // dd($genre_selected);
+        // Call the API method & retrieve results
+        $findmovies=$apiTMDB->callTMDBAPIDiscover($genre_selected);
+        $movie_results=$findmovies['results'];
+    
+        return $this->render('movie/movie_find.html.twig',[
+
+            'movie_results'   => $movie_results ?? [],
+
+        ]);
     }
+
+    public function ajaxMovieCriteria(){ // Route OK
+      
+        if(!empty($_GET)){
+
+            // Clean all data from forms
+            $safe = $_GET;
+            //$safe = array_map('trim', array_map('strip_tags', $_GET));
+
+            // Call the API
+            $apiTMDB = new APITmdbController();
+
+            // Get API data from the SEARCH/MOVIE endpoint
+            // $search_movies = $apiTMDB->callTMDBAPIMovie($safe['title']);
+            // $movie_year=$search_movies['feed']['movie']['productionYear'];
+            // $movie_actors=$search_movies['feed']['movie']['castingShort']['actors'];
+            // $movie_actors=$search_movies['feed']['movie']['castingShort']['directors'];
+            
+            // // Get API data from the MOVIE/MOVIE endpoint
+            // $extra_movies= $apiTMDB->callTMDBAPIMovieDetails($safe['title']);
+            // // $movie_genre=$extra_movies['movie']['genre'];
+            // // $movie_duration=$extra_movies['movie']['runtime'];
+            // // $movie_nationality=$extra_movies['movie']['nationality'];
+            
+            // // Get API data from the PERSON/MOVIE endpoint
+            // $person_movie=$apiTMDB->callTMDBAPIPeople($safe['name']);
+            // // $film_actor=$person_movie['person']['movie']['director'];
+            // // $film_director=$person_movie['person']['movie']['actor'];
+
+            $findmovie=$apiTMDB->callTMDBAPIDiscover($safe['original_title']);
+
+
+            // $all_API_results=[
+            //     'extra_movies'  => $extra_movies,
+            //     'person_movie'  => $person_movie,
+            // ];
+
+
+            // if($resultat['feed']['totalResults'] == 0){
+            //     return $this->json(['status' => 'ko', 'error' => 'Désolé, cette personne est introuvable']);
+
+            // }else{
+            //     $retourJSON= $resultat['feed']['person'][0]['realName'];
+            //     return $this->json(['status' => 'ok', 'result' =>$retourJSON]);
+            // }
+
+            return $this->$findmovie;
+        }
+    }
+
 
 }
