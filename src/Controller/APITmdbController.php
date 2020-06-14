@@ -138,7 +138,7 @@ class APITmdbController extends AbstractController
         return $decode_response;
     }
 
-    public function callTMDBAPIDiscover ($searchedGenre, $searchedYear) {
+    public function callTMDBAPIDiscover ($searchedYear1, $searchedYear2, $searchedGenre) {
 
         // if(empty($searchedGenre)) {
 
@@ -157,7 +157,8 @@ class APITmdbController extends AbstractController
             'api_key'                  => $this->apiToken,
             'language'                 => 'fr',
             'page'                     => 2,
-            'year'                     => $searchedYear,
+            'primary_release_date.gte' => $searchedYear1,
+            'primary_release_date.lte' => $searchedYear2,
             // 'with_people'              => 'with_people',
             'with_genres'              => $searchedGenre,
             // 'with_runtime.gte'         => 'with_runtime.gte',
