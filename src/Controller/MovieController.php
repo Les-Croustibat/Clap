@@ -69,20 +69,20 @@ class MovieController extends AbstractController
 
     public function findMovie()
     {
-        // $safe = $_GET['results']['original_title'];
-        // $apiTMDB = new APITmdbController();
-        // $findmovie=$apiTMDB->callTMDBAPIDiscover($safe['avatar']);
-        // dd($findmovie);
-
-        
-        $genre_selected= implode(',', $_GET['with_genres']);
-        dd($genre_selected);
+        // Call the API controller
         $apiTMDB = new APITmdbController();
-        $findmovie=$apiTMDB->callTMDBAPIDiscover($genre_selected);
+
+        // Build the results in an array
+        $genre_selected= implode(',', $_GET['with_genres']);
+        $year_selected=$_GET['year'];
+
+        // Call the API method & retrieve results
+        $findmovies=$apiTMDB->callTMDBAPIDiscover($genre_selected);
+        $movie_results=$findmovies['results'];
     
         return $this->render('movie/movie_find.html.twig',[
 
-            'find_movie'   => $findmovie,
+            'movie_results'   => $movie_results ?? [],
 
         ]);
     }

@@ -138,15 +138,15 @@ class APITmdbController extends AbstractController
         return $decode_response;
     }
 
-    public function callTMDBAPIDiscover ($searchedGenre=null) {
+    public function callTMDBAPIDiscover ($searchedGenre, $searchedYear) {
 
-        if(empty($searchedGenre)) {
+        // if(empty($searchedGenre)) {
 
-            // if API not called with parameters, no search
+        //     // if API not called with parameters, no search
 
-            return false;
+        //     return false;
 
-        }  else {
+        // }  else {
 
            // Define the URL with endpoint
            $endpoint = $this->apiURL.'/discover/movie';
@@ -156,7 +156,8 @@ class APITmdbController extends AbstractController
            $parameters_request = [
             'api_key'                  => $this->apiToken,
             'language'                 => 'fr',
-            // 'year'                     => 'year',
+            'page'                     => 2,
+            'year'                     => $searchedYear,
             // 'with_people'              => 'with_people',
             'with_genres'              => $searchedGenre,
             // 'with_runtime.gte'         => 'with_runtime.gte',
@@ -165,6 +166,7 @@ class APITmdbController extends AbstractController
         
             ];
 
+            // Build the query
             $request= '?'.http_build_query($parameters_request);
           
             // Initialize the curl
@@ -177,8 +179,7 @@ class APITmdbController extends AbstractController
                 CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
                 //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
             ];
-            // dump($options);
-            
+        
             // Error message
             if(empty($curl)){
                 die("ERREUR curl_init : cURL is not available.");
@@ -196,9 +197,6 @@ class APITmdbController extends AbstractController
 
             // Decode the response (true, key and value -> PHP)
             $decode_response=json_decode($response, true);
-           
-
-        }
 
         return $decode_response;
     }
