@@ -138,7 +138,11 @@ class APITmdbController extends AbstractController
         return $decode_response;
     }
 
+<<<<<<< HEAD
     public function callTMDBAPIDiscover ($searchedGenre) {
+=======
+    public function callTMDBAPIDiscover ($searchedYear1, $searchedYear2, $searchedGenre) {
+>>>>>>> 66de0957953401ddbc456307561d985f8d052039
 
         if(empty($searchedGenre)) {
 
@@ -157,7 +161,12 @@ class APITmdbController extends AbstractController
             'api_key'                  => $this->apiToken,
             'language'                 => 'fr',
             'page'                     => 2,
+<<<<<<< HEAD
             // 'year'                     => $searchedYear,
+=======
+            'primary_release_date.gte' => $searchedYear1,
+            'primary_release_date.lte' => $searchedYear2,
+>>>>>>> 66de0957953401ddbc456307561d985f8d052039
             // 'with_people'              => 'with_people',
             'with_genres'              => $searchedGenre,
             // 'with_runtime.gte'         => 'with_runtime.gte',
