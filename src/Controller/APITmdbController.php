@@ -138,6 +138,7 @@ class APITmdbController extends AbstractController
         return $decode_response;
     }
 
+    // For all information beside origin country & person
     public function callTMDBAPIDiscover ($searchedYear1, $searchedYear2, $searchedGenre) {
 
         // if(empty($searchedGenre)) {
