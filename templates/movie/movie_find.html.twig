@@ -32,65 +32,65 @@
                     <div class="mt-4">
                         <div class="row row-cols-xl-4 justify-content-center">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="action" name="genre[]" value="action">
+                                <input class="form-check-input" type="checkbox" id="action" name="with_genres[]" value="28">
                                 <label class="form-check-label" for="action">Action</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="animation" name="genre[]" value="animation">
+                                <input class="form-check-input" type="checkbox" id="animation" name="with_genres[]" value="16">
                                 <label class="form-check-label" for="animation">Animation</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="adventure" name="genre[]" value="adventure">
+                                <input class="form-check-input" type="checkbox" id="adventure" name="with_genres[]" value="12">
                                 <label class="form-check-label" for="adventure">Aventure</label>
                             </div>
                         </div>
                         <div class="row row-cols-xl-4 justify-content-center ">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="comedy" name="comedy" value="comedy">
+                                <input class="form-check-input" type="checkbox" id="comedy" name="with_genres[]" value="35">
                                 <label class="form-check-label" for="comedy">Comédie</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="drama" name="drama" value="drama">
+                                <input class="form-check-input" type="checkbox" id="drama" name="with_genres[]" value="18">
                                 <label class="form-check-scary" for="drama">Drame</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="scary" name="scary" value="scary">
-                                <label class="form-check-label" for="scary">Epouvante-horreur</label>
+                                <input class="form-check-input" type="checkbox" id="horror" name="with_genres[]" value="27">
+                                <label class="form-check-label" for="horror">Horreur</label>
                             </div>
                         </div>
                         <div class="row row-cols-xl-4 justify-content-center ">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="family" name="family" value="family">
+                                <input class="form-check-input" type="checkbox" id="family" name="with_genres[]" value="10751">
                                 <label class="form-check-label" for="family">Famille</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="fantastic" name="fantastic" value="fantastic">
+                                <input class="form-check-input" type="checkbox" id="fantastic" name="with_genres[]" value="14">
                                 <label class="form-check-label" for="fantastic">Fantastique</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="war" name="war" value="war">
+                                <input class="form-check-input" type="checkbox" id="war" name="with_genres[]" value="10752">
                                 <label class="form-check-label" for="war">Guerre</label>
                             </div>
                         </div>
                         <div class="row row-cols-xl-4 justify-content-center ">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="historic" name="historic" value="historic">
-                                <label class="form-check-label" for="historic">Historique</label>
+                                <input class="form-check-input" type="checkbox" id="history" name="with_genres[]" value="36">
+                                <label class="form-check-label" for="history">Historique</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="crime" name="crime" value="crime">
+                                <input class="form-check-input" type="checkbox" id="crime" name="with_genres[]" value="80">
                                 <label class="form-check-label" for="crime">Policier</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="romantic" name="romantic" value="romantic">
-                                <label class="form-check-label" for="romantic">Romance</label>
+                                <input class="form-check-input" type="checkbox" id="romance" name="with_genres[]" value="10749">
+                                <label class="form-check-label" for="romance">Romance</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="scifi" name="scifi" value="scifi">
+                                <input class="form-check-input" type="checkbox" id="scifi" name="with_genres[]" value="878">
                                 <label class="form-check-label" for="scifi">Science fiction</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="thriller" name="thriller" value="thriller">
+                                <input class="form-check-input" type="checkbox" id="thriller" name="with_genres[]" value="53">
                                 <label class="form-check-label" for="thriller">Thriller</label>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                 <div class="col-8 col-lg-6">
                     <h2 class="mb-5 text-center">Année de production</h2>
                     <div class="form-group mt-5">
-                        <input type="text" id="slider1" class="slider1" name="slider1">
+                        <input type="text" id="slider1" class="slider1" name="year">
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                 <div class="col-8 col-lg-6">
                     <h2 class="mb-5 text-center">Durée du film</h2>
                     <div class="form-group mt-5">
-                        <input type="text" id="slider2" class="slider2" name="slider2">
+                        <input type="text" id="slider2" class="slider2" name="with_runtime.gte">
                     </div>
                 </div>
             </div>
@@ -121,29 +121,29 @@
                     <h2 class="text-center">Nationalité</h2>
                     <div class="row row-cols-xl-4 justify-content-center mb-3">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="french" name="french" value="french">
+                            <input class="form-check-input" type="checkbox" id="french" name="production_countries[]" value="french">
                             <label class="form-check-label" for="french">Français</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="american" name="american" value="american">
+                            <input class="form-check-input" type="checkbox" id="american" name="production_countries[]" value="american">
                             <label class="form-check-label" for="american">Américain</label>
                         </div>  
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="korean" name="korean" value="korean">
+                            <input class="form-check-input" type="checkbox" id="korean" name="production_countries[]" value="korean">
                             <label class="form-check-label" for="korean">Sud-coréen</label>
                         </div>
                     </div>
                     <div class="row row-cols-xl-4 justify-content-center">   
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="spanish" name="spanish" value="spanish">
+                            <input class="form-check-input" type="checkbox" id="spanish" name="production_countries[]" value="spanish">
                             <label class="form-check-label" for="spanish">Espagnol</label>
                         </div>   
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="italian" name="italian" value="italian">
+                            <input class="form-check-input" type="checkbox" id="italian" name="production_countries[]" value="italian">
                             <label class="form-check-label" for="italian">Italien</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="other" name="other" value="other">
+                            <input class="form-check-input" type="checkbox" id="other" name="production_countries[]" value="other">
                             <label class="form-check-label" for="other">Autre</label>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                 <div class="col-11 col-lg-6">
                     <h2 class="text-center">Acteurs et Réalisateurs</h2>
                     <div class="input-group mb-3 mt-4" id="newItemForm">
-                        <input type="text" class="form-control" placeholder="Acteurs ou réalisateurs favoris ..." id="film_actor_director" name="film_actor_director">
+                        <input type="text" class="form-control" placeholder="Acteurs ou réalisateurs favoris ..." id="film_actor_director" name="with_people">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary seek" type="submit" id="button-addon2">Chercher</button>
                         </div>
@@ -175,8 +175,16 @@
         </form>
 
 
+            {% for find_movies in find_movie %}
+                <div class="find_movie">
+
+                {{ dump(find_movies) }}
+                
+                </div>
+            {% endfor %}
+
         {# carousel to host random films recommendations#}
-        <div id="search-result" class="carousel slide search-result" data-ride="carousel">
+        {# <div id="search-result" class="carousel slide search-result" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -210,7 +218,7 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Suivant</span>
             </a>
-        </div>
+        </div> #}
 
         {# separator #}
         <div class="row justify-content-center">
@@ -227,7 +235,7 @@
         </div>
 
         {# Carousel to host random films recommendations #}
-        <div id="ramdom-result" class="carousel slide ramdom-result" data-ride="carousel">
+        {# <div id="ramdom-result" class="carousel slide ramdom-result" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -261,7 +269,7 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Suivant</span>
             </a>
-        </div>
+        </div> #}
     </div>
 
 {% endblock %}
@@ -334,10 +342,10 @@
             $newItemForm.on('submit', function(e) {
                 e.preventDefault();
                 // Get the value of the imput with val()
-                var text = $('#film_actor_director').val();
+                var text = $('#with_people').val();
                 // Add the retrieved value in the end of the list
                 $peopleList.append('<li title="Cliquer pour enlever">' + text + '</li>');
-                $('#film_actor_director').val('');
+                $('#with_people').val('');
             });
         
             // Listen to the event click to remove items
@@ -348,17 +356,7 @@
     
         });
 
-        {# Ajax function for the form #}
-        $('#visitor_criteria').on('submit',function(e){
-
-            e.preventDefault();
-            // Variable get the value of alll form fields
-            var datas =  $('#visitor_criteria').serialize();
-            // Get the route
-            $.get('{{ path('movie_ajax_movie_criteria') }}', datas, function(response){
-                
-            })
-        });
+        
 
     </script>
 
