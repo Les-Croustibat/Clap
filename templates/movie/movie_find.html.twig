@@ -189,7 +189,7 @@
             {% for movie_result in movie_results %}
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-50" src="http://image.tmdb.org/t/p/w500/{{ movie_result.poster_path }}" alt="First slide">
+                        <a href="{{ path('movie_details',{ id: movie_result.id }) }}"><img class="d-block w-50" src="http://image.tmdb.org/t/p/w500/{{ movie_result.poster_path }}" alt="First slide"></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h2><a href="{{ path('movie_details',{ id: movie_result.id }) }}">{{ movie_result.title }}</a></h2>
                         </div>

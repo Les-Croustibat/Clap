@@ -28,7 +28,7 @@ h2 {
     --main-color: #151515;
     --title-color: #c42323;
     --sentence-color: #e8e8e8;
-    --grey-color: #a52222;
+    --grey-color: #dadada;
     /* #9b999 */
 }
 
@@ -66,12 +66,12 @@ header {
 .navbar a,
 .footer span,
 .footer a {
-    color: var(--black-color) !important;
+    color: var(--main-color) !important;
     font-size: 20px;
 }
 
 .navbar a:hover {
-    color: var(--red-color) !important;
+    color: var(--title-color) !important;
     font-size: 20px;
 }
 
