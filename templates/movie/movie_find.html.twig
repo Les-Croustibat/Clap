@@ -118,7 +118,7 @@
                 <div class="col-8 col-lg-6">
                     <h2 class="mb-5 text-center">Durée du film</h2>
                     <div class="form-group mt-5">
-                        <input type="text" id="slider2" class="slider2" name="with_runtime">
+                        <input type="text" id="slider2" class="slider2" name="with_runtime.gte">
                     </div>
                 </div>
             </div>
@@ -282,6 +282,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
+
         {# Ajax Random Function #}
         $('#hasard').on('click', function(){
             axios.get("{{ path('movie_ajax_random') }}")
@@ -293,6 +294,7 @@
                 console.log(error);
             });
         });
+
         {# Range slider Function #}
         (function () {
                 var init = function () { 
@@ -324,6 +326,7 @@
                 };
                 window.onload = init;
         })();
+
         {# jQuery Tags function #}
         $(function() {
             // Assign values to variables
@@ -348,16 +351,8 @@
             });
     
         });
-        {# Ajax function for the form #}
-        $('#go').on('click',function(e){
-            // Variable get the value of alll form fields
-            var datas =  $('#visitor_criteria').serialize();
-            // Get the route
-            $.get('{{ path('movie_ajax_movie_criteria') }}', datas, function(response){
-                
-            })
-        });
-        
+
+
     </script>
 
 {% endblock %}

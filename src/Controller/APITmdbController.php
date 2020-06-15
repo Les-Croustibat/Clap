@@ -9,8 +9,7 @@ class APITmdbController extends AbstractController
 {
 
     protected $apiToken='8b5753049f43a637a087b0c90b698ac7'; 
-    protected $apiURL = 'https://api.themoviedb.org/3';
-    // protected $apiURL='https://api.themoviedb.org/3/search/movie?api_key='.$apiToken.'&language=fr&query='.$criteria;
+    protected $apiURL='https://api.themoviedb.org/3';
 
 
     // Retrieve data from the API with the film ID: film details 
@@ -59,7 +58,7 @@ class APITmdbController extends AbstractController
         return $decode_response;
     }
 
-    // Retrieve data from the API! films with same genre
+    // Retrieve data from the API films with same genre
     public function callTMDBAPIDiscoverGenre($searchedGenre=null)
     {
 
@@ -74,24 +73,6 @@ class APITmdbController extends AbstractController
         $apiKey= $this->apiToken;
         $timeout = 10;
 
-        // Query paramaters
-        // $parameters_request = [
-        //     'api_key'                  => $this->apiToken,
-        //     'language'                 => 'fr',
-        //     'page'                     => 2,
-        //     // 'primary_release_date.gte' => $searchedYear1,
-        //     // 'primary_release_date.lte' => $searchedYear2,
-        //     // 'with_people'              => 'with_people',
-        //     'with_genres'              => $searchedGenre,
-        //     // 'with_runtime.gte'         => 'with_runtime.gte',
-        //     // 'vote_average.gte'         => 'vote_average.gte',
-        //     'include_adult'            => false,
-
-        // ];
-
-        // // Build the query
-        // $request = '?' . http_build_query($parameters_request);
-
         // Initialize the curl
         $curl = curl_init();
 
@@ -100,7 +81,6 @@ class APITmdbController extends AbstractController
             CURLOPT_URL            => $endpoint.'?with_genres='.$searchedGenre.'&api_key='.$apiKey.'&language=fr', // target the API URL
             CURLOPT_RETURNTRANSFER => true, // return the content into a string
             CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-            //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
         ];
 
         // Error message
@@ -126,7 +106,7 @@ class APITmdbController extends AbstractController
         return $decode_response;
     }
 
-    // For all information beside origin country & person
+    // Retrieve data from the API films with release year
     public function callTMDBAPIDiscoverYear($movie_year1, $movie_year2) {
 
         if(empty($movie_year1 & $movie_year2)) {
@@ -179,11 +159,10 @@ class APITmdbController extends AbstractController
 
         }
 
-
         return $decode_response;
     }
 
-    // For all information beside origin country & person
+    // Retrieve data from the API films with the runtime
     public function callTMDBAPIDiscoverRuntime($movie_runtime1, $movie_runtime2) {
 
         if(empty($movie_runtime1 & $movie_runtime2)) {
