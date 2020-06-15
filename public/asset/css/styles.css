@@ -24,15 +24,12 @@ h2 {
     color: var(--title-color);
 }
 
-p {
-    font-size : 1.4rem;
-}
-
 :root {
     --main-color: #151515;
     --title-color: #c42323;
     --sentence-color: #e8e8e8;
-    --grey-color: #9b9999;
+    --grey-color: #a52222;
+    /* #9b999 */
 }
 
 .btn.btn-secondary {
@@ -78,19 +75,34 @@ header {
     font-size: 20px;
 }
 
-/* FOOTER */
-/* .arrow {
+/* Flèche de retour en haut de page */
+#arrowTop {
+    display: inline-block;
+    background-color: #c42323;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 4px;
     position: fixed;
-    left: 95%;
-    top: 84%;
-} */
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s, 
+      opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+  }
 
-
-/* .arrow {
-    position: absolute;
-    left: 95%;
-    top: 80%;
-} */
+  #arrowTop > i {
+      font-size: 2em;
+      margin-top: 0.3em;
+  }
+  
+  #arrowTop.show {
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
+  }
 
 .footer {
     bottom: 0;
@@ -114,6 +126,10 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+p.phome {
+    font-size : 1.4rem;
 }
 
 .img-popcorn{
@@ -201,19 +217,36 @@ section {
 *       FILM PAGE      *
 ***********************/
 
-.poster {
-    margin-top: 80px;
-    padding: 150px;
-}
-
-.btn.bg_perso.p-2 {
-    margin-bottom: 1em;
-}
-
 .card {
     word-wrap: normal;
     padding: 2rem;
     margin: 2rem;
+}
+
+.card-text .label {
+    font-size:14px;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing: 0.075em;
+    color: #333;
+}
+.card-text .label i.fa {
+	color: #666;
+}	
+.box {
+	background: rgba(240,240,240, .8);
+}
+.box .label {
+    font-size:14px;
+
+    text-transform:uppercase;
+    font-weight:300;
+    letter-spacing: 0.075em;
+    color: #333;
+}
+.box .info {
+    font-weight:600;
+    color: #333;
 }
 
 /***********************

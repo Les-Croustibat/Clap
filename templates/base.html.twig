@@ -5,8 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="Clap, le cinéma vient chez vous, une application web de recommandation de films, plus besoin de chercher des heures quoi regarder, nous vous conseillons.">
 		<meta name="author" content="Application réalisée par Cyrielle Touton, Christophe Borios, Fabien Pergaud et Aurélie Dutrey">
-		<meta
-		name="robots" content="index, follow">
+		<meta name="robots" content="index, follow">
+
+		{# Favicon #}
+		<link rel="shortcut icon" href="{{ asset('asset/img/Favicon/favicon.ico') }}"/>
 
 		{# Fonts #}
 		<link
@@ -52,7 +54,7 @@
 							</li>
 						{% else %}
 							<li class="nav-item mx-4">
-								<a href="" id="deconnect"><i class="fas fa-user mr-2"></i>Déconnexion</a>
+								<a href="#" id="deconnect"><i class="fas fa-user mr-2"></i>Déconnexion</a>
 							</li>
 						{% endif %}
 						{% if is_granted('ROLE_ADMIN') %}
@@ -62,13 +64,20 @@
 						{% endif %}
 						<li class="nav-item mx-4">
 							<a class="" href="{{ path('security_signin') }}"><i class="fas fa-pencil-alt mr-2"></i>Inscription</a>
+						{% if app.user %}
+						<li class="nav-item mx-4">
+            						<a href="{{ path('user_space') }}"><i class="fas fa-film mr-2"></i>Mon espace</a>
 						</li>
+						{% endif %}
+
 					</ul>
 				</div>
 			</nav>
 		</header>
 
 		{% block content %}{% endblock %}
+		{# Flèche de retour en haut de page #}
+		<div id="arrowTop"><i class="fas fa-arrow-up"></i></div>
 
 		{# Footer #}
 		<footer class="footer mt-auto py-5">
@@ -90,7 +99,6 @@
 			</div>
 		</footer>
 
-		{% block js %}{% endblock %}
 
 
 		{# jQuery #}
@@ -102,26 +110,51 @@
 
 		{# sweet alert #}
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-		<script>
-    $('#deconnect').on('click', function (event) {
-		event.preventDefault();	
-		
-		swal.fire({
-			title: 'Etes-vous sûr(e) de vouloir vous déconnecter ?',
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonText: 'Annuler',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Oui !'
-		}).then((result) => {
-			if (result.value) {
-			swal.fire('Vous êtes bien déconnecté(e)');
-			location.href ="{{ path('security_logout') }}";
-			} 
-		})
 
-    })
+		{% block js %}{% endblock %}
+
+		<script>
+	
+			//Alert
+			$('#deconnect').on('click', function () {
+				swal.fire({
+					title: 'Etes-vous sûr(e) de vouloir vous déconnecter ?',
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#3085d6',
+					cancelButtonText: 'Annuler',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'Oui !'
+				}).then((result) => {
+					if (result.value) {
+					swal.fire('Vous êtes bien déconnecté(e)');
+					location.href ="{{ path('security_logout') }}";
+					}
+				})
+			})
+
+			//Flèche de retour en haut de page
+			var btn = $('#arrowTop');
+
+			$(window).scroll(function() {
+				if ($(window).scrollTop() > 300) {
+					btn.addClass('show');
+				} else {
+					btn.removeClass('show');
+				}
+			});
+
+			btn.on('click', function(e) {
+			e.preventDefault()
+				$('html, body').animate({scrollTop:0}, '300');
+			});
+
+				
+		
+
+		
+
+
 		</script>
 	</body>
 
