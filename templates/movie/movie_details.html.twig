@@ -8,19 +8,19 @@
     <div class="card bg_perso mb-3 poster">
     <div class="row no-gutters">
         <div class="col-md-4">
-            <img src="{{poster_link}}" class="card-img" alt="Affiche du film">
+            <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" class="card-img" alt="Affiche du film">
         </div>
         <div class="col-md-8">
         <div class="card-body">
-            <h5 class="card-title h1 font-weight-bold">{{title}}</h5>
+            <h5 class="card-title h1 font-weight-bold">{{original_title}}</h5>
             <p class="card-text"><u>Genre</u> : {{genre}}</p>
-            <p class="card-text"><u>Réalisateur</u> : {{director}}</p>
+            {# <p class="card-text"><u>Réalisateur</u> : {{director}}</p> #}
             <p class="card-text"><u>Nationalité</u> : {{nationality}}</p>
             <p class="card-text"><u>Durée</u> : {{runtime}} min</p>
-            <p class="card-text"><u>Année de sortie</u> : {{year}}</p>
-            <p class="card-text"><u>Acteurs</u> : {{actors}}</p>
+            <p class="card-text"><u>Année de sortie</u> : {{release_date}}</p>
+            {# <p class="card-text"><u>Acteurs</u> : {{actors}}</p> #}
             <p class="card-text"><u>Synopsis</u> : {{synopsis}}</p>
-            <p class="card-text"><u>Note</u> : {{rating}} / 5</p>
+            <p class="card-text"><u>Note</u> : {{rating}} / 10</p>
         </div>
         </div>
         
@@ -34,7 +34,7 @@
 
 {# Bouton de retour #}
 <div class="text-center return">
-    <a href="" class="btn bg_perso p-2">Retour</a>
+    <a href="{{ path('movie_find')}}" class="btn bg_perso p-2">Retour</a>
 </div>
 {% endblock %}
 

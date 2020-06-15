@@ -21,10 +21,6 @@
         </div>
 
         <div class="row justify-content-center">
-            <img src="{{asset('asset/img/clapper.jpg')}}" alt="clapper" class="img-clapper">
-        </div>
-
-        <div class="row justify-content-center">
             <h2 class="choice m-5 mt-lg-5 mb-lg-5 text-center">Tu sais déjà un peu ce que tu veux ...</h2>
         </div>
 
@@ -190,10 +186,10 @@
                     <div class="carousel-item active">
                         <img class="d-block w-25" src="http://image.tmdb.org/t/p/w92/{{ movie_result.poster_path }}" alt="First slide">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>{{ movie_result.title }}</h5>
+                            <h5><a href="{{ path('movie_details',{ id: movie_result.id }) }}">{{ movie_result.title }}</a></h5>
                         </div>
                     </div>
-                </div>co
+                </div>
             {% endfor %}
             <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -268,11 +264,11 @@
 
     {# Ajax - Axios #}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         {# Ajax Random Function #}
         $('#hasard').on('click', function(){
-
             axios.get("{{ path('movie_ajax_random') }}")
             .then(function (response) {
                 $('#content').html(response.data.movie.title);
@@ -280,9 +276,7 @@
             .catch(function (error) {
                 console.log(error);
             });
-
         });
-
         {# Range slider Function #}
         (function () {
                 var init = function () { 
@@ -343,8 +337,16 @@
     
         });
 
+        {# Ajax function for the form #}
+        $('#go').on('click',function(e){
+            // Variable get the value of alll form fields
+            var datas =  $('#visitor_criteria').serialize();
+            // Get the route
+            $.get('{{ path('movie_ajax_movie_criteria') }}', datas, function(response){
+                
+            })
+        });
         
-
     </script>
 
 {% endblock %}
