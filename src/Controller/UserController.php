@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Controller\APIAllocineController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
@@ -14,6 +15,15 @@ class UserController extends AbstractController
 
         return $this->render('user/user_space.html.twig');
     }
+    public function resetPw()
+    {
+        return $this->render('user/user_resetPw.html.twig');
+    }
+    public function forgottenPw()
+    {
+        return $this->render('user/user_forgottenPw.html.twig');
+    }
+
 
     // créer une route spécifique qui permettra d'accéder a cette page, meme si elle sera invisible
     public function ajaxApiperson(){
@@ -22,10 +32,11 @@ class UserController extends AbstractController
             $safe = array_map('trim', array_map('strip_tags', $_GET));
 
             $Api= new APIAllocineController();
-            $resultat = $Api -> callAPIActor($safe['actor'],'person');
+            $resultat = $Api -> callAPIPartner($safe['actor'],'person');
 
             // je retourne le resultat de mon API en JSON
             if($resultat['feed']['totalResults'] == 0){
+                dd($resultat);
                 return $this->json(['status' => 'ko', 'error' => 'Désolé, cette personne est introuvable']);
 
             }else{
@@ -38,5 +49,6 @@ class UserController extends AbstractController
             // return $this->json(['error'=>'Aucune donnée reçues']);
         }
     }
-
 }
+
+
