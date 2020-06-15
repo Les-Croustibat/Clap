@@ -137,8 +137,72 @@ class APITmdbController extends AbstractController
         return $decode_response;
     }
 
+    public function callTMDBAPIMovieTrailer($movieId = null)
+    {
+
+        if (empty($movieId)) {
+
+            // if API not called with parameters, no search
+
+            return false;
+        } else {
+
+            // Define the URL with endpoint
+            $endpoint = $this->apiURL . '/movie/';
+            $timeout = 10;
+
+            // Query paramaters
+            //    $parameters_request = [
+            //     'movie_id'                 => $movieId,
+            //     'api_key'                  => $this->apiToken,
+            //     'language'                 => 'fr',
+            // 'title'                    => 'title',
+            // 'adult'                    => false,
+            // 'genres'                   => 'name',
+            // 'production_countries'     => 'name',
+            // 'popularity'               => 'popularity',
+            // 'runtime'                  => 'runtime',
+            // ];
+
+            // $request= '?'.http_build_query($parameters_request);
+
+            // Initialize the curl
+            $curl = curl_init();
+
+            // Set the curl options
+            $options = [
+                CURLOPT_URL            => $endpoint .$movieId.'/videos'.'?api_key=8b5753049f43a637a087b0c90b698ac7&language=fr', // target the API URL
+                CURLOPT_RETURNTRANSFER => true, // return the content into a string
+                CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
+                //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
+                // CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
+            ];
+            // dump($options);
+
+            // Error message
+            if (empty($curl)) {
+                die("ERREUR curl_init : cURL is not available.");
+            }
+
+            // Config download options
+            curl_setopt_array($curl, $options);
+
+            // Execute the query
+            $response = curl_exec($curl);
+            // curl_error($ch);
+
+            // Close
+            curl_close($curl);
+
+            // Decode the response (true, key and value -> PHP)
+            $decode_response = json_decode($response, true);
+        }
+
+        return $decode_response;
+    }
+
     // For all information beside origin country & person
-    public function callTMDBAPIDiscover($searchedGenre=null)
+    public function callTMDBAPIDiscover($searchedGenre=null, $searchedYear1=null, $searchedYear2=null)
     {
 
         // if(empty($searchedGenre)) {
@@ -176,7 +240,7 @@ class APITmdbController extends AbstractController
 
         // Set the curl options
         $options = [
-            CURLOPT_URL            => $endpoint.'?with_genres='.$searchedGenre.'&api_key=8b5753049f43a637a087b0c90b698ac7&language=fr', // target the API URL
+            CURLOPT_URL            => $endpoint.'?with_genres='.$searchedGenre.'&primary_release_date.gte='.$searchedYear1.'&primary_release_date.lte='.$searchedYear2.'&api_key=8b5753049f43a637a087b0c90b698ac7&language=fr', // target the API URL
             CURLOPT_RETURNTRANSFER => true, // return the content into a string
             CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
             //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 

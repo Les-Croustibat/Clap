@@ -28,7 +28,8 @@ h2 {
     --main-color: #151515;
     --title-color: #c42323;
     --sentence-color: #e8e8e8;
-    --grey-color: #9b9999;
+    --grey-color: #a52222;
+    /* #9b999 */
 }
 
 .btn.btn-secondary {
@@ -216,19 +217,36 @@ p.phome {
 *       FILM PAGE      *
 ***********************/
 
-.poster {
-    margin-top: 80px;
-    padding: 150px;
-}
-
-.btn.bg_perso.p-2 {
-    margin-bottom: 1em;
-}
-
 .card {
     word-wrap: normal;
     padding: 2rem;
     margin: 2rem;
+}
+
+.card-text .label {
+    font-size:14px;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing: 0.075em;
+    color: #333;
+}
+.card-text .label i.fa {
+	color: #666;
+}	
+.box {
+	background: rgba(240,240,240, .8);
+}
+.box .label {
+    font-size:14px;
+
+    text-transform:uppercase;
+    font-weight:300;
+    letter-spacing: 0.075em;
+    color: #333;
+}
+.box .info {
+    font-weight:600;
+    color: #333;
 }
 
 /***********************

@@ -31,7 +31,8 @@ class MovieController extends AbstractController
 
         // Récup le titre
         $movie_title = $movie_search['original_title'];
-        // $movie_title = $movie_search['feed']['movie']['0']['originalTitle'];
+        // Récup le tagline
+        $movie_tagline = $movie_search['tagline'];
         // // Récup l'année de production
         $movie_production_year = $movie_search['release_date'];
         // // Réalisateur
@@ -46,6 +47,11 @@ class MovieController extends AbstractController
         $movie_synopsis = $movie_search['overview'];
         // //Nationalité
         $movie_nationality = $movie_search['production_countries']['0']['iso_3166_1'];
+
+        $movie_all_nationality = [];
+        foreach($movie_search['production_countries'] as $prod_countrie){
+            $movie_all_nationality[] = $prod_countrie['iso_3166_1'];
+        }
         // // Genres
         $movie_genre = $movie_search['genres'];
         $new_genre = [];
@@ -53,31 +59,35 @@ class MovieController extends AbstractController
             $new_genre[] = $genre['name'];
         }
         $movie_genre = implode(', ', $new_genre);
-        // // Bande-Annonce
-        // // $movie_trailer = $movie_details_search['movie']['trailer']['href'];
         // // Durée
         $movie_runtime = ($movie_search['runtime']);
         $movie_id = $movie_search['id'];
+        // // Bande-Annonce
+        // // $movie_trailer = $movie_details_search['movie']['trailer']['href'];
+
+        $movie_search_trailer = $apiTMDB->callTMDBAPIMovieTrailer($id);
+        $movie_key_trailer = $movie_search_trailer['results']['0']['key'];
 
 
-        return $this->render(
-            'movie/movie_details.html.twig',
-            [
-                'original_title' => $movie_title,
-                'release_date' => $movie_production_year,
-                //     'director' => $movie_director,
-                //     'actors' => $movie_actors,
-                'rating' => $movie_rating,
-                'poster_path' => $movie_poster,
-                'synopsis' => $movie_synopsis,
-                'nationality' => $movie_nationality,
-                'genre' => $movie_genre,
-                //     // 'trailer' => $movie_trailer,
-                'runtime' => $movie_runtime,
-                'movie_id' => $movie_id,
-                'movie_results'   => $movie_results ?? [],
-            ]
-        );
+        return $this->render('movie/movie_details.html.twig', [
+            'original_title' => $movie_title,
+            'movie_tagline' => $movie_tagline,
+            'release_date' => $movie_production_year,
+            //     'director' => $movie_director,
+            //     'actors' => $movie_actors,
+            'rating' => $movie_rating,
+            'poster_path' => $movie_poster,
+            'synopsis' => $movie_synopsis,
+            'nationality' => $movie_nationality,
+            'genre' => $movie_genre,
+            //     // 'trailer' => $movie_trailer,
+            'runtime' => $movie_runtime,
+            'movie_id' => $movie_id,
+            'movie_results'   => $movie_results ?? [],
+            'movie_key_trailer' => $movie_key_trailer,
+            'movie_all_nationality' => $movie_all_nationality,
+            
+        ]);
     }
 
     public function findMovie()
@@ -102,13 +112,22 @@ class MovieController extends AbstractController
             echo 'Vous navez pas coche de case';
         }
 
-        // Build the results in an array
-        // $year_selected = explode(',', $_GET['primary_release_date']);
-        // $genre_selected = implode(',', $_GET['with_genres']);
+        // if (isset($_GET['primary_release_date'])) {
+        //     // Build the results in an array
+        //     $chooseYear1 = $_GET['primary_release_date.gte'];
+        //     $chooseYear2 = $_GET['primary_release_date.lte'];
 
-        // $searchedYear1=$year_selected[0];
-        // $searchedYear2=$year_selected[1];
+        //     $year_selected = explode(',', $chooseYears);
 
+        //     $searchedYear1=$year_selected[0];
+        //     $searchedYear2=$year_selected[1];
+            
+        //     // Call the API method & retrieve results
+            // $findmoviesByYears = $apiTMDB->callTMDBAPIDiscover($searchedYear1, $searchedYear2);
+            // dd($findmoviesByYears);
+            // $movie_results = $findmovies['results'];
+            
+        // }
 
         return $this->render('movie/movie_find.html.twig', [
 
