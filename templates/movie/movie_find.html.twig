@@ -217,7 +217,8 @@
             <button type="submit" class="btn btn-secondary random-film" id="hasard">film au hasard</button>
         </div>
 
-        <div id="title"></div>
+
+        <h5 id="title"></h5>
         <img id="poster">
 
         {# Carousel to host random films recommendations #}
@@ -274,8 +275,14 @@
         $('#hasard').on('click', function(){
             axios.get("{{ path('movie_ajax_random') }}")
             .then(function (response) {
-                $('#title').html(response.data['title'])
+                //Titre
+                let htmlTitle = '<a href="'+ response.data['custom_link'] +'">' + response.data['title'] +'</a>';
+                $('#title').html(htmlTitle)
+
+                //Poster
                 $('#poster').attr('src', 'http://image.tmdb.org/t/p/w500/' + response.data['poster_path'])
+                $('#poster').attr('alt', 'Poster du film')
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -342,7 +349,7 @@
     
         });
 
-        {# Ajax function for the form #}
+        {# Ajax function for the form
         $('#go').on('click',function(e){
             // Variable get the value of alll form fields
             var datas =  $('#visitor_criteria').serialize();
@@ -350,7 +357,7 @@
             $.get('{{ path('movie_ajax_movie_criteria') }}', datas, function(response){
                 
             })
-        });
+        }); #}
         
     </script>
 

@@ -11,8 +11,13 @@ class MovieController extends AbstractController
 
     public function ajaxRandom()
     {
+       
         $Api = new APITmdbController();
-        $resultat = $Api->callTMDBAPIRandom(mt_rand(1, 200));
+        $resultat = $Api->callTMDBAPIRandom(mt_rand(1, 100));
+
+        if(isset($resultat['id']) &&  !empty($resultat['id'])){
+            $resultat['link_custom'] = $this->generateUrl('movie_details', ['id' => $resultat['id']]);
+        }
         return $this->json($resultat);
     }
 
