@@ -78,7 +78,6 @@ class MovieController extends AbstractController
             $years_selected = $_GET['release_date'];
             $movie_year = explode(',', $years_selected);
             // Call the API method & retrieve results
-            // $searchedGenre = explode(', ', $genre_selected);
             $findmovies = $apiTMDB->callTMDBAPIDiscoverYear($movie_year[0],$movie_year[1]);
             // $movie_results = $findmovies['results'];
             $movie_results_year = $findmovies['results'];
@@ -94,22 +93,34 @@ class MovieController extends AbstractController
             $movie_runtime = explode(',', $runtime_selected);
             
             // Call the API method & retrieve results
-            // $searchedGenre = explode(', ', $genre_selected);
             $findmovies = $apiTMDB->callTMDBAPIDiscoverRuntime($movie_runtime[0],$movie_runtime[1]);
-            // $movie_results = $findmovies['results'];
             $movie_results_runtime = $findmovies['results'];
             
         } else {
             echo 'Vous n\'avez pas sélectionné une durée';
         }
 
+        // Retrieve all data from API
+        if (isset($_GET['with_genres']['release_date']['with_runtime'])) {
+            $data_selected = $_GET['with_genres']['release_date']['with_runtime'];
+            $movie_data = explode(',', $data_selected);
+            
+            // Call the API method & retrieve results
+            $findmovies = $apiTMDB->callTMDBAPIDiscoverAll($movie_data[0], $movie_data[1], $movie_data[2], $movie_data[3], $movie_data[4]);
+            $movie_results_global = $findmovies['results'];
+            
+        } else {
+            echo 'Vous n\'avez pas sélectionné tous les critères';
+        }
+
+        
 
         return $this->render('movie/movie_find.html.twig', [
 
-            'movie_results'   => $movie_results ?? [],
-            'movie_results_runtime'   => $movie_results_runtime ?? [],
-            'movie_results_year'     => $movie_results_year ?? [],
-            
+            // 'movie_results'   => $movie_results ?? [],
+            // 'movie_results_runtime'   => $movie_results_runtime ?? [],
+            // 'movie_results_year'     => $movie_results_year ?? [],
+            'movie_results_global' => $movie_results_global ?? [],
 
         ]);
     }

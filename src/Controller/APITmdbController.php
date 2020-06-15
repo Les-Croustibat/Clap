@@ -218,5 +218,63 @@ class APITmdbController extends AbstractController
         return $decode_response;
     }
 
+    // Retrieve all data from the API films with the genre, year & runtime
+    public function callTMDBAPIDiscoverAll($searchedGenre=null, $movie_year1, $movie_year2, $movie_runtime1, $movie_runtime2) {
+
+        if(empty($searchedGenre & $movie_year1 & $movie_year2 & $movie_runtime1 & $movie_runtime2)) {
+            // if API not called with parameters, no search
+            return false;
+
+        }  else {
+
+            // Define the URL with endpoint
+            $endpoint = $this->apiURL.'/discover/movie';
+            $apiKey= $this->apiToken;
+            $timeout = 10; 
+            
+            // Initialize the curl
+            $curl = curl_init();
+
+            // Set the url params
+            $urlParams = '?api_key='.$apiKey.'&language=fr';
+            if((isset($movie_runtime1) && !empty($movie_runtime1)) && (isset($movie_year1) && !empty($movie_year1))){
+                $urlParams.= '&with_genres='.$searchedGenre.'&with_runtime.gte='.$movie_runtime1.'&release_date.gte='.$movie_year1.'-01-01';
+            }
+            if((isset($movie_runtime2) && !empty($movie_runtime2))&& (isset($movie_year1) && !empty($movie_year1))){
+                $urlParams.= '&with_genres='.$searchedGenre.'&with_runtime.lte='.$movie_runtime2.'&release_date.lte='.$movie_year2.'-12-31';
+            }
+
+            // Set the curl options
+            $options=[
+                CURLOPT_URL            => $endpoint.$urlParams,
+                CURLOPT_RETURNTRANSFER => true, // return the content into a string
+                CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
+            ];
+        
+            // Error message
+            if(empty($curl)){
+                die("ERREUR curl_init : cURL is not available.");
+            }
+
+            // Config download options
+            curl_setopt_array($curl,$options);
+        
+            // Execute the query
+            $response=curl_exec($curl); 
+            curl_getinfo($curl);
+
+            // Close
+            curl_close($curl);
+
+            // Decode the response (true, key and value -> PHP)
+            $decode_response=json_decode($response, true);
+
+        }
+
+        return $decode_response;
+    }
+
+
+
 
 }

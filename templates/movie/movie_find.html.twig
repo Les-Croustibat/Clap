@@ -107,38 +107,6 @@
                 </div>
             </div>
 
-            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-                <!--Slides-->
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        {% for movie_result_year in movie_results_year %}
-                            <div class="col-md-6 justify-content-center" style="float:left">
-                                <div class="card mb-1 bg-secondary" style="width: 28rem">
-                                    <img class="card-img-top rounded" src="http://image.tmdb.org/t/p/w92/{{ movie_result_year.poster_path }}" alt="{{ movie_result_year.title}}">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a href="{{ path('movie_details',{ id: movie_result_year.id }) }}">{{ movie_result_year.title }}</a></h5>
-                                        <p class="card-text">{{ movie_result_year.overview|slice(0, 27) }}...</p>
-                                        <a class="btn btn-outline-light btn-sm rounded" href="{{ path('movie_details',{ id: movie_result_year.id }) }}">Lire la suite</a>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                     <!--Controls-->
-                {# <div class="controls-bottom">
-                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-                    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
-                </div> #}
-                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-
-            </div>
 
             <div class="row justify-content-center my-5 py-5">
                 <div class="col-8 col-lg-6">
@@ -149,105 +117,40 @@
                 </div>
             </div>
             
-            <div class="d-row justify-content-center my-5 py-5">
-            {% for movie_result_runtime in movie_results_runtime %}
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-6">
-                        <img src="http://image.tmdb.org/t/p/w92/{{ movie_result_runtime.poster_path }}" alt="{{ movie_result_runtime.title }}">
-                    </div>
-                    <div class="col-6">
-                        <h5><a href="{{ path('movie_details',{ id: movie_result_runtime.id }) }}">{{ movie_result_runtime.title }}</a></h5>
-                        <p class="text-justify text-truncate">{{ movie_result_runtime.overview|slice(1, 30) }}</p>
-                        <p class="text-right"><a href="" class="btn btn-outline-dark btn-sm  rounded-0" >Lire la suite</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            </div>
-
-            <div class="row justify-content-center my-5 py-5">
-                <div class="col-11 col-lg-6 mt-4">
-                    <h2 class="text-center">Nationalité</h2>
-                    <div class="row row-cols-xl-4 justify-content-center mb-3">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="french" name="production_countries[]" value="french">
-                            <label class="form-check-label" for="french">Français</label>
+            {# Carousel display all results #}
+            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+                    {# {% set i = 0 %} #}
+                    {% for movie_result_global in movie_results_global %}
+                        {# {% set i = i + 1 %} {{ i == 1 ? 'active' : '' }}#}
+                        <div class="carousel-item active">
+                            <div class="col-6 justify-content-center" style="float:left">
+                                <div class="card mb-1 bg-secondary" style="width: 28rem">
+                                    <img class="card-img-top rounded" src="http://image.tmdb.org/t/p/w92/{{ movie_result_global.poster_path }}" alt="{{ movie_result_global.title}}">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="{{ path('movie_details',{ id: movie_result_global.id }) }}">{{ movie_result_global.title }}</a></h5>
+                                        <p class="card-text">{{ movie_result_global.overview|slice(0, 25) }}...</p>
+                                        <a class="btn btn-outline-light btn-sm rounded" href="{{ path('movie_details',{ id: movie_result_global.id }) }}">Lire la suite</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="american" name="production_countries[]" value="american">
-                            <label class="form-check-label" for="american">Américain</label>
-                        </div>  
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="korean" name="production_countries[]" value="korean">
-                            <label class="form-check-label" for="korean">Sud-coréen</label>
-                        </div>
-                    </div>
-                    <div class="row row-cols-xl-4 justify-content-center">   
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="spanish" name="production_countries[]" value="spanish">
-                            <label class="form-check-label" for="spanish">Espagnol</label>
-                        </div>   
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="italian" name="production_countries[]" value="italian">
-                            <label class="form-check-label" for="italian">Italien</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="other" name="production_countries[]" value="other">
-                            <label class="form-check-label" for="other">Autre</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row justify-content-center my-3 py-3 film_actor_director">
-                <div class="col-11 col-lg-6">
-                    <h2 class="text-center">Acteurs et Réalisateurs</h2>
-                    <div class="input-group mb-3 mt-4" id="newItemForm">
-                        <input type="text" class="form-control" placeholder="Acteurs ou réalisateurs favoris ..." id="film_actor_director" name="with_people">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary seek" type="submit" id="button-addon2">Chercher</button>
-                        </div>
-                    </div>
-                    <div id="list_section" class="text-center">
-                        <div id="people_list">
-                            <ul>
-                            
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                    {% endfor %}
+                 <a class="carousel-control-prev" href="#multi-item-example" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#multi-item-example" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
 
             <div class="row justify-content-center my-5 py-5">
                 <button type="submit" class="btn btn-secondary go" id="go">GO</button>
             </div>
         </form>
-
-        {# carousel to host random films recommendations#} 
-        <div id="search-result" class="carousel slide search-result" data-ride="carousel">
-            {% for movie_result in movie_results %}
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-25" src="http://image.tmdb.org/t/p/w92/{{ movie_result.poster_path }}" alt="{{ movie_result.title }}">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5><a href="{{ path('movie_details',{ id: movie_result.id }) }}">{{ movie_result.title }}</a></h5>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Précédent</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Suivant</span>
-            </a>
-        </div>
             
         {# separator #}
         <div class="row justify-content-center">
