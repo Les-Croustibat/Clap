@@ -214,8 +214,11 @@
         </div>
 
         <div class="row justify-content-center mb-5 pb-5">
-            <button type="submit" class="btn btn-secondary random-film" id="hasard">films au hasard</button>
+            <button type="submit" class="btn btn-secondary random-film" id="hasard">film au hasard</button>
         </div>
+
+        <div id="title"></div>
+        <img id="poster">
 
         {# Carousel to host random films recommendations #}
         {# <div id="ramdom-result" class="carousel slide ramdom-result" data-ride="carousel">
@@ -271,12 +274,14 @@
         $('#hasard').on('click', function(){
             axios.get("{{ path('movie_ajax_random') }}")
             .then(function (response) {
-                $('#content').html(response.data.movie.title);
+                $('#title').html(response.data['title'])
+                $('#poster').attr('src', 'http://image.tmdb.org/t/p/w500/' + response.data['poster_path'])
             })
             .catch(function (error) {
                 console.log(error);
             });
         });
+
         {# Range slider Function #}
         (function () {
                 var init = function () { 

@@ -267,6 +267,57 @@ class APITmdbController extends AbstractController
 
         return $decode_response;
     }
+    
+    // Fonction Random
+    public function callTMDBAPIRandom ($id=null)
+    {
+        if(empty($id)) {
 
+
+            return false;
+
+        }  else {
+
+            //https://api.themoviedb.org/3/movie/12?api_key=8b5753049f43a637a087b0c90b698ac7&language=fr
+            //Requête que doit ressortir de curlʕ•ᴥ•ʔ
+
+            $endpoint = $this->apiURL.'/movie'.'/'.$id;
+            $timeout = 10; 
+
+            //Seulement deux queries, l'api_key et le languague ʕ•ᴥ•ʔ
+            $parameters_request = [
+                'api_key'  => $this->apiToken,
+                'language' => 'fr'
+            ];
+
+            //dd($request) => pour voir la fin de la requête à partir du query ʕ•ᴥ•ʔ
+			$request= '?'.http_build_query($parameters_request);
+            
+            $curl = curl_init();
+
+            $options=[
+                CURLOPT_URL            => $endpoint.$request, 
+                CURLOPT_RETURNTRANSFER => true, 
+                CURLOPT_CONNECTTIMEOUT => $timeout, 
+            ];
+            
+            if(empty($curl)){
+                die("ERREUR curl_init : cURL is not available.");
+            }
+
+            curl_setopt_array($curl,$options);
+        
+            $response=curl_exec($curl);            
+        
+            curl_close($curl);
+
+            $decode_response=json_decode($response, true);
+
+
+        }
+                
+        return $decode_response;
+    }
 }
+
 
