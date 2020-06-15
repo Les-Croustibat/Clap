@@ -52,7 +52,7 @@ error_500:
 
 # movie
 movie_details:
-  path: /fiche-film
+  path: /fiche-film{id}
   controller: App\Controller\MovieController:movieDetails
 
 movie_find:
