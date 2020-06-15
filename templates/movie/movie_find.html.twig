@@ -272,10 +272,15 @@
 
     <script>
         {# Ajax Random Function #}
+        function getRandomInt(min, max) {
+        return min + Math.floor(Math.random() * (max - min + 1));
+        }
+
         $('#hasard').on('click', function(){
             axios.get("{{ path('movie_ajax_random') }}")
             .then(function (response) {
                 //Titre
+                console.log(response)
                 let htmlTitle = '<a href="'+ response.data['link_custom'] +'">' + response.data['title'] +'</a>';
                 $('#title').html(htmlTitle)
 

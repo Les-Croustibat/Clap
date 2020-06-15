@@ -32,6 +32,10 @@
 	</head>
 
 	<body>
+
+		{# Flèche de retour en haut de page #}
+		<a id="button"></a>
+
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<a class="navbar-brand" href="{{ path('default_home') }}"><img src="{{ asset('asset/img/logo-clap.png') }}" alt="logo-clap" class="logo-clap"></a>
@@ -105,23 +109,47 @@
 		{# sweet alert #}
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 		<script>
-    $('#deconnect').on('click', function () {
-      swal.fire({
-        title: 'Etes-vous sûr(e) de vouloir vous déconnecter ?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonText: 'Annuler',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Oui !'
-      }).then((result) => {
-        if (result.value) {
-          swal.fire('Vous êtes bien déconnecté(e)');
-          location.href ="{{ path('security_logout') }}";
-        }
-      })
+		$(document).ready(function(){
+				//Alert
+				$('#deconnect').on('click', function () {
+					swal.fire({
+						title: 'Etes-vous sûr(e) de vouloir vous déconnecter ?',
+						icon: 'warning',
+						showCancelButton: true,
+						confirmButtonColor: '#3085d6',
+						cancelButtonText: 'Annuler',
+						cancelButtonColor: '#d33',
+						confirmButtonText: 'Oui !'
+					}).then((result) => {
+						if (result.value) {
+						swal.fire('Vous êtes bien déconnecté(e)');
+						location.href ="{{ path('security_logout') }}";
+						}
+					})
+				})
 
-    })
+				//Flèche de retour en haut de page
+				var btn = $('#button');
+
+				$(window).scroll(function() {
+				if ($(window).scrollTop() > 300) {
+					btn.addClass('show');
+				} else {
+					btn.removeClass('show');
+				}
+				});
+
+				btn.on('click', function(e) {
+				e.preventDefault();
+				$('html, body').animate({scrollTop:0}, '300');
+				});
+
+				
+		});
+
+		
+
+
 		</script>
 	</body>
 

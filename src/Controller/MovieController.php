@@ -13,7 +13,7 @@ class MovieController extends AbstractController
     {
        
         $Api = new APITmdbController();
-        $resultat = $Api->callTMDBAPIRandom(mt_rand(1, 100));
+        $resultat = $Api->callTMDBAPIRandom(mt_rand(1,500));
 
         if(isset($resultat['id']) &&  !empty($resultat['id'])){
             $resultat['link_custom'] = $this->generateUrl('movie_details', ['id' => $resultat['id']]);
