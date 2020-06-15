@@ -126,10 +126,10 @@ class APITmdbController extends AbstractController
             // Set the url params
             $urlParams = '?api_key='.$apiKey.'&language=fr';
             if(isset($movie_year1) && !empty($movie_year1)){
-                $urlParams.= '&release_date.gte='.$movie_year1;
+                $urlParams.= '&release_date.gte='.$movie_year1.'-01-01';
             }
             if(isset($movie_year2) && !empty($movie_year2)){
-                $urlParams.= '&release_date.lte='.$movie_year2;
+                $urlParams.= '&release_date.lte='.$movie_year2.'-12-31';
             }
 
             // Set the curl options
@@ -149,7 +149,7 @@ class APITmdbController extends AbstractController
         
             // Execute the query
             $response=curl_exec($curl); 
-            curl_getinfo($curl);
+            ///dd(curl_getinfo($curl));
 
             // Close
             curl_close($curl);

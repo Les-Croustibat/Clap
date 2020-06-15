@@ -77,12 +77,12 @@ class MovieController extends AbstractController
         if (isset($_GET['release_date'])) {
             $years_selected = $_GET['release_date'];
             $movie_year = explode(',', $years_selected);
-            
             // Call the API method & retrieve results
             // $searchedGenre = explode(', ', $genre_selected);
             $findmovies = $apiTMDB->callTMDBAPIDiscoverYear($movie_year[0],$movie_year[1]);
             // $movie_results = $findmovies['results'];
             $movie_results_year = $findmovies['results'];
+            
             
         } else {
             echo 'Vous n\'avez pas sélectionné une période';

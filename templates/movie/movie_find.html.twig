@@ -107,28 +107,64 @@
                 </div>
             </div>
 
-            {% for movie_result_year in movie_results_year %}
-                <div >
-                    <img class="d-block w-25" src="http://image.tmdb.org/t/p/w92/{{ movie_result_year.poster_path }}" alt="First slide">
-                    <h5><a href="{{ path('movie_details',{ id: movie_result_year.id }) }}">{{ movie_result_year.title }}</a></h5>
-                </div>
-            {% endfor %}
+            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        {% for movie_result_year in movie_results_year %}
+                            <div class="col-md-6 justify-content-center" style="float:left">
+                                <div class="card mb-1 bg-secondary" style="width: 28rem">
+                                    <img class="card-img-top rounded" src="http://image.tmdb.org/t/p/w92/{{ movie_result_year.poster_path }}" alt="{{ movie_result_year.title}}">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="{{ path('movie_details',{ id: movie_result_year.id }) }}">{{ movie_result_year.title }}</a></h5>
+                                        <p class="card-text">{{ movie_result_year.overview|slice(0, 27) }}...</p>
+                                        <a class="btn btn-outline-light btn-sm rounded" href="{{ path('movie_details',{ id: movie_result_year.id }) }}">Lire la suite</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                     <!--Controls-->
+                {# <div class="controls-bottom">
+                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+                    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+                </div> #}
+                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div>
 
             <div class="row justify-content-center my-5 py-5">
                 <div class="col-8 col-lg-6">
                     <h2 class="mb-5 text-center">Durée du film</h2>
                     <div class="form-group mt-5">
-                        <input type="text" id="slider2" class="slider2" name="with_runtime.gte">
+                        <input type="text" id="slider2" class="slider2" name="with_runtime">
                     </div>
                 </div>
             </div>
-
+            
+            <div class="d-row justify-content-center my-5 py-5">
             {% for movie_result_runtime in movie_results_runtime %}
-                <div >
-                    <img class="d-block w-25" src="http://image.tmdb.org/t/p/w92/{{ movie_result_runtime.poster_path }}" alt="First slide">
-                    <h5><a href="{{ path('movie_details',{ id: movie_result_runtime.id }) }}">{{ movie_result_runtime.title }}</a></h5>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6">
+                        <img src="http://image.tmdb.org/t/p/w92/{{ movie_result_runtime.poster_path }}" alt="{{ movie_result_runtime.title }}">
+                    </div>
+                    <div class="col-6">
+                        <h5><a href="{{ path('movie_details',{ id: movie_result_runtime.id }) }}">{{ movie_result_runtime.title }}</a></h5>
+                        <p class="text-justify text-truncate">{{ movie_result_runtime.overview|slice(1, 30) }}</p>
+                        <p class="text-right"><a href="" class="btn btn-outline-dark btn-sm  rounded-0" >Lire la suite</a>
+                    </div>
                 </div>
+            </div>
             {% endfor %}
+            </div>
 
             <div class="row justify-content-center my-5 py-5">
                 <div class="col-11 col-lg-6 mt-4">
@@ -196,7 +232,7 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-25" src="http://image.tmdb.org/t/p/w92/{{ movie_result.poster_path }}" alt="First slide">
+                        <img class="d-block w-25" src="http://image.tmdb.org/t/p/w92/{{ movie_result.poster_path }}" alt="{{ movie_result.title }}">
                         <div class="carousel-caption d-none d-md-block">
                             <h5><a href="{{ path('movie_details',{ id: movie_result.id }) }}">{{ movie_result.title }}</a></h5>
                         </div>
@@ -213,8 +249,6 @@
             </a>
         </div>
             
-
-
         {# separator #}
         <div class="row justify-content-center">
             <div class="col-6 separator"></div>
@@ -228,47 +262,6 @@
         <div class="row justify-content-center mb-5 pb-5">
             <button type="submit" class="btn btn-secondary random-film" id="hasard">film au hasard</button>
         </div>
-
-        <div id="title"></div>
-        <img id="poster">
-
-        {# Carousel to host random films recommendations #}
-        {# <div id="ramdom-result" class="carousel slide ramdom-result" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5></h5>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5></h5>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5></h5>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Précédent</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Suivant</span>
-            </a>
-        </div> #}
-    </div>
 
 {% endblock %}
 
