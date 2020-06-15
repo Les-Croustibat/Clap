@@ -64,10 +64,12 @@
 						{% endif %}
 						<li class="nav-item mx-4">
 							<a class="" href="{{ path('security_signin') }}"><i class="fas fa-pencil-alt mr-2"></i>Inscription</a>
-						</li>
+						{% if not app.user %}
 						<li class="nav-item mx-4">
             						<a href="{{ path('user_space') }}"><i class="fas fa-film mr-2"></i>Mon espace</a>
-          					</li>
+						</li>
+						{% endif %}
+
 					</ul>
 				</div>
 			</nav>
