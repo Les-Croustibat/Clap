@@ -16,15 +16,11 @@ class MovieController extends AbstractController
         return $this->json($resultat);
     }
 
-    public function movieDetails()
+    public function movieDetails($id)
     {
         // on a bien cliqué sur un film pour avoir les infos
         $apiTMDB = new APITmdbController();
 
-        $findmovies = $apiTMDB->callTMDBAPIMovie('');
-        dd($findmovies);
-        $movie_results = $findmovies['results'];
-        $id = $movie_results['id'];
         $movie_search = $apiTMDB->callTMDBAPIMovieDetails($id);
         // dd($movie_search);
 

@@ -108,6 +108,7 @@
             "ref": "d087df3e087f50da3955f2def05079380da5894b"
         }
     },
+
     "guzzlehttp/guzzle": {
         "version": "6.5.4"
     },
@@ -120,6 +121,7 @@
     "kevinrob/guzzle-cache-middleware": {
         "version": "v2.1.1"
     },
+
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
