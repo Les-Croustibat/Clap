@@ -23,6 +23,10 @@ default_legalNotice:
 user_space:
   path: /mon-espace
   controller: App\Controller\UserController:userSpace
+  
+user_ajax_add_actor:
+  path: /add-actor
+  controller: App\Controller\UserController:ajaxApiperson
 
 # ResetPassword
 app_forgot_password_request:
