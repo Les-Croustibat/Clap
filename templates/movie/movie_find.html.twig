@@ -218,7 +218,7 @@
         </div>
 
 
-        <h5 id="title"></h5>
+        <h2 id="title"></h2>
         <img id="poster">
 
         {# Carousel to host random films recommendations #}
@@ -276,7 +276,7 @@
             axios.get("{{ path('movie_ajax_random') }}")
             .then(function (response) {
                 //Titre
-                let htmlTitle = '<a href="'+ response.data['custom_link'] +'">' + response.data['title'] +'</a>';
+                let htmlTitle = '<a href="'+ response.data['link_custom'] +'">' + response.data['title'] +'</a>';
                 $('#title').html(htmlTitle)
 
                 //Poster
