@@ -83,9 +83,9 @@ class APIAllocineController extends AbstractController
         return $decode_response;
     }
 
-// Function calling the API to display random films
- public function callAPIRandom($search=null)
- {
+    // Function calling the API to display random films
+    public function callAPIRandom($search=null)
+    {
         if(empty($search)) {
 
             // if API not called with parameters, no search
@@ -282,47 +282,35 @@ class APIAllocineController extends AbstractController
 
         }
         
-        // DO NOT FORGET !!! no render just a return of data
         return $decode_response;
     }
     
-    public function callAPIMovie($film_search=null, $movie=null)
+    public function callAPIPerson($seek=null)
     {
-        if(empty ($movie)) {
+        if(empty($seek)) {
 
             // if API not called with parameters, no search
-
             return false;
 
         }  else {
 
-            // Search parameters => a movie then call the API
+            // Search parameters => a person (actor, director) then call the API
             // Define the URL with endpoint
-            $endpoint = $this->apiURL.'/search';
+            $endpoint = $this->apiURL.'/person';
             $timeout = 10; 
-            
-            // Close
-            curl_close($curl);
-
-            // Decode the response (true, key and value -> PHP)
-
-            $decode_response=json_decode($response, true);
-
-            // dump($decode_response['id_movie']);
-            // die;
 
             // Query paramaters
             $parameters_request = [
                 'partner'   => $this->apiKey,
-                'code'      => 'movie',
+                'code'         => $seek,
                 'filter'    => 'movie',
-                'profile'   => 'large',
-                'striptags' => 'synopsis,synopsisshort',
-                'format '   => 'json',
+                'format'   => 'json',
             ];
 
             // String to search
-            $request='?'.http_build_query($parameters_request);
+            $sed = date('Ymd');
+			$sig = urlencode(base64_encode(sha1($this->secretKey.http_build_query($parameters_request).'&sed='.$sed, true)));
+			$request= '?'.http_build_query($parameters_request).'&sed='.$sed.'&sig='.$sig;
 
             // Initialize the curl
             $curl = curl_init();
@@ -332,10 +320,10 @@ class APIAllocineController extends AbstractController
                 CURLOPT_URL            => $endpoint.$request, // target the API URL
                 CURLOPT_RETURNTRANSFER => true, // return the content into a string
                 CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-                CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take
-                CURLOPT_USERAGENT      => $this->getRandomUserAgent(),
-            
+                //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
+                CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
             ];
+            // dump($options);
             
             // Error message
             if(empty($curl)){
@@ -348,24 +336,21 @@ class APIAllocineController extends AbstractController
             // Execute the query
             $response=curl_exec($curl);            
         
+            // dump(curl_getinfo($curl));
+
             // Close
             curl_close($curl);
 
             // Decode the response (true, key and value -> PHP)
             $decode_response=json_decode($response, true);
 
-            // dump($decode_response['id_movie']);
+            // dump($decode_response);
             // die;
-
-            return $decode_response;
 
         }
         
-        // DO NOT FORGET !!! no render just a return of data
         return $decode_response;
-        
     }
-    
 
     private function getRandomUserAgent()
 	{
