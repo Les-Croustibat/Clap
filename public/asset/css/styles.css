@@ -114,6 +114,11 @@ header {
 /***********************
 *         HOME         *
 ***********************/
+
+.img-accueil{
+    width: 100vw;
+    height: 10%;
+}
 section {
     font-family: 'Dosis', sans-serif;
     background-color: var(--main-color);
