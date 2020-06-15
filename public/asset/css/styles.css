@@ -75,9 +75,9 @@ header {
 }
 
 /* Flèche de retour en haut de page */
-#button {
+#arrowTop {
     display: inline-block;
-    background-color: #FF9800;
+    background-color: #c42323;
     width: 50px;
     height: 50px;
     text-align: center;
@@ -91,25 +91,16 @@ header {
     visibility: hidden;
     z-index: 1000;
   }
-  #button::after {
-    content: "\f077";
-    font-family: FontAwesome;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 2em;
-    line-height: 50px;
-    color: #fff;
+
+  #arrowTop > i {
+      font-size: 2em;
+      margin-top: 0.3em;
   }
-  #button:hover {
-    cursor: pointer;
-    background-color: #333;
-  }
-  #button:active {
-    background-color: #555;
-  }
-  #button.show {
+  
+  #arrowTop.show {
     opacity: 1;
     visibility: visible;
+    cursor: pointer;
   }
 
 .footer {
