@@ -107,7 +107,7 @@ class APITmdbController extends AbstractController
 
             // Set the curl options
             $options = [
-                CURLOPT_URL            => $endpoint . $movieId . '?api_key=8b5753049f43a637a087b0c90b698ac7&language=fr', // target the API URL
+                CURLOPT_URL            => $endpoint . $movieId . '?api_key=8b5753049f43a637a087b0c90b698ac7&language=eng-US', // target the API URL
                 CURLOPT_RETURNTRANSFER => true, // return the content into a string
                 CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
                 //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
@@ -171,7 +171,7 @@ class APITmdbController extends AbstractController
 
             // Set the curl options
             $options = [
-                CURLOPT_URL            => $endpoint .$movieId.'/videos'.'?api_key=8b5753049f43a637a087b0c90b698ac7&language=fr', // target the API URL
+                CURLOPT_URL            => $endpoint .$movieId.'/videos'.'?api_key=8b5753049f43a637a087b0c90b698ac7&language=eng-US', // target the API URL
                 CURLOPT_RETURNTRANSFER => true, // return the content into a string
                 CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
                 //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
@@ -240,7 +240,7 @@ class APITmdbController extends AbstractController
 
         // Set the curl options
         $options = [
-            CURLOPT_URL            => $endpoint.'?with_genres='.$searchedGenre.'&primary_release_date.gte='.$searchedYear1.'&primary_release_date.lte='.$searchedYear2.'&api_key=8b5753049f43a637a087b0c90b698ac7&language=fr', // target the API URL
+            CURLOPT_URL            => $endpoint.'?with_genres='.$searchedGenre.'&primary_release_date.gte='.$searchedYear1.'&primary_release_date.lte='.$searchedYear2.'&api_key=8b5753049f43a637a087b0c90b698ac7&language=eng-US', // target the API URL
             CURLOPT_RETURNTRANSFER => true, // return the content into a string
             CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
             //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
@@ -285,7 +285,7 @@ class APITmdbController extends AbstractController
            // Query paramaters
            $parameters_request = [
             'api_key'                  => $this->apiToken,
-            'language'                 => 'fr',
+            'language'                 => 'eng-US',
             'page'                     => 2,
             'primary_release_date.gte' => $searchedYear1,
             'primary_release_date.lte' => $searchedYear2,
@@ -351,7 +351,7 @@ class APITmdbController extends AbstractController
             //Seulement deux queries, l'api_key et le languague ʕ•ᴥ•ʔ
             $parameters_request = [
                 'api_key'  => $this->apiToken,
-                'language' => 'fr'
+                'language' => 'eng-US'
             ];
 
             //dd($request) => pour voir la fin de la requête à partir du query ʕ•ᴥ•ʔ
