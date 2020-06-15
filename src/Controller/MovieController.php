@@ -51,7 +51,6 @@ class MovieController extends AbstractController
         );
     }
 
-    // Function linked to the route
     public function findMovie()
     {
         // Retrieve data regarding film Genre
