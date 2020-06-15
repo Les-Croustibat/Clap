@@ -1,41 +1,127 @@
 {% extends 'base.html.twig' %}
 
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" integrity="sha256-0n6YDYIexWJmHyTKtRRHTXvoanQrXpFfpsfv0h53qvk=" crossorigin="anonymous" />
+<style>
+.card-text .label {
+    font-size:14px;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing: 0.075em;
+    color: #333;
+}
+.card-text .label i.fa {
+	color: #666;
+}	
+.box {
+	background: rgba(240,240,240, .8);
+}
+.box .label {
+    font-size:14px;
+
+    text-transform:uppercase;
+    font-weight:300;
+    letter-spacing: 0.075em;
+    color: #333;
+}
+.box .info {
+    font-weight:600;
+    color: #333;
+}
+</style>
+
+{% endblock %}
 {% block title %}Fiche de film{% endblock %}
 
 {% block content %}
-{# Fiche du film #}
-<main class="d-flex justify-content-center align-items-center">
-    <div class="card bg_perso mb-3 poster">
-    <div class="row no-gutters">
-        <div class="col-md-4">
-            <img src="{{poster_link}}" class="card-img" alt="Affiche du film">
-        </div>
-        <div class="col-md-8">
-        <div class="card-body">
-            <h5 class="card-title h1 font-weight-bold">{{title}}</h5>
-            <p class="card-text"><u>Genre</u> : {{genre}}</p>
-            <p class="card-text"><u>Réalisateur</u> : {{director}}</p>
-            <p class="card-text"><u>Nationalité</u> : {{nationality}}</p>
-            <p class="card-text"><u>Durée</u> : {{runtime}} min</p>
-            <p class="card-text"><u>Année de sortie</u> : {{year}}</p>
-            <p class="card-text"><u>Acteurs</u> : {{actors}}</p>
-            <p class="card-text"><u>Synopsis</u> : {{synopsis}}</p>
-            <p class="card-text"><u>Note</u> : {{rating}} / 5</p>
-        </div>
-        </div>
-        
-            {# <video controls>
-                <source src="{{trailer}}" type="video/mp4">
-            </video> #}
-        
-    </div>
-    </div>
-</main>
+	{# Fiche du film #}
+	<main class="d-flex justify-content-center align-items-center">
+		<div class="card bg_perso mb-3 poster">
+			<div class="row no-gutters">
+				<div class="col-md-4 px-3">
+					<img src="https://image.tmdb.org/t/p/w500{{poster_path}}" class="card-img mt-4" alt="Affiche du film">
+				</div>
+				<div class="col-md-8">                    
+					<div class="card-body">
+						<h5 class="card-title h1 font-weight-bold"><i class="fas fa-film"></i>  {{original_title}}</h5>
+						<h5 class="card-title h2 font-italic">&laquo; {{movie_tagline}} &raquo;</h5>
 
-{# Bouton de retour #}
-<div class="text-center return">
-    <a href="" class="btn bg_perso p-2">Retour</a>
-</div>
+						<div class="row py-3">
+	                        <div class="col-4 h-100">
+	                    		<div class="box border border-secondary d-flex">
+	                        		<div class="m-auto py-3 text-center">
+
+	                        			{%  if movie_all_nationality|length <= 1 %}
+			                        	<span class="label d-block">Nationalité</span>
+	                        			{%  else %}
+			                        	<span class="label d-block">Nationalités</span>
+			                        	{% endif %}
+
+			                        	<span class="info">
+			                        	{%  for nationality in movie_all_nationality %}
+			                        		<span class="flag-icon flag-icon-{{nationality|lower}}" title="{{nationality}}"></span>
+			                        	{% endfor %}
+			                        	</span>
+		                        	</div>
+	                        	</div>
+	                        </div>
+	                        <div class="col-4 h-100 ">
+	                        	<div class="box border border-secondary d-flex">
+	                        		<div class="m-auto py-3 text-center">
+			                        	<span class="label d-block">Durée</span> 
+			                        	<span class="info">{{runtime}} min</span>
+			                        </div>
+		                        </div>
+	                        </div>
+	                        <div class="col-4 h-100 ">
+	                        	<div class="box border border-secondary d-flex">
+	                        		<div class="m-auto py-3 text-center">
+			                        	<span class="label d-block">Date de sortie</span> 
+			                        	<span class="info">{{release_date|date('d/m/Y')}}</span>
+			                        </div>
+		                        </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="row">
+	                    	<div class="col-12 mt-5">
+
+								<p class="card-text"><span class="label mr-2" ><i class="fa fa-fw fa-info-circle"></i> Genre :</span> {{genre}}</p>
+								{# <p class="card-text"><u>Réalisateur</u> : {{director}}</p> #}
+
+								{# <p class="card-text"><u>Acteurs</u> : {{actors}}</p> #}
+								<p class="card-text">
+									<span class="label mr-2"><i class="fa fa-fw fa-quote-left"></i>  Synopsis :</span> {{synopsis}}</p>
+								<p class="card-text">
+									<span class="label mr-2"><i class="fa fa-fw fa-star"></i> Note :</span>
+									{{rating}} / 10</p>
+	                    	</div>
+						</div>
+					</div>
+            
+            	</div>
+
+            	<div class="col-12">
+            		<div class="row">
+
+            			<h5 class="card-title h1 mt-5 pl-3 font-weight-bold"><i class="fas fa-video"></i>  Bande Annonce</h5>
+
+		                <div class="col-12 mt-2 mx-auto">
+		                	<div class="embed-responsive embed-responsive-16by9">
+			                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{movie_key_trailer}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			                </div>
+						</div>
+            		</div>
+            	</div>
+            </div>
+		</div>
+	</main>
+
+	{# Bouton de retour #}
+	{# <div class="text-center return">
+		<a href="{{ path('movie_find')}}" class="btn bg_perso p-2">Retour</a>
+	</div> #}
 {% endblock %}
 
-{% block js %} {% endblock %}
+{% block js %}{% endblock %}
+

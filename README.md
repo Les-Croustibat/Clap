@@ -1,7 +1,7 @@
 # Clap
 Projet de soutenance WebForce3 : Clap, une application de recommandation de films
 
-En passe d'inspiration ? 
+En panne d'inspiration ? 
 Vous passez beaucoup trop de temps à choisir un film ? 
 
 Essayez Clap ! 

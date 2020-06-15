@@ -23,6 +23,10 @@ default_legalNotice:
 user_space:
   path: /mon-espace
   controller: App\Controller\UserController:userSpace
+  
+user_ajax_add_actor:
+  path: /add-actor
+  controller: App\Controller\UserController:ajaxApiperson
 
 # ResetPassword
 app_forgot_password_request:
@@ -52,7 +56,7 @@ error_500:
 
 # movie
 movie_details:
-  path: /fiche-film
+  path: /fiche-film/{id}
   controller: App\Controller\MovieController:movieDetails
 
 movie_find:
@@ -62,6 +66,10 @@ movie_find:
 movie_ajax_random:
   path: /ajax/random
   controller: App\Controller\MovieController:ajaxRandom
+
+movie_ajax_movie_criteria:
+  path: /ajax/random-with-criteria
+  controller: App\Controller\MovieController:ajaxMovieCriteria
 
 # security
 security_login:
