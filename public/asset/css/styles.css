@@ -24,10 +24,6 @@ h2 {
     color: var(--title-color);
 }
 
-p {
-    font-size : 1.4rem;
-}
-
 :root {
     --main-color: #151515;
     --title-color: #c42323;
@@ -114,6 +110,10 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+p.phome {
+    font-size : 1.4rem;
 }
 
 .img-popcorn{
