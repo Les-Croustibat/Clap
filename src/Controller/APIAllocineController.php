@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Controller;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 
 class APIAllocineController extends AbstractController
 {
@@ -12,8 +10,8 @@ class APIAllocineController extends AbstractController
     protected $apiKey = '100043982026';
     protected $secretKey = '29d185d98c984a359e6e6f26a0474269';
 
-    //Fonction Fabien
-    public function callAPIActor($search=null,$filter=null)
+    // callAPIPartner('nom_du_film', 'person')
+    public function callAPIPartner($search=null,$filter=null)
     {
         if(empty($search)) {
 
@@ -33,7 +31,7 @@ class APIAllocineController extends AbstractController
                 'partner'   => $this->apiKey,
                 'q'         => $search,
                 'filter'    => $filter,
-                'format'   => 'json',
+                'format'    => 'json',
             ];
 
             // String to search
@@ -82,11 +80,10 @@ class APIAllocineController extends AbstractController
         
         return $decode_response;
     }
-
-    // Function calling the API to display random films
-    public function callAPIRandom($search=null)
+    
+    public function callAPIMovie($film_search=null, $movie=null)
     {
-        if(empty($search)) {
+        if(empty ($movie)) {
 
             // if API not called with parameters, no search
 
@@ -94,23 +91,21 @@ class APIAllocineController extends AbstractController
 
         }  else {
 
-            // Search parameters => a person (actor, director) then call the API
+            // Search parameters => a movie then call the API
             // Define the URL with endpoint
-            $endpoint = $this->apiURL.'/movie';
+            $endpoint = $this->apiURL.'/search';
             $timeout = 10; 
-
+            
             // Query paramaters
             $parameters_request = [
+                'q'         => $film_search,
                 'partner'   => $this->apiKey,
-                'code'      => $search,
-                'mediafmt'  => 'flv',
                 'filter'    => 'movie',
+                'format '   => 'json',
             ];
 
             // String to search
-            $sed = date('Ymd');
-			$sig = urlencode(base64_encode(sha1($this->secretKey.http_build_query($parameters_request).'&sed='.$sed, true)));
-			$request= '?'.http_build_query($parameters_request).'&sed='.$sed.'&sig='.$sig;
+            $request='?'.http_build_query($parameters_request);
 
             // Initialize the curl
             $curl = curl_init();
@@ -120,10 +115,9 @@ class APIAllocineController extends AbstractController
                 CURLOPT_URL            => $endpoint.$request, // target the API URL
                 CURLOPT_RETURNTRANSFER => true, // return the content into a string
                 CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-                //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
-                CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
+                CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
+                CURLOPT_USERAGENT      => $this->getRandomUserAgent(),
             ];
-            //dump($options);
             
             // Error message
             if(empty($curl)){
@@ -136,29 +130,69 @@ class APIAllocineController extends AbstractController
             // Execute the query
             $response=curl_exec($curl);            
         
-            // dump(curl_getinfo($curl));
-            
-
             // Close
             curl_close($curl);
 
             // Decode the response (true, key and value -> PHP)
-            $decode_response = json_decode($response, true);
+            $decode_response=json_decode($response, true);
+
+            // dump($decode_response['id_movie']);
+            // die;
+
+            // Query paramaters
+            $parameters_request = [
+                'partner'   => $this->apiKey,
+                'code'      => $movie,
+                'filter'    => 'movie',
+                'profile'   => 'large',
+                'striptags' => 'synopsis,synopsisshort',
+                'format '   => 'json',
+            ];
+
+            // String to search
+            $request='?'.http_build_query($parameters_request);
+
+            // Initialize the curl
+            $curl = curl_init();
+
+            // Set the curl options
+            $options=[
+                CURLOPT_URL            => $endpoint.$request, // target the API URL
+                CURLOPT_RETURNTRANSFER => true, // return the content into a string
+                CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
+                CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take
+                CURLOPT_USERAGENT      => $this->getRandomUserAgent(),
             
+            ];
+            
+            // Error message
+            if(empty($curl)){
+                die("ERREUR curl_init : cURL is not available.");
+            }
+
+            // Config download options
+            curl_setopt_array($curl,$options);
+        
+            // Execute the query
+            $response=curl_exec($curl);            
+        
+            // Close
+            curl_close($curl);
+
+            // Decode the response (true, key and value -> PHP)
+            $decode_response=json_decode($response, true);
+
+            return $decode_response;
 
         }
-        
-        // DO NOT FORGET !!! no render just a return of data
-        return $decode_response;
-        
     }
 
-    public function callAPIPartner($search=null)
-
+    public function callAPIPerson($person_search=null, $film_search=null)
     {
-        if(empty($search)) {
+        if(empty($person_search)) {
 
             // if API not called with parameters, no search
+
             return false;
 
         }  else {
@@ -170,15 +204,14 @@ class APIAllocineController extends AbstractController
 
             // Query paramaters
             $parameters_request = [
+                'q'         => $person_search,
                 'partner'   => $this->apiKey,
-                'q'      => $search,
-                'filter'    => 'movie',
+                'filter'    => 'person',
+                'format '   => 'json',
             ];
 
             // String to search
-            $sed = date('Ymd');
-			$sig = urlencode(base64_encode(sha1($this->secretKey.http_build_query($parameters_request).'&sed='.$sed, true)));
-			$request= '?'.http_build_query($parameters_request).'&sed='.$sed.'&sig='.$sig;
+            $request='?'.http_build_query($parameters_request);
 
             // Initialize the curl
             $curl = curl_init();
@@ -188,7 +221,7 @@ class APIAllocineController extends AbstractController
                 CURLOPT_URL            => $endpoint.$request, // target the API URL
                 CURLOPT_RETURNTRANSFER => true, // return the content into a string
                 CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-                //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
+                CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
                 CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
             ];
             
@@ -202,48 +235,27 @@ class APIAllocineController extends AbstractController
         
             // Execute the query
             $response=curl_exec($curl);            
-
+        
             // Close
             curl_close($curl);
 
             // Decode the response (true, key and value -> PHP)
             $decode_response=json_decode($response, true);
 
-            // dump($decode_response);
+            // dump($decode_response['id_movie']);
             // die;
-
-        }
-        
-        // DO NOT FORGET !!! no render just a return of data
-        return $decode_response;
-    }
-
-    public function callAPIPartner2($code=null)
-    {
-        if(empty($code)) {
-
-            // if API not called with parameters, no search
-            return false;
-
-        }  else {
-
-            // Search parameters => a person (actor, director) then call the API
-            // Define the URL with endpoint
-            $endpoint = $this->apiURL.'/movie';
-            $timeout = 10; 
 
             // Query paramaters
             $parameters_request = [
                 'partner'   => $this->apiKey,
-                'code'         => $code,
+                'code'      => $film_search,
                 'filter'    => 'movie',
-                'format'   => 'json',
+                'profile'   => 'large',
+                'format '   => 'json',
             ];
 
             // String to search
-            $sed = date('Ymd');
-			$sig = urlencode(base64_encode(sha1($this->secretKey.http_build_query($parameters_request).'&sed='.$sed, true)));
-			$request= '?'.http_build_query($parameters_request).'&sed='.$sed.'&sig='.$sig;
+            $request='?'.http_build_query($parameters_request);
 
             // Initialize the curl
             $curl = curl_init();
@@ -253,10 +265,10 @@ class APIAllocineController extends AbstractController
                 CURLOPT_URL            => $endpoint.$request, // target the API URL
                 CURLOPT_RETURNTRANSFER => true, // return the content into a string
                 CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-                //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
-                CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
+                CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take
+                CURLOPT_USERAGENT      => $this->getRandomUserAgent(),
+            
             ];
-            // dump($options);
             
             // Error message
             if(empty($curl)){
@@ -269,87 +281,15 @@ class APIAllocineController extends AbstractController
             // Execute the query
             $response=curl_exec($curl);            
         
-            // dump(curl_getinfo($curl));
-
             // Close
             curl_close($curl);
 
             // Decode the response (true, key and value -> PHP)
             $decode_response=json_decode($response, true);
 
-            // dump($decode_response);
-            // die;
+            return $decode_response;
 
         }
-        
-        return $decode_response;
-    }
-    
-    public function callAPIPerson($seek=null)
-    {
-        if(empty($seek)) {
-
-            // if API not called with parameters, no search
-            return false;
-
-        }  else {
-
-            // Search parameters => a person (actor, director) then call the API
-            // Define the URL with endpoint
-            $endpoint = $this->apiURL.'/person';
-            $timeout = 10; 
-
-            // Query paramaters
-            $parameters_request = [
-                'partner'   => $this->apiKey,
-                'code'         => $seek,
-                'filter'    => 'movie',
-                'format'   => 'json',
-            ];
-
-            // String to search
-            $sed = date('Ymd');
-			$sig = urlencode(base64_encode(sha1($this->secretKey.http_build_query($parameters_request).'&sed='.$sed, true)));
-			$request= '?'.http_build_query($parameters_request).'&sed='.$sed.'&sig='.$sig;
-
-            // Initialize the curl
-            $curl = curl_init();
-
-            // Set the curl options
-            $options=[
-                CURLOPT_URL            => $endpoint.$request, // target the API URL
-                CURLOPT_RETURNTRANSFER => true, // return the content into a string
-                CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-                //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
-                CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
-            ];
-            // dump($options);
-            
-            // Error message
-            if(empty($curl)){
-                die("ERREUR curl_init : cURL is not available.");
-            }
-
-            // Config download options
-            curl_setopt_array($curl,$options);
-        
-            // Execute the query
-            $response=curl_exec($curl);            
-        
-            // dump(curl_getinfo($curl));
-
-            // Close
-            curl_close($curl);
-
-            // Decode the response (true, key and value -> PHP)
-            $decode_response=json_decode($response, true);
-
-            // dump($decode_response);
-            // die;
-
-        }
-        
-        return $decode_response;
     }
 
     private function getRandomUserAgent()

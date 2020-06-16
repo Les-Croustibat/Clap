@@ -3,11 +3,24 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User; // J'appelle l'entity dans laquelle je vais enregistrer mes données => correspond à une table SQL
 
+/**
+* Require ROLE_ADMIN for *every* controller method in this class.
+*
+* @IsGranted("ROLE_ADMIN")
+*/
 class AdminController extends AbstractController
 {
+
+    public function adminDashboard()
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Un utilisateur a voulu se connecter sans être [\'ROLE_ADMIN\']');
+
+    }
+
     public function list()
     {
         // On accède au manager (connexion DB)

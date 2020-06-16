@@ -98,6 +98,7 @@
                 </div>
             </div>
 
+            {# Année de production #}
             <div class="row justify-content-center my-5 py-5">
                 <div class="col-8 col-lg-6">
                     <h2 class="mb-5 text-center">Année de production</h2>
@@ -107,7 +108,7 @@
                 </div>
             </div>
 
-
+            {# Durée de film #}
             <div class="row justify-content-center my-5 py-5">
                 <div class="col-8 col-lg-6">
                     <h2 class="mb-5 text-center">Durée du film</h2>
@@ -115,7 +116,7 @@
                         <input type="text" id="slider2" class="slider2" name="with_runtime">
                     </div>
                 </div>
-            </div>
+            </div
             
             {# Button GO#}
             <div class="row justify-content-center my-5 py-5">
@@ -172,6 +173,11 @@
             <button type="submit" class="btn btn-secondary random-film" id="hasard">film au hasard</button>
         </div>
 
+        {# Affichage des films en aléatoire #}
+        <h2 id="title"></h2>
+        <img id="poster">
+    </div>
+
 {% endblock %}
 
 {% block js %}
@@ -186,11 +192,22 @@
     <script>
 
         {# Ajax Random Function #}
+        function getRandomInt(min, max) {
+        return min + Math.floor(Math.random() * (max - min + 1));
+        }
+
         $('#hasard').on('click', function(){
             axios.get("{{ path('movie_ajax_random') }}")
             .then(function (response) {
-                $('#title').html(response.data['title'])
+                console.log(response.data.id)
+                //Titre
+                let htmlTitle = '<a href="'+ response.data['link_custom'] +'">' + response.data['title'] +'</a>';
+                $('#title').html(htmlTitle)
+
+                //Poster
                 $('#poster').attr('src', 'http://image.tmdb.org/t/p/w500/' + response.data['poster_path'])
+                $('#poster').attr('alt', 'Poster du film')
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -253,7 +270,6 @@
             });
     
         });
-
 
     </script>
 

@@ -17,12 +17,26 @@ class UsersFixtures extends Fixture
     }
 
     public function load(ObjectManager $manager)
-    {
-           // Instancie un Faker pour créer des faux users
-           $faker = \Faker\Factory::create('fr_FR');
+    {       
+            // Création du ROLE_ADMIN
+            $admin = new User();
+            $admin->setEmail('contact@clap.fr');
+            $admin->setRoles(['ROLE_ADMIN']);
+            $admin->setPassword($this->passwordEncoder->encodePassword(
+            $admin,
+            'toto'
+            ));
+            $admin->setFirstname('La');
+            $admin->setLastname('Team');
+            $admin->setPseudo('Croustibat');
 
-           // Boucle pour créer des utilisateurs fakes
-           for ($i = 0; $i < 10; $i++) {
+            $manager->persist($admin);
+
+            // Instancie un Faker pour créer des faux users
+            $faker = \Faker\Factory::create('fr_FR');
+
+            // Boucle pour créer des utilisateurs fakes
+            for ($i = 0; $i < 10; $i++) {
                $user = new User();
    
                $user->setEmail($faker->email);
@@ -36,7 +50,8 @@ class UsersFixtures extends Fixture
                $user->setPseudo($faker->username);
    
                $manager->persist($user);
-               $manager->flush();
-           }
+            }
+        
+        $manager->flush();
     }
 }

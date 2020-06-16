@@ -117,7 +117,7 @@ class SecurityController extends AbstractController
                 $entityManager->flush();
 
                 $this->addFlash('success', 'Inscription confirmée, bienvenue !');
-                // FAIRE REDIRECTION !!!
+                return $this->redirectToRoute('security_login');
             }
             else {
             // Il y a des erreurs
@@ -132,22 +132,4 @@ class SecurityController extends AbstractController
         ]);
     } // Fin function signIn
 
-
-    // private function verifForm($superglobale, $champs)
-    // {
-    //     // Fonction universelle de vérification de formulaire
-    //     // Boucler sur "champs"
-    //     foreach ($champs as $champ) {
-    //         // Vérifier si le champ existe et si le champ n'est pas vide
-    //         if (isset($superglobale[$champ]) && !empty($superglobale[$champ])) {
-    //             $reponse = true;
-    //         }
-    //         // Sinon retourner false
-    //         else {
-    //             return false;
-    //         }
-    //     }
-    //     // Envoyer la réponse "return"
-    //     return $reponse;
-    // } // Fin verifform
 }

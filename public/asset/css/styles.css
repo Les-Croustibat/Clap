@@ -1,11 +1,6 @@
 /****************************
-*          GLOBAL           *
+*          GENERAL           *
 ****************************/
-
-html {
-    scroll-behavior: smooth;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -14,55 +9,186 @@ html {
 body {
     box-sizing: border-box;
     font-family: 'Dosis', sans-serif;
-    background-color: var(--black-color);
+    background-color: var(--main-color);
+    color: var(--sentence-color);
+}
+
+h1 {
+    font-family: 'Limelight', cursive;
+    color: var(--title-color);
+    padding-bottom: 1em;
+}
+
+h2 {
+    font-size: 24px;
+    color: var(--title-color);
 }
 
 :root {
     --main-color: #151515;
     --title-color: #c42323;
     --sentence-color: #e8e8e8;
-    --grey-color: #9b9999;
+    --grey-color: #a52222;
+    /* #9b999 */
+}
+
+.btn.btn-secondary {
+    margin-bottom: 2em;
+}
+
+.textinput {
+    width: 100%;
+}
+
+.bg_perso {
+    background-color: var(--grey-color);
 }
 
 /***********************
 *    HEADER FOOTER     *
 ***********************/
 
+/******* NAV BAR  *******/
+header {
+    background-color: var(--grey-color);
+}
+
+.logo-clap {
+    width: 80px;
+    height: 80px;
+}
+
+.navbar,
+.footer {
+    background-color: var(--grey-color);
+}
+
+.navbar a,
+.footer span,
+.footer a {
+    color: var(--black-color) !important;
+    font-size: 20px;
+}
+
+.navbar a:hover {
+    color: var(--red-color) !important;
+    font-size: 20px;
+}
+
+/* Flèche de retour en haut de page */
+#arrowTop {
+    display: inline-block;
+    background-color: #c42323;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s, 
+      opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+  }
+
+  #arrowTop > i {
+      font-size: 2em;
+      margin-top: 0.3em;
+  }
+  
+  #arrowTop.show {
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
+  }
+
+  /* Hello User */
+  #HelloUser{
+    position: absolute;
+    text-transform: uppercase;
+    font-weight: bold;
+    top: 11%;
+    right: 6%;
+    animation: text 3s 1;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+  }
+
+  @keyframes text {
+      0%{
+        color: black;
+      }
+      30%{
+          letter-spacing: 25px;
+      }
+      85%{
+          letter-spacing: 8px;
+      }
+      
+  }
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: var(--grey-color);
+}
 
 /***********************
 *         HOME         *
 ***********************/
+section {
+    font-family: 'Dosis', sans-serif;
+    background-color: var(--main-color);
+    color: var(--sentence-color);
+    margin-top: 8vh;
+}
 
+.content.home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+p.phome {
+    font-size : 1.4rem;
+}
+
+.img-popcorn{
+    width : 30%;
+}
 
 /***********************
 *       FIND MOVIE     *
 ***********************/
 
-
 .find-movie {
     font-family: 'Dosis', sans-serif;
-    background-color: #151515;
-    color:  #e8e8e8;
+    background-color: var(--main-color);
+    color: var(--sentence-color);
 }
 
 .find-movie .logo {
     width: 15%;
 }
 
-.find-movie  h1 {
+.find-movie h1 {
     text-transform: uppercase;
     font-family: 'Limelight', cursive;
-    color: #c42323;
+    color: var(--title-color);
 }
 
 .find-movie .choice {
     text-transform: capitalize;
-    color:  #e8e8e8;
+    color: var(--sentence-color);
 }
 
-.find-movie  h2 {
+.find-movie h2 {
     text-transform: uppercase;
-    color: #c42323;
+    color: var(--title-color);
     font-size: 1.7em;
 }
 
@@ -70,7 +196,7 @@ body {
     border-bottom: 2px solid #e8e8e8;
     display: inline-block;
     width: 50vw;
-    margin: 20px 0 ; 
+    margin: 20px 0;
 }
 
 .find-movie .random-film {
@@ -102,13 +228,51 @@ body {
 }
 
 .find-movie #list_section #tag {
-    background-color:  #c42323;
+    background-color: #c42323;
     color: #e8e8e8;
-    }
-    
+}
+
+.img-clapper{
+    width: 70%;
+    border-radius: 5%;
+    box-shadow: 8px 8px 0px #c42323;
+}
+
 /***********************
 *       FILM PAGE      *
 ***********************/
+
+.card {
+    word-wrap: normal;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.card-text .label {
+    font-size:14px;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing: 0.075em;
+    color: #333;
+}
+.card-text .label i.fa {
+	color: #666;
+}	
+.box {
+	background: rgba(240,240,240, .8);
+}
+.box .label {
+    font-size:14px;
+
+    text-transform:uppercase;
+    font-weight:300;
+    letter-spacing: 0.075em;
+    color: #333;
+}
+.box .info {
+    font-weight:600;
+    color: #333;
+}
 
 /***********************
 *         ABOUT        *
@@ -120,35 +284,45 @@ body {
 
 .about {
     font-family: 'Dosis', sans-serif;
-    background-color: #151515;
-    color:  #e8e8e8;
+    background-color: var(--main-color);
+    color: var(--sentence-color);
 }
 
 .about h1 {
     text-transform: uppercase;
     font-family: 'Limelight', cursive;
-    color: #c42323;
+    color: var(--title-color);
 }
 
-.about h2, h3 {
+.about h2,
+h3 {
     text-transform: capitalize;
-    color: #c42323;
+    color: var(--title-color);
 }
 
 /***********************
 *      CONTACT FORM    *     
 ************************/
+.container.content-contact {
+    margin-top: 8vh;
+    margin-bottom: 8vh;
+    color: white;
+}
 
 /***********************
 *       CREDITS        *
 ************************/
 
+
 /***********************
 *     LEGAL NOTICE     *
 ***********************/
+.container.legal_notice {
+    color: var(--sentence-color);
+}
 
-.legal_notice .logo{
-    width:20%;
+.legal_notice .logo {
+    width: 20%;
 }
 
 .legal_notice .title {
@@ -162,245 +336,133 @@ body {
 /**********************
 *       SIGN UP       *
 **********************/
+.container.signin {
+    color: var(--sentence-color);
+}
+
+.img-charlie{
+    width : 70%
+}
+
+.h1-signin{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 
 /**********************
 *      LOGIN/OUT      *
 **********************/
+.container.login {
+    color: var(--sentence-color);
+}
+
+.img-sieges{
+    width: 35%;
+}
+
+.img-bye{
+    width: 50%;
+    border-radius : 10%;
+}
 
 /**********************
 *       RESET PW      *
 **********************/
+.container.forgottenPw {
+    color: var(--sentence-color);
+}
 
 /**********************
 *      USER SPACE     *
 **********************/
 
-/*********************
+
 
 /**********************
 *        ADMIN        *
 **********************/
+.container.user-view {
+    margin-top: 8vh;
+    margin-bottom: 8vh;
+}
 
+.container.user-suppr {
+    margin-top: 8vh;
+    margin-bottom: 8vh;
+}
 
 /**********************
 *        ERRORS       *
 **********************/
 
-
-
-
-
-/********Chris ***********/
-
-/****  CONTACT FORM  *****/
-
-.container {
-    margin-top: 15vh;
+.title-error {
+    font-size: 1em;
+    font-family: "Dosis";
 }
 
-.navbar, .footer {
-    background-color: var(--grey-color);
-}
-
-.navbar a, .footer span, .footer a {
-    color: var(--black-color) !important;
-    font-size: 20px;
-}
-
-.navbar a:hover {
-    color: var(--red-color) !important;
-    font-size: 20px;
-}
-
-.logo-clap {
-    width: 80px;
-    height: 80px;
-}
-
-/* Affiche Film */
-.poster {
-    margin-top: 80px;
-    padding: 150px;
-}
-
-/* FOOTER */
-.arrow{
-    position: fixed;
-    left: 95%;
-    top: 84%;
-}
-
-.footer {
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    background: var(--grey-color);
-}
-
-.textinput {
-    width: 100%;
-}
-
-/******* NAV BAR  *******/
-header{
-    background-color: var(--grey-color);
-}
-
-.logo-clap {
-    width: 80px;
-    height: 80px;
-}
-
-.arrow {
+.absolute-button {
     position: absolute;
-    left: 95%;
     top: 80%;
-}
-
-/******* PAGE FILM INFOS *******/
-.btn.bg_perso.p-2{
-    margin-bottom : 1em;
-}
-
-.card{
-    word-wrap: normal;
-    padding: 2rem;
-    margin : 2rem;
-}
-
-/******* MEDIA QUERIES *******/
-@media (min-width: 360px){
-    .container{
-        margin-top: 10vh;
-    }
-    
-    .arrow{
-        left: 90%;
-    }
-}
-
-@media (min-width : 768px){
-    .card{
-        margin : 4rem;
-        padding-left : 6rem;
-        padding-right : 8rem;
-        padding-top : 4rem;
-        padding-bottom: 4rem ;
-    }
-}
-
-
-.bg_perso{
-    background-color: var(--grey-color);
-}
-
-
-
-
-
-
-
-/* FABIEN */
-/* General all pages */
-
-section{
-    font-family: 'Dosis', sans-serif;
-    background-color:#151515;
-    color: white;
- }
- 
- h2{
-    font-size: 24px;
-    color: #c42323;
- }
- 
- .title{
-     font-family:"Limelight";
-     color: #c42323;
- }
- 
- .button{
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #9b9999;
     color: white;
- }
- 
- .relative{
-    position: relative;
- }
- 
- .absolute{
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translate(-50%, -50%);
- }
- 
- .image{
-    background-image: url("../img/erreur500.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
- }
- 
- .content{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
- }
- 
- .content-error{
+}
+
+.content-error {
     position: absolute;
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
- }
- 
- .content-error-500{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: black;
- 
- }
- 
- /* pageERREUR */
- .title-error{
-    font-size: 1em;
-    font-family:"Dosis";
- }
- 
- .absolute-button{
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #9b9999;
-    color: white;
- }
- 
- /* ajout item */
- 
- 
- 
- /* taille texte */
- @media screen and (min-width:720px){
-    .title-error{
-       font-size: 1.6em;
-    }
- }
- @media screen and (min-width:1200px){
-    .title-error{
-       font-size: 2.4em;
-    }
- }
+}
 
+.content-error-500 {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    padding-left: 5em;
+    padding-right: 5em;
+}
+
+.image {
+    background-image: url("../img/erreur500.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 70vh;
+}
+
+
+
+/******* MEDIA QUERIES *******/
+
+@media (min-width : 768px) {
+    .card {
+        margin: 4rem;
+        padding-left: 6rem;
+        padding-right: 8rem;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+}
+
+/* taille texte */
+@media screen and (min-width:720px) {
+    .title-error {
+        font-size: 1.6em;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .title-error {
+        font-size: 2.4em;
+    }
+  
  /***************************
  *      Aure carousel       *
 ****************************/
 
 .find-movie .fa-star {
     color: rgba(233, 233, 59, 0.712) ;
-}

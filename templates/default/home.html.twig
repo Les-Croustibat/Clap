@@ -10,7 +10,7 @@
 
 <section>
 
-    <div class="container">
+    <div class="container home">
         <div class="row justify-content-center">
             <img src="{{asset('asset/img/logoLR.png')}}" alt="logo" width="400" height="400">
         </div>
@@ -18,13 +18,16 @@
             <h1 class="title">CLAP</h1>
         </div>
         <div class="row justify-content-center">
-            <p>"Quel film regarder ce soir ? Nous avons la réponse"</p>
+            <p class="phome">"Quel film regarder ce soir ? Nous avons la réponse"</p>
         </div>
         <div class="row justify-content-center text-center">
-            <p>Vous avez envie de voir un bon film mais ne vous savez pas lequel, CLAP est fait pour vous ! Finis les galères de chercher une heure la perle rare. Grâce à notre algorithme super puissant, il vous suffit de quelques clics afin de trouver le film qui vous correspond. A vous de jouer ! </p>
+            <p class="phome">Vous avez envie de voir un bon film mais ne vous savez pas lequel, CLAP est fait pour vous ! Finis les galères de chercher une heure la perle rare. Grâce à notre algorithme super puissant, il vous suffit de quelques clics afin de trouver le film qui vous correspond. A vous de jouer ! </p>
         </div>
         <div class="row justify-content-center pb-5">
-            <a href="{{ path('movie_find') }}"><button class="btn button ">Trouver un film</button></a>
+            <a href="{{ path('movie_find') }}"><button class="btn btn-secondary btn-lg ">Trouver un film</button></a>
+        </div>
+        <div class="row justify-content-center">
+            <img src="{{asset('asset/img/popcorn.png')}}" alt="popcorn" class="img-popcorn">
         </div>
     </div>
 </section>
