@@ -108,7 +108,6 @@
             "ref": "d087df3e087f50da3955f2def05079380da5894b"
         }
     },
-
     "guzzlehttp/guzzle": {
         "version": "6.5.4"
     },
@@ -121,7 +120,6 @@
     "kevinrob/guzzle-cache-middleware": {
         "version": "v2.1.1"
     },
-
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -138,10 +136,10 @@
         "version": "v4.5.0"
     },
     "ocramius/package-versions": {
-        "version": "1.4.2"
+        "version": "1.8.0"
     },
     "ocramius/proxy-manager": {
-        "version": "2.2.3"
+        "version": "2.8.0"
     },
     "php": {
         "version": "7.4"
@@ -299,7 +297,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "5.1",
-            "ref": "37b4ec59eda3eb89705f21a0da7231862495ce0a"
+            "ref": "20148abf61a454d2c045931d20e6418c729a675a"
         },
         "files": [
             "./config/packages/cache.yaml",

@@ -61,6 +61,11 @@ class MovieController extends AbstractController
             $movie_key_trailer = $movie_search_trailer['results']['0']['key'];
         }
 
+        // Mise en BDD
+        if(!empty($_POST)){
+
+        }
+
 
         return $this->render('movie/movie_details.html.twig', [
             'original_title' => $movie_title,

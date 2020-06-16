@@ -50,11 +50,6 @@
 							<a href="{{ path('default_contact') }}"><i class="far fa-envelope"></i> Nous contacter</a>
 						</li>
 						{% if not app.user %}
-						<li class="nav-item mx-4">
-							<a class="" href="{{ path('security_signin') }}"><i class="fas fa-pencil-alt mr-2"></i>Inscription</a>
-						</li>
-						{% endif %}
-						{% if not app.user %}
 							<li class="nav-item mx-4">
 								<a href="{{ path('security_login') }}">
 									<i class="fas fa-user mr-2"></i>Connexion</a>
@@ -68,7 +63,7 @@
 						{% if is_granted('ROLE_ADMIN') %}
 							<li class="nav-item mx-4">
 								<a href="{{ path('admin_list') }}">
-									<i class="fas fa-user mr-2"></i>Administration</a>
+									<i class="fas fa-crown"></i> Administration</a>
 							</li>
 						{% endif %}
 						{% if not app.user %}
@@ -88,12 +83,6 @@
 		</header>
 
 		{% block content %}{% endblock %}
-		{# Salutations #}
-		{% if app.user %}
-		<div id="HelloUser">
-			<span class="text2">Bonjour {{app.user.pseudo}} !</span>
-		</div>
-		{% endif %}
 
 		{# Flèche de retour en haut de page #}
 		<div id="arrowTop">

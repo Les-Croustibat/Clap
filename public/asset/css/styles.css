@@ -31,7 +31,6 @@ h2 {
     --title-color: #c42323;
     --sentence-color: #e8e8e8;
     --grey-color: rgb(218, 218, 218);
-    /* #9b999 */
 }
 
 .btn.btn-secondary {
@@ -105,7 +104,7 @@ header {
     z-index: 1000;
 }
 
-#arrowTop>i {
+#arrowTop > i {
     font-size: 2em;
     margin-top: 0.3em;
 }
@@ -117,18 +116,16 @@ header {
 }
 
   /* Hello User */
-  #HelloUser{
+  #HelloUser {
+    z-index: 100;
     position: absolute;
     text-transform: uppercase;
     font-weight: bold;
-    top: 11%;
     right: 6%;
-    animation: text 3s 1;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
+    animation: user 3s 1;
   }
 
-  @keyframes text {
+  @keyframes user {
       0%{
         color: black;
       }
@@ -141,12 +138,12 @@ header {
       
   }
 
-.animation{
-position: absolute;
-text-transform: uppercase;
-font-weight: bold;
-top: 11%;
-right: 6%;
+.animation {
+    z-index: 100;
+    position: absolute;
+    text-transform: uppercase;
+    font-weight: bold;
+    right: 6%;
 }
 
 
@@ -168,7 +165,7 @@ right: 6%;
 #logo-presentation {
     position: absolute;
     top: 25%;
-    left: 64.5%;
+    left: 61%;
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
     -webkit-animation-duration: 2.5s;

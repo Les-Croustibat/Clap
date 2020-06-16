@@ -6,7 +6,7 @@
 {% block title %}Fiche de film{% endblock %}
 
 {% block content %}
-	{# Salutations #}
+{# Salutations #}
 	{% if app.user %}
 		<div class="animation">
 			<span class="text2">Bonjour {{app.user.pseudo}} !</span>
@@ -61,6 +61,15 @@
 		                        </div>
 	                        </div>
 	                    </div>
+
+						{# Bouton BDD #}
+						<form method="POST">
+							<input type="hidden" name="movie_id" value="{{movie_id}}">
+							<input type="hidden" name="titre" value="{{original_title}}">
+							<input type="hidden" name="image" value="{{poster_path}}">
+							<input type="hidden" name="synopsis" value="{{synopsis}}">
+							<input type="submit" class="btn btn-primary" value="Ajouter ce film dans ton espace">
+						</form>
 
 	                    <div class="row">
 	                    	<div class="col-12 mt-5">
