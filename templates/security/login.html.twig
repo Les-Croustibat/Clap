@@ -21,6 +21,14 @@
 					{% if error %}
 						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 					{% endif %}
+					{% for label, messages in app.flashes %}
+						<div class="alert alert-{{ label }}"> 
+							{% for message in messages %}
+								{{ message|raw }}
+								{# après la variable je peux ajouter un | suivi d'un filtre #}
+							{% endfor %}
+						</div>
+					{% endfor %}
 
 					{% if app.user %}
 						<div class="mb-3 text-center">
@@ -50,7 +58,9 @@
 							Rester connecté(e)
 						</label>
 					</div>
-
+					<div class="row justify-content-center ">
+						<a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a>
+					</div>
 					<div class="row justify-content-center ">
 						<button class="btn btn-secondary m-5" type="submit">
 							Connexion

@@ -72,7 +72,6 @@ header {
 }
 
 .header_opaque{
-    background-color: rgba(218, 218, 218, 0.4);
     opacity: 0.95;
 }
 
@@ -142,6 +141,15 @@ header {
       
   }
 
+.animation{
+position: absolute;
+text-transform: uppercase;
+font-weight: bold;
+top: 11%;
+right: 6%;
+}
+
+
 .footer {
     bottom: 0;
     width: 100%;
@@ -190,7 +198,7 @@ header {
 }
 
 .img-accueil {
-    width: 100vw;
+    width: 100%;
     height: 50em;
     object-fit: cover;
 }
@@ -757,6 +765,88 @@ h3 {
     color: var(--sentence-color);
 }
 
+/***** Animation ******/
+
+.rubberBand {
+    -webkit-animation-name: rubberBand;
+    animation-name: rubberBand;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes rubberBand {
+    0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+    -webkit-transform: scale3d(.95, 1.05, 1);
+    transform: scale3d(.95, 1.05, 1);
+    }
+    75% {
+    -webkit-transform: scale3d(1.05, .95, 1);
+    transform: scale3d(1.05, .95, 1);
+    }
+    100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    }
+    @keyframes rubberBand {
+    0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+    -webkit-transform: scale3d(.95, 1.05, 1);
+    transform: scale3d(.95, 1.05, 1);
+    }
+    75% {
+    -webkit-transform: scale3d(1.05, .95, 1);
+    transform: scale3d(1.05, .95, 1);
+    }
+    100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+
+
+} 
+  
+.rubberBand .fa-lock {
+    font-size: 4em;
+    color: white;
+}
+
+.sendEmail {
+    min-height: 500px;
+}
+
 /**********************
 *      USER SPACE     *
 **********************/
@@ -824,12 +914,41 @@ h3 {
 /******* MEDIA QUERIES *******/
 
 @media (max-width : 768px) {
+
+
     .randomly{
         font-size: 1.2em;
     }
 
     .randomposter {
-        width: 100%;
+        
+        width: 220%;
+    }
+
+    .img-accueil{
+        height: 40vh;
+    }
+
+    #logo-presentation img{
+        width: 93%;
+        height: 87%;        
+    }
+
+    #logo-presentation{
+        top: 33%;
+    }
+
+    #accueil{
+        height: 33vh;
+    }
+
+    .title-find{
+        font-size: 2em;
+        text-align: center;
+    }
+
+    #img-ticket{
+        left: 32%;
     }
 }
 

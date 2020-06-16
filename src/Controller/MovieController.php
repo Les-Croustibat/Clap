@@ -57,7 +57,9 @@ class MovieController extends AbstractController
         $movie_runtime = ($movie_search['runtime']);
         $movie_id = $movie_search['id'];
         $movie_search_trailer = $apiTMDB->callTMDBAPIMovieTrailer($id);
-        $movie_key_trailer = $movie_search_trailer['results']['0']['key'];
+        if(!empty ($movie_search_trailer['results'])){
+            $movie_key_trailer = $movie_search_trailer['results']['0']['key'];
+        }
 
 
         return $this->render('movie/movie_details.html.twig', [
@@ -72,7 +74,7 @@ class MovieController extends AbstractController
             'runtime' => $movie_runtime,
             'movie_id' => $movie_id,
             'movie_results'   => $movie_results ?? [],
-            'movie_key_trailer' => $movie_key_trailer,
+            'movie_key_trailer' => $movie_key_trailer ?? '',
             'movie_all_nationality' => $movie_all_nationality,
             
         ]);
@@ -80,6 +82,9 @@ class MovieController extends AbstractController
 
     public function findMovie()
     {
+
+        $showCarousel = false;
+        $showRandom=false;
         // Retrieve data regarding film Genre
         $apiTMDB = new APITmdbController();
 
@@ -119,7 +124,10 @@ class MovieController extends AbstractController
         } 
 
         // Retrieve all data from API
+
         if (isset($_GET['with_genres']) && isset($_GET['release_date']) && isset($_GET['with_runtime'])) {
+            $showCarousel = true;
+            $showRandom=true;
             $data_genres = implode(',', $_GET['with_genres']);
             
             $data_release = explode(',', $_GET['release_date']);
@@ -133,6 +141,8 @@ class MovieController extends AbstractController
 
 
         return $this->render('movie/movie_find.html.twig', [
+            'showCarousel'   => $showCarousel,
+            'showRandom'   => $showRandom,
 
             // In case of separate results
             // 'movie_results'   => $movie_results ?? [],

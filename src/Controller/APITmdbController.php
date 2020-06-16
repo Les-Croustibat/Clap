@@ -298,46 +298,6 @@ class APITmdbController extends AbstractController
     }
 
 
-    // Retrieve the film trailer
-    // public function callTMDBAPIMovieTrailer($movieId = null)
-    // {        
-    //     if (empty($movieId)) {            // if API not called with parameters, no search            return false;
-    //          return false;
-    //     } else {            
-            
-    //         // Define the URL with endpoint
-    //         $endpoint = $this->apiURL . '/movie/';
-    //         $timeout = 10;            // Query paramaters
-            
-    //         $curl = curl_init();            // Set the curl options
-    //         $options = [
-    //             CURLOPT_URL            => $endpoint .$movieId.'/videos?api_key='.$this->apiToken.'&language=eng-US', // target the API URL
-    //             CURLOPT_RETURNTRANSFER => true, // return the content into a string
-    //             CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
-    //         ];
-            
-    //         if (empty($curl)) {
-    //             die("ERREUR curl_init : cURL is not available.");
-    //         }            
-            
-    //         // Config download options
-    //         curl_setopt_array($curl, $options);            
-            
-    //         // Execute the query
-    //         $response = curl_exec($curl);
-
-
-    //         // Close
-    //         curl_close($curl);     
-
-    //         // Decode the response (true, key and value -> PHP)
-    //         $decode_response = json_decode($response, true);
-
-    //     }        
-        
-    //     return $decode_response;
-    // }
-
     // Retrieve all data from the API films with the genre, year & runtime
     public function callTMDBAPIDiscoverAll($searchedGenre=null, $movie_year1, $movie_year2, $movie_runtime1, $movie_runtime2) {
 

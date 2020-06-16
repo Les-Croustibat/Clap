@@ -18,12 +18,13 @@
 				{# read and display all flash messages #}
 				{# label est le premier paramètre que je passe dans la methode $this->addFlash() du controller, messages.. le message #}
 					{% for label, messages in app.flashes %}
-						<div class="alert alert-{{ label }}"> {% for message in messages %}
-							{{ message|raw }}
-							{# après la variable je peux ajouter un | suivi d'un filtre #}
-						{% endfor %}
-					</div>
-				{% endfor %}
+						<div class="alert alert-{{ label }}"> 
+							{% for message in messages %}
+								{{ message|raw }}
+								{# après la variable je peux ajouter un | suivi d'un filtre #}
+							{% endfor %}
+						</div>
+					{% endfor %}
 
 				{# <div class="row justify-content-center">
 					<img src="{{asset('asset/img/charlie.png')}}" alt="charliechaplin" class="img-charlie">

@@ -4,6 +4,13 @@
 
 {% block content %}
 
+    {# Salutations #}
+    {% if app.user %}
+        <div class="animation">
+            <span class="text2">Bonjour {{app.user.pseudo}} !</span>
+        </div>
+    {% endif %}
+    
     {# About page describing the project #}
     <div class="banniere-about">
         <img src="{{asset('asset/img/movie-cam.jpg')}}" alt="movie-cam" id="img-moviecam">

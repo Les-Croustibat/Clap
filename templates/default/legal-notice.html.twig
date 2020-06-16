@@ -3,7 +3,13 @@
 {% block title %}Mentions légales{% endblock %}
 
 {% block content %}
-
+    {# Salutations #}
+    {% if app.user %}
+        <div class="animation">
+            <span class="text2">Bonjour {{app.user.pseudo}} !</span>
+        </div>
+    {% endif %}
+    
     <div class="container legal_notice text-justify">
         <div class="row justify-content-center">
             <img src="asset/img/logoLR.png" alt="logo Clap" class="logo mb-4 mt-5">

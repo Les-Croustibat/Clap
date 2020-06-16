@@ -11,6 +11,13 @@
 
 {% block content %}
 
+    {# Salutations #}
+    {% if app.user %}
+        <div class="animation">
+            <span class="text2">Bonjour {{app.user.pseudo}} !</span>
+        </div>
+    {% endif %}
+
     <div class="banniere-find">
         <img src="{{asset('asset/img/admission.jpg')}}" alt="admission" id="img-admission">
         <h1 class="title-find">Clap te trouve un film ! </h1>
@@ -24,7 +31,7 @@
         </div>
 
         {# Form with criteria #}
-        <form method="get" class="mt-4" id="visitor_criteria">
+        <form method="get" action="#resultFakeForScroll"  class="mt-4" id="visitor_criteria">
             <div class="row justify-content-center mb-5">
                 <div class="col-11 col-lg-6">
                     <h2 class="mb-5 text-center">Genres <i class="fas fa-check-double"></i></h2>
@@ -115,13 +122,15 @@
                 </div>
             </div>
             
+            
+            <span id="resultFakeForScroll"></span>
             {# Button GO#}
             <div class="row justify-content-center my-5 py-5">
                 <button type="submit" class="btn btn-secondary go" id="go">GO  <i class="fas fa-smile-beam"></i></button>
             </div>
 
             {# Carousel to display all results #}
-            <div id="multi-item-example" class="carousel slide carousel-multi-item d-none" data-ride="carousel">
+            <div id="multi-item-example" class="carousel slide carousel-multi-item {% if showCarousel == false %}d-none{% endif %}" data-ride="carousel">
                 <!--Slides-->
                 <div class="carousel-inner" role="listbox">
                     {% set i = 0 %}
@@ -173,7 +182,7 @@
         </div>
 
         {# Display films randomly #}
-        <div class="row justify-content-center d-none" id="discover_random">
+        <div class="row justify-content-center {% if showRandom == false %}d-none{% endif %}" id="discover_random">
             <div class="col-4 col-xl-6 text-center">
                 <h3 id="title" class="randomly"></h3>
                 <img id="poster" class="randomposter my-5 pb-5 rounded w-70" >
@@ -245,11 +254,7 @@
                 window.onload = init;
         })();
 
-        {# Display the Carousel when the user clicks #}
-        $('#go').on('click', function(e){
-            e.preventDefault();
-            $('.carousel').removeClass('d-none');
-        });
+
 
         // Display the random film
         $('#hasard').on('click', function(e){

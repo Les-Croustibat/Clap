@@ -6,6 +6,13 @@
 {% block title %}Fiche de film{% endblock %}
 
 {% block content %}
+	{# Salutations #}
+	{% if app.user %}
+		<div class="animation">
+			<span class="text2">Bonjour {{app.user.pseudo}} !</span>
+		</div>
+	{% endif %}
+	
 	{# Fiche du film #}
 	<main class="d-flex justify-content-center align-items-center main-movie-details">
 		<div class="card bg_perso mb-3 poster">
@@ -16,7 +23,7 @@
 				<div class="col-md-8">                    
 					<div class="card-body">
 						<h5 class="card-title h1 font-weight-bold"><i class="fas fa-film"></i>  {{original_title}}</h5>
-						<h5 class="card-title h2 font-italic">&laquo; {{movie_tagline}} &raquo;</h5>
+						{{(movie_tagline) ? ('<h5 class="card-title h2 font-italic">&laquo;' ~ movie_tagline ~ '&raquo;</h5>')|raw : ''}} 
 
 						<div class="row py-3">
 	                        <div class="col-4 h-100">

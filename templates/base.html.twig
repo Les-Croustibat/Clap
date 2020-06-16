@@ -61,7 +61,7 @@
 							</li>
 						{% else %}
 							<li class="nav-item mx-4">
-								<a href="#" id="deconnect">
+								<a href="{{ path('security_logout') }}" id="deconnect">
 									<i class="fas fa-user mr-2"></i>Déconnexion</a>
 							</li>
 						{% endif %}
@@ -73,7 +73,7 @@
 						{% endif %}
 						{% if not app.user %}
 						<li class="nav-item mx-4">
-							<a class="" href="{{ path('security_signin') }}">
+							<a href="{{ path('security_signin') }}">
 						<i class="fas fa-pencil-alt mr-2"></i>Inscription</a>
 						{% endif %}
 						{% if app.user %}
@@ -141,14 +141,15 @@
 			var positionElementInPage= $('.navbar');
 			$(window).scroll(function () {
 				if ($(window).scrollTop() > 50) {
-					.navbar.addClass('header_opaque');
+					$('.navbar').addClass('header_opaque');
 				} else {
-					.navbar.removeClass('header_opaque');
+					$('.navbar').removeClass('header_opaque');
 				}
 			});
 
 			// Alert
-			$('#deconnect').on('click', function () {
+			$('#deconnect').on('click', function (e) {
+				e.preventDefault();
 				swal.fire({
 				title: 'Etes-vous sûr(e) de vouloir vous déconnecter ?',
 				icon: 'warning',
