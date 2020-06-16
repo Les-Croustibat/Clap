@@ -12,6 +12,44 @@ class APITmdbController extends AbstractController
     protected $apiToken='8b5753049f43a637a087b0c90b698ac7'; 
     protected $apiURL='https://api.themoviedb.org/3';
 
+    // Retrieve a random film
+    public function callTMDBAPIRandom ($id=null)
+    {
+        if(empty($id)) {            
+            return false;        
+        }  else {     
+
+            $endpoint = $this->apiURL.'/movie'.'/'.$id;
+            $timeout = 10;   
+                  
+            $parameters_request = [
+                'api_key'  => $this->apiToken,
+                'language' => 'FR'
+            ];           
+             
+            $request= '?'.http_build_query($parameters_request);            
+            $curl = curl_init();            
+            
+            $options=[
+                CURLOPT_URL            => $endpoint.$request, 
+                CURLOPT_RETURNTRANSFER => true, 
+                CURLOPT_CONNECTTIMEOUT => $timeout, 
+            ];            
+            
+            if(empty($curl)){
+                die("ERREUR curl_init : cURL is not available.");
+            }            
+            
+            curl_setopt_array($curl,$options);            
+            
+            $response=curl_exec($curl);                        
+            curl_close($curl);            
+            $decode_response=json_decode($response, true);        
+        
+        }        
+        
+        return $decode_response;
+    }
 
     // Retrieve data from the API with the film ID: film details 
     public function callTMDBAPIMovieDetails($movieId = null)
@@ -56,6 +94,46 @@ class APITmdbController extends AbstractController
             $decode_response = json_decode($response, true);
         }
 
+        return $decode_response;
+    }
+
+    // Retrieve the film trailer
+    public function callTMDBAPIMovieTrailer($movieId = null)
+    {        
+        if (empty($movieId)) {            // if API not called with parameters, no search            return false;
+             return false;
+        } else {            
+            
+            // Define the URL with endpoint
+            $endpoint = $this->apiURL . '/movie/';
+            $timeout = 10;            // Query paramaters
+            
+            $curl = curl_init();            // Set the curl options
+            $options = [
+                CURLOPT_URL            => $endpoint .$movieId.'/videos'.'?api_key=8b5753049f43a637a087b0c90b698ac7&language=eng-US', // target the API URL
+                CURLOPT_RETURNTRANSFER => true, // return the content into a string
+                CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
+               
+            ];
+            
+            if (empty($curl)) {
+                die("ERREUR curl_init : cURL is not available.");
+            }            
+            
+            // Config download options
+            curl_setopt_array($curl, $options);            
+            
+            // Execute the query
+            $response = curl_exec($curl);
+
+            // Close
+            curl_close($curl);     
+
+            // Decode the response (true, key and value -> PHP)
+            $decode_response = json_decode($response, true);
+
+        }        
+        
         return $decode_response;
     }
 
