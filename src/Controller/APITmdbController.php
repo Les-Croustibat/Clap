@@ -294,7 +294,81 @@ class APITmdbController extends AbstractController
         return $decode_response;
     }
 
+    public function calltopRated()
+    {
+   
+        $endpoint = $this->apiURL.'/discover/movie';
+        $timeout = 10; 
 
+        $curl = curl_init();
+
+        // Set the curl options
+        $options = [
+            CURLOPT_URL            => $endpoint.'?api_key=8b5753049f43a637a087b0c90b698ac7&language=fr?certification_country=US&certification=R&sort_by=vote_average.desc', // target the API URL
+            CURLOPT_RETURNTRANSFER => true, // return the content into a string
+            CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
+            //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
+            // CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
+        ];
+        // dump($options);
+
+        // Error message
+        if (empty($curl)) {
+            die("ERREUR curl_init : cURL is not available.");
+        }
+
+        // Config download options
+        curl_setopt_array($curl, $options);
+
+        // Execute the query
+        $response = curl_exec($curl);
+        // curl_error($ch);
+
+        // Close
+        curl_close($curl);
+
+        // Decode the response (true, key and value -> PHP)
+        $decode_response = json_decode($response, true);
+        
+        return $decode_response;
+    }
+    public function callmostViewed()
+    {
+   
+        $endpoint = $this->apiURL.'/discover/movie';
+        $timeout = 10; 
+
+        $curl = curl_init();
+
+        // Set the curl options
+        $options = [
+            CURLOPT_URL            => $endpoint.'?api_key=8b5753049f43a637a087b0c90b698ac7&language=fr?sort_by=popularity.desc', // target the API URL
+            CURLOPT_RETURNTRANSFER => true, // return the content into a string
+            CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
+            //CURLOPT_TIMEOUT        => $timeout, // set a timeout i.e. maximum time the request is allowed to take 
+            // CURLOPT_USERAGENT      => $this->getRandomUserAgent(), // call the function getRandomUserAgent to fake an android user as the API is for Android
+        ];
+
+        // Error message
+        if (empty($curl)) {
+            die("ERREUR curl_init : cURL is not available.");
+        }
+
+        // Config download options
+        curl_setopt_array($curl, $options);
+
+        // Execute the query
+        $response = curl_exec($curl);
+        // curl_error($ch);
+
+        // Close
+        curl_close($curl);
+
+        // Decode the response (true, key and value -> PHP)
+        $decode_response = json_decode($response, true);
+        
+        return $decode_response;
+    }
 
 
 }
