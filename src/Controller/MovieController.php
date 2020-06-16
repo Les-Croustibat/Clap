@@ -61,6 +61,7 @@ class MovieController extends AbstractController
             $new_genre[] = $genre['name'];
         }
         $movie_genre = implode(', ', $new_genre);
+
         // // Durée
         $movie_runtime = ($movie_search['runtime']);
         $movie_id = $movie_search['id'];
@@ -94,7 +95,7 @@ class MovieController extends AbstractController
 
     public function findMovie()
     {
-        // Call the API controller
+        // Retrieve data regarding film Genre
         $apiTMDB = new APITmdbController();
 
         if (isset($_GET['with_genres'])) {
@@ -106,86 +107,67 @@ class MovieController extends AbstractController
             $genre_selected = implode(', ', $movie_genres);
             
             // Call the API method & retrieve results
-            // $searchedGenre = explode(', ', $genre_selected);
-            $findmovies = $apiTMDB->callTMDBAPIDiscover($chooseGenre);
+            $findmovies = $apiTMDB->callTMDBAPIDiscoverGenre($chooseGenre);
             $movie_results = $findmovies['results'];
             
         } else {
-            echo 'Vous navez pas coche de case';
+            // improve
+            echo 'Vous n\'avez pas coché de case';
         }
 
-        // if (isset($_GET['primary_release_date'])) {
-        //     // Build the results in an array
-        //     $chooseYear1 = $_GET['primary_release_date.gte'];
-        //     $chooseYear2 = $_GET['primary_release_date.lte'];
-
-        //     $year_selected = explode(',', $chooseYears);
-
-        //     $searchedYear1=$year_selected[0];
-        //     $searchedYear2=$year_selected[1];
-            
-        //     // Call the API method & retrieve results
-            // $findmoviesByYears = $apiTMDB->callTMDBAPIDiscover($searchedYear1, $searchedYear2);
-            // dd($findmoviesByYears);
+        // Retrieve data regarding film release Year
+        if (isset($_GET['release_date'])) {
+            $years_selected = $_GET['release_date'];
+            $movie_year = explode(',', $years_selected);
+            // Call the API method & retrieve results
+            $findmovies = $apiTMDB->callTMDBAPIDiscoverYear($movie_year[0],$movie_year[1]);
             // $movie_results = $findmovies['results'];
+            $movie_results_year = $findmovies['results'];
             
-        // }
+            
+        } else {
+            echo 'Vous n\'avez pas sélectionné une période';
+        }
+
+        // Retrieve data regarding film Runtime
+        if (isset($_GET['with_runtime'])) {
+            $runtime_selected = $_GET['with_runtime'];
+            $movie_runtime = explode(',', $runtime_selected);
+            
+            // Call the API method & retrieve results
+            $findmovies = $apiTMDB->callTMDBAPIDiscoverRuntime($movie_runtime[0],$movie_runtime[1]);
+            $movie_results_runtime = $findmovies['results'];
+            
+        } else {
+            echo 'Vous n\'avez pas sélectionné une durée';
+        }
+
+        // Retrieve all data from API
+        if (isset($_GET['with_genres']) && isset($_GET['release_date']) && isset($_GET['with_runtime'])) {
+            $data_genres = implode(',', $_GET['with_genres']);
+            
+            $data_release = explode(',', $_GET['release_date']);
+            $data_runtime = explode(',', $_GET['with_runtime']);
+
+            // Call the API method & retrieve results
+            $findmovies = $apiTMDB->callTMDBAPIDiscoverAll($data_genres, $data_release[0], $data_release[1], $data_runtime[0], $data_runtime[1]);
+            $movie_results_global = $findmovies['results'];
+            
+        } else {
+            echo 'Vous n\'avez pas sélectionné tous les critères';
+        }
+
+        
 
         return $this->render('movie/movie_find.html.twig', [
 
-            'movie_results'   => $movie_results ?? [],
-            // 'with_genres'     => $genre_selected ?? [],
+            // In case of separate results
+            // 'movie_results'   => $movie_results ?? [],
+            // 'movie_results_runtime'   => $movie_results_runtime ?? [],
+            // 'movie_results_year'     => $movie_results_year ?? [],
+            'movie_results_global' => $movie_results_global ?? [],
 
         ]);
     }
-
-    public function ajaxMovieCriteria()
-    { // Route OK
-
-        if (!empty($_GET)) {
-
-            // Clean all data from forms
-            // $safe = $_GET;
-            $safe = array_map('trim', array_map('strip_tags', $_GET));
-
-            // Call the API
-            $apiTMDB = new APITmdbController();
-
-            // Get API data from the SEARCH/MOVIE endpoint
-            // $search_movies = $apiTMDB->callTMDBAPIMovie($safe['title']);
-            // $movie_year=$search_movies['feed']['movie']['productionYear'];
-            // $movie_actors=$search_movies['feed']['movie']['castingShort']['actors'];
-            // $movie_actors=$search_movies['feed']['movie']['castingShort']['directors'];
-
-            // // Get API data from the MOVIE/MOVIE endpoint
-            // $extra_movies= $apiTMDB->callTMDBAPIMovieDetails($safe['title']);
-            // // $movie_genre=$extra_movies['movie']['genre'];
-            // // $movie_duration=$extra_movies['movie']['runtime'];
-            // // $movie_nationality=$extra_movies['movie']['nationality'];
-
-            // // Get API data from the PERSON/MOVIE endpoint
-            // $person_movie=$apiTMDB->callTMDBAPIPeople($safe['name']);
-            // // $film_actor=$person_movie['person']['movie']['director'];
-            // // $film_director=$person_movie['person']['movie']['actor'];
-
-            $findmovie = $apiTMDB->callTMDBAPIDiscover($safe['original_title']);
-
-
-            // $all_API_results=[
-            //     'extra_movies'  => $extra_movies,
-            //     'person_movie'  => $person_movie,
-            // ];
-
-
-            // if($resultat['feed']['totalResults'] == 0){
-            //     return $this->json(['status' => 'ko', 'error' => 'Désolé, cette personne est introuvable']);
-
-            // }else{
-            //     $retourJSON= $resultat['feed']['person'][0]['realName'];
-            //     return $this->json(['status' => 'ok', 'result' =>$retourJSON]);
-            // }
-
-            return $this->$findmovie;
-        }
-    }
 }
+
