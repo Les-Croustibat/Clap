@@ -118,15 +118,12 @@ header {
   @keyframes text {
       0%{
         color: black;
-        margin-bottom: -40px;
       }
       30%{
           letter-spacing: 25px;
-          margin-bottom: -40px;;
       }
       85%{
           letter-spacing: 8px;
-          margin-bottom: -40px;
       }
       
   }
