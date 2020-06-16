@@ -17,6 +17,8 @@ class MovieController extends AbstractController
 
         if(isset($resultat['id']) &&  !empty($resultat['id'])){
             $resultat['link_custom'] = $this->generateUrl('movie_details', ['id' => $resultat['id']]);
+        }else{
+            $resultat['id'] = $this->mt_rand(1,500);
         }
         return $this->json($resultat);
     }

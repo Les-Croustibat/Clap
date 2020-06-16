@@ -104,6 +104,13 @@ header {
     cursor: pointer;
   }
 
+  /* Hello User */
+  #HelloUser{
+    position: absolute;
+    top: 120px;
+    right: 40px;
+  }
+
 .footer {
     bottom: 0;
     width: 100%;

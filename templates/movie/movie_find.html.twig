@@ -247,6 +247,7 @@
         $('#hasard').on('click', function(){
             axios.get("{{ path('movie_ajax_random') }}")
             .then(function (response) {
+                console.log(response.data.id)
                 //Titre
                 let htmlTitle = '<a href="'+ response.data['link_custom'] +'">' + response.data['title'] +'</a>';
                 $('#title').html(htmlTitle)
