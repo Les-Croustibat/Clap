@@ -11,6 +11,8 @@ body {
     font-family: 'Dosis', sans-serif;
     background-color: var(--main-color);
     color: var(--sentence-color);
+    top : 100px;
+    position: relative;
 }
 
 h1 {
@@ -51,6 +53,15 @@ h2 {
 /******* NAV BAR  *******/
 header {
     background-color: var(--grey-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.header_opaque{
+    background-color: rgba(255,255,255,1);
 }
 
 .logo-clap {
@@ -121,8 +132,8 @@ header {
 
 #logo-presentation {
     position: absolute;
-    top: 15%;
-    left: 62%;
+    top: 25%;
+    left: 64%;
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
     -webkit-animation-duration: 2.5s;
@@ -153,7 +164,7 @@ header {
 
 .img-accueil {
     width: 100vw;
-    height: 30em;
+    height: 50em;
     object-fit: cover;
 }
 
@@ -172,7 +183,7 @@ section {
 }
 
 .quel-film-ce-soir {
-    animation-duration: 2s;
+    animation-duration: 3.5s;
     animation-name: slidein;
 }
 
@@ -235,6 +246,11 @@ p.phome {
     }
 }
 
+.trouver-film-btn:hover {
+    background-color: rgb(255, 0, 0) ! important;
+    border: 4px dotted white;
+}
+
 .img-popcorn {
     width: 30%;
 }
@@ -242,79 +258,132 @@ p.phome {
 /***********************
 *       FIND MOVIE     *
 ***********************/
-#img-telecommande {
-    -webkit-animation-name: tada;
-    animation-name: tada;
-    -webkit-animation-duration: 2s;
-    animation-duration: 2s;
+.banniere-find{
+    position : relative;
+}
+
+.title-find{
+    color : white;
+    text-shadow: black 0.2em 0.3em 0.2em;
+    font-size: 3.5rem;
+    position: absolute;
+    bottom: 28%;
+    left : 50%;
+    transform: translateX(-50%);
+
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
+    }
+    @-webkit-keyframes zoomIn {
+    0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+    }
+    50% {
+    opacity: 1;
+    }
+    }
+    @keyframes zoomIn {
+    0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+    }
+    50% {
+    opacity: 1;
+    }
+    } 
+
+#img-admission{
+    width : 100%;
+    height: 40vh;
+    object-fit: cover;
 }
 
-@-webkit-keyframes tada {
-    0% {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-    }
+#img-ticket {
+    position: absolute;
+    left: 46%;
+    top: 82%;
+    transform: translateX(-46%);
 
-    10%,
+    -webkit-transform-origin: top center;
+    -ms-transform-origin: top center;
+    transform-origin: top center;
+    -webkit-animation-name: swing;
+    animation-name: swing;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes swing {
     20% {
-        -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-        transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    -webkit-transform: rotate3d(0, 0, 1, 15deg);
+    transform: rotate3d(0, 0, 1, 15deg);
     }
-
-    30%,
-    50%,
-    70%,
-    90% {
-        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    40% {
+    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+    transform: rotate3d(0, 0, 1, -10deg);
     }
-
-    40%,
-    60%,
+    60% {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+    transform: rotate3d(0, 0, 1, 5deg);
+    }
     80% {
-        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+    transform: rotate3d(0, 0, 1, -5deg);
+    }
+    100% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+    }
+    }
+    @keyframes swing {
+    20% {
+    -webkit-transform: rotate3d(0, 0, 1, 15deg);
+    transform: rotate3d(0, 0, 1, 15deg);
+    }
+    40% {
+    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+    transform: rotate3d(0, 0, 1, -10deg);
+    }
+    60% {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+    transform: rotate3d(0, 0, 1, 5deg);
+    }
+    80% {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+    transform: rotate3d(0, 0, 1, -5deg);
+    }
+    100% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+    }
     }
 
-    100% {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-    }
+.tu-sais-deja{
+    font-size: 2.3rem !important;
 }
 
-@keyframes tada {
-    0% {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-    }
+.aventureux{
+    font-size: 2.3rem !important;
+}
 
-    10%,
-    20% {
-        -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-        transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-    }
+.title-genres{
+font-size: 2rem !important;
+}
 
-    30%,
-    50%,
-    70%,
-    90% {
-        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-    }
+.title-year{
+    font-size: 2rem !important;
+}
 
-    40%,
-    60%,
-    80% {
-        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-    }
-
-    100% {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-    }
+.title-runtime{
+    font-size: 2rem !important;
 }
 
 
@@ -369,21 +438,21 @@ label{
 
 #go{
     background-color: #c42323;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     padding-left: 3rem;
     padding-right: 3rem;
 }
 
 #hasard{
     background-color: #c42323;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     padding-left: 3rem;
     padding-right: 3rem;
 }
 
 /***film_actor_director***/
 
-.find-movie #list_section ul {
+/* .find-movie #list_section ul {
     padding: 0;
     cursor: pointer;
     display: flex;
@@ -408,13 +477,17 @@ label{
 .find-movie #list_section #tag {
     background-color: #c42323;
     color: #e8e8e8;
-}
+} */
 
 /***********************
 *       FILM PAGE      *
 ***********************/
 .main-movie-details{
 color : var(--main-color);
+}
+
+.main-movie-details p{
+    font-size: 1.3rem;
 }
 
 .card {
@@ -428,11 +501,11 @@ color : var(--main-color);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.075em;
-    color: #333;
+    color: var(--title-color);
 }
 
 .card-text .label i.fa {
-    color: #666;
+    color: var(--title-color);
 }
 
 .box {
@@ -456,6 +529,11 @@ color : var(--main-color);
 /***********************
 *         ABOUT        *
 ***********************/
+#img-cam{
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+}
 
 .about .logo {
     width: 10%;
@@ -465,6 +543,7 @@ color : var(--main-color);
     font-family: 'Dosis', sans-serif;
     background-color: var(--main-color);
     color: var(--sentence-color);
+    font-size: 1.5rem;
 }
 
 .about h1 {
@@ -496,6 +575,71 @@ h3 {
 
 .instructions span{
     color : var(--title-color);
+}
+
+.instructions1{
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+        margin-right: 100%;
+    }
+
+    to {
+        margin-right: 30%;
+    }
+}
+
+.instructions2{
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+        margin-right: 100%;
+    }
+
+    to {
+        margin-right: 20%;
+    }
+}
+
+.instructions3{
+    animation-duration: 2s;
+    animation-name: slidein;
+    /* border-right : 0.5px solid rgba(240, 240, 240, 0.13); */
+}
+
+@keyframes slidein {
+    from {
+        margin-right: 100%;
+    }
+
+    to {
+        margin-right: 10%;
+    }
+}
+
+.instructions4{
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+        margin-right: 100%;
+    }
+
+    to {
+        margin-right: 0%;
+    }
+}
+
+.la-team{
+    font-size : 2.5rem;
 }
 
 /***********************

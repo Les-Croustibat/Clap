@@ -5,7 +5,10 @@
 {% block content %}
 
     {# About page describing the project #}
-    
+    <div class="banniere-about">
+        <img src="{{asset('asset/img/movie-cam.jpg')}}" alt="cameras" id="img-cam">
+    </div>
+
     <div class="container about">
 
         <div class="row justify-content-center">
@@ -29,28 +32,28 @@
         <hr>
 
         <div class="instructions">
-            <div>
+            <div class="instructions1">
                 <img src="{{asset('asset/img/film.png')}}" alt="icon-film" width="60" height="60" id="icon-film">
-                <p><span>1</span> : Tu ne sais pas quoi regarder ? Tu hésites, ou n'est pas inspiré...</p>
+                <p><span>1</span></br>Tu ne sais pas quoi regarder ? Tu hésites, ou n'est pas inspiré...</p>
             </div>
-            <div>
+            <div class="instructions2">
                 <img src="{{asset('asset/img/icon-clap.png')}}" alt="icon-clap" width="60" height="60" id="icon-clap">
-                <p><span>2</span> : Grâce à Clap, choisi un film en fonction de tes critères.</p>
+                <p><span>2</span></br> Grâce à Clap, choisi un film en fonction de tes critères.</p>
             </div>
-            <div>
+            <div class="instructions3">
                 <img src="{{asset('asset/img/play-button-2.png')}}" alt="icon-play" width="60" height="60" id="icon-play">
-                <p><span>3</span> : Laisse toi inspirer par les films qui te sont proposés, tu auras tous les détails nécessaires.</p>
+                <p><span>3</span></br> Laisse toi inspirer par les films qui te sont proposés, tu auras tous les détails nécessaires.</p>
             </div>
-            <div>
+            <div class="instructions4">
                 <img src="{{asset('asset/img/cinema.png')}}" alt="icon-cinema" width="60" height="60" id="icon-cinema">
-                <p><span>4</span> : Installe-toi tranquillement et tu sais désormais quel film tu vas visionner ce soir ! </p>
+                <p><span>4</span></br> Installe-toi tranquillement et tu sais désormais quel film tu vas visionner ce soir ! </p>
             </div>
         </div>
 
         <hr>
 
         <div class="row justify-content-center mb-4">
-            <h2>la team</h2>
+            <h2 class="text-center la-team">la team</h2>
         </div>
 
         <div class="row p-4 justify-content-center">

@@ -10,28 +10,31 @@
 {% block title %}Clap te trouve un film{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center mt-5">
-    <img src="{{asset('asset/img/tv.png')}}" alt="telecommande" width="100" height="100" id="img-telecommande">
+<div class="banniere-find">
+    <img src="{{asset('asset/img/admission.jpg')}}" alt="admission" id="img-admission">
+    <h1 class="title-find">Clap te trouve un film ! </h1>
+    <img src="{{asset('asset/img/ticket.png')}}" alt="ticket" width="140" height="140" id="img-ticket">
 </div>
+
 
     <div class="container find-movie">
         {# <div class="row justify-content-center">
             <img src="asset/img/logoLR.png" alt="logo Clap" class="logo mb-4 mt-5">
         </div> #}
 
-        <div class="row row-cols-sm-2 justify-content-center">
+        {# <div class="row row-cols-sm-2 justify-content-center">
             <h1 class="m-5 mt-lg-5 mb-lg-5 text-center">Clap te trouve un film ! </h1>
-        </div>
+        </div> #}
 
-        <div class="row justify-content-center">
-            <h2 class="choice m-5 mb-lg-5 text-center">Tu sais déjà un peu ce que tu veux ... ?</h2>
+        <div class="row justify-content-center mt-5">
+            <h2 class="choice m-5 mb-lg-5 text-center tu-sais-deja">Tu sais déjà un peu ce que tu veux ... ?</h2>
         </div>
 
         {# Form with criteria #}
         <form method="get" class="mt-4" id="visitor_criteria">
             <div class="row justify-content-center mb-5">
                 <div class="col-11 col-lg-6">
-                    <h2 class="mb-5 text-center">Genres <i class="fas fa-check-double"></i></h2>
+                    <h2 class="mb-5 text-center title-genres">Genres <i class="fas fa-check-double"></i></h2>
                     <div class="mt-4">
                         <div class="row row-cols-xl-4 justify-content-center">
                             <div class="form-check form-check-inline">
@@ -104,7 +107,7 @@
             {# Année de production #}
             <div class="row justify-content-center my-5 py-5">
                 <div class="col-8 col-lg-6">
-                    <h2 class="mb-5 text-center">Année de production <i class="far fa-calendar-alt"></i></h2>
+                    <h2 class="mb-5 text-center title-year">Année de production <i class="far fa-calendar-alt"></i></h2>
                     <div class="form-group mt-5">
                         <input type="text" id="slider1" class="slider1" name="primary_release_date[]">
                     </div>
@@ -114,7 +117,7 @@
             {# Durée de film #}
             <div class="row justify-content-center my-5 py-5">
                 <div class="col-8 col-lg-6">
-                    <h2 class="mb-5 text-center">Durée du film <i class="fas fa-hourglass-half"></i></h2>
+                    <h2 class="mb-5 text-center title-runtime">Durée du film <i class="fas fa-hourglass-half"></i></h2>
                     <div class="form-group mt-5">
                         <input type="text" id="slider2" class="slider2" name="with_runtime.gte">
                     </div>
@@ -178,7 +181,7 @@
 
             {# Bouton de submit du formulaire #}
             <div class="row justify-content-center my-5 py-5">
-                </i></span><button type="submit" class="btn btn-secondary go" id="go">GO <i class="fas fa-search"></i> <i class="fas fa-smile-beam"></i></button>
+                </i></span><button type="submit" class="btn btn-secondary go" id="go">GO <i class="fas fa-smile-beam"></i></button>
             </div>
         </form>
 
@@ -218,7 +221,7 @@
 
         {# random recommendation #}
         <div class="row justify-content-center">
-            <h2 class="choice m-5 mb-lg-5 text-center">Tu es aventureux...?</h2>
+            <h2 class="choice m-5 mb-lg-5 text-center aventureux">Tu es aventureux...?</h2>
         </div>
 
         <div class="row justify-content-center mb-5 pb-5">
