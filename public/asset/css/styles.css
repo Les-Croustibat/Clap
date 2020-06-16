@@ -86,23 +86,23 @@ header {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    transition: background-color .3s, 
-      opacity .5s, visibility .5s;
+    transition: background-color .3s,
+        opacity .5s, visibility .5s;
     opacity: 0;
     visibility: hidden;
     z-index: 1000;
-  }
+}
 
-  #arrowTop > i {
-      font-size: 2em;
-      margin-top: 0.3em;
-  }
-  
-  #arrowTop.show {
+#arrowTop>i {
+    font-size: 2em;
+    margin-top: 0.3em;
+}
+
+#arrowTop.show {
     opacity: 1;
     visibility: visible;
     cursor: pointer;
-  }
+}
 
 .footer {
     bottom: 0;
@@ -114,11 +114,49 @@ header {
 /***********************
 *         HOME         *
 ***********************/
-
-.img-accueil{
-    width: 100vw;
-    height: 10%;
+#accueil {
+    position: relative;
+    height: 80vh;
 }
+
+#logo-presentation {
+    position: absolute;
+    top: 15%;
+    left: 62%;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 2.5s;
+    animation-duration: 2.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.img-accueil {
+    width: 100vw;
+    height: 30em;
+    object-fit: cover;
+}
+
 section {
     font-family: 'Dosis', sans-serif;
     background-color: var(--main-color);
@@ -133,17 +171,152 @@ section {
     transform: translate(-50%, -50%);
 }
 
-p.phome {
-    font-size : 1.4rem;
+.quel-film-ce-soir {
+    animation-duration: 2s;
+    animation-name: slidein;
 }
 
-.img-popcorn{
-    width : 30%;
+@keyframes slidein {
+    from {
+        margin-right: 100%;
+    }
+
+    to {
+        margin-right: 0%;
+    }
+}
+
+.fa-laugh-beam {
+    color: var(--sentence-color);
+}
+
+p.phome {
+    font-size: 1.3rem;
+}
+
+.trouver-film-btn {
+    background-color: var(--title-color) ! important;
+    border: 4px dotted white;
+    -webkit-animation-name: hiClick;
+    animation-name: hiClick;
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@-webkit-keyframes hiClick {
+    0% {
+        font-size: 100%;
+    }
+
+    50% {
+        font-size: 115%;
+    }
+
+    100% {
+        font-size: 100%;
+    }
+}
+
+@keyframes hiClick {
+    0% {
+        font-size: 100%;
+    }
+
+    50% {
+        font-size: 115%;
+    }
+
+    100% {
+        font-size: 100%;
+    }
+}
+
+.img-popcorn {
+    width: 30%;
 }
 
 /***********************
 *       FIND MOVIE     *
 ***********************/
+#img-telecommande {
+    -webkit-animation-name: tada;
+    animation-name: tada;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes tada {
+    0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    10%,
+    20% {
+        -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    }
+
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%,
+    60%,
+    80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes tada {
+    0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    10%,
+    20% {
+        -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    }
+
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%,
+    60%,
+    80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
 
 .find-movie {
     font-family: 'Dosis', sans-serif;
@@ -159,10 +332,12 @@ p.phome {
     text-transform: uppercase;
     font-family: 'Limelight', cursive;
     color: var(--title-color);
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 .find-movie .choice {
-    text-transform: capitalize;
+    text-transform: none;
     color: var(--sentence-color);
 }
 
@@ -181,6 +356,29 @@ p.phome {
 
 .find-movie .random-film {
     text-transform: uppercase;
+}
+
+.form-check-inline{
+    padding-right: 3rem;
+    padding-bottom: 2rem;
+}
+
+label{
+    font-size: 1.2rem;
+}
+
+#go{
+    background-color: #c42323;
+    font-size: 1.1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+#hasard{
+    background-color: #c42323;
+    font-size: 1.1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
 
 /***film_actor_director***/
@@ -212,15 +410,12 @@ p.phome {
     color: #e8e8e8;
 }
 
-.img-clapper{
-    width: 70%;
-    border-radius: 5%;
-    box-shadow: 8px 8px 0px #c42323;
-}
-
 /***********************
 *       FILM PAGE      *
 ***********************/
+.main-movie-details{
+color : var(--main-color);
+}
 
 .card {
     word-wrap: normal;
@@ -229,28 +424,32 @@ p.phome {
 }
 
 .card-text .label {
-    font-size:14px;
-    font-weight:500;
-    text-transform:uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
     letter-spacing: 0.075em;
     color: #333;
 }
-.card-text .label i.fa {
-	color: #666;
-}	
-.box {
-	background: rgba(240,240,240, .8);
-}
-.box .label {
-    font-size:14px;
 
-    text-transform:uppercase;
-    font-weight:300;
+.card-text .label i.fa {
+    color: #666;
+}
+
+.box {
+    background: rgba(240, 240, 240, .8);
+}
+
+.box .label {
+    font-size: 14px;
+
+    text-transform: uppercase;
+    font-weight: 300;
     letter-spacing: 0.075em;
     color: #333;
 }
+
 .box .info {
-    font-weight:600;
+    font-weight: 600;
     color: #333;
 }
 
@@ -259,7 +458,7 @@ p.phome {
 ***********************/
 
 .about .logo {
-    width: 15%;
+    width: 10%;
 }
 
 .about {
@@ -278,6 +477,25 @@ p.phome {
 h3 {
     text-transform: capitalize;
     color: var(--title-color);
+}
+
+.instructions{
+    display: flex;
+    justify-content: space-around;
+}
+
+.instructions > div {
+    text-align: center;
+    padding: 2rem;
+    width : 25%;
+}
+
+.instructions > div > p {
+    margin-top: 1rem;
+}
+
+.instructions span{
+    color : var(--title-color);
 }
 
 /***********************
@@ -320,11 +538,11 @@ h3 {
     color: var(--sentence-color);
 }
 
-.img-charlie{
-    width : 70%
+.img-charlie {
+    width: 70%
 }
 
-.h1-signin{
+.h1-signin {
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -336,13 +554,13 @@ h3 {
     color: var(--sentence-color);
 }
 
-.img-sieges{
+.img-sieges {
     width: 35%;
 }
 
-.img-bye{
+.img-bye {
     width: 50%;
-    border-radius : 10%;
+    border-radius: 10%;
 }
 
 /**********************
