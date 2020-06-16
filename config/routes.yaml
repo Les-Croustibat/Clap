@@ -22,7 +22,7 @@ default_legalNotice:
 # user
 user_space:
   path: /mon-espace
-  controller: App\Controller\UserController:userSpace
+  controller: App\Controller\UserController:viewedRated
   
 user_ajax_add_actor:
   path: /add-actor
