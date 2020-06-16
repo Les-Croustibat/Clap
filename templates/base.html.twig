@@ -46,10 +46,19 @@
 							<a href="{{ path('movie_find') }}">Trouver un film<span class="sr-only">(current)</span>
 							</a>
 						</li>
+						{% if app.user %}
 						<li class="nav-item mx-4">
-							<a href="{{ path('default_about') }}">A propos</a>
+            				<a href="{{ path('user_space') }}"><i class="fas fa-film mr-2"></i>Mon espace</a>
 						</li>
-
+						{% endif %}
+						<li class="nav-item mx-4">
+							<a href="{{ path('default_contact') }}">Nous contacter</a>
+						</li>
+						{% if not app.user %}
+						<li class="nav-item mx-4">
+							<a class="" href="{{ path('security_signin') }}"><i class="fas fa-pencil-alt mr-2"></i>Inscription</a>
+						</li>
+						{% endif %}
 						{% if not app.user %}
 							<li class="nav-item mx-4">
 								<a href="{{ path('security_login') }}">
@@ -83,28 +92,35 @@
 		</header>
 
 		{% block content %}{% endblock %}
+		{# Salutations #}
+		{% if app.user %}
+		<div id="HelloUser">
+			<span class="text2">Bonjour {{app.user.pseudo}} !</span>
+		</div>
+		{% endif %}
+
 		{# Flèche de retour en haut de page #}
 		<div id="arrowTop">
 			<i class="fas fa-arrow-up"></i>
 		</div>
 
 		{# Footer #}
-		<footer class="footer mt-auto py-5">
-			<div class="text-center">
-				<span>{{ 'now'|date('Y') }}
-					&copy; CLAP |
-				</span>
-				<span>
-					<a href="{{ path('default_credits') }}">Crédits |
-					</a>
-				</span>
-				<span>
-					<a href="{{ path('default_legalNotice') }}">Mentions Légales |
-					</a>
-				</span>
-				<span>
-					<a href="{{ path('default_contact') }}">Contact</a>
-				</span>
+		<footer class="footer p-4">
+			<div class="">
+				<div class="text-center">
+					<span class="px-3">
+						<a href="{{ path('default_about') }}">A propos</a>
+					</span>
+					<span class="px-3">
+						<a href="{{ path('default_credits') }}">Crédits</a>
+					</span>
+					<span>
+						<a href="{{ path('default_legalNotice') }}">Mentions Légales</a>
+					</span>
+				</div>
+			</div>
+			<div class="text-center row py-2">
+				<span class="col-12">{{ 'now'|date('Y') }} | &copy; CLAP</span>
 			</div>
 		</footer>
 
