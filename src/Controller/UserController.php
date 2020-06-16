@@ -7,23 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
 {
-    public function userSpace()
-    {
-        // $Api= new APIAllocineController;
-        // $resultat = $Api -> callAPIPartner('Will Smith','person');
-        // dd($resultat);
-
-        return $this->render('user/user_space.html.twig');
-    }
-    public function resetPw()
-    {
-        return $this->render('user/user_resetPw.html.twig');
-    }
-    public function forgottenPw()
-    {
-        return $this->render('user/user_forgottenPw.html.twig');
-    }
-
     public function viewedRated()
     {
         $apiTMDB=new APITmdbController();
