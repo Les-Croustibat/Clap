@@ -113,6 +113,7 @@ header {
     right: 6%;
     animation: text 3s 1;
     animation-timing-function: linear;
+    animation-iteration-count: 1;
   }
 
   @keyframes text {
