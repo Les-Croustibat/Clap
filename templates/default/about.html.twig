@@ -5,51 +5,77 @@
 {% block content %}
 
     {# About page describing the project #}
-    
+    <div class="banniere-about">
+        <img src="{{asset('asset/img/movie-cam.jpg')}}" alt="movie-cam" id="img-moviecam">
+    </div>
+
     <div class="container about">
 
         <div class="row justify-content-center">
             <img src="asset/img/logoLR.png" alt="logo Clap" class="logo mb-4 mt-5"></img>
         </div>
         <div class="row justify-content-center">
-            <h1>clap</h1>
+            <h1 class="pb-1">clap</h1>
         </div>
 
         <div class="row p-4 justify-content-center mb-4">
             <div class="col-md-6 text-center">
-                <p>Cette application web est un projet de fin de formation.</p>
-                <p>Qui n'a jamais passé un temps infini à choisir un film à regarder ?</p>
-                <p>Au point de ne plus savoir quoi regarder ...</p>
-                <p>Avec Clap, problème résolu ... asseyez-vous confortablement !</p> 
-                <p>Indiquez vos goûts et nous vous proposons des films à regarder</p> 
-                <p>Bonne séance !</p>
+                <p class="pabout">Cette application web est un projet de fin de formation.</p>
+                <p class="pabout">Qui n'a jamais passé un temps infini à choisir un film à regarder ?</p>
+                <p class="pabout">Au point de ne plus savoir quoi regarder ...</p>
+                <p class="pabout">Avec Clap, problème résolu ... assieds-toi confortablement !</p> 
+                <p class="pabout">Indique tes goûts et nous te proposons des films à regarder</p> 
+                <p class="pabout">Bonne séance !</p>
             </div>
         </div>
 
+        <hr>
+
+        <div class="instructions">
+            <div class="instructions1">
+                <img src="{{asset('asset/img/film.png')}}" alt="icon-film" width="60" height="60" id="icon-film">
+                <p><span>1</span></br>Tu ne sais pas quoi regarder ? <br> Tu hésites, ou n'es pas inspiré...</p>
+            </div>
+            <div class="instructions2">
+                <img src="{{asset('asset/img/icon-clap.png')}}" alt="icon-clap" width="60" height="60" id="icon-clap">
+                <p><span>2</span></br> Grâce à Clap, choisis un film en fonction de tes critères.</p>
+            </div>
+            <div class="instructions3">
+                <img src="{{asset('asset/img/play-button-2.png')}}" alt="icon-play" width="60" height="60" id="icon-play">
+                <p><span>3</span></br> Laisse toi inspirer par les films qui te sont proposés, <br>tu auras tous les détails nécessaires.</p>
+            </div>
+            <div class="instructions4">
+                <img src="{{asset('asset/img/cinema.png')}}" alt="icon-cinema" width="60" height="60" id="icon-cinema">
+                <p><span>4</span></br> Installe-toi tranquillement, tu sais désormais quel film tu vas visionner ce soir ! </p>
+            </div>
+        </div>
+
+        <hr>
+
         <div class="row justify-content-center mb-4">
-            <h2>la team</h2>
+            <h2 class="text-center la-team">la team</h2>
         </div>
 
         <div class="row p-4 justify-content-center">
             <div class="col-md-3 text-center">
                 <img src="asset/img/ChristopheB.png" alt="Christophe" class="mb-4 rounded"></img>
                 <h3>Christophe</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                <p>Hakuna Matata</p>
             </div>
             <div class="col-md-3 text-center">
                 <img src="asset/img/CyrielleT.jpeg" alt="Cyrielle" class="mb-4 rounded"></img>
                 <h3>Cyrielle</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                <p>Joyeux Hunger Games et puisse le sort vous être favorable</p>
             </div>
             <div class="col-md-3 text-center">
                 <img src="asset/img/FabienP.png" alt="Fabien" class="mb-4 rounded"></img>
                 <h3>Fabien</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                <p>Être ou ne pas être ... ne pas être</p>
             </div>
             <div class="col-md-3 text-center">
                 <img src="asset/img/AurelieD.png" alt="Aurélie" class="mb-4 rounded"></img>
                 <h3>Aurélie</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo</p>
+                <p>La vie c'est comme une boîte de chocolats, on ne sait jamais sur quoi on va tomber.</p>
             </div>
         </div>
     </div>
