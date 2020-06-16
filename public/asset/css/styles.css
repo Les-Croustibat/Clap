@@ -11,7 +11,7 @@ body {
     font-family: 'Dosis', sans-serif;
     background-color: var(--main-color);
     color: var(--sentence-color);
-    top : 100px;
+    top : 106px;
     position: relative;
 }
 
@@ -30,7 +30,7 @@ h2 {
     --main-color: rgb(37, 37, 37);
     --title-color: #c42323;
     --sentence-color: #e8e8e8;
-    --grey-color: #dadada;
+    --grey-color: rgb(218, 218, 218);
     /* #9b999 */
 }
 
@@ -60,10 +60,6 @@ header {
     z-index: 10;
 }
 
-.header_opaque{
-    background-color: rgba(255,255,255,1);
-}
-
 .logo-clap {
     width: 80px;
     height: 80px;
@@ -72,6 +68,12 @@ header {
 .navbar,
 .footer {
     background-color: var(--grey-color);
+    opacity: 1;
+}
+
+.header_opaque{
+    background-color: rgba(218, 218, 218, 0.4);
+    opacity: 0.95;
 }
 
 .navbar a,
@@ -158,7 +160,7 @@ header {
 #logo-presentation {
     position: absolute;
     top: 25%;
-    left: 64%;
+    left: 64.5%;
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
     -webkit-animation-duration: 2.5s;
@@ -531,10 +533,11 @@ color : var(--main-color);
 /***********************
 *         ABOUT        *
 ***********************/
-#img-cam{
+#img-moviecam{
     width: 100%;
     height: 40vh;
     object-fit: cover;
+    object-position: center;
 }
 
 .about .logo {
@@ -647,10 +650,39 @@ h3 {
 /***********************
 *      CONTACT FORM    *     
 ************************/
+.banniere-contact{
+    position: relative;
+}
+
+.h1-contact{
+    color: white;
+    text-shadow: black 0.2em 0.3em 0.2em;
+    font-size: 3.5rem;
+    position: absolute;
+    left: 50%;
+    bottom: 25%;
+    transform: translateX(-50%);
+}
+
+.h2-contact{
+    color: white;
+}
+
 .container.content-contact {
     margin-top: 8vh;
     margin-bottom: 8vh;
     color: white;
+}
+
+.pcontact{
+    font-size : 1.5rem;
+}
+
+.img-monde{
+    width: 100vw;
+    height: 40vh;
+    object-fit: cover;
+    object-position: center;
 }
 
 /***********************
@@ -691,6 +723,15 @@ h3 {
 .h1-signin {
     margin-bottom: 0;
     padding-bottom: 0;
+}
+
+.btn-signin{
+    font-size: 1.3rem;
+    background-color: var(--title-color);
+}
+
+.btn-signin:hover{
+    background-color: red;
 }
 
 /**********************
