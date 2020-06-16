@@ -5,89 +5,91 @@
 {% block css %}
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
-<link href="{{ asset('asset/css/fabien.css') }}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 {% endblock %}
 
 {% block content %}
 
-<section class="container">
-    <div class="row justify-content-center mb-5">
-        <h1 class="title">MON ESPACE</h1>
+{# Salutations #}
+{% if app.user %}
+	<div class="animation">
+		<span class="text2">Bonjour {{app.user.pseudo}} !</span>
     </div>
-    <form method="get" id="person ">
-        <h2 class="row justify-content-center my-5">Genres préférés :</h2>
-        <div class="row justify-content-center">
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="action" name="action" value="action">
-                <label class="form-check-label" for="action">Action</label>
-            </div>
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="animation" name="animation" value="animation">
-                <label class="form-check-label" for="animation">Animation</label>
-            </div>
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="aventure" name="aventure" value="aventure">
-                <label class="form-check-label" for="aventure">Aventure</label>
-            </div>
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="comédie" name="comédie" value="comédie">
-                <label class="form-check-label" for="comédie">Comédie</label>
-            </div>
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="drame" name="drame" value="drame">
-                <label class="form-check-scary" for="drame">Drame</label>
-            </div>
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="famille" name="famille" value="famille">
-                <label class="form-check-label" for="famille">Famille</label>
-            </div>
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="fantastique" name="fantastique" value="fantastique">
-                <label class="form-check-label" for="fantastique">Fantastique</label>
-            </div>
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="guerre" name="guerre" value="guerre">
-                <label class="form-check-label" for="guerre">Guerre</label>
-            </div>
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="historique" name="historique" value="historique">
-                <label class="form-check-label" for="historique">Historique</label>
-            </div>
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="policier" name="policier" value="policier">
-                <label class="form-check-label" for="policier">Policier</label>
-            </div>
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="romance" name="romance" value="romance">
-                <label class="form-check-label" for="romance">Romance</label>
-            </div>
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="science-fiction" name="science-fiction"
-                    value="science-fiction">
-                <label class="form-check-label" for="science-fiction">Science fiction</label>
-            </div>
-            <div class="col-3">
-                <input class="form-check-input" type="checkbox" id="thriller" name="thriller" value="thriller">
-                <label class="form-check-label" for="thriller">Thriller</label>
-            </div>
-            <div class="col-9">
-                <input class="form-check-input" type="checkbox" id="epouvante-horreur" name="epouvante-horreur"
-                    value="epouvante-horreur">
-                <label class="form-check-label" for="epouvante-horreur">Epouvante-horreur</label>
+{% endif %}
+
+<div class="row justify-content-center mb-5">
+    <h1 class="title">MON ESPACE</h1>
+</div>
+<h2 class="row justify-content-center my-5">Films les mieux notés :</h2>
+<!--Slides-->
+<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+        {% set i = 0 %}
+        {% for top in topRated %}
+        {% set i = i + 1  %}
+        <div class="carousel-item with-background  {{ i == 1 ? 'active' : '' }}">
+            <div class="row justify-content-center px-xl-5 mx-3 mx-xl-5">
+                <div class="col-12 col-xl-4">
+                    <img class="img-fluid rounded " src="http://image.tmdb.org/t/p/w300/{{ top.poster_path }}"
+                        alt="{{ top.title}}">
+                </div>
+                <div class="col-12 col-xl-8">
+                    <h3 class="text-light d-none d-md-block"><a
+                            href="{{ path('movie_details',{ id: top.id }) }}">{{ top.title }}</a></h3>
+                    <p class="text-light d-none d-md-block">VO en {{ top.original_language|upper}}</p>
+                    <p class="text-light d-none d-md-block"><i class="fas fa-star"></i> Note moyenne :
+                        {{ top.vote_average}}</p>
+                    <p class="text-light d-none d-md-block">{{ top.overview|slice(0, 125) }}...</p>
+
+                    <a class="btn btn-primary btn-sm btn-block d-md-none mt-3"
+                        href="{{ path('movie_details',{ id: top.id }) }}">Lire la suite</a>
+                    <a class="btn btn-outline-primary btn-sm d-none d-md"
+                        href="{{ path('movie_details',{ id: top.id }) }}">Lire la suite</a>
+
+                </div>
             </div>
         </div>
-        <h2 class="row justify-content-center my-5">Réalisateur/Acteur préféré :</h2>
-        <div class="row justify-content-center ">
-            <input type="text" name="acteur" id="acteur">
-            <input type="button" value="Ajouter" id='etiquette' class="btn button">
+        {% endfor %}
+    </div>
+    <a class="carousel-control-prev d-none d-lg-flex" href="#multi-item-example" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next d-none d-lg-flex" href="#multi-item-example" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+<h2 class="row justify-content-center my-5">Films les plus populaires :</h2>
+<div class="container-fluid">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            {% set i = 0 %}
+            {% for most in mostViewed %}
+            {% set i = i + 1 %}
+            <div class="justify-content-centercarousel-item  {{ i == 1 ? 'active' : '' }}">
+                <div class="col4 " style="float:left">
+                    {% if most.current_trailer is defined %}
+                    <a href="{{most.current_trailer }}" data-toggle="lightbox">
+                        <img class="w-5" src="http://image.tmdb.org/t/p/w92/{{ most.poster_path }}"
+                            alt="{{ most.title }}" alt="">
+                    </a>
+                    {% else %}
+                    <img class="w-5" src="http://image.tmdb.org/t/p/w92/{{ most.poster_path }}" alt="{{ most.title }}"
+                        alt="">
+                    {% endif %}
+
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        <div class="row  mt-5" id="list_person">
-        </div>
-        <div class="col-12 text-center my-5 ">
-            <input type="submit" value="Enregistrer" class="btn button">
-        </div>
-    </form>
-</section>
+    </div>
+</div>
+
 
 {% endblock %}
 
@@ -95,39 +97,14 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{{ asset('asset/js/fabien.js') }}"> </script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+
 
 <script>
-    // Au submit du formulaire
-    $('#etiquette').on('click', function (e) {
-        e.preventDefault();
-        // variable qui va récupéré la valeur de mon_super_acteur
-        variable = $('#acteur').val()
-        axios.get("{{ path('user_ajax_add_actor') }}", {
-                params: {
-                    actor: variable,
-                }
-            })
-            .then(function (response) {
-                console.log(response);
-                // response.data correspond au tableau de mon $this->json() dans le controller
-                if (response.data.status == 'ko') {
-                    alert(response.data.error);
-                } else if (response.data.status == 'ok') {
-                    alert(response.data.result);
-                    // pour afficher le resultat dans une liste
-                    $('#list_person').append('<li class="col-3" title="cliquer pour enlever">' + response
-                        .data.result + '</li>');
-                    $('#list_person').val('');
-                }
-                // remove etiquette
-                $('#list_person').on('click', 'li', function () {
-                    var $this = $(this);
-                    $this.remove();
-                })
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    })
+    $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
 </script>
 {% endblock %}

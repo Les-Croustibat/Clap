@@ -3,52 +3,76 @@
 {% block title %}Contact{% endblock %}
 
 {% block content %}
-{# Entête du formulaire #}
-<div class="container content-contact">
-    <div class="text-center mb-5 header">
-        <h1>Contact</h1>
-        <p>Une suggestion, une question ?</p>
-    </div>
-    
 
+{# Salutations #}
+{% if app.user %}
+	<div class="animation">
+		<span class="text2">Bonjour {{app.user.pseudo}} !</span>
+    </div>
+{% endif %}
 
 {# Formulaire de contact #}
-    <div class="form text-center">
-{# Message d'erreur et de réussite #}
-        <form method="POST" class="justify-content-center">
-        {% for label, messages in app.flashes %}
+<div class="banniere-contact">
+    <img src="{{asset('asset/img/monde.jpg')}}" alt="contact" class="img-monde">
+    <h1 class="h1-contact">Contact <i class="far fa-envelope d-none d-lg-inline-block"></i></h1>
+</div>
+
+<div class="container-contact">
+
+		<div class="row- justify-content-center">
+            <h1 class="mt-5 mb-5 text-center">Une suggestion, une question ?</h1>
+            <h2 class="mt-5 mb-5 text-center h2-contact">N'hésite pas à nous contacter, nous te répondrons rapidement</h2>
+		</div>
+
+		<div class="row justify-content-center mb-4">
+			<form method="post" class="col-8 col-xl-6">
+        
+			{# Message d'erreur et de réussite #}
+					{% for label, messages in app.flashes %}
             <div class="alert alert-{{ label }} col-7 m-auto">
                 {% for message in messages %}
                     {{ message|raw }} 
                 {% endfor %}
             </div>
         {% endfor %}
-            <div class="form-group row justify-content-center mt-3">
-                <label class="text-left col-4 col-md-3" for="lastname">Nom :</label>
-                <input class="text-left col-6 col-md-3" name="lastname" id="lastname"></input>
-            </div>
-            <div class="form-group row justify-content-center">
-                <label class="text-left col-4 col-md-3" for="firstname">Prénom :</label>
-                <input class="text-left col-6 col-md-3" name="firstname" id="firstname"></input>
-            </div>
-            <div class="form-group row justify-content-center">
-                <label class="text-left col-4 col-md-3" for="email">Email :</label>
-                <input class="text-left col-6 col-md-3" name="email" id="email"></input>
-            </div>
-            <div class="form-group row justify-content-center">
-                <label class="text-left col-4 col-md-3" for="object">Objet :</label>
-                <input class="text-left col-6 col-md-3" name="object" id="object"></input>
-            </div>
-            <div class="form-group row justify-content-center">
-                <label class="text-left col-4 col-md-3" for="message">Message :</label>
-                <textarea class="textinput text-left col-6 col-md-3" name="message" id="message"></textarea>
-            </div>
-            <div class="text-center mt-5 form-button">
-                <button type="submit" class="btn btn-secondary m-5">Envoyer</button>
-            </div>
-        </form>
 
-    </div>
+				<div class="form-group row">
+                    <label for="lastname">Nom :</label>
+                    <input class="form-control" name="lastname" id="lastname"></input>
+				</div>
+
+				<div class="form-group row">
+					<label for="firstname">Prénom :</label>
+                    <input class="form-control" name="firstname" id="firstname"></input>
+				</div>
+
+				<div class="form-group row">
+					<label for="email">Email :</label>
+                    <input class="form-control" name="email" id="email"></input>
+				</div>
+
+				<div class="form-group row">
+					<label for="object">Objet :</label>
+                    <input class="form-control" name="object" id="object"></input>
+				</div>
+
+				<div class="form-group row">
+					<label for="message">Message :</label>
+                    <textarea class="form-control" name="message" id="message"></textarea>
+				</div>
+
+				<div class="row justify-content-center">
+					<button class="btn btn-secondary m-5 btn-signin" type="submit">
+						Envoyer
+					</button>
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
 </div>
 
 {% endblock %}
