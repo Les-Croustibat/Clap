@@ -107,8 +107,28 @@ header {
   /* Hello User */
   #HelloUser{
     position: absolute;
-    top: 120px;
-    right: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    top: 11%;
+    right: 6%;
+    animation: text 3s 1;
+    animation-timing-function: linear;
+  }
+
+  @keyframes text {
+      0%{
+        color: black;
+        margin-bottom: -40px;
+      }
+      30%{
+          letter-spacing: 25px;
+          margin-bottom: -40px;;
+      }
+      85%{
+          letter-spacing: 8px;
+          margin-bottom: -40px;
+      }
+      
   }
 
 .footer {

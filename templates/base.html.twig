@@ -80,7 +80,10 @@
 		{% block content %}{% endblock %}
 		{# Salutations #}
 		{% if app.user %}
-		<span id="HelloUser">Bonjour {{app.user.pseudo}} !</span>
+		<div id="HelloUser">
+			<span class="text1">Bonjour</span>
+			<span class="text2">{{app.user.pseudo}} !</span>
+		</div>
 		{% endif %}
 
 		{# Flèche de retour en haut de page #}
