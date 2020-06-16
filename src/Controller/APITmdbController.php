@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Respect\Validation\Validator as v;
 
 class APITmdbController extends AbstractController
 {
@@ -221,7 +222,7 @@ class APITmdbController extends AbstractController
     // Retrieve all data from the API films with the genre, year & runtime
     public function callTMDBAPIDiscoverAll($searchedGenre=null, $movie_year1, $movie_year2, $movie_runtime1, $movie_runtime2) {
 
-        if(empty($searchedGenre & $movie_year1 & $movie_year2 & $movie_runtime1 & $movie_runtime2)) {
+        if(empty($searchedGenre && $movie_year1 && $movie_year2 && $movie_runtime1 && $movie_runtime2)) {
             // if API not called with parameters, no search
             return false;
 
@@ -236,12 +237,12 @@ class APITmdbController extends AbstractController
             $curl = curl_init();
 
             // Set the url params
-            $urlParams = '?api_key='.$apiKey.'&language=fr';
+            $urlParams = '?api_key='.$apiKey.'&language=fr&with_genres='.$searchedGenre;
             if((isset($movie_runtime1) && !empty($movie_runtime1)) && (isset($movie_year1) && !empty($movie_year1))){
-                $urlParams.= '&with_genres='.$searchedGenre.'&with_runtime.gte='.$movie_runtime1.'&release_date.gte='.$movie_year1.'-01-01';
+                $urlParams.= '&with_runtime.gte='.$movie_runtime1.'&release_date.gte='.$movie_year1.'-01-01';
             }
-            if((isset($movie_runtime2) && !empty($movie_runtime2))&& (isset($movie_year1) && !empty($movie_year1))){
-                $urlParams.= '&with_genres='.$searchedGenre.'&with_runtime.lte='.$movie_runtime2.'&release_date.lte='.$movie_year2.'-12-31';
+            if((isset($movie_runtime2) && !empty($movie_runtime2))&& (isset($movie_year2) && !empty($movie_year2))){
+                $urlParams.= '&with_runtime.lte='.$movie_runtime2.'&release_date.lte='.$movie_year2.'-12-31';
             }
 
             // Set the curl options
@@ -268,6 +269,25 @@ class APITmdbController extends AbstractController
 
             // Decode the response (true, key and value -> PHP)
             $decode_response=json_decode($response, true);
+
+            //$searchedGenre=null, $movie_year1, $movie_year2, $movie_runtime1, $movie_runtime2
+
+            $new_results = [];
+            if(!empty($decode_response['results'])){
+                
+                foreach($decode_response['results'] as $movie_found){
+
+                    if(v::date()->between($movie_year1.'-01-01', $movie_year2.'-12-31')->validate($movie_found['release_date'])){
+                        $new_results[] = $movie_found;
+                    }
+
+                }
+                
+
+                
+                return ['results' => $new_results];
+
+            }
 
         }
 

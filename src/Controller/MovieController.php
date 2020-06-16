@@ -101,12 +101,14 @@ class MovieController extends AbstractController
         }
 
         // Retrieve all data from API
-        if (isset($_GET['with_genres']['release_date']['with_runtime'])) {
-            $data_selected = $_GET['with_genres']['release_date']['with_runtime'];
-            $movie_data = explode(',', $data_selected);
+        if (isset($_GET['with_genres']) && isset($_GET['release_date']) && isset($_GET['with_runtime'])) {
+            $data_genres = implode(',', $_GET['with_genres']);
             
+            $data_release = explode(',', $_GET['release_date']);
+            $data_runtime = explode(',', $_GET['with_runtime']);
+
             // Call the API method & retrieve results
-            $findmovies = $apiTMDB->callTMDBAPIDiscoverAll($movie_data[0], $movie_data[1], $movie_data[2], $movie_data[3], $movie_data[4]);
+            $findmovies = $apiTMDB->callTMDBAPIDiscoverAll($data_genres, $data_release[0], $data_release[1], $data_runtime[0], $data_runtime[1]);
             $movie_results_global = $findmovies['results'];
             
         } else {
@@ -117,6 +119,7 @@ class MovieController extends AbstractController
 
         return $this->render('movie/movie_find.html.twig', [
 
+            // In case of separate results
             // 'movie_results'   => $movie_results ?? [],
             // 'movie_results_runtime'   => $movie_results_runtime ?? [],
             // 'movie_results_year'     => $movie_results_year ?? [],
