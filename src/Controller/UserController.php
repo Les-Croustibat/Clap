@@ -24,6 +24,18 @@ class UserController extends AbstractController
         return $this->render('user/user_forgottenPw.html.twig');
     }
 
+    public function viewedRated()
+    {
+        $apiTMDB=new APITmdbController();
+        $topRated = $apiTMDB->calltopRated();
+        $mostViewed = $apiTMDB->callmostViewed();
+        
+        
+        return $this->render('user/user_space.html.twig',[
+            'topRated' => array_slice($topRated['results'], 1),
+            'mostViewed' => $mostViewed['results'],
+        ]);
+    }
 
     // créer une route spécifique qui permettra d'accéder a cette page, meme si elle sera invisible
     public function ajaxApiperson(){
