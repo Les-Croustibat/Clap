@@ -105,9 +105,7 @@ class MovieController extends AbstractController
             $movie_results_year = $findmovies['results'];
             
             
-        } else {
-            echo 'Vous n\'avez pas sélectionné une période';
-        }
+        } 
 
         // Retrieve data regarding film Runtime
         if (isset($_GET['with_runtime'])) {
@@ -118,9 +116,7 @@ class MovieController extends AbstractController
             $findmovies = $apiTMDB->callTMDBAPIDiscoverRuntime($movie_runtime[0],$movie_runtime[1]);
             $movie_results_runtime = $findmovies['results'];
             
-        } else {
-            echo 'Vous n\'avez pas sélectionné une durée';
-        }
+        } 
 
         // Retrieve all data from API
         if (isset($_GET['with_genres']) && isset($_GET['release_date']) && isset($_GET['with_runtime'])) {
@@ -133,9 +129,7 @@ class MovieController extends AbstractController
             $findmovies = $apiTMDB->callTMDBAPIDiscoverAll($data_genres, $data_release[0], $data_release[1], $data_runtime[0], $data_runtime[1]);
             $movie_results_global = $findmovies['results'];
             
-        } else {
-            echo 'Vous n\'avez pas sélectionné tous les critères';
-        }
+        } 
 
 
         return $this->render('movie/movie_find.html.twig', [
