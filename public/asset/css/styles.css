@@ -454,10 +454,10 @@ font-size: 2rem !important;
     text-transform: uppercase;
 }
 
-.form-check-inline{
+/* .form-check-inline{
     padding-right: 3rem;
     padding-bottom: 2rem;
-}
+} */
 
 label{
     font-size: 1.2rem;
@@ -478,10 +478,10 @@ label{
 }
 
 
-
 .find-movie .fa-star {
     color: rgb(224, 177, 22);
 }
+
 
 /***********************
 *       FILM PAGE      *
@@ -822,6 +822,16 @@ h3 {
 
 
 /******* MEDIA QUERIES *******/
+
+@media (max-width : 768px) {
+    .randomly{
+        font-size: 1.2em;
+    }
+
+    .randomposter {
+        width: 100%;
+    }
+}
 
 @media (min-width : 768px) {
     .card {

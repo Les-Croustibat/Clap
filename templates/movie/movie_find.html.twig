@@ -11,16 +11,15 @@
 
 {% block content %}
 
+    <div class="banniere-find">
+        <img src="{{asset('asset/img/admission.jpg')}}" alt="admission" id="img-admission">
+        <h1 class="title-find">Clap te trouve un film ! </h1>
+        <img src="{{asset('asset/img/ticket.png')}}" alt="ticket" width="140" height="140" id="img-ticket">
+    </div>  
+
     <div class="container find-movie">
-        <div class="row justify-content-center">
-            <img src="asset/img/logoLR.png" alt="logo Clap" class="logo mb-4 mt-5">
-        </div>
 
-        <div class="row row-cols-sm-2 justify-content-center">
-            <h1 class="m-5 mt-lg-5 mb-lg-5 text-center">Clap te trouve un film ! </h1>
-        </div>
-
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-5">
             <h2 class="choice m-5 mt-lg-5 mb-lg-5 text-center">Tu sais déjà un peu ce que tu veux ...</h2>
         </div>
 
@@ -28,68 +27,66 @@
         <form method="get" class="mt-4" id="visitor_criteria">
             <div class="row justify-content-center mb-5">
                 <div class="col-11 col-lg-6">
-                    <h2 class="mb-5 text-center">Genres</h2>
-                    <div class="mt-4">
-                        <div class="row row-cols-xl-4 justify-content-center">
-                            <div class="form-check form-check-inline">
+                    <h2 class="mb-5 text-center">Genres <i class="fas fa-check-double"></i></h2>
+                    <div class="row mt-4">
+                        <div class="col-xl-4">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="action" name="with_genres[]" value="28">
                                 <label class="form-check-label" for="action">Action</label>
                             </div>
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="animation" name="with_genres[]" value="16">
                                 <label class="form-check-label" for="animation">Animation</label>
                             </div>
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="adventure" name="with_genres[]" value="12">
                                 <label class="form-check-label" for="adventure">Aventure</label>
                             </div>
-                        </div>
-                        <div class="row row-cols-xl-4 justify-content-center ">
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="comedy" name="with_genres[]" value="35">
                                 <label class="form-check-label" for="comedy">Comédie</label>
                             </div>
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="drama" name="with_genres[]" value="18">
                                 <label class="form-check-scary" for="drama">Drame</label>
                             </div>
-                            <div class="form-check form-check-inline">
+                        </div>
+                        <div class="col-xl-4 ">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="horror" name="with_genres[]" value="27">
                                 <label class="form-check-label" for="horror">Horreur</label>
                             </div>
-                        </div>
-                        <div class="row row-cols-xl-4 justify-content-center ">
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="family" name="with_genres[]" value="10751">
                                 <label class="form-check-label" for="family">Famille</label>
                             </div>
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="fantastic" name="with_genres[]" value="14">
                                 <label class="form-check-label" for="fantastic">Fantastique</label>
                             </div>
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="war" name="with_genres[]" value="10752">
                                 <label class="form-check-label" for="war">Guerre</label>
                             </div>
-                        </div>
-                        <div class="row row-cols-xl-4 justify-content-center ">
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="history" name="with_genres[]" value="36">
                                 <label class="form-check-label" for="history">Historique</label>
                             </div>
-                            <div class="form-check form-check-inline">
+                        </div>
+                        <div class="col-xl-4 ">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="crime" name="with_genres[]" value="80">
                                 <label class="form-check-label" for="crime">Policier</label>
                             </div>
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="romance" name="with_genres[]" value="10749">
                                 <label class="form-check-label" for="romance">Romance</label>
                             </div>
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="scifi" name="with_genres[]" value="878">
                                 <label class="form-check-label" for="scifi">Science fiction</label>
                             </div>
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="thriller" name="with_genres[]" value="53">
                                 <label class="form-check-label" for="thriller">Thriller</label>
                             </div>
@@ -98,20 +95,20 @@
                 </div>
             </div>
 
-            {# Année de production #}
+            {# Release year #}
             <div class="row justify-content-center my-5 py-5">
                 <div class="col-8 col-lg-6">
-                    <h2 class="mb-5 text-center">Année de production</h2>
+                    <h2 class="mb-5 text-center">Année de production  <i class="far fa-calendar-alt"></i></h2>
                     <div class="form-group mt-5">
                         <input type="text" id="slider1" class="slider1" name="release_date">
                     </div>
                 </div>
             </div>
 
-            {# Durée de film #}
+            {# Film runtime #}
             <div class="row justify-content-center my-5 py-5">
                 <div class="col-8 col-lg-6">
-                    <h2 class="mb-5 text-center">Durée du film</h2>
+                    <h2 class="mb-5 text-center">Durée du film  <i class="fas fa-hourglass-half"></i></h2>
                     <div class="form-group mt-5">
                         <input type="text" id="slider2" class="slider2" name="with_runtime">
                     </div>
@@ -120,11 +117,11 @@
             
             {# Button GO#}
             <div class="row justify-content-center my-5 py-5">
-                <button type="submit" class="btn btn-secondary go" id="go">GO</button>
+                <button type="submit" class="btn btn-secondary go" id="go">GO  <i class="fas fa-smile-beam"></i></button>
             </div>
 
-            {# Carousel display all results #}
-            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+            {# Carousel to display all results #}
+            <div id="multi-item-example" class="carousel slide carousel-multi-item d-none" data-ride="carousel">
                 <!--Slides-->
                 <div class="carousel-inner" role="listbox">
                     {% set i = 0 %}
@@ -161,25 +158,25 @@
             
         </form>
             
-        {# separator #}
+        {# Separator #}
         <div class="row justify-content-center mt-5 pt-5">
             <div class="col-6 separator"></div>
         </div>
 
-        {# random recommendation #}
+        {# Random recommendation #}
         <div class="row justify-content-center">
             <h2 class="choice mt-5 mb-5 text-center">Tu es aventureux ?</h2>
         </div>
 
         <div class="row justify-content-center mb-5 pb-5">
-            <button type="submit" class="btn btn-secondary random-film" id="hasard">Un film au hasard</button>
+            <button type="submit" class="btn btn-secondary random-film" id="hasard">Un film au hasard <i class="fas fa-random"></i></button>
         </div>
 
-        {# Affichage des films en aléatoire #}
-        <div class="row justify-content-center">
+        {# Display films randomly #}
+        <div class="row justify-content-center d-none" id="discover_random">
             <div class="col-4 col-xl-6 text-center">
-                <h3 id="title"></h3>
-                <img id="poster" class="my-5 pb-5 rounded img-thumbnail img-fluid" >
+                <h3 id="title" class="randomly"></h3>
+                <img id="poster" class="randomposter my-5 pb-5 rounded w-70" >
             </div>
         </div>
     </div>
@@ -198,7 +195,7 @@
     <script>
         {# Ajax Random Function #}
         function getRandomInt(min, max) {
-        return min + Math.floor(Math.random() * (max - min + 1));
+            return min + Math.floor(Math.random() * (max - min + 1));
         }
         $('#hasard').on('click', function(){
             axios.get("{{ path('movie_ajax_random') }}")
@@ -215,6 +212,7 @@
                 console.log(error);
             });
         });
+
         {# Range slider Function #}
         (function () {
                 var init = function () { 
@@ -246,6 +244,18 @@
                 };
                 window.onload = init;
         })();
+
+        {# Display the Carousel when the user clicks #}
+        $('#go').on('click', function(e){
+            e.preventDefault();
+            $('.carousel').removeClass('d-none');
+        });
+
+        // Display the random film
+        $('#hasard').on('click', function(e){
+            e.preventDefault();
+            $('#discover_random').removeClass('d-none');
+        });
         
     </script>
 

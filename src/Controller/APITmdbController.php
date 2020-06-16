@@ -325,7 +325,7 @@ class APITmdbController extends AbstractController
 
             // Set the curl options
             $options=[
-                CURLOPT_URL            => $endpoint.$urlParams,
+                CURLOPT_URL            => $endpoint.$urlParams.'#go',
                 CURLOPT_RETURNTRANSFER => true, // return the content into a string
                 CURLOPT_CONNECTTIMEOUT => $timeout, // set a timeout i.e. maximum time the connection is allowed to take 
             ];
