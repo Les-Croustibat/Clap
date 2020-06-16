@@ -109,11 +109,6 @@ class MovieController extends AbstractController
             // Call the API method & retrieve results
             $findmovies = $apiTMDB->callTMDBAPIDiscoverGenre($chooseGenre);
             $movie_results = $findmovies['results'];
-            
-        } else {
-            // improve
-            echo 'Vous n\'avez pas coché de case';
-        }
 
         // Retrieve data regarding film release Year
         if (isset($_GET['release_date'])) {
