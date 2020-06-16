@@ -10,31 +10,25 @@
 {% block title %}Clap te trouve un film{% endblock %}
 
 {% block content %}
-<div class="banniere-find">
-    <img src="{{asset('asset/img/admission.jpg')}}" alt="admission" id="img-admission">
-    <h1 class="title-find">Clap te trouve un film ! </h1>
-    <img src="{{asset('asset/img/ticket.png')}}" alt="ticket" width="140" height="140" id="img-ticket">
-</div>
-
 
     <div class="container find-movie">
-        {# <div class="row justify-content-center">
+        <div class="row justify-content-center">
             <img src="asset/img/logoLR.png" alt="logo Clap" class="logo mb-4 mt-5">
-        </div> #}
+        </div>
 
-        {# <div class="row row-cols-sm-2 justify-content-center">
+        <div class="row row-cols-sm-2 justify-content-center">
             <h1 class="m-5 mt-lg-5 mb-lg-5 text-center">Clap te trouve un film ! </h1>
-        </div> #}
+        </div>
 
-        <div class="row justify-content-center mt-5">
-            <h2 class="choice m-5 mb-lg-5 text-center tu-sais-deja">Tu sais déjà un peu ce que tu veux ... ?</h2>
+        <div class="row justify-content-center">
+            <h2 class="choice m-5 mt-lg-5 mb-lg-5 text-center">Tu sais déjà un peu ce que tu veux ...</h2>
         </div>
 
         {# Form with criteria #}
         <form method="get" class="mt-4" id="visitor_criteria">
             <div class="row justify-content-center mb-5">
                 <div class="col-11 col-lg-6">
-                    <h2 class="mb-5 text-center title-genres">Genres <i class="fas fa-check-double"></i></h2>
+                    <h2 class="mb-5 text-center">Genres</h2>
                     <div class="mt-4">
                         <div class="row row-cols-xl-4 justify-content-center">
                             <div class="form-check form-check-inline">
@@ -107,9 +101,9 @@
             {# Année de production #}
             <div class="row justify-content-center my-5 py-5">
                 <div class="col-8 col-lg-6">
-                    <h2 class="mb-5 text-center title-year">Année de production <i class="far fa-calendar-alt"></i></h2>
+                    <h2 class="mb-5 text-center">Année de production</h2>
                     <div class="form-group mt-5">
-                        <input type="text" id="slider1" class="slider1" name="primary_release_date[]">
+                        <input type="text" id="slider1" class="slider1" name="release_date">
                     </div>
                 </div>
             </div>
@@ -117,120 +111,77 @@
             {# Durée de film #}
             <div class="row justify-content-center my-5 py-5">
                 <div class="col-8 col-lg-6">
-                    <h2 class="mb-5 text-center title-runtime">Durée du film <i class="fas fa-hourglass-half"></i></h2>
+                    <h2 class="mb-5 text-center">Durée du film</h2>
                     <div class="form-group mt-5">
-                        <input type="text" id="slider2" class="slider2" name="with_runtime.gte">
+                        <input type="text" id="slider2" class="slider2" name="with_runtime">
                     </div>
                 </div>
             </div>
-
-            {# Natonalité #}
-            {# <div class="row justify-content-center my-5 py-5">
-                <div class="col-11 col-lg-6 mt-4">
-                    <h2 class="text-center">Nationalité</h2>
-                    <div class="row row-cols-xl-4 justify-content-center mb-3">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="french" name="production_countries[]" value="french">
-                            <label class="form-check-label" for="french">Français</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="american" name="production_countries[]" value="american">
-                            <label class="form-check-label" for="american">Américain</label>
-                        </div>  
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="korean" name="production_countries[]" value="korean">
-                            <label class="form-check-label" for="korean">Sud-coréen</label>
-                        </div>
-                    </div>
-                    <div class="row row-cols-xl-4 justify-content-center">   
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="spanish" name="production_countries[]" value="spanish">
-                            <label class="form-check-label" for="spanish">Espagnol</label>
-                        </div>   
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="italian" name="production_countries[]" value="italian">
-                            <label class="form-check-label" for="italian">Italien</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="other" name="production_countries[]" value="other">
-                            <label class="form-check-label" for="other">Autre</label>
-                        </div>
-                    </div>
-                </div>
-            </div> #}
-
-            {# Acteurs / Réalisateurs #}
-            {# <div class="row justify-content-center my-3 py-3 film_actor_director">
-                <div class="col-11 col-lg-6">
-                    <h2 class="text-center">Acteurs et Réalisateurs</h2>
-                    <div class="input-group mb-3 mt-4" id="newItemForm">
-                        <input type="text" class="form-control" placeholder="Acteurs ou réalisateurs favoris ..." id="film_actor_director" name="with_people">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary seek" type="submit" id="button-addon2">Chercher</button>
-                        </div>
-                    </div>
-                    <div id="list_section" class="text-center">
-                        <div id="people_list">
-                            <ul>
-                            
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div> #}
-
-            {# Bouton de submit du formulaire #}
-            <div class="row justify-content-center my-5 py-5">
-                </i></span><button type="submit" class="btn btn-secondary go" id="go">GO <i class="fas fa-smile-beam"></i></button>
-            </div>
-        </form>
-
-        {# Affichage des films #} 
-        <div id="search-result" class="carousel slide search-result" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-            {% for movie_result in movie_results %}
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-50" src="http://image.tmdb.org/t/p/w500/{{ movie_result.poster_path }}" alt="First slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2><a href="{{ path('movie_details',{ id: movie_result.id }) }}">{{ movie_result.title }}</a></h2>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Précédent</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Suivant</span>
-            </a>
-        </div>
             
+            {# Button GO#}
+            <div class="row justify-content-center my-5 py-5">
+                <button type="submit" class="btn btn-secondary go" id="go">GO</button>
+            </div>
 
+            {# Carousel display all results #}
+            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+                    {% set i = 0 %}
+                    {% for movie_result_global in movie_results_global %}
+                        {% set i = i + 1  %} 
+                        <div class="carousel-item with-background  {{ i == 1 ? 'active' : '' }}">
+                            <div class="row justify-content-center px-xl-5 mx-3 mx-xl-5">
+                                <div class="col-12 col-xl-4">
+                                    <img class="img-fluid rounded " src="http://image.tmdb.org/t/p/w300/{{ movie_result_global.poster_path }}" alt="{{ movie_result_global.title}}">
+                                </div>
+                                <div class="col-12 col-xl-8">
+                                    <h3 class="text-light d-none d-md-block"><a href="{{ path('movie_details',{ id: movie_result_global.id }) }}">{{ movie_result_global.title }}</a></h3>
+                                    <p class="text-light d-none d-md-block">VO en {{ movie_result_global.original_language|upper}}</p>
+                                    <p class="text-light d-none d-md-block"><i class="fas fa-star"></i> Note moyenne : {{ movie_result_global.vote_average}}</p>
+                                    <p class="text-light d-none d-md-block">{{ movie_result_global.overview|slice(0, 125) }}...</p>
+    
+                                    <a class="btn btn-primary btn-sm btn-block d-md-none mt-3" href="{{ path('movie_details',{ id: movie_result_global.id }) }}">Lire la suite</a>
+                                    <a class="btn btn-outline-primary btn-sm d-none d-md-inline-block" href="{{ path('movie_details',{ id: movie_result_global.id }) }}">Lire la suite</a>
 
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev d-none d-lg-flex" href="#multi-item-example" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next d-none d-lg-flex" href="#multi-item-example" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            
+        </form>
+            
         {# separator #}
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-5 pt-5">
             <div class="col-6 separator"></div>
         </div>
 
         {# random recommendation #}
         <div class="row justify-content-center">
-            <h2 class="choice m-5 mb-lg-5 text-center aventureux">Tu es aventureux...?</h2>
+            <h2 class="choice mt-5 mb-5 text-center">Tu es aventureux ?</h2>
         </div>
 
         <div class="row justify-content-center mb-5 pb-5">
-            <button type="submit" class="btn btn-secondary random-film" id="hasard">film au hasard <i class="fas fa-random"></i></button>
+            <button type="submit" class="btn btn-secondary random-film" id="hasard">Un film au hasard</button>
         </div>
 
         {# Affichage des films en aléatoire #}
-        <h2 id="title"></h2>
-        <img id="poster">
+        <div class="row justify-content-center">
+            <div class="col-4 col-xl-6 text-center">
+                <h3 id="title"></h3>
+                <img id="poster" class="my-5 pb-5 rounded img-thumbnail img-fluid" >
+            </div>
+        </div>
     </div>
 
 {% endblock %}
@@ -249,93 +200,52 @@
         function getRandomInt(min, max) {
         return min + Math.floor(Math.random() * (max - min + 1));
         }
-
         $('#hasard').on('click', function(){
             axios.get("{{ path('movie_ajax_random') }}")
             .then(function (response) {
+                console.log(response.data.id)
                 //Titre
                 let htmlTitle = '<a href="'+ response.data['link_custom'] +'">' + response.data['title'] +'</a>';
                 $('#title').html(htmlTitle)
-
                 //Poster
                 $('#poster').attr('src', 'http://image.tmdb.org/t/p/w500/' + response.data['poster_path'])
                 $('#poster').attr('alt', 'Poster du film')
-
             })
             .catch(function (error) {
                 console.log(error);
             });
         });
-
         {# Range slider Function #}
         (function () {
                 var init = function () { 
                 
                     var slider1 = new rSlider({
                         target: '#slider1',
-                        values: [1915, 1950, 1980, 2000, 2010, 2020],
+                        values: {min: 1915, max: 2020},
                         range: true, // range slider
                         set: [1970, 2005],
-                        width:    null,
                         scale:    true,
-                        labels:   true,
-                        tooltip:  true,
-                        step:     null, // step size
-                        disabled: false, // not disabled
+                        labels:   false,
+                        step:     10, // step size
                         onChange: function (vals) {
                                     console.log(vals);
                                 }
                     });
                     var slider2 = new rSlider({
-                            target: '#slider2',
-                            values: {min: 70, max: 210},
-                            step: 10,
-                            range: true,
-                            set: [90, 120],
-                            scale: true,
-                            labels: false,
-                            onChange: function (vals) {
-                                console.log(vals);
-                            }
-                        });
+                        target: '#slider2',
+                        values: {min: 70, max: 210},
+                        step: 10,
+                        range: true,
+                        set: [90, 120],
+                        scale: true,
+                        labels: false,
+                        onChange: function (vals) {
+                            console.log(vals);
+                        }
+                    });
                 };
                 window.onload = init;
         })();
-
-        {# jQuery Tags function #}
-        $(function() {
-            // Assign values to variables
-            var $peopleList, $newItemForm;
-            $peopleList = $('#people_list');
-            $newItemForm = $('#newItemForm');
-            
-            // Listen to the event submit the form (always put preventDefault)
-            $newItemForm.on('submit', function(e) {
-                e.preventDefault();
-                // Get the value of the imput with val()
-                var text = $('#with_people').val();
-                // Add the retrieved value in the end of the list
-                $peopleList.append('<li title="Cliquer pour enlever">' + text + '</li>');
-                $('#with_people').val('');
-            });
-        
-            // Listen to the event click to remove items
-            $peopleList.on('click', 'li', function() {
-                var $this = $(this);
-                $this.remove();
-            });
-    
-        });
-
-        {# Ajax function for the form
-        $('#go').on('click',function(e){
-            // Variable get the value of alll form fields
-            var datas =  $('#visitor_criteria').serialize();
-            // Get the route
-            $.get('{{ path('movie_ajax_movie_criteria') }}', datas, function(response){
-                
-            })
-        }); #}
         
     </script>
 

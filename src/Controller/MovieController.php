@@ -16,58 +16,46 @@ class MovieController extends AbstractController
         $resultat = $Api->callTMDBAPIRandom(mt_rand(1,500));
 
         if(isset($resultat['id']) &&  !empty($resultat['id'])){
+
             $resultat['link_custom'] = $this->generateUrl('movie_details', ['id' => $resultat['id']]);
-        }else{
-            $resultat['id'] = $this->mt_rand(1,500);
+
+            return $this->json($resultat);
+        } 
+        else {
+            $this->ajaxRandom();
         }
-        return $this->json($resultat);
     }
 
     public function movieDetails($id)
     {
-        // on a bien cliqué sur un film pour avoir les infos
         $apiTMDB = new APITmdbController();
 
         $movie_search = $apiTMDB->callTMDBAPIMovieDetails($id);
-        // dd($movie_search);
 
-        // Récup le titre
+        // Retrieve movie details
         $movie_title = $movie_search['original_title'];
-        // Récup le tagline
         $movie_tagline = $movie_search['tagline'];
-        // // Récup l'année de production
         $movie_production_year = $movie_search['release_date'];
-        // // Réalisateur
-        // $movie_director = $movie_search['feed']['movie']['0']['castingShort']['directors'];
-        // // Acteurs
-        // $movie_actors = $movie_search['feed']['movie']['0']['castingShort']['actors'];
-        // // Note
         $movie_rating = intval($movie_search['vote_average']);
-        // // Affiche
         $movie_poster = $movie_search['poster_path'];
-        // // Synopsis
         $movie_synopsis = $movie_search['overview'];
-        // //Nationalité
         $movie_nationality = $movie_search['production_countries']['0']['iso_3166_1'];
 
         $movie_all_nationality = [];
         foreach($movie_search['production_countries'] as $prod_countrie){
             $movie_all_nationality[] = $prod_countrie['iso_3166_1'];
         }
-        // // Genres
+        
         $movie_genre = $movie_search['genres'];
         $new_genre = [];
         foreach ($movie_search['genres'] as $genre) {
             $new_genre[] = $genre['name'];
         }
+
         $movie_genre = implode(', ', $new_genre);
 
-        // // Durée
         $movie_runtime = ($movie_search['runtime']);
         $movie_id = $movie_search['id'];
-        // // Bande-Annonce
-        // // $movie_trailer = $movie_details_search['movie']['trailer']['href'];
-
         $movie_search_trailer = $apiTMDB->callTMDBAPIMovieTrailer($id);
         $movie_key_trailer = $movie_search_trailer['results']['0']['key'];
 
@@ -76,14 +64,11 @@ class MovieController extends AbstractController
             'original_title' => $movie_title,
             'movie_tagline' => $movie_tagline,
             'release_date' => $movie_production_year,
-            //     'director' => $movie_director,
-            //     'actors' => $movie_actors,
             'rating' => $movie_rating,
             'poster_path' => $movie_poster,
             'synopsis' => $movie_synopsis,
             'nationality' => $movie_nationality,
             'genre' => $movie_genre,
-            //     // 'trailer' => $movie_trailer,
             'runtime' => $movie_runtime,
             'movie_id' => $movie_id,
             'movie_results'   => $movie_results ?? [],
@@ -109,7 +94,7 @@ class MovieController extends AbstractController
             // Call the API method & retrieve results
             $findmovies = $apiTMDB->callTMDBAPIDiscoverGenre($chooseGenre);
             $movie_results = $findmovies['results'];
-
+        }
         // Retrieve data regarding film release Year
         if (isset($_GET['release_date'])) {
             $years_selected = $_GET['release_date'];
@@ -152,7 +137,6 @@ class MovieController extends AbstractController
             echo 'Vous n\'avez pas sélectionné tous les critères';
         }
 
-        
 
         return $this->render('movie/movie_find.html.twig', [
 
@@ -165,4 +149,3 @@ class MovieController extends AbstractController
         ]);
     }
 }
-
