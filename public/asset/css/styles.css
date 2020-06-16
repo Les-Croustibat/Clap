@@ -11,7 +11,7 @@ body {
     font-family: 'Dosis', sans-serif;
     background-color: var(--main-color);
     color: var(--sentence-color);
-    top : 106px;
+    top: 106px;
     position: relative;
 }
 
@@ -71,7 +71,7 @@ header {
     opacity: 1;
 }
 
-.header_opaque{
+.header_opaque {
     opacity: 0.95;
 }
 
@@ -116,8 +116,8 @@ header {
     cursor: pointer;
 }
 
-  /* Hello User */
-  #HelloUser{
+/* Hello User */
+#HelloUser {
     position: absolute;
     text-transform: uppercase;
     font-weight: bold;
@@ -126,27 +126,29 @@ header {
     animation: text 3s 1;
     animation-timing-function: linear;
     animation-iteration-count: 1;
-  }
+}
 
-  @keyframes text {
-      0%{
+@keyframes text {
+    0% {
         color: black;
-      }
-      30%{
-          letter-spacing: 25px;
-      }
-      85%{
-          letter-spacing: 8px;
-      }
-      
-  }
+    }
 
-.animation{
-position: absolute;
-text-transform: uppercase;
-font-weight: bold;
-top: 11%;
-right: 6%;
+    30% {
+        letter-spacing: 25px;
+    }
+
+    85% {
+        letter-spacing: 8px;
+    }
+
+}
+
+.animation {
+    position: absolute;
+    text-transform: uppercase;
+    font-weight: bold;
+    top: 11%;
+    right: 6%;
 }
 
 
@@ -293,17 +295,17 @@ p.phome {
 /***********************
 *       FIND MOVIE     *
 ***********************/
-.banniere-find{
-    position : relative;
+.banniere-find {
+    position: relative;
 }
 
-.title-find{
-    color : white;
+.title-find {
+    color: white;
     text-shadow: black 0.2em 0.3em 0.2em;
     font-size: 3.5rem;
     position: absolute;
     bottom: 28%;
-    left : 50%;
+    left: 50%;
     transform: translateX(-50%);
 
     -webkit-animation-name: zoomIn;
@@ -312,30 +314,34 @@ p.phome {
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
-    }
-    @-webkit-keyframes zoomIn {
-    0% {
-    opacity: 0;
-    -webkit-transform: scale3d(.3, .3, .3);
-    transform: scale3d(.3, .3, .3);
-    }
-    50% {
-    opacity: 1;
-    }
-    }
-    @keyframes zoomIn {
-    0% {
-    opacity: 0;
-    -webkit-transform: scale3d(.3, .3, .3);
-    transform: scale3d(.3, .3, .3);
-    }
-    50% {
-    opacity: 1;
-    }
-    } 
+}
 
-#img-admission{
-    width : 100%;
+@-webkit-keyframes zoomIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+#img-admission {
+    width: 100%;
     height: 40vh;
     object-fit: cover;
 }
@@ -355,69 +361,79 @@ p.phome {
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
-    }
-    @-webkit-keyframes swing {
+}
+
+@-webkit-keyframes swing {
     20% {
-    -webkit-transform: rotate3d(0, 0, 1, 15deg);
-    transform: rotate3d(0, 0, 1, 15deg);
-    }
-    40% {
-    -webkit-transform: rotate3d(0, 0, 1, -10deg);
-    transform: rotate3d(0, 0, 1, -10deg);
-    }
-    60% {
-    -webkit-transform: rotate3d(0, 0, 1, 5deg);
-    transform: rotate3d(0, 0, 1, 5deg);
-    }
-    80% {
-    -webkit-transform: rotate3d(0, 0, 1, -5deg);
-    transform: rotate3d(0, 0, 1, -5deg);
-    }
-    100% {
-    -webkit-transform: rotate3d(0, 0, 1, 0deg);
-    transform: rotate3d(0, 0, 1, 0deg);
-    }
-    }
-    @keyframes swing {
-    20% {
-    -webkit-transform: rotate3d(0, 0, 1, 15deg);
-    transform: rotate3d(0, 0, 1, 15deg);
-    }
-    40% {
-    -webkit-transform: rotate3d(0, 0, 1, -10deg);
-    transform: rotate3d(0, 0, 1, -10deg);
-    }
-    60% {
-    -webkit-transform: rotate3d(0, 0, 1, 5deg);
-    transform: rotate3d(0, 0, 1, 5deg);
-    }
-    80% {
-    -webkit-transform: rotate3d(0, 0, 1, -5deg);
-    transform: rotate3d(0, 0, 1, -5deg);
-    }
-    100% {
-    -webkit-transform: rotate3d(0, 0, 1, 0deg);
-    transform: rotate3d(0, 0, 1, 0deg);
-    }
+        -webkit-transform: rotate3d(0, 0, 1, 15deg);
+        transform: rotate3d(0, 0, 1, 15deg);
     }
 
-.tu-sais-deja{
+    40% {
+        -webkit-transform: rotate3d(0, 0, 1, -10deg);
+        transform: rotate3d(0, 0, 1, -10deg);
+    }
+
+    60% {
+        -webkit-transform: rotate3d(0, 0, 1, 5deg);
+        transform: rotate3d(0, 0, 1, 5deg);
+    }
+
+    80% {
+        -webkit-transform: rotate3d(0, 0, 1, -5deg);
+        transform: rotate3d(0, 0, 1, -5deg);
+    }
+
+    100% {
+        -webkit-transform: rotate3d(0, 0, 1, 0deg);
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+}
+
+@keyframes swing {
+    20% {
+        -webkit-transform: rotate3d(0, 0, 1, 15deg);
+        transform: rotate3d(0, 0, 1, 15deg);
+    }
+
+    40% {
+        -webkit-transform: rotate3d(0, 0, 1, -10deg);
+        transform: rotate3d(0, 0, 1, -10deg);
+    }
+
+    60% {
+        -webkit-transform: rotate3d(0, 0, 1, 5deg);
+        transform: rotate3d(0, 0, 1, 5deg);
+    }
+
+    80% {
+        -webkit-transform: rotate3d(0, 0, 1, -5deg);
+        transform: rotate3d(0, 0, 1, -5deg);
+    }
+
+    100% {
+        -webkit-transform: rotate3d(0, 0, 1, 0deg);
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+}
+
+.tu-sais-deja {
     font-size: 2.3rem !important;
 }
 
-.aventureux{
+.aventureux {
     font-size: 2.3rem !important;
 }
 
-.title-genres{
-font-size: 2rem !important;
-}
-
-.title-year{
+.title-genres {
     font-size: 2rem !important;
 }
 
-.title-runtime{
+.title-year {
+    font-size: 2rem !important;
+}
+
+.title-runtime {
     font-size: 2rem !important;
 }
 
@@ -467,22 +483,30 @@ font-size: 2rem !important;
     padding-bottom: 2rem;
 } */
 
-label{
+label {
     font-size: 1.2rem;
 }
 
-#go{
+#go {
     background-color: #c42323;
     font-size: 1.3rem;
     padding-left: 3rem;
     padding-right: 3rem;
 }
 
-#hasard{
+#go:hover {
+    background-color: red;
+}
+
+#hasard {
     background-color: #c42323;
     font-size: 1.3rem;
     padding-left: 3rem;
     padding-right: 3rem;
+}
+
+#hasard:hover {
+    background-color: red;
 }
 
 
@@ -494,12 +518,17 @@ label{
 /***********************
 *       FILM PAGE      *
 ***********************/
-.main-movie-details{
-color : var(--main-color);
+.main-movie-details {
+    color: var(--main-color);
 }
 
-.main-movie-details p{
+.main-movie-details p {
     font-size: 1.3rem;
+}
+
+.card.bg_perso {
+    margin-bottom: 2rem !important;
+    box-shadow: -10px -10px black;
 }
 
 .card {
@@ -510,14 +539,26 @@ color : var(--main-color);
 
 .card-text .label {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: bolder;
     text-transform: uppercase;
     letter-spacing: 0.075em;
-    color: var(--title-color);
+    color: #333;
 }
 
 .card-text .label i.fa {
-    color: var(--title-color);
+    color: #333333;
+}
+
+i.fa-fw.fa-info-circle{
+    color : red !important;
+}
+
+i.fa-fw.fa-quote-left{
+    color : blue !important;
+}
+
+i.fa-fw.fa-star {
+    color: yellow !important;
 }
 
 .box {
@@ -538,10 +579,71 @@ color : var(--main-color);
     color: #333;
 }
 
+div.box.border {
+    box-shadow: 10px 5px 5px var(--main-color);
+}
+
+.movie-title {
+    color: var(--main-color);
+    text-shadow: whitesmoke 0.1em 0.2em 0.2em;
+        -webkit-animation-name: lightSpeedIn;
+        animation-name: lightSpeedIn;
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        }
+        @-webkit-keyframes lightSpeedIn {
+        0% {
+        -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+        transform: translate3d(100%, 0, 0) skewX(-30deg);
+        opacity: 0;
+        }
+        60% {
+        -webkit-transform: skewX(20deg);
+        transform: skewX(20deg);
+        opacity: 1;
+        }
+        80% {
+        -webkit-transform: skewX(-5deg);
+        transform: skewX(-5deg);
+        opacity: 1;
+        }
+        100% {
+        -webkit-transform: none;
+        transform: none;
+        opacity: 1;
+        }
+        }
+        @keyframes lightSpeedIn {
+        0% {
+        -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+        transform: translate3d(100%, 0, 0) skewX(-30deg);
+        opacity: 0;
+        }
+        60% {
+        -webkit-transform: skewX(20deg);
+        transform: skewX(20deg);
+        opacity: 1;
+        }
+        80% {
+        -webkit-transform: skewX(-5deg);
+        transform: skewX(-5deg);
+        opacity: 1;
+        }
+        100% {
+        -webkit-transform: none;
+        transform: none;
+        opacity: 1;
+        }
+        } 
+
 /***********************
 *         ABOUT        *
 ***********************/
-#img-moviecam{
+#img-moviecam {
     width: 100%;
     height: 40vh;
     object-fit: cover;
@@ -571,26 +673,26 @@ h3 {
     color: var(--title-color);
 }
 
-.instructions{
+.instructions {
     display: flex;
     justify-content: space-around;
 }
 
-.instructions > div {
+.instructions>div {
     text-align: center;
     padding: 2rem;
-    width : 25%;
+    width: 25%;
 }
 
-.instructions > div > p {
+.instructions>div>p {
     margin-top: 1rem;
 }
 
-.instructions span{
-    color : var(--title-color);
+.instructions span {
+    color: var(--title-color);
 }
 
-.instructions1{
+.instructions1 {
     animation-duration: 2s;
     animation-name: slidein;
 }
@@ -605,7 +707,7 @@ h3 {
     }
 }
 
-.instructions2{
+.instructions2 {
     animation-duration: 2s;
     animation-name: slidein;
 }
@@ -620,7 +722,7 @@ h3 {
     }
 }
 
-.instructions3{
+.instructions3 {
     animation-duration: 2s;
     animation-name: slidein;
     /* border-right : 0.5px solid rgba(240, 240, 240, 0.13); */
@@ -636,7 +738,7 @@ h3 {
     }
 }
 
-.instructions4{
+.instructions4 {
     animation-duration: 2s;
     animation-name: slidein;
 }
@@ -651,18 +753,18 @@ h3 {
     }
 }
 
-.la-team{
-    font-size : 2.5rem;
+.la-team {
+    font-size: 2.5rem;
 }
 
 /***********************
 *      CONTACT FORM    *     
 ************************/
-.banniere-contact{
+.banniere-contact {
     position: relative;
 }
 
-.h1-contact{
+.h1-contact {
     color: white;
     text-shadow: black 0.2em 0.3em 0.2em;
     font-size: 3.5rem;
@@ -672,7 +774,7 @@ h3 {
     transform: translateX(-50%);
 }
 
-.h2-contact{
+.h2-contact {
     color: white;
 }
 
@@ -682,11 +784,11 @@ h3 {
     color: white;
 }
 
-.pcontact{
-    font-size : 1.5rem;
+.pcontact {
+    font-size: 1.5rem;
 }
 
-.img-monde{
+.img-monde {
     width: 100vw;
     height: 40vh;
     object-fit: cover;
@@ -733,12 +835,12 @@ h3 {
     padding-bottom: 0;
 }
 
-.btn-signin{
+.btn-signin {
     font-size: 1.3rem;
     background-color: var(--title-color);
 }
 
-.btn-signin:hover{
+.btn-signin:hover {
     background-color: red;
 }
 
@@ -758,11 +860,38 @@ h3 {
     border-radius: 10%;
 }
 
+.btn-login {
+    background-color: var(--title-color);
+    font-size: 1.3rem;
+}
+
+.btn-login:hover {
+    background-color: red;
+}
+
 /**********************
 *       RESET PW      *
 **********************/
 .container.forgottenPw {
     color: var(--sentence-color);
+}
+
+input#reset_password_request_form_email {
+    margin-left: 10px;
+}
+
+.btn-resetpw {
+    background-color: var(--title-color);
+    font-size: 1.3rem;
+}
+
+.btn-resetpw:hover {
+    background-color: red;
+}
+
+.img-enveloppes {
+    width: 100%;
+    height: 60vh;
 }
 
 /***** Animation ******/
@@ -774,70 +903,84 @@ h3 {
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
-    }
-    @-webkit-keyframes rubberBand {
+}
+
+@-webkit-keyframes rubberBand {
     0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
     }
+
     30% {
-    -webkit-transform: scale3d(1.25, 0.75, 1);
-    transform: scale3d(1.25, 0.75, 1);
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
     }
+
     40% {
-    -webkit-transform: scale3d(0.75, 1.25, 1);
-    transform: scale3d(0.75, 1.25, 1);
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
     }
+
     50% {
-    -webkit-transform: scale3d(1.15, 0.85, 1);
-    transform: scale3d(1.15, 0.85, 1);
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
     }
+
     65% {
-    -webkit-transform: scale3d(.95, 1.05, 1);
-    transform: scale3d(.95, 1.05, 1);
+        -webkit-transform: scale3d(.95, 1.05, 1);
+        transform: scale3d(.95, 1.05, 1);
     }
+
     75% {
-    -webkit-transform: scale3d(1.05, .95, 1);
-    transform: scale3d(1.05, .95, 1);
+        -webkit-transform: scale3d(1.05, .95, 1);
+        transform: scale3d(1.05, .95, 1);
     }
+
     100% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
     }
-    }
-    @keyframes rubberBand {
+}
+
+@keyframes rubberBand {
     0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
     }
+
     30% {
-    -webkit-transform: scale3d(1.25, 0.75, 1);
-    transform: scale3d(1.25, 0.75, 1);
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
     }
+
     40% {
-    -webkit-transform: scale3d(0.75, 1.25, 1);
-    transform: scale3d(0.75, 1.25, 1);
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
     }
+
     50% {
-    -webkit-transform: scale3d(1.15, 0.85, 1);
-    transform: scale3d(1.15, 0.85, 1);
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
     }
+
     65% {
-    -webkit-transform: scale3d(.95, 1.05, 1);
-    transform: scale3d(.95, 1.05, 1);
+        -webkit-transform: scale3d(.95, 1.05, 1);
+        transform: scale3d(.95, 1.05, 1);
     }
+
     75% {
-    -webkit-transform: scale3d(1.05, .95, 1);
-    transform: scale3d(1.05, .95, 1);
+        -webkit-transform: scale3d(1.05, .95, 1);
+        transform: scale3d(1.05, .95, 1);
     }
+
     100% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
     }
 
 
-} 
-  
+}
+
 .rubberBand .fa-lock {
     font-size: 4em;
     color: white;
@@ -916,38 +1059,38 @@ h3 {
 @media (max-width : 768px) {
 
 
-    .randomly{
+    .randomly {
         font-size: 1.2em;
     }
 
     .randomposter {
-        
+
         width: 220%;
     }
 
-    .img-accueil{
+    .img-accueil {
         height: 40vh;
     }
 
-    #logo-presentation img{
+    #logo-presentation img {
         width: 93%;
-        height: 87%;        
+        height: 87%;
     }
 
-    #logo-presentation{
+    #logo-presentation {
         top: 33%;
     }
 
-    #accueil{
+    #accueil {
         height: 33vh;
     }
 
-    .title-find{
+    .title-find {
         font-size: 2em;
         text-align: center;
     }
 
-    #img-ticket{
+    #img-ticket {
         left: 32%;
     }
 }
@@ -970,5 +1113,5 @@ h3 {
     .title-error {
         font-size: 2.4em;
     }
-  
+
 }

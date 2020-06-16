@@ -4,6 +4,7 @@
 
 {% block content %}
 
+<img src="{{asset('asset/img/enveloppes.jpg')}}" alt="enveloppes" class="img-enveloppes">
 
     <div class="container sendEmail">
         <div class="row row-xl-6 justify-content-center lead mt-5 pt-5">
@@ -11,4 +12,5 @@
             <p>Si tu ne reçois pas d'email, n'hésite pas à vérifier ta boîte spams ou courriers indésirables ou <a href="{{ path('app_forgot_password_request') }}">essayez à nouveau</a>.</p>
         </div>
     </div>
+
 {% endblock %}

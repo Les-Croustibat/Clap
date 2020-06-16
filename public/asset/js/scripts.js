@@ -27,11 +27,11 @@ window.onload = () => {
 
   // Verif lastname
   let lastname = document.querySelector("#lastname") ;
-  lastname.addEventListener("keyup", changeColor);
+  lastname.addEventListener("keyup", changeColorLastname);
 
   // Verif pseudo
    let pseudo = document.querySelector("#pseudo") ;
-   pseudo.addEventListener("keyup", changeColor);
+   pseudo.addEventListener("keyup", changeColorPseudo);
 
    // Verif email
    let email = document.querySelector("#email") ;
@@ -75,19 +75,24 @@ function changeColor () {
   } else {
     firstname.style.border = "3px solid red" ;
   }
+}
 
+function changeColorLastname (){
   if (lastname.value.length >= 3 & lastname.value.length <= 20){
     lastname.style.border = "3px solid green" ;
   } else {
     lastname.style.border = "3px solid red" ;
   }
+}
 
+function changeColorPseudo (){
   if (pseudo.value.length >= 3 & pseudo.value.length <= 20){
     pseudo.style.border = "3px solid green" ;
   } else {
     pseudo.style.border = "3px solid red" ;
   }
 }
+
 
 function validateEmail(emailField){
   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
