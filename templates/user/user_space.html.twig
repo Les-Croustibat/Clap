@@ -20,14 +20,13 @@
     </div>
 {% endif %}
 
-<div class="row justify-content-center mb-5">
+<div class="row justify-content-center mb-5 mt-5 pt-5">
     <h1 class="title animate__animated animate__bounce">MON ESPACE</h1>
 </div>
 <h2 class="row justify-content-center my-5 animate__animated animate__backInRight
-
 ">Films les mieux notés :</h2>
 <!--Slides-->
-<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+<div id="multi-item-example" class="carousel slide carousel-multi-item mb-5" data-ride="carousel">
     <!--Slides-->
     <div class="carousel-inner" role="listbox">
         {% set i = 0 %}
@@ -35,16 +34,17 @@
         {% set i = i + 1  %}
         <div class="carousel-item with-background  {{ i == 1 ? 'active' : '' }}">
             <div class="row justify-content-center px-xl-5 mx-3 mx-xl-5 animate__animated animate__backInDown">
-                <div class="row justify-content-center">
-                    <img class="w-50 " src="http://image.tmdb.org/t/p/w300/{{ top.poster_path }}"
-                        alt="{{ top.title}}">
+                <div class="col-xl-3">
+                    <img src="http://image.tmdb.org/t/p/w300/{{ top.poster_path }}" alt="{{ top.title}}" class="img-fluid">
                 </div>
-                <div class="row justify-content-center col-xl-8">
-                    <h3 class="text-light d-none d-md-block"><a href="{{ path('movie_details',{ id: top.id }) }}">{{ top.title }}</a></h3>
-                    <p class="text-light d-none d-md-block">{{ top.overview|slice(0, 125) }}...</p>
+                <div class="col-xl-6 d-flex">
+                    <div class="m-auto">
+                        <h3 class="text-light d-none d-md-block h1"><a href="{{ path('movie_details',{ id: top.id }) }}">{{ top.title }}</a></h3>
+                        <p class="mt-5 text-light d-none d-md-block" style="font-size:20px;">{{ top.overview|slice(0, 125) }}...</p>
 
-                    <a class="row justify-content-center btn btn-primary btn-sm  d-md-none mt-3"
-                        href="{{ path('movie_details',{ id: top.id }) }}">Lire la suite</a>
+                        <a class="btn btn-primary btn-sm  d-md-none mt-3"
+                            href="{{ path('movie_details',{ id: top.id }) }}">Lire la suite</a>
+                    </div>
 
                 </div>
             </div>
@@ -63,28 +63,23 @@
 
 
 <h2 class="row justify-content-center my-5 animate__animated animate__backInLeft">Films les plus populaires :</h2>
-<div class="container">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            {% set i = 0 %}
-            {% for most in mostViewed %}
-            {% set i = i + 1 %}
-            <div class="justify-content-centercarousel-item  {{ i == 1 ? 'active' : '' }}">
-                <div class="col4 animate__animated animate__backInLeft" style="float:left">
-                    {% if most.current_trailer is defined %}
-                    <a href="{{most.current_trailer }}" data-toggle="lightbox">
-                        <img class="w-5" src="http://image.tmdb.org/t/p/w92/{{ most.poster_path }}"
-                            alt="{{ most.title }}" alt="">
-                    </a>
-                    {% else %}
-                    <img class="w-5" src="http://image.tmdb.org/t/p/w92/{{ most.poster_path }}" alt="{{ most.title }}"
-                        alt="">
-                    {% endif %}
-
-                </div>
-            </div>
-            {% endfor %}
+<div class="container-fluid px-0">
+    {% set i = 0 %}
+    <div class="d-flex">
+    {% for most in mostViewed %}
+        {% set i = i + 1 %}
+        <div class="animate__animated animate__backInLeft" style="width:100px">
+            {% if most.current_trailer is defined %}
+            <a href="{{most.current_trailer }}" data-toggle="lightbox">
+                <img class="img-fluid" src="http://image.tmdb.org/t/p/w154/{{ most.poster_path }}"
+                    alt="{{ most.title }}" alt="">
+            </a>
+            {% else %}
+                <img class="img-fluid" src="http://image.tmdb.org/t/p/w154/{{ most.poster_path }}" alt="{{ most.title }}"
+                alt="">
+            {% endif %}
         </div>
+    {% endfor %}
     </div>
 </div>
 

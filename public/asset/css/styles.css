@@ -1050,7 +1050,9 @@ input#reset_password_request_form_email {
 *      USER SPACE     *
 **********************/
 
-
+.myspacetitle{
+    text-transform: uppercase;
+}
 
 /**********************
 *        ADMIN        *
@@ -1119,8 +1121,6 @@ input#reset_password_request_form_email {
         font-size: 1.2em;
     }
 
-   
-
     .img-accueil {
         height: 40vh;
     }
@@ -1145,6 +1145,11 @@ input#reset_password_request_form_email {
 
     #img-ticket {
         left: 32%;
+    }
+
+    .animation {
+        display: none;
+
     }
 }
 

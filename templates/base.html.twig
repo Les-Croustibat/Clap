@@ -68,7 +68,7 @@
 						{% if is_granted('ROLE_ADMIN') %}
 							<li class="nav-item mx-4">
 								<a href="{{ path('admin_list') }}">
-									<i class="fas fa-user mr-2"></i>Administration</a>
+									<i class="fas fa-tools"></i> Administration</a>
 							</li>
 						{% endif %}
 						{% if not app.user %}
@@ -81,7 +81,6 @@
 								<a href="{{ path('user_space') }}"><i class="fas fa-film mr-2"></i>Mon espace</a>
 							</li>
 						{% endif %}
-						</li>
 					</ul>
 				</div>
 			</nav>

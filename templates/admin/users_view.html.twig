@@ -4,9 +4,12 @@
 {% endblock %}
 
 {% block content %}
-<div class="container user-view">
-	<h1 class="text-center">Informations utilisateur</h1>
+	<div class="banniere-find">
+        <img src="{{asset('asset/img/hollywood.jpg')}}" alt="admission" id="img-admission">
+    </div>  
+	<h1 class="text-center mt-5 pt-5">Informations utilisateur</h1>
 
+<div class="container user-view">
 	<div class="row justify-content-center">
 		<div class="col-8">
 			<div class="table-responsive">
@@ -32,11 +35,12 @@
 				</table>
 
 				{# Bouton de retour #}
-				<div class="text-center return">
+				<div class="text-center return mb-5 pb-5">
 					<a href="{{ path('admin_list') }}" class="btn bg_perso p-2">Retour</a>
 				</div>
 
 			</div>
 		</div>
-		</div>
+	</div>
+</div>
 	{% endblock %}
