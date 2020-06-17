@@ -88,12 +88,6 @@
 		</header>
 
 		{% block content %}{% endblock %}
-		{# Salutations #}
-		{% if app.user %}
-		<div id="HelloUser">
-			<span class="text2">Bonjour {{app.user.pseudo}} !</span>
-		</div>
-		{% endif %}
 
 		{# Flèche de retour en haut de page #}
 		<div id="arrowTop">

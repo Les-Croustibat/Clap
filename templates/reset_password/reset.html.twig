@@ -11,8 +11,14 @@
         {{ form_start(resetForm) }}
             {{ form_row(resetForm.plainPassword) }}
             <div class="col-6">
-                <button type="submit" class="btn btn-secondary m-5 ">Réinitialisez</button>
+                <button type="submit" class="btn btn-secondary m-5 btnreset">Réinitialisez</button>
             </div>
         {{ form_end(resetForm) }}
+        
+    </div>
+    <div class="row justify-content-center my-5 py-5">
+        <div class="col-6 text-center">
+            <img src="{{asset('asset/img/reset.png')}}" alt="reset" class="rotateIn">
+        </div>
     </div>
 {% endblock %}

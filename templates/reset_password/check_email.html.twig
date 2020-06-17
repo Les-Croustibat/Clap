@@ -3,10 +3,12 @@
 {% block title %}Lien de réinitialisation de mot de passe envoyé{% endblock %}
 
 {% block content %}
+    
+     <div class="banniere-find">
+        <img src="{{asset('asset/img/markus-spiske-iar-afB0QQw-unsplash.jpg')}}" alt="matrix" id="img-enveloppes">
+    </div> 
 
-<img src="{{asset('asset/img/enveloppes.jpg')}}" alt="enveloppes" class="img-enveloppes">
-
-    <div class="container sendEmail">
+    <div class="container sendEmail mt-5 pt-5">
         <div class="row row-xl-6 justify-content-center lead mt-5 pt-5">
             <p>Un email t'a été envoyé avec un lien de réinitialisation de mot de passe. Ce lien expirera dans {{ tokenLifetime|date('g') }} heure(s).</p>
             <p>Si tu ne reçois pas d'email, n'hésite pas à vérifier ta boîte spams ou courriers indésirables ou <a href="{{ path('app_forgot_password_request') }}">essayez à nouveau</a>.</p>
