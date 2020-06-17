@@ -19,11 +19,11 @@ class DefaultController extends AbstractController
                 $safe = array_map('strip_tags', $_POST);
 
                 $errors = [
-                        (empty($safe['lastname'])) ? 'Votre nom doit être valide' : null,
-                        (empty($safe['firstname'])) ? 'Votre prénom doit être valide' : null,
-                        (!filter_var($safe['email'], FILTER_VALIDATE_EMAIL)) ? 'Votre mail doit être valide' : null,
-                        (empty($safe['object'])) ? 'Votre champ objet doit être valide' : null,
-                        (empty($safe['message'])) ? 'Votre message doit être valide.' : null,
+                        (empty($safe['lastname'])) ? 'Ton nom tu dois saisir' : null,
+                        (empty($safe['firstname'])) ? 'Ton prénom tu saisiras' : null,
+                        (!filter_var($safe['email'], FILTER_VALIDATE_EMAIL)) ? 'Ton mail doit être valide' : null,
+                        (empty($safe['object'])) ? 'L\'objet de ton mail tu préciseras' : null,
+                        (empty($safe['message'])) ? 'Un message tu écriras' : null,
                 ];
 
                 $errors = array_filter($errors);

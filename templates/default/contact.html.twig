@@ -3,6 +3,14 @@
 {% block title %}Contact{% endblock %}
 
 {% block content %}
+
+{# Salutations #}
+{% if app.user %}
+	<div class="animation">
+		<span class="text2">Bonjour {{app.user.pseudo}} !</span>
+    </div>
+{% endif %}
+
 {# Formulaire de contact #}
 <div class="banniere-contact">
     <img src="{{asset('asset/img/monde.jpg')}}" alt="contact" class="img-monde">

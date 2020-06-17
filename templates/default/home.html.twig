@@ -7,6 +7,12 @@
 {% endblock %}
 
 {% block content %}
+{# Salutations #}
+{% if app.user %}
+	<div id="HelloUser">
+		<span class="text2">Bonjour {{app.user.pseudo}} !</span>
+    </div>
+{% endif %}
 <div id="accueil">
     <div>
         <img src="{{asset('asset/img/accueilcustom.jpg')}}" alt="accueil" class="img-accueil">
@@ -14,7 +20,7 @@
     <div id="logo-presentation">
         <img src="{{asset('asset/img/logoBLG1.png')}}" alt="logo" width="350" height="350">
     </div>
-</div
+</div>
 
 <section>
 
