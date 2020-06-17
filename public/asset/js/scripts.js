@@ -33,10 +33,7 @@ window.onload = () => {
    let pseudo = document.querySelector("#pseudo") ;
    pseudo.addEventListener("keyup", changeColorPseudo);
 
-   // Verif email
-   let email = document.querySelector("#email") ;
-   email.addEventListener("keyup", validateEmail);
-
+  
 } // fin de window.onload
 
 function checkPw () {
@@ -98,7 +95,7 @@ function validateEmail(emailField){
   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
   let email = document.querySelector("#email") ;
 
-  if (reg.test(emailField.value) == false) 
+  if (reg.test(emailField.value) == true) 
   {
     email.style.border = "3px solid green" ;
     return false;
